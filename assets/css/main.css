@@ -1,0 +1,236 @@
+/**
+common
+ */
+a:hover {
+    text-decoration: none;
+}
+/**
+头部
+ */
+header {
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 20px;
+    line-height: 44px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    position: relative;
+}
+.site-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    vertical-align: middle;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.site-logo:hover {
+    transform: rotate(360deg);
+}
+.site-name {
+    margin-left: 5px;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+}
+.bi.bi-search {
+    cursor: pointer;
+}
+.bi.bi-search:hover {
+    color: cornflowerblue;
+}
+.mobile-nav {
+    position: absolute;
+    right: 1.5rem;
+}
+.mobile-nav button:hover {
+    box-shadow: none;
+}
+@media (min-width: 768px) {
+    #mobile-nav {
+        display: block!important;
+    }
+    .search-area {
+        right: 50px!important;
+    }
+}
+@media (min-width: 1200px) {
+    .search-area {
+        right: 20rem!important;
+    }
+}
+.search-area {
+    position: absolute;
+    right: 5rem;
+}
+/**
+重写modal
+ */
+.modal-header {
+    border-bottom: none;
+}
+.modal-footer {
+    border-top: none;
+}
+
+.modal-header .close {
+    background: #FC4349;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-weight: 200;
+    font-size: 18px;
+    opacity: 1;
+    outline: none;
+}
+.modal-header .close:hover {
+    background: #002635;
+}
+/**
+导航
+ */
+.nav-link {
+    text-align: center;
+    height: 40px;
+    color: #000;
+    margin-bottom: 24px;
+    padding: 0;
+}
+.nav-link.active {
+    color: rgb(29,161,242);
+}
+.nav-item:hover {
+    background-color: #1da1f21a;
+    color: #1da1f2;
+    border-radius: 25px;
+}
+.nav-icon {
+    max-width: 24px;
+    max-height: 24px;
+}
+.nav-item-text {
+    display: inline-block;
+    padding: 10px;
+    font-size: 19px;
+    vertical-align: middle;
+    font-weight: 700;
+}
+/**
+文章列表
+ */
+.list {
+    margin-top: 15px;
+}
+article {
+    border: 1px solid #f0f2f7;
+    padding: 1.25rem;
+}
+.post-title {
+    font-weight: 600;
+    line-height: 1.6;
+    color: #1a1a1a;
+    margin-top: -4px;
+    margin-bottom: -4px;
+    text-decoration: none;
+}
+.post-title:hover {
+    text-decoration: none;
+}
+.post-author img {
+    border-radius: 50%;
+}
+.post-author a {
+    color: #000;
+    text-decoration: none;
+    margin-left: .1rem;
+}
+.post-cover {
+    margin-top: 10px;
+    border-radius: 4px;
+    margin-right: -10px;
+}
+.post-cover-inner {
+    height: 100%;
+    width: 100%;
+}
+.post-cover-inner img {
+    width: 100%;
+}
+.post-content-inner {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.button {
+    display: inline-block;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #8590a6;
+    text-align: center;
+    background: none;
+    border: 1px solid;
+    border-radius: 3px;
+    outline: none!important;
+}
+.post-action:hover {
+    color: rgb(37, 120, 196);
+}
+.post-icon {
+    margin-right: 4px;
+}
+.post-plain, .post-datetime, .post-action {
+    height: auto;
+    padding: 0;
+    line-height: inherit;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+.post-plain a {
+    margin-left: 4px;
+    color: #175199;
+}
+.post-plain a:hover {
+    color: grey;
+}
+/**
+footer
+ */
+.footer-item {
+    color: #8590a6;
+}
+.random-post {
+    background-color: #FFF;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.random-post > .title {
+    font-size: 14px;
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid rgba(133,153,171,0.2);
+    border-radius: 4px 4px 0 0;
+    padding: 0 20px;
+}
+.archive-posts {
+    padding: 20px;
+    border-bottom: 1px solid rgba(133,153,171,0.2);
+    border-left: 1px solid rgba(133,153,171,0.2);
+    border-right: 1px solid rgba(133,153,171,0.2);
+}
+.archive-post {
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.archive-post > a {
+    color: #000;
+}
+.archive-post > a:hover {
+    color: rgb(37, 120, 196);
+}
