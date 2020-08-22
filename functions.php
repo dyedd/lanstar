@@ -3,6 +3,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 require_once 'libs/contents.php';
 require_once 'libs/options.php';
 require_once 'libs/utils.php';
+require_once 'libs/pageNav.php';
 /**
  * 注册文章解析 hook
  * From AlanDecode(https://imalan.cn)

@@ -32,7 +32,7 @@
                         <?php $this->category(' ');?>
                     </span>
                     <time class="create-time" daetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
-                    <div class="article-data"><span>0阅读</span><span>0点赞</span></div>
+                    <div class="article-data"><span><?php contents::get_post_view($this);?>阅读</span><span>0点赞</span></div>
                 </div>
                 <div class="article-content">
                     <?php $this->content(); ?>

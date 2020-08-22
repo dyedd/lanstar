@@ -234,3 +234,18 @@ footer
 .archive-post > a:hover {
     color: rgb(37, 120, 196);
 }
+/**
+分页
+ */
+.page-pagination {
+    margin-top: 10px;
+}
+.page-link {
+    border-radius: 50% !important;
+    margin: 5px;
+    height: 36px;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
