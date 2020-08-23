@@ -6,10 +6,10 @@
         item.className = item.className === '' ? lineNumberClassName : item.className + ' ' + lineNumberClassName;
     });
 })();
-
-document.getElementById('article-list-btn').addEventListener('click',function () {
-    //生成文章目录
-    (function () {
+let catalog_btn = document.getElementById('article-list-btn');
+if (catalog_btn) {
+    catalog_btn.addEventListener('click',function () {
+        //生成文章目录
         let index = 0;
         let depth = 0;
         let tocTreeHtml = '';
@@ -37,10 +37,10 @@ document.getElementById('article-list-btn').addEventListener('click',function ()
             tocTreeObj.classList.add('on');
             tocTreeObj.querySelector('.article-catalog-list').innerHTML = tocTreeHtml;
         }
-    })();
-})
-// 关闭
-document.getElementById('catalog-close').addEventListener('click',
-    function() {
-        document.getElementById('tocTree').classList.remove('on');
-    });
+    })
+    // 关闭
+    document.getElementById('catalog-close').addEventListener('click',
+        function() {
+            document.getElementById('tocTree').classList.remove('on');
+        });
+}
