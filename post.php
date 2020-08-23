@@ -32,7 +32,7 @@
                         <?php $this->category(' ');?>
                     </span>
                     <time class="create-time" daetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
-                    <div class="article-data"><span><?php contents::get_post_view($this);?>阅读</span><span>0点赞</span></div>
+                    <div class="article-data"><span><?php utils::getPostView($this);?>阅读</span><span>0点赞</span></div>
                 </div>
                 <div class="article-content">
                     <?php $this->content(); ?>
@@ -52,7 +52,17 @@
                     </div>
                 </div>
             </article>
-            <div id="article-catalog"></div>
+            <section class="col-12 col-md-4 col-xl-3 article-catalog" id="tocTree">
+                <h3 class="article-catalog-title">
+                    <?php _e('目录'); ?>
+                    <button type="button" class="close" aria-label="Close" id="catalog-close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h3>
+                <div class="article-list-title">来自  《<?php $this->title() ?>》</div>
+                <ul class="article-catalog-list">
+                </ul>
+            </section>
             <?php $this->need('includes/comments.php'); ?>
 
         </div>

@@ -8,8 +8,8 @@ require_once 'libs/pageNav.php';
  * 注册文章解析 hook
  * From AlanDecode(https://imalan.cn)
  */
-Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array('Contents','parseContent');
-Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('Contents','parseContent');
+Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array('contents','parseContent');
+Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('contents','parseContent');
 
 /**
  * 文章与独立页自定义字段

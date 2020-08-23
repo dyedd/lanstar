@@ -5,7 +5,6 @@ class contents{
     {
         $text = empty($last) ? $data : $last;
         if ($widget instanceof Widget_Archive) {
-            $text = contents::parseCode($text);
             //owo
             $text = contents::parseOwo($text);
             // 友链解析
@@ -56,13 +55,6 @@ class contents{
         return '<img class="biaoqing" src="/usr/themes/lanstar/assets/owo/biaoqing/quyin/'. str_replace('%', '', urlencode($match[1])) . '.png">';
     }
     /**
-     * 解析代码块
-     */
-    public static function parseCode($text) {
-        $text = preg_replace('/<pre><code>/s','<pre><code class="language-html">',$text);
-        return $text;
-    }
-    /**
      * 友链解析
      */
     public static function parseLink($text) {
@@ -87,47 +79,5 @@ class contents{
         }
     }
 
-    /**
-     * 文章中文字数统计
-     * @param $cid
-     */
-    public static function  art_count ($cid){
-        $db=Typecho_Db::get ();
-        $rs=$db->fetchRow ($db->select ('table.contents.text')->from ('table.contents')->where ('table.contents.cid=?',$cid)->order ('table.contents.cid',Typecho_Db::SORT_ASC)->limit (1));
-        $text = preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $rs['text']);
-        echo mb_strlen($text,'UTF-8');
-    }
-
-    /**
-     * 文章阅读次数统计
-     * @param $archive
-     */
-    public static function get_post_view($archive)
-    {
-        $cid    = $archive->cid;
-        $db     = Typecho_Db::get();
-        $prefix = $db->getPrefix();
-        if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
-            $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0;');
-            echo 0;
-            return;
-        }
-        $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
-        if ($archive->is('single')) {
-            $views = Typecho_Cookie::get('extend_contents_views');
-            if(empty($views)){
-                $views = array();
-            }else{
-                $views = explode(',', $views);
-            }
-            if(!in_array($cid,$views)){
-                $db->query($db->update('table.contents')->rows(array('views' => (int) $row['views'] + 1))->where('cid = ?', $cid));
-                array_push($views, $cid);
-                $views = implode(',', $views);
-                Typecho_Cookie::set('extend_contents_views', $views); //记录查看cookie
-            }
-        }
-        echo $row['views'];
-    }
 
 }

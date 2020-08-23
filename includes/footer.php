@@ -12,6 +12,8 @@
 <script src="<?php $this->options->themeUrl('assets/js/jquery-3.5.1.slim.min.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/js/popper.min.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/js/bootstrap.min.js'); ?>"></script>
+<script src="<?php $this->options->themeUrl('assets/js/prism.js'); ?>"></script>
+<script src="<?php $this->options->themeUrl('assets/js/extend.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/owo/owo_02.js'); ?>"></script>
 <?php $this->options->jsEcho(); ?>
 <script>

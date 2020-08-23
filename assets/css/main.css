@@ -125,6 +125,7 @@ header {
 article {
     border: 1px solid #f0f2f7;
     padding: 1.25rem;
+    position: relative;
 }
 .post-title {
     font-weight: 600;
@@ -218,6 +219,7 @@ footer
     border-bottom: 1px solid rgba(133,153,171,0.2);
     border-left: 1px solid rgba(133,153,171,0.2);
     border-right: 1px solid rgba(133,153,171,0.2);
+    margin-top: -6px;
 }
 .archive-post {
     width: 100%;
