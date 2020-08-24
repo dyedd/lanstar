@@ -71,7 +71,6 @@
     box-sizing: border-box;
     top: 0;
     transition: .5s;
-    width: 45px;
     height: 18px;
     line-height: 7px;
     margin: 0 10px 8px 0;
@@ -491,6 +490,9 @@ article table td {
 .article-content blockquote p {
     line-height: 1.6;
     color: #222;
+}
+.article-content blockquote img {
+    margin-left: -40px;
 }
 .article-content p {
     margin-bottom: 10px;
