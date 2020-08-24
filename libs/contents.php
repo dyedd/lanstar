@@ -9,6 +9,7 @@ class contents{
             $text = contents::parseOwo($text);
             // 友链解析
             $text = contents::parseLink($text);
+            $text = contents::parseHide($text, $widget);
         }
         return $text;
     }
@@ -77,6 +78,29 @@ class contents{
         }else{
             return $text;
         }
+    }
+
+    public static function parseHide($text, $obj)
+    {
+        $reg = '/\[hide\](.*?)\[\/hide\]/sm';
+        if (preg_match($reg, $text)) {
+            if(!$obj->is('single')){
+                $text = preg_replace($reg,'',$text);
+            }
+            $db = Typecho_Db::get();
+            $sql = $db->select()->from('table.comments')
+                ->where('cid = ?',Typecho_Widget::widget('Widget_Archive')->cid)
+                ->where('mail = ?', Typecho_Widget::widget('Widget_Archive')->remember('mail',true))
+                ->limit(1);
+            $result = $db->fetchAll($sql);
+            if(Typecho_Widget::widget('Widget_User')->hasLogin() || $result) {
+                $text = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div class="reply2view">$1</div>',$text);
+            }
+            else{
+                $text = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div class="reply2view text-center">此处内容需要评论回复后方可阅读。</div>',$text);
+            }
+        }
+        return $text;
     }
 
 

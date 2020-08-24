@@ -35,7 +35,22 @@
                     <div class="article-data"><span><?php utils::getPostView($this);?>阅读</span><span>0点赞</span></div>
                 </div>
                 <div class="article-content">
-                    <?php $this->content(); ?>
+                    <?php if($this->hidden||$this->titleshow): ?>
+                        <form action="<?php echo Typecho_Widget::widget('Widget_Security')->getTokenUrl($this->permalink); ?>" class="protected">
+                            <div class="form-group mb-3 col-md-6 text-center required-password">
+                                <label for="passwd">请输入密码访问</label>
+                                <div class="input-group">
+                                    <input type="password" id="passwd" name="protectPassword" class="form-control text" placeholder="请输入密码" aria-label="请输入密码">
+                                    <input type="hidden" name="protectCid" value="<?php $this->cid(); ?>" />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary protected-btn" type="button">提交</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    <?php else: ?>
+                        <?php $this->content();?>
+                    <?php endif;?>
                 </div>
                 <p class="tags"><?php $this->tags(' ', true, ''); ?></p>
                 <div class="article-list-plane d-flex justify-content-around">

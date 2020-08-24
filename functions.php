@@ -2,6 +2,7 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 require_once 'libs/contents.php';
 require_once 'libs/options.php';
+require_once 'libs/comments.php';
 require_once 'libs/utils.php';
 require_once 'libs/pageNav.php';
 /**
@@ -10,7 +11,11 @@ require_once 'libs/pageNav.php';
  */
 Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array('contents','parseContent');
 Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('contents','parseContent');
-
+/**
+ * 评论接口 by 染念
+ */
+Typecho_Plugin::factory('Widget_Abstract_Comments')->contentEx = array('comments','parseContent');
+Typecho_Plugin::factory('Widget_Feedback')->comment = array('comments','insertSecret');
 /**
  * 文章与独立页自定义字段
  */
@@ -54,30 +59,13 @@ function img_postthumb($html) {
 	}
 }
 
-function get_user_title($name = NULL){
-    $options = Helper::options();
-    switch(get_user_group($name)){
-        case 'administrator':
-            return isset($options->groupTitleA) ? $options->groupTitleA: ''; break;
-        case 'editor':
-            return isset($options->groupTitleE) ? $options->groupTitleE: ''; break;
-        case 'contributor':
-            return isset($options->groupTitleC) ? $options->groupTitleC: ''; break;
-        case 'subscriber':
-            return isset($options->groupTitleS) ? $options->groupTitleS: ''; break;
-        case 'visitor':
-            return isset($options->groupTitleV) ? $options->groupTitleV: ''; break;
-    }
-    return isset($options->groupTitleV) ? $options->groupTitleV: '';
-}
+
 function get_user_group($name = NULL){
-    $options = Helper::options();
     $db = Typecho_Db::get();
     if($name === NULL)
         $profile = $db->fetchRow($db->select('group', 'uid')->from('table.users')->where('uid = ?', intval(Typecho_Cookie::get('__typecho_uid'))));
     else
         $profile = $db->fetchRow($db->select('group', 'name', 'screenName')->from('table.users')->where('name=? OR screenName=?', $name, $name));
-    if(sizeof($profile) == 0) return isset($options->groupTitleV) ? $options->groupTitleV: '';
     return $profile['group'];
 }
 function get_comment($coid){

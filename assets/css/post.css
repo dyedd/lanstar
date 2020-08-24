@@ -381,6 +381,9 @@
 .article-catalog-list li .article-catalog-list {
     padding: 0 5px 0 5px;
 }
+.required-password {
+    margin-left: 146px;
+}
 /**
 标签内容的美化
  */
@@ -491,4 +494,65 @@ article table td {
 }
 .article-content p {
     margin-bottom: 10px;
+}
+.reply2view {
+    background:#f8f8f8;
+    padding:10px 10px 10px 40px;
+    position:relative
+}
+.secret {
+    background: repeating-linear-gradient(145deg,#f2f2f2,#f2f2f2 15px,#fff 0,#fff 30px);
+    padding: 10px 40px 10px 40px;
+    position: relative;
+    margin-bottom: 20px;
+}
+#secret-button{
+    display: none;
+}
+.secret-label{
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    cursor: pointer;
+    top: 12px;
+}
+.secret-label .circle{
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.secret-label .on {
+    color: #fff;
+    display: none;
+    text-indent: 10px;
+}
+.secret-label .off {
+    color: #fff;
+    display: inline-block;
+    text-indent: 53px;
+}
+.secret-label .circle{
+    left: -1px;
+    transition: all 0.3s;
+}
+
+#secret-button:checked + label.secret-label .circle{
+    left: 19px;
+}
+#secret-button:checked + label.secret-label .on{
+    display: inline-block;
+}
+#secret-button:checked + label.secret-label .off{
+    display: none;
+}
+#secret-button:checked + label.secret-label{
+    background-color: #3a3f51;
 }

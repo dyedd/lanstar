@@ -29,9 +29,6 @@ function threadedComments($comments, $options)
                 <a href="<?php echo $comments->url ?>" target="_blank" rel="external nofollow">
               <?php endif; ?>
               <?php $comments->gravatar('64', 'mp'); echo $comments->author; ?>
-              <?php $title = get_user_title($comments->author); if(strlen($title)>0): ?>
-              <span class="comment-author-title"><?php echo $title ?></span>
-              <?php endif; ?>
               <?php if ($comments->authorId === $comments->ownerId): ?>
               <span class="comment-author-title">作者</span>
               <?php endif ?>
@@ -43,7 +40,7 @@ function threadedComments($comments, $options)
             <?php 
               $pcomments = get_comment($comments->parent);
               if($pcomments) echo '<code style="float:left;margin:.1em .5em;padding:0;font-size:.9em;">@'.$pcomments['author'].'</code>';
-           echo contents::parseOwo($comments->content);
+            $comments->content()
             ?>
             <div class="comment-reply">
               <?php 
@@ -112,17 +109,17 @@ function threadedComments($comments, $options)
               <div class="form-row">
                   <div class="col-6 col-md-4">
                     <input type="text" name="author" class="form-control form-control-sm" 
-                        placeholder="昵称" required />
+                        placeholder="昵称" required value="<?php $this->remember('author'); ?>" />
                   </div>
                   <div class="col-6 col-md-4">
                     <input type="text" name="url" class="form-control form-control-sm" 
-                        placeholder="网站" 
-                        <?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?> />
+                        placeholder="网站" value="<?php $this->remember('url'); ?>"
+                        <?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
                   </div>
                   <div class="col">
                     <input type="text" name="mail" class="form-control form-control-sm" 
-                        placeholder="邮箱" 
-                        <?php if ($this->options->commentsRequireMail): ?> class="required"<?php endif; ?> />
+                        placeholder="邮箱" value="<?php $this->remember('mail'); ?>"
+                        <?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
                   </div>
               </div>
             </div>
@@ -131,6 +128,10 @@ function threadedComments($comments, $options)
                 <div class="col">
                     <textarea type="text" class="textarea-container form-control form-control-sm owo-textarea" rows="5" name="text" id="textarea" placeholder="发条友善的评论" required></textarea>
                     <span class="OwO"></span>
+                    <input type="checkbox" id="secret-button" name="secret">
+                    <label for="secret-button" class="secret-label" data-toggle="tooltip" data-placement="top" title="开启该功能，您的评论仅作者和评论双方可见">
+                        <span class="circle"></span>
+                    </label>
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="submit btn btn-sm comment-submit"><?php _e('发表评论'); ?></button>

@@ -1,3 +1,15 @@
+console.log(' %c Theme lanstar %c https://github.com/dyedd/lanstar', 'color:#444;background:#eee;padding:5px 0', 'color:#eee;background:#444;padding:5px');
+if($(".OwO").length > 0){
+    new OwO({
+        logo: 'OωO',
+        container: document.getElementsByClassName('OwO')[0],
+        target: document.getElementsByClassName('owo-textarea')[0],
+        api: '../usr/themes/lanstar/assets/owo/OwO_02.json',
+        position: 'down',
+        width: '400px',
+        maxHeight: '250px'
+});
+}
 //增加行号
 (function(){
     let pres = document.querySelectorAll('pre');
@@ -44,3 +56,32 @@ if (catalog_btn) {
             document.getElementById('tocTree').classList.remove('on');
         });
 }
+$('.protected-btn').click(function() {
+    let surl=$(".protected").attr("action");
+    $.ajax({
+        type: "POST",
+        url:surl,
+        data:$('.protected').serialize(),
+        error: function(request) {
+            alert("密码提交失败，请刷新页面重试！");
+        },
+        success: function(data) {
+
+            if(data.indexOf("密码错误") >= 0 && data.indexOf("<title>Error</title>") >= 0) {
+                alert("密码错误，请重试！");
+            }else{
+                location.reload();
+            }
+        }
+    });
+});
+// 私密
+$('#secret-button').click(function () {
+    if($(this).is(':checked')) {
+    }else {
+    }
+})
+//初始化tooltip
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
