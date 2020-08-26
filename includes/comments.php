@@ -47,9 +47,9 @@ function threadedComments($comments, $options)
                 if(in_array(get_user_group(), ['administrator', 'editor'])):
                   Typecho_Widget::widget('Widget_Security')->to($security);
               ?>
-              <a href="javascript:;" data-rel="delete" data-href="<?php $security->index('/action/comments-edit?do=delete&coid='.$comments->coid); ?>"><i data-feather="trash"></i> 删除</a>
+              <a href="javascript:;" data-rel="delete" data-href="<?php $security->index('/action/comments-edit?do=delete&coid='.$comments->coid); ?>"> 删除</a>
               <?php endif ?>
-              <?php $comments->reply('<i data-feather="message-square"></i> 回复') ?>
+              <?php $comments->reply('回复') ?>
             </div>
         </div>
         <hr />
@@ -124,21 +124,21 @@ function threadedComments($comments, $options)
               </div>
             </div>
             <?php endif; ?>
-            <div class="form-row">
-                <div class="col">
-                    <textarea type="text" class="textarea-container form-control form-control-sm owo-textarea" rows="5" name="text" id="textarea" placeholder="发条友善的评论" required></textarea>
-                    <span class="OwO"></span>
-                    <input type="checkbox" id="secret-button" name="secret">
-                    <label for="secret-button" class="secret-label" data-toggle="tooltip" data-placement="top" title="开启该功能，您的评论仅作者和评论双方可见">
-                        <span class="circle"></span>
-                    </label>
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="submit btn btn-sm comment-submit"><?php _e('发表评论'); ?></button>
-                </div>
+            <div class="comment-action">
+                <textarea type="text" class="textarea-container form-control owo-textarea" rows="4" name="text" id="textarea" placeholder="发条友善的评论" required></textarea>
+                <span class="OwO"></span>
+                <input type="checkbox" id="secret-button" name="secret">
+                <label for="secret-button" class="secret-label" data-toggle="tooltip" data-placement="top" title="开启该功能，您的评论仅作者和评论双方可见">
+                    <span class="circle"></span>
+                </label>
+                <button type="submit" class="submit btn comment-submit">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103zM2.25 8.184l3.897 1.67a.5.5 0 0 1 .262.263l1.67 3.897L12.743 3.52 2.25 8.184z"/>
+                    </svg>
+                </button>
             </div>
             <div class="comment-reply-cancel">
-                <?php $comments->cancelReply('<i data-feather="message-square"></i> 取消'); ?>
+                <?php $comments->cancelReply('取消'); ?>
             </div>
             <hr/>
         </form>

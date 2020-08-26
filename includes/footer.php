@@ -19,5 +19,6 @@
     <script src="<?php $this->options->themeUrl('assets/js/prism.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('assets/owo/owo_02.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('assets/js/extend.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/jquery.fancybox.min.js'); ?>"></script>
 <?php endif; ?>
 <?php $this->footer(); ?>

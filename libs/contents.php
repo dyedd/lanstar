@@ -9,7 +9,10 @@ class contents{
             $text = contents::parseOwo($text);
             // 友链解析
             $text = contents::parseLink($text);
-            $text = contents::parseHide($text, $widget);
+            $text = contents::parseHide($text);
+            // 其它
+            $text = contents::blankReplace($text);
+            $text = contents::fancybox($text);
         }
         return $text;
     }
@@ -33,7 +36,7 @@ class contents{
      */
     public static function parsePaopaoBiaoqingCallback($match)
     {
-        return '<img class="biaoqing" src="/usr/themes/lanstar/assets/owo/biaoqing/paopao/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji" src="../usr/themes/lanstar/assets/owo/biaoqing/paopao/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -43,7 +46,7 @@ class contents{
      */
     public static function parseAruBiaoqingCallback($match)
     {
-        return '<img class="biaoqing" src="/usr/themes/lanstar/assets/owo/biaoqing/aru/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji" src="../usr/themes/lanstar/assets/owo/biaoqing/aru/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -53,7 +56,7 @@ class contents{
      */
     public static function parseQuyinBiaoqingCallback($match)
     {
-        return '<img class="biaoqing" src="/usr/themes/lanstar/assets/owo/biaoqing/quyin/'. str_replace('%', '', urlencode($match[1])) . '.png">';
+        return '<img class="emoji" src="../usr/themes/lanstar/assets/owo/biaoqing/quyin/'. str_replace('%', '', urlencode($match[1])) . '.png">';
     }
     /**
      * 友链解析
@@ -80,11 +83,11 @@ class contents{
         }
     }
 
-    public static function parseHide($text, $obj)
+    public static function parseHide($text)
     {
         $reg = '/\[hide\](.*?)\[\/hide\]/sm';
         if (preg_match($reg, $text)) {
-            if(!$obj->is('single')){
+            if(!Typecho_Widget::widget('Widget_Archive')->is('single')){
                 $text = preg_replace($reg,'',$text);
             }
             $db = Typecho_Db::get();
@@ -103,5 +106,18 @@ class contents{
         return $text;
     }
 
+    /**
+     * 新标签打开
+     * @param $content
+     * @return string|string[]|null
+     */
+    public static function blankReplace($content){
+        $content = preg_replace('#<a(.*?) href="([^"]*/)?(([^"/]*)\.[^"]*)"(.*?)>#', '<a$1 href="$2$3"$5 target="_blank">', $content);
+        return $content;
+    }
+    public static function fancybox($text)
+    {
+        return preg_replace('#<img(.*?)src="(.*?)"(.*)>#', '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
+    }
 
 }

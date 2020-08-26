@@ -12,6 +12,11 @@ require_once 'libs/pageNav.php';
 Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array('contents','parseContent');
 Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('contents','parseContent');
 /**
+ * 后台编辑按钮
+ */
+Typecho_Plugin::factory('admin/write-post.php')->bottom = array('utils', 'addButton');
+Typecho_Plugin::factory('admin/write-page.php')->bottom = array('utils', 'addButton');
+/**
  * 评论接口 by 染念
  */
 Typecho_Plugin::factory('Widget_Abstract_Comments')->contentEx = array('comments','parseContent');
@@ -20,44 +25,20 @@ Typecho_Plugin::factory('Widget_Feedback')->comment = array('comments','insertSe
  * 文章与独立页自定义字段
  */
 function themeFields(Typecho_Widget_Helper_Layout $layout) {
-    $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', NULL, NULL,_t('文章头图'), _t('输入一个图片 url，作为缩略图显示在文章列表，没有则不显示'));
-    $layout->addItem($banner);
-    $excerpt = new Typecho_Widget_Helper_Form_Element_Text('excerpt', NULL, NULL,_t('文章摘要'), _t('输入一段文本来自定义摘要，如果为空则自动提取文章前 70 字。'));
-    $layout->addItem($excerpt);
+    if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
+        $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', NULL, NULL, _t('文章头图'), _t('输入一个图片 url，作为缩略图显示在文章列表，没有则不显示'));
+        $layout->addItem($banner);
+        $excerpt = new Typecho_Widget_Helper_Form_Element_Text('excerpt', NULL, NULL, _t('文章摘要'), _t('输入一段文本来自定义摘要，如果为空则自动提取文章前 70 字。'));
+        $layout->addItem($excerpt);
+    }
 }
 function themeInit($archive){
     //评论回复楼层最高999层.这个正常设置最高只有7层
     Helper::options()->commentsMaxNestingLevels = 999;
     //强制评论关闭反垃圾保护
     Helper::options()->commentsAntiSpam = false;
-    if ($archive->is('single')){
-    		$archive->content = image_class_replace($archive->content);
-    }
 }
 
-function image_class_replace($content){
-    $content = preg_replace('#<a(.*?) href="([^"]*/)?(([^"/]*)\.[^"]*)"(.*?)>#', '<a$1 href="$2$3"$5 target="_blank">', $content);
-    return $content;
-}
-
-function img_postthumb($html) { 
-	preg_match_all("/\<img.*?src\=\"(.*?)\"[^>]*>/i", $html, $thumbUrl);  //通过正则式获取图片地址
-	
-	if(isset($thumbUrl[1][0])){
-		$img_src = $thumbUrl[1][0];  //将赋值给img_src
-		$img_counter = count($thumbUrl[0]);  //一个src地址的计数器
-		 
-		switch ($img_counter > 0) {
-			case $allPics = 1:
-			return $img_src;  //当找到一个src地址的时候，输出缩略图
-			break;
-			default:
-			echo '';  //没找到(默认情况下)，不输出任何内容
-		}
-	} else {
-		return false;
-	}
-}
 
 
 function get_user_group($name = NULL){
@@ -176,14 +157,14 @@ function theNext($widget)
         $content = $widget->filter($content);
         $link = '<a href="' . $content['permalink'] . '" target="_self">
                         <div class="button">
-                            <div class="label btn1">下一篇 &gt;</div>
-                            <div class="title text-right" title="'. $content['title'] .'">'. $content['title'] .'</div>
+                            <div class="label btn1">下一篇</div>
+                            <div class="title" title="'. $content['title'] .'">'. $content['title'] .'</div>
                         </div>
                     </a>';
         echo $link;
     } else {
         echo '<div class="button btn2 off">
-                  <div class="label">下一篇 &gt;</div>
+                  <div class="label">下一篇</div>
                   <div class="title">没有更多了</div>
               </div>';
     }
@@ -210,14 +191,14 @@ function thePrev($widget)
         $content = $widget->filter($content);
         $link = '<a href="' . $content['permalink'] . '" target="_self">
                         <div class="button">
-                            <div class="label btn1">&lt; 上一篇</div>
-                            <div class="title text-left" title="'. $content['title'] .'">'. $content['title'] .'</div>
+                            <div class="label btn1">上一篇</div>
+                            <div class="title" title="'. $content['title'] .'">'. $content['title'] .'</div>
                         </div>
                     </a>';
         echo $link;
     } else {
         echo '<div class="button btn2 off">
-                  <div class="label">&lt; 上一篇</div>
+                  <div class="label">上一篇</div>
                   <div class="title">没有更多了</div>
               </div>';
     }

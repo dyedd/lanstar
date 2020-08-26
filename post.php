@@ -26,6 +26,9 @@
                 <div class="article-auth">
                     <?php echo $this->author->gravatar(32);?>
                     <a href="<?php $this->author->permalink(); ?>"><span><?php $this->author(); ?></span></a>
+                    <?php if($this->user->hasLogin()):?>
+                        <a href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid;?>">编辑</a>
+                    <?php endif;?>
                 </div>
                 <div class="article-meta">
                     <span class="article-category">
@@ -53,16 +56,16 @@
                     <?php endif;?>
                 </div>
                 <p class="tags"><?php $this->tags(' ', true, ''); ?></p>
-                <div class="article-list-plane d-flex justify-content-around">
-                    <div class="p-2">
+                <div class="article-list-plane row">
+                    <div class="col-4">
                         <?php thePrev($this); ?>
                     </div>
-                    <div class="p-2">
+                    <div class="col-4">
                         <div class="button" id="article-list-btn">
                             <div class="label">查看目录</div>
                         </div>
                     </div>
-                    <div class="p-2">
+                    <div class="col-4">
                         <?php theNext($this); ?>
                     </div>
                 </div>

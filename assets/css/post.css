@@ -61,7 +61,7 @@
     width: 100%;
 }
 #article-list-btn {
-    padding: 20px 0 0 0;
+    margin-top: 22px;
 }
 .tags a {
     display: inline-block;
@@ -83,17 +83,16 @@
 .article-list-plane {
     border: 1px solid #e5e9ef;
     border-radius: 4px;
+    text-align: center;
 }
 .article-list-plane .button {
-    padding: 12px 0 0 0;
-    text-align: center;
+    margin-top: 15px;
     box-sizing: border-box;
     transition: .3s;
     -webkit-transition: .3s;
     cursor: pointer;
-    vertical-align: top;
     border: none;
-    line-height: normal;
+    line-height: 1.2;
 }
 .article-list-plane .button .label {
     font-size: 18px;
@@ -112,7 +111,9 @@
 .archive-cover-inner img {
     width: 100%;
 }
-
+img.emoji {
+    width: 40px!important;
+}
 /**
  * comments
  */
@@ -211,6 +212,7 @@
     border-radius: .25em;
     z-index: 12;
     padding: .25em;
+    margin-right: .2rem;
 }
 .comment-list .comment-body:hover .comment-reply{
     opacity: 1;
@@ -225,15 +227,14 @@
     top: -1em;
     transition: all .3s ease 0s;
 }
-.comment-list .comment-respond:hover:before{
-    background-color: #007bff;
-}
+
 .comment-list .comment-reply-cancel{
     opacity: 1;
     position: absolute;
-    top: -1.75em;
+    top: 0;
     right: 0;
     z-index: 13;
+    margin-top: -25px;
 }
 .comment-respond .comment-respond-author input{
     font-size: .8rem;
@@ -246,7 +247,7 @@
     min-height: 2.2em;
 }
 .textarea-container {
-    font-size: 12px;
+    font-size: 14px;
     display: inline-block;
     box-sizing: border-box;
     background-color: #f4f5f7;
@@ -254,24 +255,19 @@
     overflow: auto;
     border-radius: 4px;
     color: #555;
-    width: 100%!important;
-    height: 65px!important;
     transition: 0s;
-    padding: 5px 10px;
+    padding: 5px 50px 5px 10px;
     line-height: normal;
 }
 .comment-submit {
-    width: 70px;
-    height: 64px;
-    padding: 4px 15px;
-    font-size: 14px;
     color: #fff;
-    border-radius: 4px;
-    min-width: 60px;
+    border-radius: 50%;
     background-color: #00a1d6;
     border: 1px solid #00a1d6;
     transition: .1s;
     user-select: none;
+    float: right;
+    margin-top: .3rem;
 }
 .comment-submit:hover{
     background-color: #00b5e5;
@@ -492,7 +488,7 @@ article table td {
     color: #222;
 }
 .article-content blockquote img {
-    margin-left: -40px;
+    margin-left: -105px;
 }
 .article-content p {
     margin-bottom: 10px;

@@ -127,5 +127,56 @@ class utils
         }
         echo $row['views'];
     }
+    /**
+     * 编辑界面添加Button
+     *
+     * @return void
+     */
+    public static function addButton()
+    {
+        echo '<script src="';
+        Helper::options()->themeUrl('/assets/js/all.min.js');
+        echo '"></script>';
+        echo '<script src="';
+        Helper::options()->themeUrl('/assets/owo/owo_02.js');
+        echo '"></script>';
+
+        echo '<script src="';
+        Helper::options()->themeUrl('/assets/js/editor.js');
+        echo '"></script>';
+
+        echo '<link rel="stylesheet" href="';
+        Helper::options()->themeUrl('/assets/owo/owo.min.css');
+        echo '" />';
+
+        echo '<style>#custom-field textarea,#custom-field input{width:100%}
+        .OwO span{background:none!important;width:unset!important;height:unset!important}
+        .OwO .OwO-body .OwO-items{
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+        }
+        .OwO .OwO-body .OwO-items-image .OwO-item{
+            max-width:-moz-calc(20% - 10px);
+            max-width:-webkit-calc(20% - 10px);
+            max-width:calc(20% - 10px)
+        }
+        @media screen and (max-width:767px){	
+            .comment-info-input{flex-direction:column;}
+            .comment-info-input input{max-width:100%;margin-top:5px}
+            #comments .comment-author .avatar{
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+        @media screen and (max-width:760px){
+            .OwO .OwO-body .OwO-items-image .OwO-item{
+                max-width:-moz-calc(25% - 10px);
+                max-width:-webkit-calc(25% - 10px);
+                max-width:calc(25% - 10px)
+            }
+        }
+        .wmd-button-row{height:unset}</style>';
+    }
+
 
 }
