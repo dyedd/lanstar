@@ -21,4 +21,7 @@
     <script src="<?php $this->options->themeUrl('assets/js/extend.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('assets/js/jquery.fancybox.min.js'); ?>"></script>
 <?php endif; ?>
+<?php if ($this->options->jsPushBaidu):?>
+    <script src="<?php $this->options->themeUrl('assets/js/push.js'); ?>"></script>
+<?php endif;?>
 <?php $this->footer(); ?>

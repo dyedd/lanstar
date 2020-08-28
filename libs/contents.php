@@ -12,7 +12,9 @@ class contents{
             $text = contents::parseHide($text);
             // 其它
             $text = contents::blankReplace($text);
-            $text = contents::fancybox($text);
+            $text = contents::biliVedio($text);
+            if (!contents::parseLink($text))
+                $text = contents::fancybox($text);
         }
         return $text;
     }
@@ -118,6 +120,11 @@ class contents{
     public static function fancybox($text)
     {
         return preg_replace('#<img(.*?)src="(.*?)"(.*)>#', '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
+    }
+    public static function biliVedio($text)
+    {
+        $replacement = '<iframe class="bili-video" src="//player.bilibili.com/player.html?bvid=$1&page=$2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>';
+        return preg_replace('/\[bilibili bv="(.+?)" p="(.+?)"]/', $replacement, $text);
     }
 
 }

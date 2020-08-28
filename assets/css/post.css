@@ -42,6 +42,9 @@
     margin: 10px 0;
     border-top: 1px solid #ececec;
 }
+.article-auth a {
+    margin: 0 4px;
+}
 .article-auth img {
     border-radius: 50%;
 }
@@ -113,6 +116,37 @@
 }
 img.emoji {
     width: 40px!important;
+}
+/**
+b站视频
+ */
+.bili-video {
+    position: relative;
+    width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+    .bili-video {
+        height: 15em;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .bili-video {
+        height: 20em;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .bili-video {
+        height: 30em;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .bili-video {
+        height: 32em;
+    }
 }
 /**
  * comments

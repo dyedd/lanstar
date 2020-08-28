@@ -72,6 +72,8 @@ function themeConfig($form) {
     $form->addInput($recordNo);
     $customNavIcon = new Typecho_Widget_Helper_Form_Element_Textarea('customNavIcon', NULL, NULL, _t('自定义导航小图标'), _t('按照格式书写，自定义内导航栏右侧的小图标，留空则展示默认的图标按钮，书写的格式请查看 wiki<hr>'));
     $form->addInput($customNavIcon);
+    $jsPushBaidu = new Typecho_Widget_Helper_Form_Element_Select('jsPushBaidu',array('0'=>'关闭','1'=>'开启'),'0',_t('自动推送'),_t('使用通用js自动推荐给百度引擎，增快收录'));
+    $form->addInput($jsPushBaidu);
     //developer
     $headerEcho = new Typecho_Widget_Helper_Form_Element_Textarea('headerEcho', NULL, NULL, _t('<h2>开发者设置</h2>自定义头部信息'), _t('填写 html 代码，将输出在 &lt;head&gt; 标签中，可以在这里写上统计代码'));
     $form->addInput($headerEcho);
