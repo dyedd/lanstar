@@ -28,7 +28,8 @@ function threadedComments($comments, $options)
               <?php elseif ($comments->url): ?>
                 <a href="<?php echo $comments->url ?>" target="_blank" rel="external nofollow">
               <?php endif; ?>
-              <?php $comments->gravatar('64', 'mp'); echo $comments->author; ?>
+              <img class="avatar" src="//cdn.v2ex.com/gravatar/<?php echo $comments->mail?md5($comments->mail):''; ?>?s=64&d=mp" />
+              <?php $comments->author(); ?>
               <?php if ($comments->authorId === $comments->ownerId): ?>
               <span class="comment-author-title">作者</span>
               <?php endif ?>

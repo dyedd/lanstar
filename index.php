@@ -42,7 +42,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         <h4><?php $this->title() ?></h4>
                     </a>
                     <div class="collapse post-author" id="post-author-<?php $this->cid() ?>">
-                        <?php echo $this->author->gravatar(32);?>
+                        <img class="avatar" src="//cdn.v2ex.com/gravatar/<?php echo $this->author->mail?md5($this->author->mail):''; ?>?s=32&d=mp" alt="<?php $this->author()?>"/>
                         <a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
                     </div>
                     <button class="button post-datetime">

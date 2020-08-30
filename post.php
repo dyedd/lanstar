@@ -24,7 +24,7 @@
             <article class="post">
                 <h1 class="article-title"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h1>
                 <div class="article-auth">
-                    <?php echo $this->author->gravatar(32);?>
+                    <img class="avatar" src="//cdn.v2ex.com/gravatar/<?php echo $this->author->mail?md5($this->author->mail):''; ?>?s=32&d=mp" alt="<?php $this->author()?>"/>
                     <a href="<?php $this->author->permalink(); ?>"><span><?php $this->author(); ?></span></a>
                     <?php if($this->user->hasLogin()):?>
                         <a href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid;?>">编辑</a>
