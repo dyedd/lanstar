@@ -12,7 +12,8 @@ class contents{
             $text = contents::parseHide($text);
             // 其它
             $text = contents::blankReplace($text);
-            $text = contents::biliVedio($text);
+            $text = contents::biliVideo($text);
+            $text = contents::video($text);
             if (!contents::parseLink($text))
                 $text = contents::fancybox($text);
         }
@@ -121,10 +122,15 @@ class contents{
     {
         return preg_replace('#<img(.*?)src="(.*?)"(.*)>#', '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
     }
-    public static function biliVedio($text)
+    public static function biliVideo($text)
     {
-        $replacement = '<iframe class="bili-video" src="//player.bilibili.com/player.html?bvid=$1&page=$2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>';
+        $replacement = '<iframe class="video" src="//player.bilibili.com/player.html?bvid=$1&page=$2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>';
         return preg_replace('/\[bilibili bv="(.+?)" p="(.+?)"]/', $replacement, $text);
+    }
+    public static function video($text)
+    {
+        $replacement = '<iframe class="video" src="$1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>';
+        return preg_replace('/\[video src="(.+?)"]/', $replacement, $text);
     }
 
 }

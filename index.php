@@ -4,7 +4,7 @@
  * 
  * @package Lanstar
  * @author 染念
- * @version 1.4
+ * @version 1.5
  * @link https://dyedd.cn
  */
 

@@ -40,8 +40,10 @@ function threadedComments($comments, $options)
             <?php 
               $pcomments = get_comment($comments->parent);
               if($pcomments) echo '<code style="float:left;margin:.1em .5em;padding:0;font-size:.9em;">@'.$pcomments['author'].'</code>';
-            $comments->content()
             ?>
+            <div class="comment-content">
+                 <?php $comments->content();?>
+            </div>
             <div class="comment-reply">
               <?php 
                 if(in_array(get_user_group(), ['administrator', 'editor'])):

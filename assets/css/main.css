@@ -201,11 +201,6 @@ footer
 .footer-item {
     color: #8590a6;
 }
-.random-post {
-    background-color: #FFF;
-    border-radius: 4px;
-    overflow: hidden;
-}
 .random-post > .title {
     font-size: 14px;
     height: 60px;
@@ -250,4 +245,108 @@ footer
     display: flex;
     align-items: center;
     justify-content: center;
+}
+/**
+滚动条
+ */
+/* 滚动槽 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background: rgba(0,0,0,0.06);
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.08);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+    -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+/**
+暗黑模式
+ */
+.theme-dark header {
+    background: rgba(52,50,50,0.7);
+    backdrop-filter: blur(20px);
+    border: none;
+}
+.theme-dark {
+    background: #121212;
+}
+.theme-dark .site-name {
+    color: rgba(255,255,255,0.87);
+}
+.theme-dark .site-name:hover {
+    color: #0056b3;
+}
+.theme-dark .search-area {
+    color: rgba(255,255,255,1);
+}
+.theme-dark .mobile-nav button {
+    color: rgba(255,255,255,1);
+}
+.theme-dark .random-post {
+    background: rgba(52,50,50,0.7);
+}
+.theme-dark  .random-post > .title {
+    color: rgba(255,255,255,0.87);
+    border: none;
+}
+.theme-dark  .archive-posts {
+    border: none;
+}
+.theme-dark .archive-post > a {
+    color: rgba(255,255,255,0.87);
+}
+.theme-dark .archive-post > a:hover {
+    color: #0056b3;
+}
+.theme-dark article {
+    background: rgba(52,50,50,0.7);
+    border: none;
+}
+.theme-dark .list article {
+    margin-bottom: 5px;
+}
+.theme-dark .post-title {
+    color: rgba(255,255,255,0.87);
+}
+.theme-dark .post-title:hover {
+    color: #0056b3;
+}
+.theme-dark .post-content-inner {
+    color: rgba(255,255,255,0.6);
+}
+.theme-dark .post-plain a {
+    color: rgba(255,255,255,0.38);
+}
+.theme-dark .nav-menu {
+    background: rgba(52,50,50,0.7);
+    margin-bottom: 2px;
+    padding: 5px;
+}
+.theme-dark .nav-link {
+    color: rgba(255,255,255,0.87);
+}
+.theme-dark .page-item.active .page-link {
+    background-color: rgba(0,0,0,0.6);
+}
+.theme-dark .page-link {
+    color: rgba(255,255,255,0.6);
+    background-color: rgba(0,0,0,0.6);
+}
+.theme-dark footer {
+    color: rgba(255,255,255,0.87);
+}
+.theme-dark .OwO .OwO-logo {
+    color: rgba(255,255,255,0.6);
+}
+.theme-dark .OwO .OwO-logo {
+    background: rgba(52,50,50,0.7);
+}
+.theme-dark .OwO:hover .OwO-logo {
+    color: rgba(255,255,255,0.6);
 }

@@ -14,11 +14,12 @@
 <script src="<?php $this->options->themeUrl('assets/js/jquery-3.5.1.min.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/js/popper.min.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/js/bootstrap.min.js'); ?>"></script>
+<script src="<?php $this->options->themeUrl('assets/js/extend.js'); ?>"></script>
 <?php $this->options->jsEcho(); ?>
 <?php if (!$this->is('index')): ?>
     <script src="<?php $this->options->themeUrl('assets/js/prism.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('assets/owo/owo_02.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('assets/js/extend.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/page.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('assets/js/jquery.fancybox.min.js'); ?>"></script>
 <?php endif; ?>
 <?php if ($this->options->jsPushBaidu):?>

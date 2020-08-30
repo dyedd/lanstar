@@ -120,31 +120,31 @@ img.emoji {
 /**
 b站视频
  */
-.bili-video {
+.video {
     position: relative;
     width: 100%;
 }
 
 @media only screen and (max-width: 767px) {
-    .bili-video {
+    .video {
         height: 15em;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .bili-video {
+    .video {
         height: 20em;
     }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .bili-video {
+    .video {
         height: 30em;
     }
 }
 
 @media only screen and (min-width: 1200px) {
-    .bili-video {
+    .video {
         height: 32em;
     }
 }
@@ -302,6 +302,7 @@ b站视频
     user-select: none;
     float: right;
     margin-top: .3rem;
+    height: 42px;
 }
 .comment-submit:hover{
     background-color: #00b5e5;
@@ -587,4 +588,85 @@ article table td {
 }
 #secret-button:checked + label.secret-label{
     background-color: #3a3f51;
+}
+/**
+暗黑模式
+ */
+.theme-dark .breadcrumb {
+    background: rgba(52,50,50,0.7);
+    padding: 10px;
+}
+.theme-dark .article-title a {
+    color: rgba(255,255,255,0.87);
+}
+.theme-dark .article-auth span {
+    color: rgba(255,255,255,0.6);
+}
+.theme-dark .article-list-plane .button .label {
+    color: rgba(255,255,255,0.6);
+}
+.theme-dark .article-content {
+    color: rgba(255,255,255,0.87);
+}
+.theme-dark .reply2view {
+    background: #292727;
+    color: rgba(255,255,255,0.6) !important;
+}
+.theme-dark .article-list-plane {
+    border: 1px solid rgba(255,255,255,0.6);
+}
+.theme-dark .article-auth {
+    border: none;
+}
+.theme-dark .article-comments {
+    background: rgba(52,50,50,0.7);
+    border: none;
+}
+.theme-dark .article-comments h1 {
+    color: rgba(255,255,255,0.87);
+}
+.theme-dark .article-comments h2 {
+    color: rgba(255,255,255,0.87);
+}
+.theme-dark hr {
+    border-top: 1px solid rgba(255,255,255,0.6);
+}
+.theme-dark .comment-time {
+    color: rgba(255,255,255,0.6);
+}
+.theme-dark .comment-content {
+    color: rgba(255,255,255,0.6);
+}
+.theme-dark article table td {
+    background: #fff;
+}
+.theme-dark .article-meta {
+    border-bottom: none;
+}
+.theme-dark .article-content h4 {
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+}
+.theme-dark .article-content blockquote::before {
+    content: "\201C";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 60px;
+    font-size: 70px;
+    line-height: 60px;
+    color: rgba(255,255,255,0.87);
+    font-family: sans-serif;
+    text-align: center;
+    z-index: 1;
+}
+.theme-dark .article-content blockquote p {
+    color: rgba(255,255,255,0.6);
+}
+.theme-dark .secret {
+    color: rgba(52,50,50,0.7);
+}
+.theme-dark .comment-respond textarea {
+    background: #ececec;
 }
