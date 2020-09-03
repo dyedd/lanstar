@@ -4,7 +4,7 @@
  * 
  * @package Lanstar
  * @author 染念
- * @version 1.5
+ * @version 1.6
  * @link https://dyedd.cn
  */
 
@@ -38,6 +38,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <div class="list">
             <?php while($this->next()): ?>
                 <article>
+                    <?php if(!$this->options->singleAuthor):?>
                     <a class="post-title" data-toggle="collapse" href="#post-author-<?php $this->cid() ?>" role="button" aria-expanded="false" aria-controls="post-author-<?php $this->cid() ?>">
                         <h4><?php $this->title() ?></h4>
                     </a>
@@ -45,10 +46,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         <img class="avatar" src="//cdn.v2ex.com/gravatar/<?php echo $this->author->mail?md5($this->author->mail):''; ?>?s=32&d=mp" alt="<?php $this->author()?>"/>
                         <a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
                     </div>
+                    <?php else:?>
+                        <a class="post-title" href="<?php $this->permalink() ?>" target="_blank">
+                            <h4><?php $this->title() ?></h4>
+                        </a>
+                    <?php endif;?>
                     <button class="button post-datetime">
                                 <span style="display: flex;align-items: center;">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="post-icon bi bi-dash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="post-icon bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                      <path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
                                     </svg>
                                 <?php $this->category(','); ?>
                                 </span>
@@ -72,7 +78,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                       }
                                     ?>
                                     <button class="button post-plain">
-                                        <a href="<?php $this->permalink() ?>">
+                                        <a href="<?php $this->permalink() ?>" target="_blank">
                                         <span>
                                             阅读全文
                                             <svg width="1em" height="1em" viewBox="0 0 24 24" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

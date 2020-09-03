@@ -117,6 +117,19 @@
 img.emoji {
     width: 40px!important;
 }
+.article-content img {
+    width: 100%;
+}
+.article-content .card-img {
+    width: auto;
+    height: 100px;
+}
+.article-content .card-title a {
+    color: #fff;
+}
+.article-content .card-title a:hover {
+    color: #0f82d0;
+}
 /**
 b站视频
  */

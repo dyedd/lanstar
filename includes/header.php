@@ -21,7 +21,10 @@
             'author' => _t('%s 发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
     <!-- 通过自有函数输出HTML头部信息 -->
-    <?php $this->header(); ?>
+    <meta itemprop="image" content="<?php if ($this->fields->banner && $this->fields->banner !=''):$this->fields->banner();
+    else: echo explode(PHP_EOL, $this->options->bannerUrl)[0]; endif;?>" />
+    <meta name="description" itemprop="description" content="<?php if($this->is('index')) { $this->options->description();}elseif($this->is('category')){ echo $this->getDescription();}elseif($this->is('single')){$this->excerpt(200, '');} ?>">
+    <?php $this->header('description=&generator=&template='); ?>
     <?php $this->options->cssEcho(); ?>
     <?php $this->options->headerEcho(); ?>
 </head>
@@ -30,17 +33,8 @@
     <div class="container">
         <div class="d-flex">
             <div class="p-2">
-                <?php if ($this->user->hasLogin()): ?>
-                    <a href="<?php $this->options->adminUrl(); ?>" title="进入后台">
-                        <img class="site-logo" src="<?php $this->options->logoUrl() ?>"
-                             alt="<?php $this->options->title() ?>"/>
-                    </a>
-                <?php else: ?>
-                    <a href="<?php $this->options->adminUrl('login.php'); ?>" title="登录">
-                        <img class="site-logo" src="<?php $this->options->logoUrl() ?>"
-                             alt="<?php $this->options->title() ?>"/>
-                    </a>
-                <?php endif; ?>
+                <img class="site-logo" src="<?php $this->options->logoUrl() ?>"
+                     alt="<?php $this->options->title() ?>"/>
                 <a class="site-name" href="<?php $this->options->siteUrl(); ?>"
                    title="<?php $this->options->description() ?>"><?php $this->options->title() ?></a>
             </div>

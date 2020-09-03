@@ -4,6 +4,8 @@ class comments
     public static function parseContent($text, $widget, $lastResult)
     {
         $text = empty($lastResult) ? $text : $lastResult;
+        // 强制开启评论markdown
+        Helper::options()->commentsMarkdown = '1';
         Helper::options()->commentsHTMLTagAllowed .= '<img class src alt><div class>';
         if ($widget instanceof Widget_Abstract_Comments) {
             //owo

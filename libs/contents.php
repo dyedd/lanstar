@@ -16,6 +16,7 @@ class contents{
             $text = contents::video($text);
             if (!contents::parseLink($text))
                 $text = contents::fancybox($text);
+            $text = contents::cidToContent($text);
         }
         return $text;
     }
@@ -115,22 +116,66 @@ class contents{
      * @return string|string[]|null
      */
     public static function blankReplace($content){
-        $content = preg_replace('#<a(.*?) href="([^"]*/)?(([^"/]*)\.[^"]*)"(.*?)>#', '<a$1 href="$2$3"$5 target="_blank">', $content);
+        $reg = '#<a(.*?) href="([^"]*/)?(([^"/]*)\.[^"]*)"(.*?)>#';
+        if (preg_match($reg, $content)) {
+            $content = preg_replace($reg, '<a$1 href="$2$3"$5 target="_blank">', $content);
+            return $content;
+        }
         return $content;
     }
     public static function fancybox($text)
     {
-        return preg_replace('#<img(.*?)src="(.*?)"(.*)>#', '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
+        $reg = '#<img(.*?)src="(.*?)"(.*)>#';
+        if (preg_match($reg, $text)) {
+            return preg_replace($reg, '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
+        }
+        return $text;
     }
     public static function biliVideo($text)
     {
-        $replacement = '<iframe class="video" src="//player.bilibili.com/player.html?bvid=$1&page=$2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>';
-        return preg_replace('/\[bilibili bv="(.+?)" p="(.+?)"]/', $replacement, $text);
+        $reg = '/\[bilibili bv="(.+?)" p="(.+?)"]/';
+        if (preg_match($reg, $text)) {
+            $replacement = '<iframe class="video" src="//player.bilibili.com/player.html?bvid=$1&page=$2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>';
+            return preg_replace($reg, $replacement, $text);
+        }
+        return $text;
     }
     public static function video($text)
     {
-        $replacement = '<iframe class="video" src="$1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>';
-        return preg_replace('/\[video src="(.+?)"]/', $replacement, $text);
+        $reg = '/\[video src="(.+?)"]/';
+        if (preg_match($reg, $text)) {
+            $replacement = '<iframe class="video" src="$1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>';
+            return preg_replace($reg, $replacement, $text);
+        }
+        return $text;
+    }
+    public static function cidToContent($text)
+    {
+        $reg = '/\[cid="(.+?)"]/';
+        if (preg_match($reg, $text, $matches)) {
+            $db = Typecho_Db::get();
+            $result = $db->fetchAll($db->select()->from('table.fields')
+                ->where('cid = ?',$matches[1])
+            );
+            $articleArr = $db->fetchAll($db->select()->from('table.contents')
+                ->where('status = ?','publish')
+                ->where('type = ?', 'post')
+                ->where('cid = ?',$matches[1])
+            );
+            $val = Typecho_Widget::widget('Widget_Abstract_Contents')->push($articleArr[0]);
+            $banner = empty($result[0]['str_value'])?'../usr/themes/lanstar/assets/img/default.png':$result[0]['str_value'];
+
+            $replacement = '<div class="card bg-dark text-white">
+                              <img src="'.$banner.'" class="card-img" alt="文章卡片">
+                              <div class="card-img-overlay">
+                                <span class="card-title"><a href="'.$val['permalink'].'">'.$val['title'].'</a></span>
+                                <p class="card-text">'.$result[1]['excerpt'].'</p>
+                                <p class="card-text">'.date('Y-m-d H:i:s', $val['modified']).'</p>
+                              </div>
+                            </div>';
+            return preg_replace($reg, $replacement, $text);
+        }
+        return $text;
     }
 
 }

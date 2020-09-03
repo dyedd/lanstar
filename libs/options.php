@@ -1,5 +1,13 @@
 <?php
 function themeConfig($form) {
+    echo '<h2>超级功能</h2>';
+    echo '<link rel="stylesheet" href="'. Helper::options()->themeUrl.'/assets/css/admin.css">';
+    echo '<button type="button" class="btn btn-s" id="update-button">检查更新</button>';
+    echo '<p id="check-update" class="notice" style="display:none;">检查中..</p>';
+    echo '<script>let version='.themeVersion().'</script>';
+    echo '<script src="'.Helper::options()->themeUrl.'/assets/js/update.js"></script>';
+    echo '<form class="protected col-mb-12" action="?' . $name . 'bf" method="post">
+    <input type="submit" name="type" class="btn btn-s" value="备份模板设置数据" />&nbsp;&nbsp;<input type="submit" name="type" class="btn btn-s" value="还原模板设置数据" />&nbsp;&nbsp;<input type="submit" name="type" class="btn btn-s" value="删除备份数据" /></form>';
     $str1 = explode('/themes/', Helper::options()->themeUrl);
     $str2 = explode('/', $str1[1]);
     $name = $str2[0];
@@ -11,22 +19,20 @@ function themeConfig($form) {
             if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:' . $name . 'bf'))) {
                 $update = $db->update('table.options')->rows(array('value' => $ysj))->where('name = ?', 'theme:' . $name . 'bf');
                 $updateRows = $db->query($update);
-                echo '<div class="tongzhi col-mb-12 home">备份已更新，请等待自动刷新！如果等不到请点击';
+                echo '<p class="notice col-mb-12 home"> 备份已更新，请等待自动刷新！如果等不到请点击';
                 ?>
-                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
-                <script
-                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
+                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></p>
+                <script>window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
                 <?php
             } else {
                 if ($ysj) {
                     $insert = $db->insert('table.options')
                         ->rows(array('name' => 'theme:' . $name . 'bf', 'user' => '0', 'value' => $ysj));
                     $insertId = $db->query($insert);
-                    echo '<div class="tongzhi col-mb-12 home">备份完成，请等待自动刷新！如果等不到请点击';
+                    echo '<p class="notice col-mb-12 home"> 备份完成，请等待自动刷新！如果等不到请点击';
                     ?>
-                    <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
-                    <script
-                        language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
+                    <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></p>
+                    <script>window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
                     <?php
                 }
             }
@@ -37,33 +43,29 @@ function themeConfig($form) {
                 $bsj = $sjdub['value'];
                 $update = $db->update('table.options')->rows(array('value' => $bsj))->where('name = ?', 'theme:' . $name);
                 $updateRows = $db->query($update);
-                echo '<div class="tongzhi col-mb-12 home">检测到模板备份数据，恢复完成，请等待自动刷新！如果等不到请点击';
+                echo '<p class="notice col-mb-12 home"> 检测到模板备份数据，恢复完成，请等待自动刷新！如果等不到请点击';
                 ?>
-                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
-                <script
-                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2000);</script>
+                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></p>
+                <script>window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2000);</script>
                 <?php
             } else {
-                echo '<div class="tongzhi col-mb-12 home">没有模板备份数据，恢复不了哦！</div>';
+                echo '<p class="notice col-mb-12 home"> 没有模板备份数据，恢复不了哦！</p>';
             }
         }
         if ($_POST["type"] == "删除备份数据") {
             if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:' . $name . 'bf'))) {
                 $delete = $db->delete('table.options')->where('name = ?', 'theme:' . $name . 'bf');
                 $deletedRows = $db->query($delete);
-                echo '<div class="tongzhi col-mb-12 home">删除成功，请等待自动刷新，如果等不到请点击';
+                echo '<p class="notice col-mb-12 home"> 删除成功，请等待自动刷新，如果等不到请点击';
                 ?>
-                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
-                <script
-                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
+                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></p>
+                <script>window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
                 <?php
             } else {
-                echo '<div class="tongzhi col-mb-12 home">不用删了！备份不存在！！！</div>';
+                echo '<p class="notice col-mb-12 home"> 不用删了！备份不存在！！！</p>';
             }
         }
     }
-    echo '<form class="protected home col-mb-12" action="?' . $name . 'bf" method="post">
-    <input type="submit" name="type" class="btn btn-s" value="备份模板设置数据" />&nbsp;&nbsp;<input type="submit" name="type" class="btn btn-s" value="还原模板设置数据" />&nbsp;&nbsp;<input type="submit" name="type" class="btn btn-s" value="删除备份数据" /></form>';
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('<h2>普通设置</h2>站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
     $form->addInput($logoUrl);
     $bannerUrl = new Typecho_Widget_Helper_Form_Element_Textarea('bannerUrl', NULL, NULL, _t('首页幻灯片'), _t('一行一个链接,大于3行将随机<br>注意最后一行不能为空'));
@@ -74,6 +76,8 @@ function themeConfig($form) {
     $form->addInput($customNavIcon);
     $jsPushBaidu = new Typecho_Widget_Helper_Form_Element_Select('jsPushBaidu',array('0'=>'关闭','1'=>'开启'),'0',_t('自动推送'),_t('使用通用js自动推荐给百度引擎，增快收录'));
     $form->addInput($jsPushBaidu);
+    $singleAuthor = new Typecho_Widget_Helper_Form_Element_Select('singleAuthor',array('1'=>'开启','0'=>'关闭'),'1',_t('单作者模式'),_t('有时候博客只有一人，首页就不必显示作者信息'));
+    $form->addInput($singleAuthor);
     //developer
     $headerEcho = new Typecho_Widget_Helper_Form_Element_Textarea('headerEcho', NULL, NULL, _t('<h2>开发者设置</h2>自定义头部信息'), _t('填写 html 代码，将输出在 &lt;head&gt; 标签中，可以在这里写上统计代码'));
     $form->addInput($headerEcho);

@@ -105,6 +105,15 @@ header {
     color: #1da1f2;
     border-radius: 25px;
 }
+.last-nav-item {
+    background-color: rgb(27, 157, 231);
+    border-radius: 25px;
+    color: #fff;
+    margin-top: 20px;
+}
+.last-nav-item:hover {
+    background-color: rgb(8, 79, 117);
+}
 .nav-icon {
     max-width: 24px;
     max-height: 24px;
@@ -316,6 +325,9 @@ footer
 }
 .theme-dark .post-title:hover {
     color: #0056b3;
+}
+.theme-dark .post-author a {
+    color: #fff;
 }
 .theme-dark .post-content-inner {
     color: rgba(255,255,255,0.6);

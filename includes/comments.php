@@ -50,7 +50,13 @@ function threadedComments($comments, $options)
                 if(in_array(get_user_group(), ['administrator', 'editor'])):
                   Typecho_Widget::widget('Widget_Security')->to($security);
               ?>
-              <a href="javascript:;" data-rel="delete" data-href="<?php $security->index('/action/comments-edit?do=delete&coid='.$comments->coid); ?>"> 删除</a>
+              <a href="<?php $security->index('/action/comments-edit?do=delete&coid='.$comments->coid); ?>" onclick="return p_del()"> 删除</a>
+                    <script>
+                        function p_del() {
+                            let msg = "您真的确定要删除吗？";
+                            return confirm(msg);
+                        }
+                    </script>
               <?php endif ?>
               <?php $comments->reply('回复') ?>
             </div>

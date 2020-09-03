@@ -8,8 +8,8 @@ $(function () {
 let timeNow = new Date();
 // 获取当前小时
 let hours = timeNow.getHours();
-if (hours >= 6) {
+if (hours > 6 && hours < 19) {
     $('body').removeClass('theme-dark')
-} else if (hours > 19) {
+} else {
     $('body').addClass('theme-dark')
 }
