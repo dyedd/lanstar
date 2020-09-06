@@ -12,7 +12,7 @@ document.getElementById('update-button').addEventListener('click',
                 if (newest > version) {
                     container.innerHTML =
                         '发现新主题版本：' + obj.name +
-                        '。下载地址：<a href="' + obj.assets[0].zipball_url + '">点击下载</a>' +
+                        '。下载地址：<a href="' + obj.zipball_url + '">点击下载</a>' +
                         '<br>您目前的版本:' + String(version) + '。' +
                         '<a target="_blank" href="' + obj.html_url + '">👉查看新版亮点</a>';
                 } else {
