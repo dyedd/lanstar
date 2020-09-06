@@ -109,12 +109,12 @@ function threadedComments($comments, $options)
             <?php if($this->user->hasLogin()): ?>
             <div class="comment-respond-author">
               <a href="<?php $this->options->profileUrl(); ?>" target="_blank" rel="external nofollow">
-                <img class="user-head" src="<?php echo Typecho_Common::gravatarUrl($this->user->mail, 80, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>">
+                  <img class="user-head" src="//cdn.v2ex.com/gravatar/<?php echo md5($this->user->mail); ?>?s=80&d=mp" />
               </a>
             </div>
             <?php else: ?>
             <div class="comment-respond-author">
-              <img class="user-head" src="<?php echo Typecho_Common::gravatarUrl('', 64, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>">
+                <img class="user-head" src="//cdn.v2ex.com/gravatar/<?php echo ''; ?>?s=64&d=mp" />
               <div class="form-row">
                   <div class="col-6 col-md-4">
                     <input type="text" name="author" class="form-control form-control-sm" 

@@ -78,6 +78,12 @@ function themeConfig($form) {
     $form->addInput($jsPushBaidu);
     $singleAuthor = new Typecho_Widget_Helper_Form_Element_Select('singleAuthor',array('1'=>'开启','0'=>'关闭'),'1',_t('单作者模式'),_t('有时候博客只有一人，首页就不必显示作者信息'));
     $form->addInput($singleAuthor);
+    $rightImg = new Typecho_Widget_Helper_Form_Element_Text('rightImg', NULL, NULL, _t('<h2>侧边栏设置</h2>侧边栏背景'), _t('一条外链'));
+    $form->addInput($rightImg);
+    $rightAvatar = new Typecho_Widget_Helper_Form_Element_Text('rightAvatar', NULL, NULL, _t('侧边栏头像'), _t('一条外链'));
+    $form->addInput($rightAvatar);
+    $rightName = new Typecho_Widget_Helper_Form_Element_Text('rightName', NULL, NULL, _t('侧边栏名称'), _t('没啥想说的'));
+    $form->addInput($rightName);
     //developer
     $headerEcho = new Typecho_Widget_Helper_Form_Element_Textarea('headerEcho', NULL, NULL, _t('<h2>开发者设置</h2>自定义头部信息'), _t('填写 html 代码，将输出在 &lt;head&gt; 标签中，可以在这里写上统计代码'));
     $form->addInput($headerEcho);

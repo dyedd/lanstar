@@ -35,7 +35,8 @@
                         <?php $this->category(' ');?>
                     </span>
                     <time class="create-time" daetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
-                    <div class="article-data"><span><?php utils::getPostView($this);?>阅读</span><span>0点赞</span></div>
+                    <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):utils::agreeNum($this->cid); ?>
+                    <div class="article-data"><span><?php utils::getPostView($this);?>阅读 <?php echo $agree['agree']; ?>点赞</span></div>
                 </div>
                 <div class="article-content">
                     <?php if($this->hidden||$this->titleshow): ?>
@@ -56,6 +57,14 @@
                     <?php endif;?>
                 </div>
                 <p class="tags"><?php $this->tags(' ', true, ''); ?></p>
+                <div class="row">
+                    <button type="button" id="agree-btn" class="button post-like" data-cid="<?php $this->cid();?>">
+                        <svg width="20" height="20" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        </svg>
+                        <span class="agree-num"><?php echo $agree['agree']; ?></span>
+                    </button>
+                </div>
                 <div class="article-list-plane row">
                     <div class="col-4">
                         <?php thePrev($this); ?>

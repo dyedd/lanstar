@@ -1,6 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 class contents{
+    public static $frag = false;
     public static function parseContent($data, $widget, $last)
     {
         $text = empty($last) ? $data : $last;
@@ -14,7 +15,7 @@ class contents{
             $text = contents::blankReplace($text);
             $text = contents::biliVideo($text);
             $text = contents::video($text);
-            if (!contents::parseLink($text))
+            if (!self::$frag)
                 $text = contents::fancybox($text);
             $text = contents::cidToContent($text);
         }
@@ -68,6 +69,7 @@ class contents{
     public static function parseLink($text) {
         $reg = '/\[links\](.*?)\[\/links\]/s';
         if (preg_match($reg, $text)) {
+            self::$frag = true;
             $rp = '<div class="links-box container-fluid"><div class="row">${1}</div></div>';
             $text = preg_replace($reg, $rp, $text);
             $pattern = '/\[(.*?)\]\((.*?)\)\+\((.*)\)/';

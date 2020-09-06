@@ -177,6 +177,65 @@ class utils
         }
         .wmd-button-row{height:unset}</style>';
     }
+    public static function agreeNum($cid) {
+        $db = Typecho_Db::get();
+        $prefix = $db->getPrefix();
 
+        //  判断点赞数量字段是否存在
+        if (!array_key_exists('agree', $db->fetchRow($db->select()->from('table.contents')))) {
+            //  在文章表中创建一个字段用来存储点赞数量
+            $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) NOT NULL DEFAULT 0;');
+        }
+
+        //  查询出点赞数量
+        $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
+        //  获取记录点赞的 Cookie
+        $AgreeRecording = Typecho_Cookie::get('typechoAgreeRecording');
+        //  判断记录点赞的 Cookie 是否存在
+        if (empty($AgreeRecording)) {
+            //  如果不存在就写入 Cookie
+            Typecho_Cookie::set('typechoAgreeRecording', json_encode(array(0)));
+        }
+
+        //  返回
+        return array(
+            //  点赞数量
+            'agree' => $agree['agree'],
+            //  文章是否点赞过
+            'recording' => in_array($cid, json_decode(Typecho_Cookie::get('typechoAgreeRecording')))?true:false
+        );
+    }
+    public static function agree($cid) {
+        $db = Typecho_Db::get();
+        //  根据文章的 `cid` 查询出点赞数量
+        $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
+
+        //  获取点赞记录的 Cookie
+        $agreeRecording = Typecho_Cookie::get('typechoAgreeRecording');
+        //  判断 Cookie 是否存在
+        if (empty($agreeRecording)) {
+            //  如果 cookie 不存在就创建 cookie
+            Typecho_Cookie::set('typechoAgreeRecording', json_encode(array($cid)));
+        }else {
+            //  把 Cookie 的 JSON 字符串转换为 PHP 对象
+            $agreeRecording = json_decode($agreeRecording);
+            //  判断文章是否点赞过
+            if (in_array($cid, $agreeRecording)) {
+                //  如果当前文章的 cid 在 cookie 中就返回文章的赞数，不再往下执行
+                return $agree['agree'];
+            }
+            //  添加点赞文章的 cid
+            array_push($agreeRecording, $cid);
+            //  保存 Cookie
+            Typecho_Cookie::set('typechoAgreeRecording', json_encode($agreeRecording));
+        }
+
+        //  更新点赞字段，让点赞字段 +1
+        $db->query($db->update('table.contents')->rows(array('agree' => (int)$agree['agree'] + 1))->where('cid = ?', $cid));
+        //  查询出点赞数量
+        $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
+        //  返回点赞数量
+        return $agree['agree'];
+    }
 
 }

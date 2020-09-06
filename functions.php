@@ -37,6 +37,15 @@ function themeInit($archive){
     Helper::options()->commentsMaxNestingLevels = 999;
     //强制评论关闭反垃圾保护
     Helper::options()->commentsAntiSpam = false;
+    //  点赞
+    if ($archive->request->isPost() && $archive->request->agree) {
+        if ($archive->request->agree == $archive->cid) {
+            exit(utils::agree($archive->cid));
+        }elseif ($archive->is('index')) {
+            exit(utils::agree($archive->request->agree));
+        }
+        exit('error');
+    }
 }
 
 

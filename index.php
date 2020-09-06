@@ -4,13 +4,13 @@
  * 
  * @package Lanstar
  * @author 染念
- * @version 1.6
+ * @version 1.7
  * @link https://dyedd.cn
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  $this->need('includes/header.php');
- ?>
+?>
 <div class="container">
     <div class="row">
         <?php $this->need('includes/nav.php');?>
@@ -71,12 +71,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 <? else: ?>
                                 <div class="post-content-inner col-md-12">
                                     <? endif; ?>
-                                    <?php if($this->fields->excerpt && $this->fields->excerpt!='') {
-                                        echo $this->fields->excerpt;
-                                      }else{
-                                        echo $this->excerpt(70);
-                                      }
-                                    ?>
+                                    <?php if($this->fields->excerpt && $this->fields->excerpt!=''):?>
+                                        <?php echo $this->fields->excerpt;?>
+                                      <?php else:?>
+                                        <?php echo $this->excerpt(70);?>
+                                    <?endif;?>
                                     <button class="button post-plain">
                                         <a href="<?php $this->permalink() ?>" target="_blank">
                                         <span>
@@ -117,12 +116,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                     </button>
                                 </div>
                                 <div class="p-2">
-                                    <button class="button post-action">
+                                    <button class="button post-action btn-like" data-cid="<?php $this->cid(); ?>">
                                         <span style="display: flex;align-items: center;">
                                             <svg width="20" height="20" viewBox="0 0 16 16" class="post-icon bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                               <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                                             </svg>
-                                        0
+                                        <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):utils::agreeNum($this->cid); ?>
+                                        <span class="agree-num"><?php echo $agree['agree']; ?></span>
                                         </span>
                                     </button>
                                 </div>
