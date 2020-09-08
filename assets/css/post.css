@@ -319,9 +319,18 @@ b站视频
     transition: .1s;
     user-select: none;
     float: right;
+    outline: none;
+}
+.comment-submit:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 .comment-submit:hover{
     color: #00b5e5;
+}
+.agree-num {
+    margin-left: 3px;
 }
 /**
 友链样式

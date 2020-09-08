@@ -127,9 +127,9 @@ class contents{
     }
     public static function fancybox($text)
     {
-        $reg = '#<img(.*?)src="(.*?)"(.*)>#sm';
+        $reg = '#<img(.*?)src="(.*?)"(.*?)>#s';
         if (preg_match($reg, $text)) {
-            return preg_replace($reg, '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
+                return preg_replace($reg, '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
         }
         return $text;
     }
