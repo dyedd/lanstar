@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/main.css'); ?>">
-    <?php if (!$this->is('index')): ?>
+    <?php if ($this->is('single')): ?>
         <!-- 文章 CSS -->
         <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/post.css'); ?>">
         <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/owo/owo.min.css'); ?>">
