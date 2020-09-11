@@ -39,16 +39,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <?php while($this->next()): ?>
                 <article>
                     <?php if(!$this->options->singleAuthor):?>
-                    <a class="post-title" data-toggle="collapse" href="#post-author-<?php $this->cid() ?>" role="button" aria-expanded="false" aria-controls="post-author-<?php $this->cid() ?>">
-                        <h4><?php $this->title() ?></h4>
+                    <a class="post-title" data-toggle="collapse" href="#post-author-<?php $this->cid() ?>" role="button" aria-expanded="false" aria-controls="post-author-<?php $this->cid(); ?>">
+                        <h4><?php $this->title(); ?></h4>
                     </a>
                     <div class="collapse post-author" id="post-author-<?php $this->cid() ?>">
-                        <img class="avatar" src="//cdn.v2ex.com/gravatar/<?php echo $this->author->mail?md5($this->author->mail):''; ?>?s=32&d=mp" alt="<?php $this->author()?>"/>
+                        <img class="avatar" src="//cdn.v2ex.com/gravatar/<?php echo $this->author->mail?md5($this->author->mail):''; ?>?s=32&d=mp" alt="<?php $this->author();?>"/>
                         <a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
                     </div>
                     <?php else:?>
-                        <a class="post-title" href="<?php $this->permalink() ?>" target="_blank">
-                            <h4><?php $this->title() ?></h4>
+                        <a class="post-title" href="<?php $this->permalink(); ?>" target="_blank">
+                            <h4><?php $this->title(); ?></h4>
                         </a>
                     <?php endif;?>
                     <button class="button post-datetime">
@@ -68,16 +68,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 </div>
                             </div>
                             <div class="post-content-inner col-xl-6">
-                                <? else: ?>
+                                <?php else: ?>
                                 <div class="post-content-inner col-md-12">
-                                    <? endif; ?>
+                                    <?php endif; ?>
                                     <?php if($this->fields->excerpt && $this->fields->excerpt!=''):?>
                                         <?php echo $this->fields->excerpt;?>
                                       <?php else:?>
                                         <?php echo $this->excerpt(70);?>
                                     <?endif;?>
                                     <button class="button post-plain">
-                                        <a href="<?php $this->permalink() ?>" target="_blank">
+                                        <a href="<?php $this->permalink(); ?>" target="_blank">
                                         <span>
                                             阅读全文
                                             <svg width="1em" height="1em" viewBox="0 0 24 24" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -139,7 +139,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                             </div>
                         </div>
                 </article>
-            <?php endwhile; ?>
+            <?php endwhile;?>
             <div class="page-pagination">
                 <?php
                 $this->pageNav(

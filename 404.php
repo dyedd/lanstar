@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('includes/header.php'); ?>
+<?php $this->need('includes/header.php');?>
 <div class="container">
     <div class="row">
         <?php $this->need('includes/nav.php');?>

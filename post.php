@@ -8,7 +8,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php $this->options->siteUrl();?>">首页</a></li>
                     <?php if ($this->is('post')): ?>
-                        <li class="breadcrumb-item active" aria-current="page"><?php $this->title()?></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?php $this->title();?></li>
                     <?php else: ?>
                         <li class="breadcrumb-item active" aria-current="page"><?php $this->archiveTitle('&raquo;','',''); ?></li>
                     <?php endif; ?>
@@ -20,11 +20,11 @@
                         <img src="<?php echo $this->fields->banner;?>" alt="cover">
                     </div>
                 </div>
-            <? endif; ?>
+            <?php endif; ?>
             <article class="post">
-                <h1 class="article-title"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h1>
+                <h1 class="article-title"><a href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></h1>
                 <div class="article-auth">
-                    <img class="avatar" src="//cdn.v2ex.com/gravatar/<?php echo $this->author->mail?md5($this->author->mail):''; ?>?s=32&d=mp" alt="<?php $this->author()?>"/>
+                    <img class="avatar" src="//cdn.v2ex.com/gravatar/<?php echo $this->author->mail?md5($this->author->mail):''; ?>?s=32&d=mp" alt="<?php $this->author();?>"/>
                     <a href="<?php $this->author->permalink(); ?>"><span><?php $this->author(); ?></span></a>
                     <?php if($this->user->hasLogin()):?>
                         <a href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid;?>">编辑</a>
@@ -34,7 +34,7 @@
                     <span class="article-category">
                         <?php $this->category(' ');?>
                     </span>
-                    <time class="create-time" daetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
+                    <time class="create-time" datetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
                     <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):utils::agreeNum($this->cid); ?>
                     <div class="article-data"><span><?php utils::getPostView($this);?>阅读 <?php echo $agree['agree']; ?>点赞</span></div>
                 </div>
@@ -86,7 +86,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </h3>
-                <div class="article-list-title">来自  《<?php $this->title() ?>》</div>
+                <div class="article-list-title">来自  《<?php $this->title(); ?>》</div>
                 <ul class="article-catalog-list">
                 </ul>
             </section>

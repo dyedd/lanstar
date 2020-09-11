@@ -33,10 +33,10 @@
     <div class="container">
         <div class="d-flex">
             <div class="p-2">
-                <img class="site-logo" src="<?php $this->options->logoUrl() ?>"
-                     alt="<?php $this->options->title() ?>"/>
+                <img class="site-logo" src="<?php $this->options->logoUrl(); ?>"
+                     alt="<?php $this->options->title(); ?>"/>
                 <a class="site-name" href="<?php $this->options->siteUrl(); ?>"
-                   title="<?php $this->options->description() ?>"><?php $this->options->title() ?></a>
+                   title="<?php $this->options->description(); ?>"><?php $this->options->title(); ?></a>
             </div>
             <div class="p-2 search-area" data-toggle="modal" data-target="#search-form">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"

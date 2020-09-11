@@ -5,8 +5,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <div class="card user-container">
         <div class="card-header user-info" style="background-image: url(<?php $this->options->rightImg()?>);">
             <div class="info">
-                <img class="pic" src="<?php $this->options->rightAvatar()?>">
-                <p><?php $this->options->rightName()?></p>
+                <img class="pic" src="<?php $this->options->rightAvatar();?>">
+                <p><?php $this->options->rightName();?></p>
             </div>
         </div>
         <div class="card-footer user-detail">
@@ -15,19 +15,19 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <li>
                     <div class="detail-title" title="文章">📝</div>
                     <div class="detail-num">
-                        <?php $stat->publishedPostsNum() ?>
+                        <?php $stat->publishedPostsNum(); ?>
                     </div>
                 </li>
                 <li>
                     <div class="detail-title" title="评论">💬</div>
                     <div class="detail-num">
-                        <?php $stat->publishedCommentsNum() ?>
+                        <?php $stat->publishedCommentsNum(); ?>
                     </div>
                 </li>
                 <li>
                     <div class="detail-title" title="分类">🏷</div>
                     <div class="detail-num">
-                        <?php $stat->categoriesNum() ?>
+                        <?php $stat->categoriesNum(); ?>
                     </div>
                 </li>
             </ul>

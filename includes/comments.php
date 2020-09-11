@@ -9,7 +9,6 @@ function threadedComments($comments, $options)
       $commentClass .= ' comment-by-user';
     }
   }
-  $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
   ?>
 <li class="comment-list-item<?php
   if ($comments->levels > 0) {
@@ -32,7 +31,7 @@ function threadedComments($comments, $options)
               <?php $comments->author(); ?>
               <?php if ($comments->authorId === $comments->ownerId): ?>
               <span class="comment-author-title">作者</span>
-              <?php endif ?>
+              <?php endif; ?>
               <?php if ($comments->authorId > 0 || $comments->url): ?>
                 </a>
               <?php endif; ?>
@@ -57,8 +56,8 @@ function threadedComments($comments, $options)
                             return confirm(msg);
                         }
                     </script>
-              <?php endif ?>
-              <?php $comments->reply('回复') ?>
+              <?php endif; ?>
+              <?php $comments->reply('回复'); ?>
             </div>
         </div>
         <hr />
@@ -105,7 +104,7 @@ function threadedComments($comments, $options)
 
     <?php if($this->allow('comment')): ?>
     <div id="<?php $this->respondId(); ?>" class="comment-respond">
-        <form method="post" action="<?php $this->commentUrl() ?>" class="comment-form" role="form">
+        <form method="post" action="<?php $this->commentUrl(); ?>" class="comment-form" role="form">
             <?php if($this->user->hasLogin()): ?>
             <div class="comment-respond-author">
               <a href="<?php $this->options->profileUrl(); ?>" target="_blank" rel="external nofollow">
