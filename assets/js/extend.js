@@ -4,6 +4,20 @@ console.log(' %c Theme lanstar %c https://github.com/dyedd/lanstar', 'color:#444
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+//
+$('.close').on('click',function () {
+    $('.search-block').collapse('hide')
+})
+$('#search-block').on('show.bs.collapse', function () {
+    $('.nav-menu').css({'position':'relative','z-index':'-1'})
+    $('#carouselExampleIndicators').css({'position':'relative','z-index':'-1'})
+    $('.user-container').css({'position':'relative','z-index':'-1'})
+})
+$('#search-block').on('hidden.bs.collapse', function () {
+    $('.nav-menu').removeAttr('style')
+    $('#carouselExampleIndicators').removeAttr('style')
+    $('.user-container').removeAttr('style')
+})
 $(function (){
     // 根据时间
     let timeNow = new Date();

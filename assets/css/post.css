@@ -613,6 +613,10 @@ article table td {
     background-color: #3a3f51;
 }
 /**
+归档页面
+ */
+
+/**
 暗黑模式
  */
 .theme-dark .breadcrumb {
@@ -692,4 +696,7 @@ article table td {
 }
 .theme-dark .comment-respond textarea {
     background: #ececec;
+}
+.theme-dark .post-content {
+    color: rgba(255,255,255,0.87);
 }
