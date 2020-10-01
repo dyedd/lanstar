@@ -193,12 +193,17 @@ b站视频
     line-height: 1.2rem;
     color: #555;
 }
+.comment-content {
+    width: 100%;
+}
 .comment-list .comment-list .comment-list{
     padding-left: 0;
 }
 .comment-list a,
 .comment-respond a{
     font-style: normal;
+    word-break: break-all;
+    white-space: normal;
 }
 .comment-list a:hover,
 .comment-respond a:hover{
@@ -568,8 +573,8 @@ article table td {
 .secret-label{
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 20px;
+    width: 30px;
+    height: 15px;
     background-color: #ccc;
     border: 1px solid #ccc;
     border-radius: 30px;
@@ -580,8 +585,9 @@ article table td {
     position: absolute;
     top: -1px;
     left: -1px;
-    width: 20px;
-    height: 20px;
+    transition: all 0.3s;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background-color: #fff;
 }
@@ -594,10 +600,6 @@ article table td {
     color: #fff;
     display: inline-block;
     text-indent: 53px;
-}
-.secret-label .circle{
-    left: -1px;
-    transition: all 0.3s;
 }
 
 #secret-button:checked + label.secret-label .circle{
@@ -699,4 +701,9 @@ article table td {
 }
 .theme-dark .post-content {
     color: rgba(255,255,255,0.87);
+}
+.theme-dark .comment-list .comment-reply a,
+.theme-dark .comment-list .comment-reply-cancel a {
+    color: rgba(255,255,255,0.87);
+    background: #00a1d6;
 }

@@ -258,7 +258,7 @@ footer
     padding: 0 20px;
 }
 .archive-posts {
-    padding: 20px;
+    padding: 10px 20px;
     border-bottom: 1px solid rgba(133,153,171,0.2);
     border-left: 1px solid rgba(133,153,171,0.2);
     border-right: 1px solid rgba(133,153,171,0.2);
@@ -279,11 +279,12 @@ footer
 .archive-post > a:hover {
     color: rgb(37, 120, 196);
 }
+
 .user-container {
     margin-bottom: 10px;
 }
 .user-info {
-    height: 105px;
+    height: 115px;
     background-position: 50% 50%;
     background-size: cover;
     overflow: hidden;
@@ -304,6 +305,10 @@ footer
 .user-detail {
     position: relative;
     z-index: 0;
+    background: #fff;
+}
+.user-detail svg {
+    color: #121212;
 }
 .user-detail ul li {
     width: calc(100% / 3);
@@ -480,4 +485,10 @@ footer
     color: rgba(255,255,255,0.87);
     position: relative;
     z-index: -1;
+}
+.theme-dark .user-detail {
+    background: rgba(52,50,50,0.7);
+}
+.theme-dark .user-detail svg {
+    color: rgba(255,255,255,0.87);
 }
