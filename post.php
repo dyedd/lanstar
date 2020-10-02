@@ -57,6 +57,7 @@
                     <?php endif;?>
                 </div>
                 <p class="tags"><?php $this->tags(' ', true, ''); ?></p>
+                <p class="license"><?php echo $this->options->LicenseInfo ? $this->options->LicenseInfo : '本作品采用 <a rel="license nofollow" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可。' ?></p>
                 <div class="row">
                     <button type="button" id="agree-btn" class="button post-like" data-cid="<?php $this->cid();?>">
                         <svg width="20" height="20" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

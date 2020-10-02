@@ -83,4 +83,95 @@ $('#agree-btn').on('click', function () {
         },
     });
 });
+function ac() {
+    let $body = $('html,body');
+    let g = '.comment-list'
+        , h = '.comment-num'
+        , i = '.comment-reply a'
+        , j = '#textarea'
+        , k = ''
+        , l = '';
+    c();
+    $('#comment-form').submit(function() {
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'post',
+            data: $(this).serializeArray(),
+            error: function() {
+                alert("提交失败，请检查网络并重试或者联系管理员。");
+                return false
+            },
+            success: function(d) {
+                if (!$(g, d).length) {
+                    alert("您输入的内容不符合规则或者回复太频繁，请修改内容或者稍等片刻。");
+                    return false
+                } else {
+                    k = $(g, d).html().match(/id=\"?comment-\d+/g).join().match(/\d+/g).sort(function(a, b) {
+                        return a - b
+                    }).pop();
+                    if ($('.page-navigator .prev').length && l == "") {
+                        k = ''
+                    }
+                    if (l) {
+                        d = $('#comment-' + k, d).hide();
+                        if ($('#' + l).find(".comment-children").length <= 0) {
+                            $('#' + l).append("<div class='comment-children'><ol class='comment-list'><\/ol><\/div>")
+                        }
+                        if (k)
+                            $('#' + l + " .comment-children .comment-list").prepend(d);
+                        l = ''
+                    } else {
+                        d = $('#comment-' + k, d).hide();
+                        if (!$(g).length)
+                            $('.comment-detail').prepend("<h2 class='comment-num'>0 条评论<\/h2><ol class='comment-list'><\/ol>");
+                        $(g).prepend(d)
+                    }
+                    $('#comment-' + k).fadeIn();
+                    let f;
+                    $(h).length ? (f = parseInt($(h).text().match(/\d+/)),
+                        $(h).html($(h).html().replace(f, f + 1))) : 0;
+                    TypechoComment.cancelReply();
+                    $(j).val('');
+                    $(i + ', #cancel-comment-reply-link').unbind('click');
+                    c();
+                    if (k) {
+                        $body.animate({
+                            scrollTop: $('#comment-' + k).offset().top - 50
+                        }, 300)
+                    } else {
+                        $body.animate({
+                            scrollTop: $('#comments').offset().top - 50
+                        }, 300)
+                    }
+                }
+            }
+        });
+        return false
+    });
+    function c() {
+        $(i).click(function() {
+            l = $(this).parent().parent().parent().attr("id")
+        });
+        $('#cancel-comment-reply-link').click(function() {
+            l = ''
+        })
+    }
+}
+ac();
+$(function () {
+    $(window).scroll(function () {
+        var scroHei = $(window).scrollTop();
+        if (scroHei > 500) {
+            $('.back-to-top').fadeIn();
+            $('.back-to-top').css('top', '-200px');
+        }else {
+            $('.back-to-top').fadeOut();
+        }
+    })
+    $('.back-to-top').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 600);
+    })
+})
 

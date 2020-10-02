@@ -454,7 +454,7 @@ article table {
     display: inline-block;
     max-width: 100%;
     overflow: auto;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     margin: auto;
 }
 article table thead {
@@ -613,6 +613,11 @@ article table td {
 }
 #secret-button:checked + label.secret-label{
     background-color: #3a3f51;
+}
+.license {
+    font-size: .875em;
+    color: #999;
+    margin: 0 0 12px 0;
 }
 /**
 归档页面

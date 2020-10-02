@@ -93,4 +93,11 @@ function themeConfig($form) {
     $form->addInput($cssEcho);
     $jsEcho = new Typecho_Widget_Helper_Form_Element_Textarea('jsEcho', NULL, NULL, _t('自定义 JavaScript'), _t('填写 JavaScript代码，输出在 body 标签结束之前'));
     $form->addInput($jsEcho);
+    $LicenseInfo = new Typecho_Widget_Helper_Form_Element_Text('LicenseInfo', NULL, NULL, _t('文章许可信息'), _t('填入后将在文章底部显示你填入的许可信息（支持HTML标签），留空则默认为 (CC BY-SA 4.0)国际许可协议。'));
+    $form->addInput($LicenseInfo);
+    $compressHtml = new Typecho_Widget_Helper_Form_Element_Radio('compressHtml',
+        array(1 => _t('启用'),
+            0 => _t('关闭')),
+        0, _t('HTML压缩'), _t('默认关闭，启用则会对HTML代码进行压缩，可能与部分插件存在兼容问题，请酌情选择开启或者关闭'));
+    $form->addInput($compressHtml);
 }
