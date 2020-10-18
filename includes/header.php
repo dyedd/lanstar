@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/twbs/bootstrap@v4.5.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1/assets/css/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1.1/assets/css/main.min.css">
     <title><?php $this->archiveTitle(array(
             'category' => _t('分类 %s 下的文章'),
             'search' => _t('包含关键字 %s 的文章'),

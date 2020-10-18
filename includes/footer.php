@@ -16,14 +16,14 @@
 <script src="https://cdn.jsdelivr.net/gh/twbs/bootstrap@v4.5.3/dist/js/bootstrap.min.js"></script>
 <?php $this->options->jsEcho();?>
 <?php if (!$this->is('index')):?>
-    <script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1/assets/js/prism.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1/assets/owo/owo_02.min.js"></script>
-    <script>let owoJson = 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1/assets/owo/OwO_02.json'</script>
-    <script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1/assets/js/page.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1.1/assets/js/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1.1/assets/owo/owo_02.min.js"></script>
+    <script>let owoJson = '<?php utils::indexTheme('assets/owo/OwO_02.json'); ?>'</script>
+    <script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1.1/assets/js/page.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <?php endif;?>
 <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1/assets/js/extend.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1.1/assets/js/extend.min.js"></script>
 <?php if($this->options->pjax && $this->options->pjax!=0) :?>
     <script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
     <script>
@@ -34,6 +34,8 @@
         }).on('pjax:send',
             function() {
                 NProgress.start();
+                pageInit();
+                highlight();
             }).on('pjax:complete',
             function() {
                 NProgress.done();
@@ -43,9 +45,7 @@
                 <?php endif?>
                 <?php if (!$this->is('index')):?>
                 ac();
-                pageInit();
                 catalogInit();
-                highlight();
                 pageLike();
                 pjaxNavFix();
                 <?php $this->options->pjax_complete(); ?>
@@ -56,10 +56,10 @@
     <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
 <?endif;?>
 <?php if ($this->options->jsPushBaidu):?>
-    <script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1/assets/js/push.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dyedd/lanstar@2.1.1/assets/js/push.js"></script>
 <?php endif;?>
-<?php if($this->options->music()): ?>
-<meting-js fixed="true" autoplay="<?php $this->options->music(); ?>">
+<?php if($this->options->music): ?>
+<meting-js fixed="true" <?php $this->options->music(); ?>>
 </meting-js>
 <?php endif;?>
 <?php $this->footer(); ?>
