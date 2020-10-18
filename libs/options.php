@@ -78,12 +78,25 @@ function themeConfig($form) {
     $form->addInput($jsPushBaidu);
     $singleAuthor = new Typecho_Widget_Helper_Form_Element_Select('singleAuthor',array('1'=>'开启','0'=>'关闭'),'1',_t('单作者模式'),_t('有时候博客只有一人，首页就不必显示作者信息'));
     $form->addInput($singleAuthor);
+    $cursorLink = new Typecho_Widget_Helper_Form_Element_Radio('cursorLink',
+        array(1 => _t('启用'),
+            0 => _t('关闭')),
+        0, _t('隐藏阅读全文'), _t('默认关闭，当开启后隐藏阅读全文但点击摘要能跳转链接'));
+    $form->addInput($cursorLink);
     $rightImg = new Typecho_Widget_Helper_Form_Element_Text('rightImg', NULL, NULL, _t('<h2>侧边栏设置</h2>侧边栏背景'), _t('一条外链'));
     $form->addInput($rightImg);
     $rightAvatar = new Typecho_Widget_Helper_Form_Element_Text('rightAvatar', NULL, NULL, _t('侧边栏头像'), _t('一条外链'));
     $form->addInput($rightAvatar);
     $rightName = new Typecho_Widget_Helper_Form_Element_Text('rightName', NULL, NULL, _t('侧边栏名称'), _t('没啥想说的'));
     $form->addInput($rightName);
+    //pjax
+    $pjax = new Typecho_Widget_Helper_Form_Element_Select('pjax',array(
+        '0'=>'关闭',
+        '1'=>'开启'
+    ),'1','<h2>Pjax 预加载</h2>是否开启','Pjax 预加载功能的开关');
+    $form->addInput($pjax);
+    $pjax_complete = new Typecho_Widget_Helper_Form_Element_Textarea('pjax_complete', NULL, NULL, _t('Pjax 回调函数'), _t('Pjax 跳转页面后执行的事件，写入 js 代码(不带script)，一般将 Pjax 重载(回调)函数写在这里。<hr>'));
+    $form->addInput($pjax_complete);
     //developer
     $headerEcho = new Typecho_Widget_Helper_Form_Element_Textarea('headerEcho', NULL, NULL, _t('<h2>开发者设置</h2>自定义头部信息'), _t('填写 html 代码，将输出在 &lt;head&gt; 标签中，可以在这里写上统计代码'));
     $form->addInput($headerEcho);
@@ -100,4 +113,9 @@ function themeConfig($form) {
             0 => _t('关闭')),
         0, _t('HTML压缩'), _t('默认关闭，启用则会对HTML代码进行压缩，可能与部分插件存在兼容问题，请酌情选择开启或者关闭'));
     $form->addInput($compressHtml);
+    // 音乐播放器
+    $music = new Typecho_Widget_Helper_Form_Element_Text('music', NULL, NULL, _t('<h2>音乐播放器设置</h2>歌单地址'), _t('填写格式，	server="netease"
+	type="playlist"
+	id="60198"'));
+    $form->addInput($music);
 }

@@ -3,17 +3,7 @@
 <div class="container">
     <div class="row">
         <?php $this->need('includes/nav.php');?>
-        <div class="col-xl-7 col-md-6 col-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?php $this->options->siteUrl();?>">首页</a></li>
-                    <?php if ($this->is('post')): ?>
-                        <li class="breadcrumb-item active" aria-current="page"><?php $this->title();?></li>
-                    <?php else: ?>
-                        <li class="breadcrumb-item active" aria-current="page"><?php $this->archiveTitle('&raquo;','',''); ?></li>
-                    <?php endif; ?>
-                </ol>
-            </nav>
+        <div class="col-xl-7 col-md-6 col-12" id="pjax-container">
             <?php if ($this->fields->banner && $this->fields->banner !=''):?>
                 <div class="article-cover">
                     <div class="archive-cover-inner">
@@ -22,6 +12,16 @@
                 </div>
             <?php endif; ?>
             <article class="post">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="<?php $this->options->siteUrl();?>">首页</a></li>
+                        <?php if ($this->is('post')): ?>
+                            <li class="breadcrumb-item active" aria-current="page"><?php $this->title();?></li>
+                        <?php else: ?>
+                            <li class="breadcrumb-item active" aria-current="page"><?php $this->archiveTitle('&raquo;','',''); ?></li>
+                        <?php endif; ?>
+                    </ol>
+                </nav>
                 <h1 class="article-title"><a href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></h1>
                 <div class="article-auth">
                     <img class="avatar" src="//cdn.v2ex.com/gravatar/<?php echo $this->author->mail?md5($this->author->mail):''; ?>?s=32&d=mp" alt="<?php $this->author();?>"/>
@@ -97,3 +97,5 @@
         <?php $this->need('includes/right.php');?>
     </div>
 </div>
+</body>
+</html>

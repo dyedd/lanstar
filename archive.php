@@ -4,6 +4,27 @@
     <div class="row">
         <?php $this->need('includes/nav.php');?>
         <div class="col-xl-7 col-md-6 col-12">
+            <?php if ($this->options->bannerUrl):?>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <?php echo utils::bannerHandle($this->options->bannerUrl);?>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            <?php endif;?>
+            <?php if(!$this->is('category', $category->slug)): ?>
             <nav aria-label="breadcrumb">
                 <div class="breadcrumb search">
                     <h3 class="archive-title"><?php $this->archiveTitle(array(
@@ -14,6 +35,16 @@
                         ), '', ''); ?></h3>
                 </div>
             </nav>
+            <?php endif;?>
+            <!-- 分类 -->
+            <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
+            <nav class="nav nav-pills nav-justified index-category page-category">
+                <a<?php if($this->is('index')): ?> class="nav-link active" <?php else:?> class="nav-link"<?php endif; ?> href="<?php $this->options->siteUrl(); ?>" title="全部">全部</a>
+                <?php while($category->next()): ?>
+                    <a<?php if($this->is('category', $category->slug)): ?> class="nav-link active" <?php else:?> class="nav-link"<?php endif; ?> href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?><span class="badge badge-pill badge-primary"><?php $category->count(); ?></span></a>
+                <?php endwhile; ?>
+            </nav>
+            <!-- 分类结束 -->
             <?php if ($this->have()): ?>
                 <?php while($this->next()): ?>
                     <article>

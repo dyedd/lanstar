@@ -4,7 +4,7 @@
  * 
  * @package Lanstar
  * @author 染念
- * @version 2.0.2
+ * @version 2.1
  * @link https://dyedd.cn
  */
 
@@ -14,7 +14,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <div class="container">
     <div class="row">
         <?php $this->need('includes/nav.php');?>
-    <div class="col-xl-7 col-md-6 col-12">
+    <div class="col-xl-7 col-md-6 col-12" id="pjax-container">
         <?php if ($this->options->bannerUrl):?>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -36,6 +36,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
         <?php endif;?>
         <div class="list">
+            <!-- 分类 -->
+            <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
+            <nav class="nav nav-pills nav-justified index-category">
+                <a<?php if($this->is('index')): ?> class="nav-link active" <?php else:?> class="nav-link"<?php endif; ?> href="<?php $this->options->siteUrl(); ?>" title="全部">全部</a>
+                <?php while($category->next()): ?>
+                    <a<?php if($this->is('category', $category->slug)): ?> class="nav-link active" <?php else:?> class="nav-link"<?php endif; ?> href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?><span class="badge badge-pill badge-primary"><?php $category->count(); ?></span></a>
+                <?php endwhile; ?>
+            </nav>
+            <!-- 分类结束 -->
             <?php while($this->next()): ?>
                 <article>
                     <?php if(!$this->options->singleAuthor):?>
@@ -52,7 +61,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         </a>
                     <?php endif;?>
                     <button class="button post-datetime">
-                                <span style="display: flex;align-items: center;">
+                                <span class="category-button" style="display: flex;align-items: center;">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="post-icon bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                       <path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
                                     </svg>
@@ -71,21 +80,31 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 <?php else: ?>
                                 <div class="post-content-inner col-md-12">
                                     <?php endif; ?>
-                                    <?php if($this->fields->excerpt && $this->fields->excerpt!=''):?>
-                                        <?php echo $this->fields->excerpt;?>
-                                      <?php else:?>
-                                        <?php echo $this->excerpt(70);?>
-                                    <?endif;?>
-                                    <button class="button post-plain">
-                                        <a href="<?php $this->permalink(); ?>" target="_blank">
+                                    <?php if ($this->options->cursorLink):?>
+                                    <a href="<?php $this->permalink(); ?>"  class="excerpt-link" target="_blank">
+                                        <?php if($this->fields->excerpt && $this->fields->excerpt!=''):?>
+                                            <?php echo $this->fields->excerpt;?>
+                                        <?php else:?>
+                                            <?php echo $this->excerpt(70);?>
+                                        <?endif;?>
+                                    </a>
+                                    <?php else:?>
+                                        <?php if($this->fields->excerpt && $this->fields->excerpt!=''):?>
+                                            <?php echo $this->fields->excerpt;?>
+                                        <?php else:?>
+                                            <?php echo $this->excerpt(70);?>
+                                        <?endif;?>
+                                        <button class="button post-plain">
+                                            <a href="<?php $this->permalink(); ?>">
                                         <span>
                                             阅读全文
                                             <svg width="1em" height="1em" viewBox="0 0 24 24" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                               <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                             </svg>
                                         </span>
-                                        </a>
-                                    </button>
+                                            </a>
+                                        </button>
+                                    <?php endif;?>
                                 </div>
                             </div>
                         </div>
@@ -166,3 +185,5 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $this->need('includes/right.php');?>
     </div>
 </div>
+</body>
+</html>

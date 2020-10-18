@@ -44,7 +44,8 @@ class utils
     /**
      * 给导航添加图标
      * @param $nav
-     * @param $text
+     * @param $pages
+     * @param $that
      */
     public static function customNavHandle($nav, $pages, $that)
     {
@@ -285,6 +286,63 @@ class utils
             $compress .= $c;
         }
         return $compress;
+    }
+
+    /**
+     * 输出归档页时间轴
+     *
+     * @param $post
+     * @return void
+     */
+    public static function pageArchives($post)
+    {
+        static $lastY = null,
+        $lastM = null;
+        $t = $post->created;
+        $href = $post->permalink;
+        $title = $post->title;
+        $y = date('Y', $t) . ' 年';
+        $m = date('m', $t) . ' 月';
+        $d = date('d', $t) . ' 日';
+        $t_href = Helper::options()->siteUrl . date('Y/m', $t);
+        $html = '';
+        if ($lastY == date('Y', $t) || $lastY == null) {
+            if ($lastM != date('m', $t)) {
+                $lastM = date('m', $t);
+                $html .= "<div class=\"timeline-ym timeline-item\"><a href=\"$t_href\" target=\"_blank\">$y $m</a></div>";
+            }
+        } else {
+            $lastY = date('Y', $t);
+        }
+        $html .= '<div class="timeline-box"><div class="timeline-post timeline-item">' . '<a href="' . $href . '" target="_blank">' . $title . '</a><span class="timeline-post-time">' . $d . '</span></div></div>';
+        echo $html;
+    }
+
+    /**
+     * 输出相对首页路由，本方法会自适应伪静态，用于动态文件
+     * @param string $path
+     */
+    public static function index($path = '')
+    {
+        Helper::options()->index($path);
+    }
+
+    /**
+     * 输出相对首页路径，本方法用于静态文件
+     * @param string $path
+     */
+    public static function indexHome($path = '')
+    {
+        Helper::options()->siteUrl($path);
+    }
+
+    /**
+     * 输出相对主题目录路径，用于静态文件
+     * @param string $path
+     */
+    public static function indexTheme($path = '')
+    {
+        Helper::options()->themeUrl($path);
     }
 
 }

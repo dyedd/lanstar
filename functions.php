@@ -33,10 +33,16 @@ function themeFields(Typecho_Widget_Helper_Layout $layout) {
     }
 }
 function themeInit($archive){
+    //暴力解决访问加密文章会被 pjax 刷新页面的问题
+    if ($archive->hidden) header('HTTP/1.1 200 OK');
     //评论回复楼层最高999层.这个正常设置最高只有7层
     Helper::options()->commentsMaxNestingLevels = 999;
     //强制评论关闭反垃圾保护
     Helper::options()->commentsAntiSpam = false;
+    //将最新的评论展示在前
+    Helper::options()->commentsOrder = 'DESC';
+    //关闭检查评论来源URL与文章链接是否一致判断
+    Helper::options()->commentsCheckReferer = false;
     //  点赞
     if ($archive->request->isPost() && $archive->request->agree) {
         if ($archive->request->agree == $archive->cid) {
