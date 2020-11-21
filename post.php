@@ -16,7 +16,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?php $this->options->siteUrl();?>">首页</a></li>
                         <?php if ($this->is('post')): ?>
-                            <li class="breadcrumb-item active" aria-current="page"><?php $this->title();?></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo substr($this->title,0,50);?></li>
                         <?php else: ?>
                             <li class="breadcrumb-item active" aria-current="page"><?php $this->archiveTitle('&raquo;','',''); ?></li>
                         <?php endif; ?>

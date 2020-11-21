@@ -58,7 +58,6 @@ header {
         display: block!important;
     }
 }
-
 /**
 重写modal
  */
@@ -91,7 +90,7 @@ header {
 .search-block {
     background: #fff;
     width: 100%;
-    position: absolute;
+    position: relative;
     height: 220px;
     left: 0;
     padding: 50px;
@@ -179,6 +178,9 @@ article {
     border-right: 1px solid #f0f2f7;
     padding: 1.25rem;
     position: relative;
+}
+article h4 {
+    word-break: break-all;
 }
 .excerpt-link {
     color: #000;
@@ -610,7 +612,7 @@ footer
     color: rgba(255,255,255,0.6);
 }
 .theme-dark .search-block {
-    background-color: rgba(52,50,50,0.7);
+    background-color: rgb(42 40 40);
     border-bottom: 1px solid #222222;
 }
 .theme-dark .search-block h4 {

@@ -7,7 +7,7 @@ let pageInit=function () {
             target: document.getElementsByClassName('owo-textarea')[0],
             api: owoJson,
             position: 'down',
-            width: '400px',
+            width: '280px',
             maxHeight: '250px'
         });
     }

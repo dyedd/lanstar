@@ -102,6 +102,7 @@ class contents{
                 ->where('mail = ?', Typecho_Widget::widget('Widget_Archive')->remember('mail',true))
                 ->limit(1);
             $result = $db->fetchAll($sql);
+            // 楼层回复，目前只能通过登录用户可见
             if(Typecho_Widget::widget('Widget_User')->hasLogin() || $result) {
                 $text = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div class="reply2view">$1</div>',$text);
             }

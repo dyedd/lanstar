@@ -144,5 +144,3 @@ function pjaxNavFix()
         $(this).addClass('active');
     })
 }
-
-

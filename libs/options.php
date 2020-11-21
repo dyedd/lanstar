@@ -113,6 +113,11 @@ function themeConfig($form) {
             0 => _t('关闭')),
         0, _t('HTML压缩'), _t('默认关闭，启用则会对HTML代码进行压缩，可能与部分插件存在兼容问题，请酌情选择开启或者关闭'));
     $form->addInput($compressHtml);
+    $cdn = new Typecho_Widget_Helper_Form_Element_Radio('cdn',
+        array(1 => _t('启用'),
+            0 => _t('关闭')),
+        0, _t('使用jsdelivr加速'), _t('默认关闭，开启后不再调用本地css，js等资源'));
+    $form->addInput($cdn);
     // 音乐播放器
     $music = new Typecho_Widget_Helper_Form_Element_Text('music', NULL, NULL, _t('<h2>音乐播放器设置</h2>歌单地址'), _t('填写格式，	server="netease"
 	type="playlist"
