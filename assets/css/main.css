@@ -1,13 +1,15 @@
 @import url(prism.css);
 @import url(post.css);
 @import url('../owo/owo.min.css');
-@import url(jquery.fancybox.min.css);
 
 /**
 common
  */
 a:hover {
     text-decoration: none;
+}
+.extend-container {
+    padding: 0;
 }
 /**
 头部
@@ -230,6 +232,7 @@ article h4 {
 .post-content-inner {
     margin-top: 10px;
     margin-bottom: 10px;
+    word-break: break-all;
 }
 .button {
     display: inline-block;
@@ -473,9 +476,14 @@ footer
     margin: 5px;
     height: 36px;
     width: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    padding: .5rem;
+}
+.next.page-item > .page-link {
+    padding: 5px;
+}
+.theme-dark.page-item span {
+    color: rgba(255,255,255,0.6);
 }
 .page-item span {
     margin: 5px;
@@ -495,8 +503,8 @@ footer
     width: 13px;
     height: 13px;
     position: relative;
-    top: -61px;
-    left: 21px;
+    top: -36px;
+    left: 15px;
     transform: rotate(24deg);
 }
 /**

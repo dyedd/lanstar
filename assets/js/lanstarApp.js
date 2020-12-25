@@ -55,7 +55,7 @@ let lanstar = {
         this.addSearchEvent()
         this.addDarkMode()
         this.addToTop()
-        this.addArticleLike()
+        this.addArticleLike();
     },
     tooltip : function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -155,13 +155,13 @@ let lanstar = {
             });
         }
     },
-    addHighLight : ()=>{
-        //增加行号
-        let pres = document.querySelectorAll('pre');
-        let lineNumberClassName = 'line-numbers';
-        pres.forEach(function (item, index) {
-            item.className = item.className === '' ? lineNumberClassName : item.className + ' ' + lineNumberClassName;
-        });
+    addHighLight : function (){
+        if (typeof Prism !== 'undefined') {
+            let pres = document.getElementsByTagName('pre');
+            for (let i = 0; i < pres.length; i++){
+                if (pres[i].getElementsByTagName('code').length > 0)
+                    pres[i].className = 'line-numbers';}
+            Prism.highlightAll(true,null);}
     },
     addCatalog : ()=>{
         let catalog_btn = document.getElementById('article-list-btn');

@@ -10,7 +10,7 @@ $this->need('includes/header.php');
 <div class="container">
     <div class="row">
         <?php $this->need('includes/nav.php');?>
-        <div class="col-xl-7 col-md-6 col-12" id="pjax-container">
+        <div class="col-xl-7 col-md-6 col-12 extend-container" id="pjax-container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php $this->options->siteUrl();?>">首页</a></li>

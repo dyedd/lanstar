@@ -28,11 +28,13 @@
             function() {
                 NProgress.done();
         });
+        $(document).on('pjax:complete', function() {
+            lanstar.addHighLight()
+        });
         $(document).on('ready pjax:end',
             function() {
                 lanstar.init();
                 lanstar.addEmoji();
-                lanstar.addHighLight();
                 lanstar.addCatalog();
                 lanstar.addComment();
                 lanstar.addPageLike();

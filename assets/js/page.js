@@ -1,5 +1,5 @@
 lanstar.addEmoji()
-lanstar.addHighLight()
+this.addHighLight();
 lanstar.addCatalog()
 lanstar.addComment();
 lanstar.addPageLike();

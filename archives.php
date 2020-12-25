@@ -10,7 +10,7 @@ $this->need('includes/header.php');
 <div class="container">
     <div class="row">
         <?php $this->need('includes/nav.php'); ?>
-        <div class="col-xl-7 col-md-6 col-12" id="pjax-container">
+        <div class="col-xl-7 col-md-6 col-12 extend-container" id="pjax-container">
             <article class="post" id="post-<?php $this->cid(); ?>">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
