@@ -102,7 +102,7 @@ let lanstar = {
             SwitchDarkMode(event);
         });
     },
-    addToTop : ()=>{
+    addToTop : function (){
         $(window).scroll(function () {
             let scroHei = $(window).scrollTop();
             if (scroHei > 500) {
@@ -111,11 +111,6 @@ let lanstar = {
             }else {
                 $('.back-to-top').fadeOut();
             }
-        })
-        $('.back-to-top').click(function () {
-            $('body,html').animate({
-                scrollTop: 0
-            }, 600);
         })
     },
     addArticleLike: ()=>{
@@ -313,3 +308,8 @@ let lanstar = {
         });
     }
 }
+$('.back-to-top').click(function () {
+    $('body,html').animate({
+        scrollTop: 0
+    }, 600);
+})

@@ -4,7 +4,7 @@
  * 
  * @package Lanstar
  * @author 染念
- * @version 2.1.2
+ * @version 2.1.3
  * @link https://dyedd.cn
  */
 
@@ -185,5 +185,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $this->need('includes/right.php');?>
     </div>
 </div>
+<?php $this->need('includes/footerJs.php');?>
 </body>
 </html>

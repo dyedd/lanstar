@@ -26,5 +26,6 @@
         <?php $this->need('includes/right.php');?>
     </div>
 </div>
+<?php $this->need('includes/footerJs.php');?>
 </body>
 </html>
