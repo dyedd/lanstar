@@ -19,7 +19,7 @@
     <meta itemprop="image" content="<?php if ($this->fields->banner && $this->fields->banner !=''):$this->fields->banner();
     else: echo explode(PHP_EOL, $this->options->bannerUrl)[0]; endif;?>" />
     <meta name="description" itemprop="description" content="<?php if($this->is('index')) { $this->options->description();}elseif($this->is('category')){ echo $this->getDescription();}elseif($this->is('single')){$this->excerpt(200, '');} ?>">
-    <?php $this->header('description=&generator=&template='); ?>
+    <?php $this->header('description=&generator=&template=&pingback=&xmlrpc=&wlw=&commentReply=&rss1=&rss2=&atom='); ?>
     <?php $this->options->cssEcho(); ?>
     <?php $this->options->headerEcho(); ?>
 </head>

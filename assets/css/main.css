@@ -477,11 +477,18 @@ footer
     align-items: center;
     justify-content: center;
 }
+.page-item span {
+    margin: 5px;
+    height: 50px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+}
 .page-item {
     line-height: 32px;
     position: relative;
 }
-.page-item:not(.active):not(:last-child):not(:first-child)::after {
+.page-item:not(.active):not(:last-child):not(:first-child) a::after {
     content: '';
     display: inline-block;
     background-image: url(../img/ico-xiaoji.png);

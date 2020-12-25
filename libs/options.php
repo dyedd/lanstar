@@ -4,9 +4,9 @@ function themeConfig($form) {
     echo '<link rel="stylesheet" href="'. Helper::options()->themeUrl.'/assets/css/admin.css">';
     echo '<button type="button" class="btn btn-s" id="update-button">检查更新</button>';
     echo '<p id="check-update" class="notice" style="display:none;">检查中..</p>';
-    echo '<script>let version='.themeVersion().'</script>';
+    echo '<script>var version="'.themeVersion().'"</script>';
     echo '<script src="'.Helper::options()->themeUrl.'/assets/js/update.js"></script>';
-    echo '<form class="protected col-mb-12" action="?' . $name . 'bf" method="post">
+    echo '<form class="protected col-mb-12" action="?' . 'bf" method="post">
     <input type="submit" name="type" class="btn btn-s" value="备份模板设置数据" />&nbsp;&nbsp;<input type="submit" name="type" class="btn btn-s" value="还原模板设置数据" />&nbsp;&nbsp;<input type="submit" name="type" class="btn btn-s" value="删除备份数据" /></form>';
     $str1 = explode('/themes/', Helper::options()->themeUrl);
     $str2 = explode('/', $str1[1]);

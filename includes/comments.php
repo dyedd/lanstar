@@ -73,7 +73,8 @@ function threadedComments($comments, $options)
 <?php } ?>
 
 <div class="article-comments">
-    <?php 
+    <?php
+      $comments=null;
       $this->comments()->to($comments);
     ?>
     <h1 id="comments"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
