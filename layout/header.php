@@ -48,7 +48,7 @@
                              src="<?php $this->options->logoUrl(); ?>" alt="logo">
                     <?php else: ?>
                         <img class="site-logo" title="<?php $this->options->description(); ?>"
-                             src="<?php utils::indexHome('assets/img/logo.png'); ?>" alt="logo">
+                             src="<?php utils::indexTheme('assets/img/logo.png'); ?>" alt="logo">
                     <?php endif; ?>
                     <b class="logo-shine"></b>
                 </div>
