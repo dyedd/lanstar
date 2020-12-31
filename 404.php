@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('layout/header.php'); ?>
 <div class="container">
-    <div class="row m-1">
+    <div class="row">
         <?php $this->need('layout/left.php'); ?>
         <div class="col-xl-7 col-md-6 col-12" id="pjax-container">
             <div class="error-page">
