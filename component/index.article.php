@@ -38,7 +38,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     </svg>
                    <?php $this->commentsNum('0', '1', '%d'); ?>
                 </span>
-                        <span class="item">
+                        <span class="item d-none d-md-block">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-A2"></use>
                     </svg>
@@ -46,7 +46,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </span>
                     </div>
                     <a href="<?php $this->permalink(); ?>" class="post-title">
-                        <h4><?php $this->title(); ?></h4>
+                        <?php $this->title(); ?>
                     </a>
                     <div class="post-excerpt">
                         <svg class="icon" aria-hidden="true">

@@ -263,7 +263,7 @@ article, main, .article-comments {
     position: relative;
     overflow: hidden;
     padding: 1.2rem;
-    border-radius: 5px;
+    border-radius: 5px 0 5px 5px;
 }
 
 article .sticky {
@@ -295,6 +295,7 @@ article .sticky {
     color: var(--theme-text-color);
     margin-top: 6px;
     margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 .post-body a.post-title:hover {
