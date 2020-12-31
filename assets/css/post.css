@@ -344,7 +344,7 @@ b站视频
 /**
 标签内容的美化
  */
-article table {
+.article-main table {
     color: #5b6064;
     border-spacing: 0;
     text-align: center;
@@ -356,25 +356,31 @@ article table {
     /*white-space: nowrap;*/
     margin: auto;
 }
-article table thead {
+
+.article-main table thead {
     border-bottom: 1px solid #eee;
     background-color: #f8f8f8;
 }
-article table thead tr {
+
+.article-main table thead tr {
     background-color: #f8f8f8;
 }
-article table tr:nth-child(2n) {
+
+.article-main table tr:nth-child(2n) {
     background-color: #f8f8f8;
 }
-article table th {
+
+.article-main table th {
     border-right: 1px solid #eee;
     padding: 13px 26px;
     font-weight: 400;
 }
-article table td {
+
+.article-main table td {
     border-right: 1px solid #eee;
     padding: 13px 26px;
 }
+
 .article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6 {
     line-height: 1.5;
     margin: 20px 0 10px;
