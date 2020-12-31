@@ -38,7 +38,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     </svg>
                    <?php $this->commentsNum('0', '1', '%d'); ?>
                 </span>
-                        <span class="item d-none d-md-block">
+                        <span class="item d-none d-md-inline-block">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-A2"></use>
                     </svg>

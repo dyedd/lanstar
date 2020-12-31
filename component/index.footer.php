@@ -6,7 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <?php $this->options->jsEcho(); ?>
-<script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/OwO.min.js'; else:utils::indexTheme('assets/js/OwO.js'); endif ?>"></script>
+<script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/OwO.js'; else:utils::indexTheme('assets/js/OwO.js'); endif ?>"></script>
 <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/lanstarApp.min.js'; else:utils::indexTheme('assets/js/lanstarApp.js'); endif ?>"></script>
 <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/gazeimg.min.js'; else:utils::indexTheme('assets/js/gazeimg.js'); endif ?>"></script>
 <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/icon.min.js'; else:utils::indexTheme('assets/js/icon.js'); endif ?>"></script>
