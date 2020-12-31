@@ -1,31 +1,16 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('includes/header.php'); ?>
+<?php $this->need('layout/header.php'); ?>
 <div class="container">
-    <div class="row">
-        <?php $this->need('includes/nav.php');?>
-        <div class="col-xl-7 col-md-6 col-12 extend-container" id="pjax-container">
-            <article class="post">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?php $this->options->siteUrl();?>">首页</a></li>
-                        <?php if ($this->is('post')): ?>
-                            <li class="breadcrumb-item active" aria-current="page"><?php $this->title();?></li>
-                        <?php else: ?>
-                            <li class="breadcrumb-item active" aria-current="page"><?php $this->archiveTitle('&raquo;','',''); ?></li>
-                        <?php endif; ?>
-                    </ol>
-                </nav>
-                <h1 class="article-title"><a href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></h1>
-                <div class="article-content">
-                    <?php $this->content(); ?>
-                </div>
-            </article>
-            <?php $this->need('includes/comments.php'); ?>
+    <div class="row m-1">
+        <?php $this->need('layout/left.php'); ?>
+        <div class="col-xl-7 col-md-6 col-12" id="pjax-container">
+            <?php $this->need('component/page.content.php'); ?>
+            <?php $this->need('layout/comments.php'); ?>
 
         </div>
-        <?php $this->need('includes/right.php');?>
+        <?php $this->need('layout/right.php'); ?>
     </div>
 </div>
-<?php $this->need('includes/footerJs.php');?>
+<?php $this->need('component/index.footer.php'); ?>
 </body>
 </html>

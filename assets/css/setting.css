@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: none
+}
+
+html, body {
+    scroll-behavior: smooth
+}
+
+li {
+    list-style: none
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(50, 50, 50, 0.3)
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background-color: rgba(50, 50, 50, 0.1)
+}
+
+.col-mb-12.col-tb-8.col-tb-offset-2 {
+    margin-left: 0;
+    width: 100%
+}
+
+.theme-setting-contain {
+    display: flex;
+    word-wrap: break-word
+}
+
+.theme-setting-contain .theme-setting-left-aside {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
+    width: 200px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0px 0px 20px -5px rgba(158, 158, 158, 0.22);
+    border-radius: 8px
+}
+
+.theme-setting-contain .theme-setting-left-aside .theme-setting-tab {
+    padding: 0;
+    margin-bottom: 15px
+}
+
+.theme-setting-contain .theme-setting-left-aside .theme-setting-tab li {
+    border-radius: 20px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    color: #606266;
+    cursor: pointer;
+    transition: all 0.35s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.theme-setting-contain .theme-setting-left-aside .theme-setting-tab li.active {
+    color: #409eff
+}
+
+.theme-setting-contain .theme-setting-left-aside .theme-setting-tab li:hover {
+    background: #f2f6fc
+}
+
+.theme-backup input {
+    width: 170px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 20px;
+    transition: all 0.35s
+}
+
+.theme-backup input:hover {
+    opacity: 0.85
+}
+
+.theme-backup input:nth-child(1) {
+    background: #5cb85c
+}
+
+.theme-backup input:nth-child(2) {
+    background: #f0ad4e
+}
+
+.theme-backup input:nth-child(3) {
+    margin-bottom: 0;
+    background: #d9534f
+}
+
+.theme-setting-contain > form {
+    position: relative;
+    display: none;
+    background: #fff;
+    flex: 1;
+    margin-left: 20px;
+    box-shadow: 0px 0px 20px -5px rgba(158, 158, 158, 0.22);
+    border-radius: 8px
+}
+
+.theme-setting-contain > form .typecho-option {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #ebebeb
+}
+
+.theme-setting-contain > form .typecho-option button {
+    width: 170px;
+    height: 45px
+}
+
+.theme-setting-contain > form .theme-setting-content {
+    display: none;
+    padding: 20px
+}
+
+.theme-setting-contain > form .theme-setting-content li {
+    border: 1px solid #e9e9eb;
+    padding: 15px
+}
+
+.theme-setting-contain > form .theme-setting-content li .typecho-label {
+    display: block;
+    border-left: 3px solid #409eff;
+    line-height: 40px;
+    background: #ecf5ff;
+    margin-bottom: 15px;
+    padding: 0 15px;
+    color: #409eff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.theme-setting-contain > form .theme-setting-content li select {
+    outline: none;
+    padding: 0 10px;
+    height: 35px;
+    border: 1px solid #e9e9eb;
+    color: #666
+}
+
+.theme-setting-contain > form .theme-setting-content li textarea, .theme-setting-contain > form .theme-setting-content li input[type='text'] {
+    width: 100%;
+    outline: none;
+    padding: 15px;
+    color: #666;
+    border: 1px solid #e9e9eb;
+    -webkit-appearance: none
+}
+
+.theme-setting-contain > form .theme-setting-content li .multiline {
+    display: flex;
+    align-items: center;
+    color: #666
+}
+
+.theme-setting-contain > form .theme-setting-content li .multiline input[type='checkbox'] {
+    margin-right: 5px
+}
+
+.theme-setting-contain > form .theme-setting-content li .description {
+    background: #f8f8f8;
+    color: #999;
+    padding: 10px;
+    margin-top: 15px;
+    line-height: 24px
+}
+
+.theme-setting-contain .theme-setting-notice {
+    display: none;
+    margin-left: 20px;
+    display: block;
+    background: #fff;
+    padding: 20px;
+    flex: 1;
+    box-shadow: 0px 0px 20px -5px rgba(158, 158, 158, 0.22);
+    border-radius: 8px
+}
+
+.theme-setting-contain .theme-setting-notice .update {
+    font-weight: 700;
+    font-size: 15px;
+    margin-left: 5px;
+    color: #ff3d3d
+}
+
+.theme-setting-contain .theme-setting-notice .no-update {
+    font-weight: 700;
+    font-size: 15px;
+    margin-left: 5px;
+    color: #27ae60
+}
+
+.theme-setting-contain .theme-setting-notice p {
+    line-height: 30px
+}
+
+.theme-setting-contain .theme-setting-notice ol {
+    color: #555;
+    padding: 0 40px;
+    margin: 10px 0
+}
+
+.theme-setting-contain .theme-setting-notice ol li {
+    list-style: decimal;
+    line-height: 30px
+}
+
+.theme-setting-contain .theme-setting-notice ul {
+    color: #555;
+    padding: 0 40px;
+    margin: 10px 0
+}
+
+.theme-setting-contain .theme-setting-notice ul li {
+    list-style: disc;
+    line-height: 30px
+}
+
+@media (max-width: 768px) {
+    .theme-setting-contain {
+        display: block
+    }
+
+    .theme-setting-contain .theme-setting-notice {
+        margin-left: 0
+    }
+
+    .theme-setting-contain > form {
+        margin-left: 0
+    }
+
+    .theme-setting-contain > form .theme-setting-content {
+        padding: 15px
+    }
+
+    .theme-setting-contain > form .typecho-option {
+        padding: 10px 0
+    }
+
+    .theme-setting-contain .theme-setting-left-aside {
+        width: 100%;
+        margin-bottom: 15px
+    }
+
+    .theme-setting-contain .theme-setting-left-aside .logo {
+        display: none
+    }
+
+    .theme-setting-contain .theme-setting-left-aside .theme-setting-tab {
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #ebeef5;
+        padding-bottom: 10px
+    }
+
+    .theme-setting-contain .theme-setting-left-aside .theme-setting-tab li {
+        width: 33.33333333%
+    }
+
+    .theme-backup {
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+    }
+
+    .theme-backup input {
+        width: auto;
+        flex: 1;
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    .theme-backup input:nth-child(2) {
+        margin: 0 10px
+    }
+}
+
+.theme-setting-contain .theme-setting-notice .theme-plane {
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #858282;
+}

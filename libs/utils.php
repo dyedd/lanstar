@@ -6,24 +6,56 @@ class utils
      * @param $content
      * @return string
      */
-    public static function bannerHandle($content)
+    public static function bannerHandle($content): string
     {
         $bannerArr = explode(PHP_EOL, $content);
         $text = '';
         if (count($bannerArr) > 3) {
             //打乱数组
             shuffle($bannerArr);
-            $bannerArr = array_slice($bannerArr,0,3);
+            $bannerArr = array_slice($bannerArr, 0, 3);
         }
         foreach ($bannerArr as $key => $banner) {
+            $bannerInfo = explode('|', $banner);
             if ($key) {
-                $text .= '<div class="carousel-item">
-                    <img src="'.$banner.'" class="d-block w-100" alt="banner">
+                if (preg_match('{[a-zA-z]+://[^\s]*}', $bannerInfo[1])) {
+                    $text .= '<div class="carousel-item">
+                    <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
+                          <div class="carousel-caption d-none d-md-block">
+                            <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
+                            <h4>' . $bannerInfo[2] . '</h4></a>
+                            <p>' . $bannerInfo[3] . '</p>
+                          </div>
                 </div>';
+                } else {
+                    $text .= '<div class="carousel-item">
+                    <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
+                          <div class="carousel-caption d-none d-md-block">
+                            <h4>' . $bannerInfo[2] . '</h4>
+                            <p>' . $bannerInfo[3] . '</p>
+                          </div>
+                </div>';
+                }
             } else {
-                $text .= '<div class="carousel-item active">
-                    <img src="'.$banner.'" class="d-block w-100" alt="banner">
+                if (preg_match('{[a-zA-z]+://[^\s]*}', $bannerInfo[1])) {
+                    $text .= '<div class="carousel-item active">
+                    <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
+                          <div class="carousel-caption d-none d-md-block">
+                            <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
+                            <h4>' . $bannerInfo[2] . '</h4></a>
+                            <p>' . $bannerInfo[3] . '</p>
+                          </div>
                 </div>';
+                } else {
+                    $text .= '<div class="carousel-item active">
+                    <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
+                          <div class="carousel-caption d-none d-md-block">
+                            <h4>' . $bannerInfo[2] . '</h4>
+                            <p>' . $bannerInfo[3] . '</p>
+                          </div>
+                </div>';
+                }
+
             }
         }
         return $text;
@@ -34,7 +66,7 @@ class utils
      * @param $name
      * @return bool
      */
-    public static function hasPlugin($name)
+    public static function hasPlugin($name): bool
     {
         $plugins = Typecho_Plugin::export();
         $plugins = $plugins['activated'];
@@ -51,37 +83,37 @@ class utils
     {
         $navArr = explode(PHP_EOL, $nav);
         $content = '';
-        $count = count($navArr);
-        $start = count($navArr);
+        if (empty($navArr[0])) {
+            $count = 0;
+        } else {
+            $count = count($navArr);
+            $start = count($navArr);
+        }
         while ($pages->next()) {
             if ($that->is('page', $pages->slug)):
-                $class="nav-link active";
+                $class = "nav-link active";
             else:
-                $class="nav-link";
+                $class = "nav-link";
             endif;
             if ($count) {
-                $url = Helper::options()->themeUrl .'/assets/img/bootstrap-icons.svg' . '#'. $navArr[$start-$count];
                 $content .= '
-                <a class="'.$class.'" href="'.$pages->permalink.'" title="'.$pages->title.'">
-                        <div class="nav-item">
-                        <svg class="nav-icon bi" width="24" height="24" fill="currentColor">
-                            <use xlink:href="'.$url.'"/>
-                        </svg>
-                        <span class="nav-item-text">'.$pages->title.'</span>
-                    </div>
-                </a>';
+                <div class="nav-item">
+                    <a class="' . $class . '" href="' . $pages->permalink . '" title="' . $pages->title . '">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#' . $navArr[$start - $count] . '"></use>
+                            </svg>
+                            <span class="nav-item-text">' . $pages->title . '</span>
+                    </a>
+                </div>';
                 $count--;
             } else {
-                $url = Helper::options()->themeUrl.'/assets/img/bootstrap-icons.svg#cursor';
-                $content .= '
-                    <a class="'.$class.'" href="'.$pages->permalink.'" title="'.$pages->title.'">
-                            <div class="nav-item">
-                            <svg class="nav-icon bi" width="24" height="24" fill="currentColor">
-                                <use xlink:href="'.$url.'"/>
+                $content .= '<div class="nav-item">
+                    <a class="' . $class . '" href="' . $pages->permalink . '" title="' . $pages->title . '">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-daohang"></use>
                             </svg>
-                            <span class="nav-item-text">'.$pages->title.'</span>
-                        </div>
-                    </a>';
+                            <span class="nav-item-text">' . $pages->title . '</span>
+                    </a></div>';
             }
         }
         echo $content;
@@ -136,18 +168,18 @@ class utils
     public static function addButton()
     {
         echo '<script src="';
-        Helper::options()->themeUrl('/assets/js/all.min.js');
+        self::indexTheme('/assets/js/icon.js');
         echo '"></script>';
         echo '<script src="';
-        Helper::options()->themeUrl('/assets/owo/owo_02.js');
+        self::indexTheme('/assets/owo/owo_02.js');
         echo '"></script>';
 
         echo '<script src="';
-        Helper::options()->themeUrl('/assets/js/editor.js');
+        self::indexTheme('/assets/js/editor.js');
         echo '"></script>';
 
         echo '<link rel="stylesheet" href="';
-        Helper::options()->themeUrl('/assets/owo/owo.min.css');
+        self::indexTheme('/assets/owo/owo.min.css');
         echo '" />';
 
         echo '<style>#custom-field textarea,#custom-field input{width:100%}
@@ -176,9 +208,17 @@ class utils
                 max-width:calc(25% - 10px)
             }
         }
-        .wmd-button-row{height:unset}</style>';
+        .wmd-button-row{height:unset}
+        .icon {
+           width: 1em; height: 1em;
+           vertical-align: -0.15em;
+           fill: currentColor;
+           overflow: hidden;
+        }</style>';
     }
-    public static function agreeNum($cid) {
+
+    public static function agreeNum($cid): array
+    {
         $db = Typecho_Db::get();
         $prefix = $db->getPrefix();
 
@@ -239,7 +279,8 @@ class utils
         return $agree['agree'];
     }
 
-     public static function compressHtml($html_source) {
+    public static function compressHtml($html_source): string
+    {
         $chunks = preg_split('/(<!--<nocompress>-->.*?<!--<\/nocompress>-->|<nocompress>.*?<\/nocompress>|<pre.*?\/pre>|<textarea.*?\/textarea>|<script.*?\/script>)/msi', $html_source, -1, PREG_SPLIT_DELIM_CAPTURE);
         $compress = '';
         foreach ($chunks as $c) {
@@ -288,35 +329,6 @@ class utils
         return $compress;
     }
 
-    /**
-     * 输出归档页时间轴
-     *
-     * @param $post
-     * @return void
-     */
-    public static function pageArchives($post)
-    {
-        static $lastY = null,
-        $lastM = null;
-        $t = $post->created;
-        $href = $post->permalink;
-        $title = $post->title;
-        $y = date('Y', $t) . ' 年';
-        $m = date('m', $t) . ' 月';
-        $d = date('d', $t) . ' 日';
-        $t_href = Helper::options()->siteUrl . date('Y/m', $t);
-        $html = '';
-        if ($lastY == date('Y', $t) || $lastY == null) {
-            if ($lastM != date('m', $t)) {
-                $lastM = date('m', $t);
-                $html .= "<div class=\"timeline-ym timeline-item\"><a href=\"$t_href\" target=\"_blank\">$y $m</a></div>";
-            }
-        } else {
-            $lastY = date('Y', $t);
-        }
-        $html .= '<div class="timeline-box"><div class="timeline-post timeline-item">' . '<a href="' . $href . '" target="_blank">' . $title . '</a><span class="timeline-post-time">' . $d . '</span></div></div>';
-        echo $html;
-    }
 
     /**
      * 输出相对首页路由，本方法会自适应伪静态，用于动态文件
@@ -339,10 +351,126 @@ class utils
     /**
      * 输出相对主题目录路径，用于静态文件
      * @param string $path
+     * @return mixed
      */
     public static function indexTheme($path = '')
     {
         Helper::options()->themeUrl($path);
     }
 
+    /**
+     * 图片懒加载的方式
+     * @param $image
+     * @return string
+     */
+    public static function addLoadingImages($image): string
+    {
+        // 如果开启了cdn
+        if (Helper::options()->cdn) {
+            return 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/img/loading/' . $image . '.gif';
+        } else {
+            return Helper::options()->themeUrl("", "lanstar/assets/img/loading/") . $image . '.gif';
+        }
+    }
+
+    /**
+     * 经过cdn处理的获取资源
+     * @param $path
+     * @return string
+     */
+    public static function getAssets($path): string
+    {
+        if (Helper::options()->cdn) {
+            return 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/' . $path;
+        } else {
+            return Helper::options()->themeUrl("", "lanstar/assets/") . $path;
+        }
+    }
+
+    /**
+     * 侧边栏媒体信息
+     * @return string
+     */
+    public static function handleRightIcon(): string
+    {
+        $getIconRow = explode(PHP_EOL, Helper::options()->rightIcon);
+        $text = '';
+        foreach ($getIconRow as $key => $value) {
+            $iconInfo = explode('+', $value);
+            $content = <<<EOF
+                <a href="$iconInfo[2]" title="$iconInfo[0]">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#$iconInfo[1]"></use>
+                  </svg>
+                  </a>
+                EOF;
+            $text .= $content;
+
+        }
+        return $text;
+    }
+
+    /**
+     * 邮箱处理
+     * @param $email
+     */
+    public static function emailHandle($email)
+    {
+        if ($email) {
+            if (strpos($email, "@qq.com") !== false) {
+                $email = str_replace('@qq.com', '', $email);
+                if (is_numeric($email)) {
+                    echo "//q1.qlogo.cn/g?b=qq&nk=" . $email . "&";
+                } else {
+                    $mmail = $email . '@qq.com';
+                    $email = md5($mmail);
+                    echo "//cdn.v2ex.com/gravatar/" . $email . "?";
+                }
+
+            } else {
+                $email = md5($email);
+                echo "//cdn.v2ex.com/gravatar/" . $email . "?";
+            }
+        } else {
+            echo "//cdn.v2ex.com/gravatar/null?";
+        }
+    }
+
+    /**
+     * 随机文章
+     * @param int $limit
+     */
+    public static function getRandomPosts($limit = 10)
+    {
+        $db = Typecho_Db::get();
+        $result = $db->fetchAll($db->select()->from('table.contents')
+            ->join('table.fields', 'table.contents.cid = table.fields.cid')
+            ->where('table.contents.status = ?', 'publish')
+            ->where('table.contents.type = ?', 'post')
+            ->where('table.contents.created <= unix_timestamp(now())', 'post')
+            ->where('table.fields.name = ?', 'banner')
+            ->limit($limit)
+            ->order('RAND()')
+        );
+        if ($result) {
+            $i = 1;
+            foreach ($result as $val) {
+                $val = Typecho_Widget::widget('Widget_Abstract_Contents')->push($val);
+                $post_title = htmlspecialchars($val['title']);
+                $post_date = date('Y-m-d', $val['created']);
+                $permalink = $val['permalink'];
+                $post_img = $val['str_value'] ?: Helper::options()->themeUrl("", "lanstar/assets/img/") . 'rand_default.jpg';
+                echo <<<EOF
+                <div class="sidebar-rand-item">
+                    <a href="$permalink" target="_blank" class="sidebar-rand-img" style="background-image: linear-gradient(to right, rgb(144, 148, 148), transparent),url($post_img)"></a>
+                    <div class="sidebar-rand-content">
+                        <div class="sidebar-rand-body p-2"><a href="$permalink" target="_blank">$post_title</a></div>
+                        <div class="sidebar-rand-footer p-2">$post_date</div>
+                    </div>
+                </div>
+                EOF;
+                $i++;
+            }
+        }
+    }
 }

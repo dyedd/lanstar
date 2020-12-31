@@ -12,4 +12,3 @@
     <p class="footer-item">Theme By <a href="https://dyedd.cn" title="禁止仿制" class="footer-item">Lanstar</a></p>
 </footer>
 <?php $this->footer(); ?>
-<div class="back-to-top"></div>

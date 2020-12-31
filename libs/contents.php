@@ -17,6 +17,8 @@ class contents{
             $text = contents::video($text);
             if (!self::$frag)
                 $text = contents::fancybox($text);
+            // LazyLoad
+            $text = preg_replace('/<img (.*?)src(.*?)(\/)?>/', '<img $1src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc$2 />', $text);
             $text = contents::cidToContent($text);
         }
         return $text;
@@ -41,7 +43,7 @@ class contents{
      */
     public static function parsePaopaoBiaoqingCallback($match)
     {
-        return '<img class="emoji" src="../usr/themes/lanstar/assets/owo/biaoqing/paopao/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji" src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc=="' . utils::getAssets('owo/biaoqing/paopao/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -51,7 +53,7 @@ class contents{
      */
     public static function parseAruBiaoqingCallback($match)
     {
-        return '<img class="emoji" src="../usr/themes/lanstar/assets/owo/biaoqing/aru/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji" src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc=="' . utils::getAssets('owo/biaoqing/aru/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -61,7 +63,7 @@ class contents{
      */
     public static function parseQuyinBiaoqingCallback($match)
     {
-        return '<img class="emoji" src="../usr/themes/lanstar/assets/owo/biaoqing/quyin/'. str_replace('%', '', urlencode($match[1])) . '.png">';
+        return '<img class="emoji" src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc=="' . utils::getAssets('owo/biaoqing/quyin/') . str_replace('%', '', urlencode($match[1])) . '.png">';
     }
     /**
      * 友链解析
@@ -72,11 +74,11 @@ class contents{
             self::$frag = true;
             $rp = '<div class="links-box container-fluid"><div class="row">${1}</div></div>';
             $text = preg_replace($reg, $rp, $text);
-            $pattern = '/\[(.*?)\]\((.*?)\)\+\((.*)\)/';
-            $replacement = '<div class="col-lg-3 col-6 col-md-4 links-container">
-		    <a href="${2}" title="${1}" target="_blank" class="links-link">
+            $pattern = '/\[(.*?)\]\[(.*?)\]\((.*?)\)\+\((.*)\)/';
+            $replacement = '<div class="col-lg-2 col-6 col-md-2 col-sm-3 links-container">
+		    <a href="${3}" title="${2}" target="_blank" class="links-link">
 			  <div class="links-item">
-			    <div class="links-img"><img src="${3}"></div>
+			    <div class="links-img"><img src="${4}"></div>
 				<div class="links-title">
 				  <h4>${1}</h4>
 				</div>

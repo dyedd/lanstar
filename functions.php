@@ -43,11 +43,14 @@ function themeInit($archive){
     Helper::options()->commentsOrder = 'DESC';
     //关闭检查评论来源URL与文章链接是否一致判断
     Helper::options()->commentsCheckReferer = false;
+    // 强制开启评论markdown
+    Helper::options()->commentsMarkdown = '1';
+    Helper::options()->commentsHTMLTagAllowed .= '<img class src alt><div class>';
     //  点赞
     if ($archive->request->isPost() && $archive->request->agree) {
         if ($archive->request->agree == $archive->cid) {
             exit(utils::agree($archive->cid));
-        }elseif ($archive->is('index')) {
+        } elseif ($archive->is('index')) {
             exit(utils::agree($archive->request->agree));
         }
         exit('error');
@@ -128,28 +131,6 @@ function formatTime($time){
     }
     return $text;
 }
-function theme_random_posts(){
-    $defaults = array(
-        'number' => 6,
-        'before' => '<ul class="archive-posts">',
-        'after' => '</ul>',
-        'xformat' => '<li class="archive-post"> <a class="archive-post-title" href="{permalink}">{title}</a>
- </li>'
-    );
-    $db = Typecho_Db::get();
-    $sql = $db->select()->from('table.contents')
-        ->where('status = ?','publish')
-        ->where('type = ?', 'post')
-        ->limit($defaults['number'])
-        ->order('RAND()');
-    $result = $db->fetchAll($sql);
-    echo $defaults['before'];
-    foreach($result as $val){
-        $val = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($val);
-        echo str_replace(array('{permalink}', '{title}'),array($val['permalink'], $val['title']), $defaults['xformat']);
-    }
-    echo $defaults['after'];
-}
 /**
  * 显示下一篇
  *
@@ -173,14 +154,14 @@ function theNext($widget)
         $link = '<a href="' . $content['permalink'] . '" target="_self">
                         <div class="button">
                             <div class="label btn1">下一篇</div>
-                            <div class="title" title="'. $content['title'] .'">'. $content['title'] .'</div>
+                            <div class="title d-none d-md-block" title="' . $content['title'] . '">' . $content['title'] . '</div>
                         </div>
                     </a>';
         echo $link;
     } else {
         echo '<div class="button btn2 off">
                   <div class="label">下一篇</div>
-                  <div class="title">没有更多了</div>
+                  <div class="title d-none d-md-block">没有更多了</div>
               </div>';
     }
 }
@@ -207,14 +188,14 @@ function thePrev($widget)
         $link = '<a href="' . $content['permalink'] . '" target="_self">
                         <div class="button">
                             <div class="label btn1">上一篇</div>
-                            <div class="title" title="'. $content['title'] .'">'. $content['title'] .'</div>
+                            <div class="title d-none d-md-block" title="' . $content['title'] . '">' . $content['title'] . '</div>
                         </div>
                     </a>';
         echo $link;
     } else {
         echo '<div class="button btn2 off">
                   <div class="label">上一篇</div>
-                  <div class="title">没有更多了</div>
+                  <div class="title d-none d-md-block">没有更多了</div>
               </div>';
     }
 }
