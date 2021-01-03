@@ -589,7 +589,7 @@ article .sticky {
     color: white;
 }
 
-.sidebar-rand-body {
+.sidebar-rand-body a {
     font-size: 15px;
     overflow: hidden;
     text-overflow: ellipsis;

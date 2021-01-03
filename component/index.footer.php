@@ -6,6 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <?php $this->options->jsEcho(); ?>
+<script>let _owo = '<?php utils::indexTheme('assets/owo/OwO.json'); ?>'</script>
 <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/OwO.js'; else:utils::indexTheme('assets/js/OwO.js'); endif ?>"></script>
 <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/lanstarApp.min.js'; else:utils::indexTheme('assets/js/lanstarApp.js'); endif ?>"></script>
 <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/gazeimg.min.js'; else:utils::indexTheme('assets/js/gazeimg.js'); endif ?>"></script>
@@ -13,7 +14,6 @@
 <?php if ($this->is('single')): ?>
     <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/page.min.js'; else:utils::indexTheme('assets/js/page.js'); endif ?>"></script>
 <?php endif; ?>
-<script>let _owo = '<?php utils::indexTheme('assets/owo/OwO.json'); ?>'</script>
 <script>lanstar.init();</script>
 <?php if ($this->options->couple): ?>
     <script>lanstar.addCoupleTime();</script>

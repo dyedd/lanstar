@@ -43,7 +43,7 @@ class contents{
      */
     public static function parsePaopaoBiaoqingCallback($match)
     {
-        return '<img class="emoji" src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc=="' . utils::getAssets('owo/biaoqing/paopao/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji no-fabcybox" src="' . utils::getAssets('owo/biaoqing/paopao/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -51,9 +51,9 @@ class contents{
      *
      * @return string
      */
-    public static function parseAruBiaoqingCallback($match)
+    public static function parseAruBiaoqingCallback($match): string
     {
-        return '<img class="emoji" src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc=="' . utils::getAssets('owo/biaoqing/aru/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji no-fabcybox" src="' . utils::getAssets('owo/biaoqing/aru/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -61,9 +61,9 @@ class contents{
      *
      * @return string
      */
-    public static function parseQuyinBiaoqingCallback($match)
+    public static function parseQuyinBiaoqingCallback($match): string
     {
-        return '<img class="emoji" src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc=="' . utils::getAssets('owo/biaoqing/quyin/') . str_replace('%', '', urlencode($match[1])) . '.png">';
+        return '<img class="emoji no-fabcybox" src="' . utils::getAssets('owo/biaoqing/quyin/') . str_replace('%', '', urlencode($match[1])) . '.png">';
     }
     /**
      * 友链解析
@@ -131,8 +131,8 @@ class contents{
     public static function fancybox($text)
     {
         $reg = '#<img(.*?)src="(.*?)"(.*?)>#s';
-        if (preg_match($reg, $text)) {
-                return preg_replace($reg, '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
+        if (preg_match($reg, $text, $matches) && !strpos($matches[0], 'no-fabcybox')) {
+            return preg_replace($reg, '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
         }
         return $text;
     }

@@ -136,9 +136,9 @@ function threadedComments($comments, $options)
                                 <span class="circle"></span>
                             </label>
                         </div>
-                        <div class="btn btn-sm btn-primary comment-submit">
+                        <button type="submit" class="btn btn-sm btn-primary comment-submit">
                             <span>提交</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </form>

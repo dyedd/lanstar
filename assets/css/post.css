@@ -184,9 +184,7 @@
 
 img.emoji {
     width: 40px !important;
-}
-.article-content img {
-    width: 100%;
+    display: inline-flex;
 }
 .article-content .card-img {
     width: auto;
@@ -651,12 +649,15 @@ pre::after {
 .theme-dark .article-comments h2 {
     color: rgba(255,255,255,0.87);
 }
+
 .theme-dark hr {
     border-top: 1px solid var(--dark-text-gray-color);
 }
-.theme-dark article table td {
+
+.theme-dark .article-main table td {
     background: #fff;
 }
+
 .theme-dark .article-content h4 {
     border-bottom: 1px solid var(--dark-text-gray-color);
 }

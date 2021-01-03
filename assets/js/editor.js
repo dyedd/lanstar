@@ -19,7 +19,7 @@ $(function() {
                 '</svg>',
             container: document.getElementsByClassName('OwO')[0],
             target: document.getElementById('text'),
-            api: '../usr/themes/lanstar/assets/owo/OwO.json',
+            api: owoPath,
             position: 'down',
             width: '400px',
             maxHeight: '250px'
