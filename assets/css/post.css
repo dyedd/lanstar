@@ -134,9 +134,11 @@
     margin-top: 10px;
     word-break: break-all;
 }
-.article-content > p img {
+
+.article-content img {
     width: 100%;
 }
+
 .tags a {
     border: 1px solid #999;
     border-radius: 100px;
