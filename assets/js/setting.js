@@ -54,7 +54,9 @@
         const xhr = new XMLHttpRequest();
         const authorInfo = '<h1 class="theme-plane">Lanstar 主题设置面板</h1>' +
             '<p>作者博客：<a href="https://dyedd.cn">染念</a></p>' +
-            '<p>欢迎大家对本项目进行star以及可以的赞助~</p>'
+            '<p>欢迎大家对本项目进行star以及可以的赞助~</p>' +
+            '<p><a href="http://lanstar.dyedd.cn"><b>主题文档</b></a></p>' +
+            '<p><a href="http://lanstar.dyedd.cn/#/history">更新记录</a></p>'
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
                 if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {

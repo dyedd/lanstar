@@ -6,20 +6,19 @@ class contents{
     {
         $text = empty($last) ? $data : $last;
         if ($widget instanceof Widget_Archive) {
-            //owo
-            $text = contents::parseOwo($text);
-            // 友链解析
-            $text = contents::parseLink($text);
-            $text = contents::parseHide($text);
-            // 其它
-            $text = contents::blankReplace($text);
-            $text = contents::biliVideo($text);
-            $text = contents::video($text);
-            if (!self::$frag)
-                $text = contents::fancybox($text);
-            // LazyLoad
-            $text = preg_replace('/<img (.*?)src(.*?)(\/)?>/', '<img $1src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc$2 />', $text);
-            $text = contents::cidToContent($text);
+            $text = self::parseOwo($text);
+            $text = self::parseLink($text);
+            $text = self::parseHide($text);
+            $text = self::parseTip($text);
+            $text = self::parsePhoto($text);
+            $text = self::parseTab($text);
+            $text = self::parseCollapse($text);
+            $text = self::blankReplace($text);
+            $text = self::biliVideo($text);
+            $text = self::video($text);
+            $text = !self::$frag ? self::fancybox($text) : $text;
+            $text = self::addLazyLoad($text);
+            $text = self::cidToContent($text);
         }
         return $text;
     }
@@ -86,27 +85,32 @@ class contents{
 			  </a>
 			</div>';
             return preg_replace($pattern, $replacement, $text);
-        }else{
+        } else {
             return $text;
         }
     }
 
+    /**
+     * 回复可见
+     * @param $text
+     * @return mixed|string|string[]|null
+     */
     public static function parseHide($text)
     {
         $reg = '/\[hide\](.*?)\[\/hide\]/sm';
         if (preg_match($reg, $text)) {
-            if(!Typecho_Widget::widget('Widget_Archive')->is('single')){
-                $text = preg_replace($reg,'',$text);
+            if (!Typecho_Widget::widget('Widget_Archive')->is('single')) {
+                $text = preg_replace($reg, '', $text);
             }
             $db = Typecho_Db::get();
             $sql = $db->select()->from('table.comments')
-                ->where('cid = ?',Typecho_Widget::widget('Widget_Archive')->cid)
-                ->where('mail = ?', Typecho_Widget::widget('Widget_Archive')->remember('mail',true))
+                ->where('cid = ?', Typecho_Widget::widget('Widget_Archive')->cid)
+                ->where('mail = ?', Typecho_Widget::widget('Widget_Archive')->remember('mail', true))
                 ->limit(1);
             $result = $db->fetchAll($sql);
             // 楼层回复，目前只能通过登录用户可见
-            if(Typecho_Widget::widget('Widget_User')->hasLogin() || $result) {
-                $text = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div class="reply2view">$1</div>',$text);
+            if (Typecho_Widget::widget('Widget_User')->hasLogin() || $result) {
+                $text = preg_replace("/\[hide\](.*?)\[\/hide\]/sm", '<div class="reply2view">$1</div>', $text);
             }
             else{
                 $text = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div class="reply2view text-center">此处内容需要评论回复后方可阅读。</div>',$text);
@@ -120,7 +124,8 @@ class contents{
      * @param $content
      * @return string|string[]|null
      */
-    public static function blankReplace($content){
+    public static function blankReplace($content)
+    {
         $reg = '#<a(.*?) href="([^"]*/)?(([^"/]*)\.[^"]*)"(.*?)>#sm';
         if (preg_match($reg, $content)) {
             $content = preg_replace($reg, '<a$1 href="$2$3"$5 target="_blank">', $content);
@@ -128,6 +133,12 @@ class contents{
         }
         return $content;
     }
+
+    /**
+     * 灯箱
+     * @param $text
+     * @return string|string[]|null
+     */
     public static function fancybox($text)
     {
         $reg = '#<img(.*?)src="(.*?)"(.*?)>#s';
@@ -136,6 +147,12 @@ class contents{
         }
         return $text;
     }
+
+    /**
+     * BILIBILI视频插入
+     * @param $text
+     * @return string|string[]|null
+     */
     public static function biliVideo($text)
     {
         $reg = '/\[bilibili bv="(.+?)" p="(.+?)"]/sm';
@@ -145,6 +162,12 @@ class contents{
         }
         return $text;
     }
+
+    /**
+     * 插入其它视频
+     * @param $text
+     * @return string|string[]|null
+     */
     public static function video($text)
     {
         $reg = '/\[video src="(.+?)"]/sm';
@@ -154,6 +177,12 @@ class contents{
         }
         return $text;
     }
+
+    /**
+     * 文章跳转
+     * @param $text
+     * @return mixed|string|string[]|null
+     */
     public static function cidToContent($text)
     {
         $reg = '/\[cid="(.+?)"]/';
@@ -161,7 +190,7 @@ class contents{
             $db = Typecho_Db::get();
             foreach ($matches[1] as $match) {
                 $result = $db->fetchAll($db->select()->from('table.fields')
-                    ->where('cid = ?',$match)
+                    ->where('cid = ?', $match)
                 );
                 $articleArr = $db->fetchAll($db->select()->from('table.contents')
                     ->where('status = ?','publish')
@@ -172,17 +201,101 @@ class contents{
                 $banner = empty($result[0]['str_value'])?'../usr/themes/lanstar/assets/img/default.png':$result[0]['str_value'];
 
                 $replacement = '<div class="card bg-dark text-white">
-                              <img src="'.$banner.'" class="card-img" alt="文章卡片">
+                              <img src="' . $banner . '" class="card-img" alt="文章卡片">
                               <div class="card-img-overlay">
-                                <span class="card-title"><a href="'.$val['permalink'].'">'.$val['title'].'</a></span>
-                                <p class="card-text">'.$result[1]['excerpt'].'</p>
-                                <p class="card-text">'.date('Y-m-d H:i:s', $val['modified']).'</p>
+                                <span class="card-title"><a href="' . $val['permalink'] . '">' . $val['title'] . '</a></span>
+                                <p class="card-text">' . $result[1]['excerpt'] . '</p>
+                                <p class="card-text">' . date('Y-m-d H:i:s', $val['modified']) . '</p>
                               </div>
                             </div>';
-                $text =  preg_replace($reg, $replacement, $text, 1);
+                $text = preg_replace($reg, $replacement, $text, 1);
             }
         }
         return $text;
     }
 
+    /**
+     * 解析Tip
+     * @param $text
+     * @return string|string[]|null
+     */
+    public static function parseTip($text)
+    {
+        return preg_replace('/\[tip type="(.*?)"\](.*?)\[\/tip\]/s', '<div class="tip ${1}"><div class="tip-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-${1}"></use></svg></div><div class="tip-content">${2}</div></div>', $text);
+
+    }
+
+    /**
+     * 相册
+     * @param $text
+     * @return string|string[]|null
+     */
+    public static function parsePhoto($text)
+    {
+        return preg_replace('/\[photo\](.*?)\[\/photo\]/ism', '<div class="article-photos">${1}</div>', $text);
+    }
+
+    /**
+     * tab
+     * @param $text
+     * @return string|string[]|null
+     */
+    public static function parseTab($text)
+    {
+        $text = preg_replace_callback('/\[tabs\](.*?)\[\/tabs\]/ism', function ($text) {
+            $tabname = '';
+            preg_match_all('/label="(.*?)"\]/i', $text[1], $tabnamearr);
+            for ($i = 0; $i < count($tabnamearr[1]); $i++) {
+                if ($i === 0) {
+                    $tabname .= '<span class="active" data-panel="' . $i . '">' . $tabnamearr[1][$i] . '</span>';
+                } else {
+                    $tabname .= '<span data-panel="' . $i . '">' . $tabnamearr[1][$i] . '</span>';
+                }
+            }
+            $tabcon = '';
+            preg_match_all('/"\](.*?)\[\//i', $text[1], $tabconarr);
+            for ($i = 0; $i < count($tabconarr[1]); $i++) {
+                if ($i === 0) {
+                    $tabcon .= '<div class="active" data-panel="' . $i . '">' . $tabconarr[1][$i] . '</div>';
+                } else {
+                    $tabcon .= '<div data-panel="' . $i . '">' . $tabconarr[1][$i] . '</div>';
+                }
+            }
+            return '<div class="article-tabs">
+                    <div class="nav">' . $tabname . '</div>
+                    <div class="content">' . $tabcon . '</div>
+                </div>';
+        }, $text);
+        return $text;
+    }
+
+    /**
+     * 展开隐藏
+     * @param $text
+     * @return string|string[]|null
+     */
+    public static function parseCollapse($text)
+    {
+        $text = preg_replace_callback('/\[collapse\](.*?)\[\/collapse\]/ism', function ($text) {
+            return '<div class="article-collapse">' . $text[1] . '</div>';
+        }, $text);
+        $text = preg_replace_callback('/\[collapse-item label="(.*?)"\](.*?)\[\/collapse-item\]/ism', function ($text) {
+            return '<div class="collapse-head">
+                    <span>' . $text[1] . '</span>
+                    <svg class="icon" aria-hidden="true"><use xlink:href="#icon-xiala-"></use></svg>
+                </div>
+                <div class="collapse-body">' . $text[2] . '</div>';
+        }, $text);
+        return $text;
+    }
+
+    /**
+     * 图片懒加载
+     * @param $text
+     * @return string|string[]|null
+     */
+    public static function addLazyLoad($text)
+    {
+        return preg_replace('/<img (.*?)src(.*?)(\/)?>/', '<img $1src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc$2 />', $text);
+    }
 }

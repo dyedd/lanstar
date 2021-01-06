@@ -26,6 +26,8 @@ let lanstar = {
         this.addToTop()
         this.addArticleLike();
         this.addProcess();
+        this.addInitTabs();
+        this.addInitCollapse();
     },
     addFunc: () => {
         let getCookie = function (cookieName)
@@ -145,7 +147,7 @@ let lanstar = {
             reply: function (cid, coid) {
                 var comment = this.dom(cid),
                     parent = comment.parentNode,
-                    response = this.dom('<?php $this->respondId(); ?>'),
+                    response = this.dom($('.article-comments').attr('data-respondid')),
                     input = this.dom('comment-parent'),
                     form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
                     textarea = response.getElementsByTagName('textarea')[0];
@@ -172,7 +174,7 @@ let lanstar = {
                 return false
             },
             cancelReply: function () {
-                var response = this.dom('<?php $this->respondId(); ?>'),
+                var response = this.dom(this.dom($('.article-comment').attr('data-respondid'))),
                     holder = this.dom('comment-form-place-holder'),
                     input = this.dom('comment-parent');
                 if (null != input) {
@@ -487,6 +489,24 @@ let lanstar = {
                 textareaDom.attr('placeholder', holder)
             }
         })
+    },
+    addInitTabs: () => {
+        $('.article-tabs .nav span').on('click', function () {
+            let panel = $(this).attr('data-panel');
+            $(this).addClass('active').siblings().removeClass('active');
+            $(this).parents('.article-tabs').find('.content div').hide();
+            $(this)
+                .parents('.article-tabs')
+                .find('.content div[data-panel=' + panel + ']')
+                .show();
+        });
+    },
+    addInitCollapse: () => {
+        $('.article-collapse .collapse-head').on('click', function () {
+            let next = $(this).next();
+            next.slideToggle(200);
+            $('.article-collapse .collapse-body').not(next).slideUp();
+        });
     }
 }
 

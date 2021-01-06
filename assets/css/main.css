@@ -629,11 +629,24 @@ article .sticky {
     line-height: 65px;
     bottom: 0;
 }
+
+/**
+404
+ */
+.error-page {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.error-page .icon.test {
+    font-size: 15.625rem;
+}
+
 /*
 转换按钮
 */
 .chose-mode-day, .chose-mode-moon {
-    outline: none!important;
+    outline: none !important;
     border: none;
     line-height: 48px;
     color: #000;

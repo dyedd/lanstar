@@ -74,50 +74,33 @@ function threadedComments($comments, $options)
         <span>评论</span>
     </section>
     <hr>
-    <section class="comment-detail">
-        <?php if ($comments->have()): ?>
-            <?php $comments->listComments(); ?>
-            <div class="page-pagination">
-                <?php
-                $comments->pageNav(
-                    '<svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-zuo"></use>
-                    </svg>',
-                    '<svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-you"></use>
-                    </svg>',
-                    3, '...', array(
-                    'wrapTag' => 'ul',
-                    'wrapClass' => 'pagination justify-content-center',
-                    'itemTag' => 'li',
-                    'itemClass' => 'page-item',
-                    'linkClass' => 'page-link',
-                    'currentClass' => 'active'
-                ));
-                ?>
-            </div>
-        <?php endif; ?>
-    </section>
-
     <?php if ($this->allow('comment')): ?>
         <div id="<?php $this->respondId(); ?>" class="comment-respond">
             <form method="post" action="<?php $this->commentUrl(); ?>" id="comment-form" role="form">
                 <div class="comment-respond-author">
                     <?php if ($this->user->hasLogin()): ?>
-                        <!--                        <a href="--><?php //$this->options->profileUrl(); ?><!--" target="_blank" rel="external nofollow">-->
-                        <!--                            <img class="user-head" src="//cdn.v2ex.com/gravatar/--><?php //echo md5($this->user->mail); ?><!--?s=80&d=mp" />-->
-                        <!--                        </a>-->
+                        <div class="row">
+                            <input type="text" id="comment-respond-author" name="author" class="comment-input col-sm-4"
+                                   placeholder="昵称" required value="<?php $this->user->screenName(); ?>"/>
+                            <input type="text" id="comment-respond-url" name="url" class="comment-input col-sm-4"
+                                   placeholder="网站" value="<?php $this->remember('url'); ?>"
+                                <?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
+                            <input type="text" id="comment-respond-mail" name="mail" class="comment-input col-sm-4"
+                                   placeholder="邮箱" value="<?php $this->user->mail(); ?>"
+                                <?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
+                        </div>
+                    <?php else: ?>
+                        <div class="row">
+                            <input type="text" id="comment-respond-author" name="author" class="comment-input col-sm-4"
+                                   placeholder="昵称" required value="<?php $this->remember('author'); ?>"/>
+                            <input type="text" id="comment-respond-url" name="url" class="comment-input col-sm-4"
+                                   placeholder="网站" value="<?php $this->remember('url'); ?>"
+                                <?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
+                            <input type="text" id="comment-respond-mail" name="mail" class="comment-input col-sm-4"
+                                   placeholder="邮箱" value="<?php $this->remember('mail'); ?>"
+                                <?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
+                        </div>
                     <?php endif; ?>
-                    <div class="row">
-                        <input type="text" id="comment-respond-author" name="author" class="comment-input col-sm-4"
-                               placeholder="昵称" required value="<?php $this->remember('author'); ?>"/>
-                        <input type="text" id="comment-respond-url" name="url" class="comment-input col-sm-4"
-                               placeholder="网站" value="<?php $this->remember('url'); ?>"
-                            <?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
-                        <input type="text" id="comment-respond-mail" name="mail" class="comment-input col-sm-4"
-                               placeholder="邮箱" value="<?php $this->remember('mail'); ?>"
-                            <?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
-                    </div>
                     <div class="comment-edit">
                         <textarea class="comment-textarea comment-input owo-textarea" name="text"
                                   id="comment-respond-textarea" placeholder="发条友善的评论" required></textarea>
@@ -146,4 +129,28 @@ function threadedComments($comments, $options)
     <?php else: ?>
         <div class="comment-close">本篇文章评论功能已关闭</div>
     <?php endif; ?>
+    <section class="comment-detail">
+        <?php if ($comments->have()): ?>
+            <?php $comments->listComments(); ?>
+            <div class="page-pagination">
+                <?php
+                $comments->pageNav(
+                    '<svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-zuo"></use>
+                    </svg>',
+                    '<svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-you"></use>
+                    </svg>',
+                    3, '...', array(
+                    'wrapTag' => 'ul',
+                    'wrapClass' => 'pagination justify-content-center',
+                    'itemTag' => 'li',
+                    'itemClass' => 'page-item',
+                    'linkClass' => 'page-link',
+                    'currentClass' => 'active'
+                ));
+                ?>
+            </div>
+        <?php endif; ?>
+    </section>
 </div>
