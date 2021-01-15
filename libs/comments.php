@@ -35,7 +35,7 @@ class comments
     public static function insertSecret($comment)
     {
         if ($_POST['secret']) {
-            $comment['text'] = '[secret]' . $comment['text'] . '[/\secret]';
+            $comment['text'] = '[secret]' . $comment['text'] . '[/secret]';
         }
         return $comment;
     }

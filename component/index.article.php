@@ -56,7 +56,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                             <?php $this->fields->excerpt(); ?>
                         <?php else: ?>
                             <?php $this->excerpt(100); ?>
-                        <? endif; ?>
+                        <?php endif; ?>
                     </div>
                     <div class="post-category">
                         <svg class="icon" aria-hidden="true">

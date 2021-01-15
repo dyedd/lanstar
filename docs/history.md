@@ -1,3 +1,11 @@
+### [2.2.3](https://github.com/dyedd/lanstar/releases/tag/2.2.3)
+
+1. 感谢网友发现短代码处没有加php，应该解决了不用开启短代码的问题
+2. 暗黑模式上一些颜色的适配
+3. 私密回复的bug，不应该转义啊
+4. 修复非作者的网址不能跳转问题
+5. 修复归档pjax未加载js的问题
+
 ### [2.2.2](https://github.com/dyedd/lanstar/releases/tag/2.2.2)
 
 1. 修复评论无法回复

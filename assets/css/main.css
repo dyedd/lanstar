@@ -828,8 +828,8 @@ article .sticky {
     background-color: var(--dark-content);
 }
 
-.theme-dark .page-link .icon {
-    color: var(--dark-text-gray-color);
+.theme-dark #icon-you path, .theme-dark #icon-zuo path {
+    fill: var(--dark-text-gray-color);
 }
 
 .theme-dark footer {

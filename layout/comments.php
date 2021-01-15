@@ -23,8 +23,12 @@ function threadedComments($comments, $options)
         <div id="<?php $comments->theId(); ?>" class="comment-body">
             <div class="comment-info">
                 <div class="comment-head">
+                    <?php
+                    $pcomments = get_comment($comments->parent);
+                    if ($pcomments) echo '<code style="margin:0 .3em 0 0;padding:0;font-size:.9em;">@' . $pcomments['author'] . '</code>';
+                    ?>
                     <a class="comment-user-name me-1"
-                       href="/author/<?php echo $comments->authorId > 0 ? $comments->authorId : $comments->url; ?>"
+                       href="<?php echo $comments->authorId > 0 ? '/author/' . $comments->authorId : $comments->url; ?>"
                        rel="external nofollow">
                         <?php echo $comments->author; ?>
                     </a>
@@ -51,10 +55,6 @@ function threadedComments($comments, $options)
                 </span>
                 </div>
                 <div class="comment-content">
-                    <?php
-                    $pcomments = get_comment($comments->parent);
-                    if ($pcomments) echo '<code style="float:left;margin:.1em .5em;padding:0;fonts-size:.9em;">@' . $pcomments['author'] . '</code>';
-                    ?>
                     <?php $comments->content(); ?>
                 </div>
             </div>

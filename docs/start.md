@@ -14,6 +14,7 @@ syntax error, unexpected 'endwhile' (T_ENDWHILE), expecting elseif (T_ELSEIF) or
 
 因为非常重要，特地放在开头，希望大家能够引起大家的重视。
 
+`2.2.3`已修复，可以不用开启短代码了
 ---
 
 ### 下载

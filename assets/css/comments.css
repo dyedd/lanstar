@@ -169,6 +169,9 @@ ol.comment-list {
     background-color: #3a3f51;
 }
 
+.comment-mail-me {
+    margin-right: .5rem;
+}
 /*
 暗黑模式
 */
@@ -187,4 +190,12 @@ ol.comment-list {
 
 .theme-dark .comment-respond {
     border: none;
+}
+
+.theme-dark .secret {
+    color: var(--theme-text-color);
+}
+
+.theme-dark .comment-mail-me {
+    color: var(--dark-text-gray-color);
 }

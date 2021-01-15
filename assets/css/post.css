@@ -814,8 +814,9 @@ pre::after {
     border-bottom: 1px solid var(--dark-text-gray-color);
 }
 
-.theme-dark .article-content blockquote p {
+.theme-dark .article-content blockquote {
     color: var(--dark-text-gray-color);
+    background: none;
 }
 
 .theme-dark .links-title h4 {

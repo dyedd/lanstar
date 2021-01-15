@@ -45,6 +45,7 @@
                 lanstar.addCatalog();
                 lanstar.addComment();
                 lanstar.addPageLike();
+                lanstar.addArchiveToggle();
                 <?php $this->options->pjax_complete(); ?>
             });
     </script>
