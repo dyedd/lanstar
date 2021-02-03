@@ -8,6 +8,7 @@ syntax error, unexpected 'endwhile' (T_ENDWHILE), expecting elseif (T_ELSEIF) or
 
 ?> 那是因为你使用的`php`环境没有开启短代码标记
 
+?> `2.2.4` 版本已经彻底移除它的问题
 > 这里推荐不是推销，使用宝塔`PHP`，安装到家
 
 或者你讨厌使用它，或是使用docker，自行修改`php.ini`，搜索`short_open_tag = Off` 改成 `On` 就行了。

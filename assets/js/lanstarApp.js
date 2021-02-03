@@ -23,7 +23,7 @@ let lanstar = {
         this.addCommentInit()
         this.addSearchEvent()
         this.addDarkMode()
-        this.addToTop()
+        this.addScroll()
         this.addArticleLike();
         this.addProcess();
         this.addInitTabs();
@@ -122,13 +122,19 @@ let lanstar = {
             }, 2e3)
         });
     },
-    addToTop: function () {
+    addScroll: function () {
         $(window).scroll(function () {
             let scroHei = $(window).scrollTop();
+            console.log(scroHei)
             if (scroHei > 500) {
                 $('.back-to-top').fadeIn();
             } else {
                 $('.back-to-top').fadeOut();
+            }
+            if (scroHei >= 1228) {
+                $('.footer').addClass('is-fixed')
+            } else {
+                $('.footer').removeClass('is-fixed')
             }
         })
     },

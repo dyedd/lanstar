@@ -1,3 +1,9 @@
+### [2.2.4](https://github.com/dyedd/lanstar/releases/tag/2.2.4)
+
+1. 彻底修复短代码标记未开就报错的问题
+2. 移动端无法点击幻灯片
+3. 表情包路径问题
+
 ### [2.2.3](https://github.com/dyedd/lanstar/releases/tag/2.2.3)
 
 1. 感谢网友发现短代码处没有加php，应该解决了不用开启短代码的问题

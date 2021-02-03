@@ -175,6 +175,7 @@ header .progress {
 .carousel_link {
     color: #fff;
     text-decoration: none;
+    display: inline-block;
 }
 
 .carousel-caption {
@@ -630,6 +631,14 @@ article .sticky {
     bottom: 0;
 }
 
+/*
+fixed区域
+*/
+.is-fixed {
+    position: fixed;
+    top: 60px;
+}
+
 /**
 404
  */
@@ -899,4 +908,8 @@ article .sticky {
 .theme-dark .post-meta .item .icon {
     background: var(--dark-text-normal-color);
     border-radius: 50%;
+}
+
+.theme-dark .logo-shine {
+    animation-play-state: paused;
 }

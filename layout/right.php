@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
-<div class="col-12 col-md-3 text-md-left">
+<div class="col-12 col-md-3 position-relative">
     <div class="card user-container">
         <div class="card-header user-info">
             <div class="info<?php if ($this->options->couple):echo ' couple'; endif; ?>">

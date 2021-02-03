@@ -1,4 +1,5 @@
 <?php
+
 class utils
 {
     /**
@@ -6,7 +7,7 @@ class utils
      * @param $content
      * @return string
      */
-    public static function bannerHandle($content): string
+    public static function bannerHandle($content)
     {
         $bannerArr = explode(PHP_EOL, $content);
         $text = '';
@@ -20,12 +21,12 @@ class utils
             if ($key) {
                 if (preg_match('{[a-zA-z]+://[^\s]*}', $bannerInfo[1])) {
                     $text .= '<div class="carousel-item">
-                    <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
+                    <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
+                    <img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
-                            <h4>' . $bannerInfo[2] . '</h4></a>
+                            <h4>' . $bannerInfo[2] . '</h4>
                             <p>' . $bannerInfo[3] . '</p>
-                          </div>
+                          </div></a>
                 </div>';
                 } else {
                     $text .= '<div class="carousel-item">
@@ -39,12 +40,12 @@ class utils
             } else {
                 if (preg_match('{[a-zA-z]+://[^\s]*}', $bannerInfo[1])) {
                     $text .= '<div class="carousel-item active">
-                    <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
+                    <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
+                    <img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
-                            <h4>' . $bannerInfo[2] . '</h4></a>
+                            <h4>' . $bannerInfo[2] . '</h4>
                             <p>' . $bannerInfo[3] . '</p>
-                          </div>
+                          </div></a>
                 </div>';
                 } else {
                     $text .= '<div class="carousel-item active">
@@ -66,7 +67,7 @@ class utils
      * @param $name
      * @return bool
      */
-    public static function hasPlugin($name): bool
+    public static function hasPlugin($name)
     {
         $plugins = Typecho_Plugin::export();
         $plugins = $plugins['activated'];
@@ -118,15 +119,17 @@ class utils
         }
         echo $content;
     }
+
     /**
      * 文章中文字数统计
      * @param $cid
      */
-    public static function artCount ($cid){
-        $db=Typecho_Db::get ();
-        $rs=$db->fetchRow ($db->select ('table.contents.text')->from ('table.contents')->where ('table.contents.cid=?',$cid)->order ('table.contents.cid',Typecho_Db::SORT_ASC)->limit (1));
+    public static function artCount($cid)
+    {
+        $db = Typecho_Db::get();
+        $rs = $db->fetchRow($db->select('table.contents.text')->from('table.contents')->where('table.contents.cid=?', $cid)->order('table.contents.cid', Typecho_Db::SORT_ASC)->limit(1));
         $text = preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $rs['text']);
-        echo mb_strlen($text,'UTF-8');
+        echo mb_strlen($text, 'UTF-8');
     }
 
     /**
@@ -135,8 +138,8 @@ class utils
      */
     public static function getPostView($archive)
     {
-        $cid    = $archive->cid;
-        $db     = Typecho_Db::get();
+        $cid = $archive->cid;
+        $db = Typecho_Db::get();
         $prefix = $db->getPrefix();
         if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
             $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0;');
@@ -146,13 +149,13 @@ class utils
         $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
         if ($archive->is('single')) {
             $views = Typecho_Cookie::get('extend_contents_views');
-            if(empty($views)){
+            if (empty($views)) {
                 $views = array();
-            }else{
+            } else {
                 $views = explode(',', $views);
             }
-            if(!in_array($cid,$views)){
-                $db->query($db->update('table.contents')->rows(array('views' => (int) $row['views'] + 1))->where('cid = ?', $cid));
+            if (!in_array($cid, $views)) {
+                $db->query($db->update('table.contents')->rows(array('views' => (int)$row['views'] + 1))->where('cid = ?', $cid));
                 array_push($views, $cid);
                 $views = implode(',', $views);
                 Typecho_Cookie::set('extend_contents_views', $views); //记录查看cookie
@@ -160,6 +163,7 @@ class utils
         }
         echo $row['views'];
     }
+
     /**
      * 编辑界面添加Button
      *
@@ -222,7 +226,7 @@ class utils
         </style>';
     }
 
-    public static function agreeNum($cid): array
+    public static function agreeNum($cid)
     {
         $db = Typecho_Db::get();
         $prefix = $db->getPrefix();
@@ -248,10 +252,12 @@ class utils
             //  点赞数量
             'agree' => $agree['agree'],
             //  文章是否点赞过
-            'recording' => in_array($cid, json_decode(Typecho_Cookie::get('typechoAgreeRecording')))?true:false
+            'recording' => in_array($cid, json_decode(Typecho_Cookie::get('typechoAgreeRecording'))) ? true : false
         );
     }
-    public static function agree($cid) {
+
+    public static function agree($cid)
+    {
         $db = Typecho_Db::get();
         //  根据文章的 `cid` 查询出点赞数量
         $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
@@ -262,7 +268,7 @@ class utils
         if (empty($agreeRecording)) {
             //  如果 cookie 不存在就创建 cookie
             Typecho_Cookie::set('typechoAgreeRecording', json_encode(array($cid)));
-        }else {
+        } else {
             //  把 Cookie 的 JSON 字符串转换为 PHP 对象
             $agreeRecording = json_decode($agreeRecording);
             //  判断文章是否点赞过
@@ -284,7 +290,7 @@ class utils
         return $agree['agree'];
     }
 
-    public static function compressHtml($html_source): string
+    public static function compressHtml($html_source)
     {
         $chunks = preg_split('/(<!--<nocompress>-->.*?<!--<\/nocompress>-->|<nocompress>.*?<\/nocompress>|<pre.*?\/pre>|<textarea.*?\/textarea>|<script.*?\/script>)/msi', $html_source, -1, PREG_SPLIT_DELIM_CAPTURE);
         $compress = '';
@@ -368,7 +374,7 @@ class utils
      * @param $image
      * @return string
      */
-    public static function addLoadingImages($image): string
+    public static function addLoadingImages($image)
     {
         // 如果开启了cdn
         if (Helper::options()->cdn) {
@@ -383,7 +389,7 @@ class utils
      * @param $path
      * @return string
      */
-    public static function getAssets($path): string
+    public static function getAssets($path)
     {
         if (Helper::options()->cdn) {
             return 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/' . $path;
@@ -396,7 +402,7 @@ class utils
      * 侧边栏媒体信息
      * @return string
      */
-    public static function handleRightIcon(): string
+    public static function handleRightIcon()
     {
         $getIconRow = explode(PHP_EOL, Helper::options()->rightIcon);
         $text = '';
@@ -442,6 +448,21 @@ class utils
     }
 
     /**
+     * 获取文章banner
+     * @param $cid
+     * @return mixed
+     */
+    public static function getPostImage($cid)
+    {
+        $db = Typecho_Db::get();
+        $row = $db->fetchAll($db->select()->from('table.fields')
+            ->where('cid = ?', $cid)
+            ->where('table.fields.name = ?', 'banner')
+        );
+        return $row[0]['str_value'];
+    }
+
+    /**
      * 随机文章
      * @param int $limit
      */
@@ -449,22 +470,19 @@ class utils
     {
         $db = Typecho_Db::get();
         $result = $db->fetchAll($db->select()->from('table.contents')
-            ->join('table.fields', 'table.contents.cid = table.fields.cid')
             ->where('table.contents.status = ?', 'publish')
             ->where('table.contents.type = ?', 'post')
             ->where('table.contents.created <= unix_timestamp(now())', 'post')
-            ->where('table.fields.name = ?', 'banner')
             ->limit($limit)
             ->order('RAND()')
         );
         if ($result) {
-            $i = 1;
             foreach ($result as $val) {
                 $val = Typecho_Widget::widget('Widget_Abstract_Contents')->push($val);
                 $post_title = htmlspecialchars($val['title']);
                 $post_date = date('Y-m-d', $val['created']);
                 $permalink = $val['permalink'];
-                $post_img = $val['str_value'] ?: Helper::options()->themeUrl("", "lanstar/assets/img/") . 'rand_default.jpg';
+                $post_img = self::getPostImage($val['cid']) ?: Helper::options()->themeUrl("", "lanstar/assets/img/") . 'rand_default.jpg';
                 echo <<<EOF
                 <div class="sidebar-rand-item">
                     <a href="$permalink" target="_blank" class="sidebar-rand-img" style="background-image: linear-gradient(to right, rgb(144, 148, 148), transparent),url($post_img)"></a>
@@ -474,7 +492,6 @@ class utils
                     </div>
                 </div>
                 EOF;
-                $i++;
             }
         }
     }

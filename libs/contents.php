@@ -50,7 +50,7 @@ class contents{
      *
      * @return string
      */
-    public static function parseAruBiaoqingCallback($match): string
+    public static function parseAruBiaoqingCallback($match)
     {
         return '<img class="emoji no-fabcybox" src="' . utils::getAssets('owo/biaoqing/aru/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
@@ -60,7 +60,7 @@ class contents{
      *
      * @return string
      */
-    public static function parseQuyinBiaoqingCallback($match): string
+    public static function parseQuyinBiaoqingCallback($match)
     {
         return '<img class="emoji no-fabcybox" src="' . utils::getAssets('owo/biaoqing/quyin/') . str_replace('%', '', urlencode($match[1])) . '.png">';
     }

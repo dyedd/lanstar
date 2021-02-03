@@ -41,7 +41,7 @@
 <header>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-1 col-md-6">
                 <div class="logo-box">
                     <?php if ($this->options->logoUrl): ?>
                         <img class="site-logo" title="<?php $this->options->description(); ?>"

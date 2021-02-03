@@ -49,16 +49,19 @@
                 <?php $this->options->pjax_complete(); ?>
             });
     </script>
-<?endif;?>
-<?php if ($this->options->jsPushBaidu):?>
-    <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@'.themeVersion().'/assets/js/push.min.js';else:utils::indexTheme('assets/js/push.js'); endif?>"></script>
-<?php endif;?>
-<?php if($this->options->music): ?>
+<?php endif; ?>
+<?php if ($this->options->jsPushBaidu): ?>
+    <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/push.min.js'; else:utils::indexTheme('assets/js/push.js'); endif ?>"></script>
+<?php endif; ?>
+<?php if ($this->options->music): ?>
     <meting-js fixed="true" lrc-type="1" <?php $this->options->music(); ?>></meting-js>
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
-<?php endif;?>
-<?php if ($this->options->compressHtml): $html_source = ob_get_contents(); ob_clean(); print utils::compressHtml($html_source); ob_end_flush(); endif; ?>
+<?php endif; ?>
+<?php if ($this->options->compressHtml): $html_source = ob_get_contents();
+    ob_clean();
+    print utils::compressHtml($html_source);
+    ob_end_flush(); endif; ?>
 <div class="back-to-top" onclick="lanstar.addBackTop()">
     <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-fanhuidingbu"></use>
