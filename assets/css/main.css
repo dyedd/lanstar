@@ -630,15 +630,6 @@ article .sticky {
     line-height: 65px;
     bottom: 0;
 }
-
-/*
-fixed区域
-*/
-.is-fixed {
-    position: fixed;
-    top: 60px;
-}
-
 /**
 404
  */

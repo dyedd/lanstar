@@ -68,7 +68,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     </div>
     <?php if ($this->is('index')): ?>
         <div class="sidebar-box d-none d-md-block">
-            <div class="p-3"><h6>最近回复</h6></div>
+            <div class="p-3"><h6>最近消息</h6></div>
             <div class="sidebar-content px-4">
                 <?php $this->widget('Widget_Comments_Recent', 'ignoreAuthor=true&pageSize=5')->to($comments); ?>
                 <?php while ($comments->next()): ?>

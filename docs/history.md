@@ -1,3 +1,8 @@
+### [2.2.5](https://github.com/dyedd/lanstar/releases/tag/2.2.5)
+
+1. 表情包手机版太小
+2. 取消备案号悬浮，手机版有bug
+
 ### [2.2.4](https://github.com/dyedd/lanstar/releases/tag/2.2.4)
 
 1. 彻底修复短代码标记未开就报错的问题
