@@ -630,6 +630,21 @@ article .sticky {
     line-height: 65px;
     bottom: 0;
 }
+
+/*
+fix*/
+.is-fixed {
+    position: fixed;
+    top: 60px;
+}
+
+@media (max-width: 768px) {
+    .is-fixed {
+        position: unset;
+        text-align: center;
+    }
+}
+
 /**
 404
  */

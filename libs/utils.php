@@ -414,7 +414,7 @@ class utils
                       <use xlink:href="#$iconInfo[1]"></use>
                   </svg>
                   </a>
-                EOF;
+EOF;
             $text .= $content;
 
         }
@@ -470,9 +470,9 @@ class utils
     {
         $db = Typecho_Db::get();
         $result = $db->fetchAll($db->select()->from('table.contents')
-            ->where('table.contents.status = ?', 'publish')
-            ->where('table.contents.type = ?', 'post')
-            ->where('table.contents.created <= unix_timestamp(now())', 'post')
+            ->where('status = ?', 'publish')
+            ->where('type = ?', 'post')
+            ->where('created <= ?', time())
             ->limit($limit)
             ->order('RAND()')
         );
@@ -491,7 +491,7 @@ class utils
                         <div class="sidebar-rand-footer p-2">$post_date</div>
                     </div>
                 </div>
-                EOF;
+EOF;
             }
         }
     }

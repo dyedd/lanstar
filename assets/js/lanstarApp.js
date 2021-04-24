@@ -130,6 +130,11 @@ let lanstar = {
             } else {
                 $('.back-to-top').fadeOut();
             }
+            if (scroHei > 1700) {
+                $('.footer').addClass('is-fixed')
+            } else {
+                $('.footer').removeClass('is-fixed')
+            }
         })
     },
     addCommentInit: () => {
