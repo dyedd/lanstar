@@ -440,10 +440,10 @@ EOF;
 
             } else {
                 $email = md5($email);
-                echo "//cdn.v2ex.com/gravatar/" . $email . "?";
+                echo "https://dn-qiniu-avatar.qbox.me/avatar/" . $email . "?";
             }
         } else {
-            echo "//cdn.v2ex.com/gravatar/null?";
+            echo "https://dn-qiniu-avatar.qbox.me/avatar/null?";
         }
     }
 
