@@ -144,11 +144,11 @@ EOF;
     $rightMotto->setAttribute('class', 'theme-setting-content theme-setting-aside');
     $form->addInput($rightMotto);
 
-    $rightAvatar = new Typecho_Widget_Helper_Form_Element_Text('rightAvatar', NULL, NULL, _t('侧边栏头像'), _t('一条外链'));
+    $rightAvatar = new Typecho_Widget_Helper_Form_Element_Text('rightAvatar', NULL, NULL, _t('侧边栏头像'), _t('填写图片链接'));
     $rightAvatar->setAttribute('class', 'theme-setting-content theme-setting-aside');
     $form->addInput($rightAvatar);
 
-    $rightName = new Typecho_Widget_Helper_Form_Element_Text('rightName', NULL, NULL, _t('侧边栏名称'), _t('没啥想说的'));
+    $rightName = new Typecho_Widget_Helper_Form_Element_Text('rightName', NULL, NULL, _t('侧边栏名称'), _t('填写你自己的昵称'));
     $rightName->setAttribute('class', 'theme-setting-content theme-setting-aside');
     $form->addInput($rightName);
 
@@ -201,7 +201,7 @@ EOF;
     $taAvatar->setAttribute('class', 'theme-setting-content theme-setting-couple');
     $form->addInput($taAvatar);
 
-    $company = new Typecho_Widget_Helper_Form_Element_Text('company', NULL, NULL, _t('在一起的时间'), _t('2020-12-28'));
+    $company = new Typecho_Widget_Helper_Form_Element_Text('company', NULL, NULL, _t('开始在一起的日期'), _t('2020-12-28'));
     $company->setAttribute('class', 'theme-setting-content theme-setting-couple');
     $form->addInput($company);
 
