@@ -159,7 +159,7 @@ EOF;
     $pjax = new Typecho_Widget_Helper_Form_Element_Select('pjax', array(
         '0' => '关闭',
         '1' => '开启'
-    ), '1', '是否开启', 'Pjax 预加载功能的开关');
+    ), '0', '是否开启', 'Pjax 预加载功能的开关');
     $pjax->setAttribute('class', 'theme-setting-content theme-setting-pjax');
     $form->addInput($pjax);
 
@@ -193,7 +193,7 @@ EOF;
     $couple = new Typecho_Widget_Helper_Form_Element_Select('couple', array(
         '0' => '关闭',
         '1' => '开启'
-    ), '1', '<h2>情侣功能</h2>是否开启', '侧边栏开启情侣的头像');
+    ), '0', '<h2>情侣功能</h2>是否开启', '侧边栏开启情侣的头像');
     $couple->setAttribute('class', 'theme-setting-content theme-setting-couple');
     $form->addInput($couple);
 

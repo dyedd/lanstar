@@ -6,14 +6,12 @@
         <div class="col-xl-7 col-md-6 col-12" id="pjax-container">
             <section class="article-info mb-3">
                 <div class="article-detail">
-                    <?php if ($this->is('category', $category->slug)): ?>
-                        <h1 class="archive-title text-center p-3"><?php $this->archiveTitle(array(
-                                'category' => _t('分类 %s 下的文章'),
-                                'search' => _t('包含关键字 %s 的文章'),
-                                'tag' => _t('标签 %s 下的文章'),
-                                'author' => _t('%s 发布的文章')
-                            ), '', ''); ?></h1>
-                    <?php endif; ?>
+                    <h1 class="archive-title text-center p-3"><?php $this->archiveTitle(array(
+                            'category' => _t('分类 %s 下的文章'),
+                            'search' => _t('包含关键字 %s 的文章'),
+                            'tag' => _t('标签 %s 下的文章'),
+                            'author' => _t('%s 发布的文章')
+                        ), '', ''); ?></h1>
                 </div>
                 <div class="article-cover-inner">
                     <img src="<?php echo $this->fields->banner ?: utils::getAssets('img/default.jpg'); ?>" alt="cover">

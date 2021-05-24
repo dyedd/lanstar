@@ -405,20 +405,22 @@ class utils
     public static function handleRightIcon()
     {
         $getIconRow = explode(PHP_EOL, Helper::options()->rightIcon);
-        $text = '';
-        foreach ($getIconRow as $key => $value) {
-            $iconInfo = explode('+', $value);
-            $content = <<<EOF
+        if (!$getIconRow) {
+            $text = '';
+            foreach ($getIconRow as $key => $value) {
+                $iconInfo = explode('+', $value);
+                $content = <<<EOF
                 <a href="$iconInfo[2]" title="$iconInfo[0]">
                   <svg class="icon" aria-hidden="true">
                       <use xlink:href="#$iconInfo[1]"></use>
                   </svg>
                   </a>
 EOF;
-            $text .= $content;
+                $text .= $content;
 
+            }
+            return $text;
         }
-        return $text;
     }
 
     /**
@@ -459,7 +461,7 @@ EOF;
             ->where('cid = ?', $cid)
             ->where('table.fields.name = ?', 'banner')
         );
-        return $row[0]['str_value'];
+        return $row ? $row[0]['str_value'] : '';
     }
 
     /**
