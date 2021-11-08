@@ -437,7 +437,7 @@ EOF;
                 } else {
                     $mmail = $email . '@qq.com';
                     $email = md5($mmail);
-                    echo "//cdn.v2ex.com/gravatar/" . $email . "?";
+                    echo "https://gravatar.loli.net/avatar/" . $email . "?";
                 }
 
             } else {
