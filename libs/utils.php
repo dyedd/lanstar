@@ -9,6 +9,9 @@ class utils
      */
     public static function bannerHandle($content)
     {
+        if(empty($content)) {
+            $content = Helper::options()->themeUrl("", "lanstar/assets/img").'/bg.jpg|'.'#'.'|标题|简介';
+        }
         $bannerArr = explode(PHP_EOL, $content);
         $text = '';
         if (count($bannerArr) > 3) {
@@ -457,11 +460,8 @@ EOF;
     public static function getPostImage($cid)
     {
         $db = Typecho_Db::get();
-        $row = $db->fetchAll($db->select()->from('table.fields')
-            ->where('cid = ?', $cid)
-            ->where('table.fields.name = ?', 'banner')
-        );
-        return $row ? $row[0]['str_value'] : '';
+        $row =  $db->fetchObject($db->select()->from('table.fields')->where('cid = ?', $cid)->where('table.fields.name = ?', 'banner'));
+        return $row ? $row->str_value : '';
     }
 
     /**

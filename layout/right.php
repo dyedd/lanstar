@@ -2,70 +2,43 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 <div class="col-12 col-md-3 position-relative">
+    <div class="search-bar">
+        <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
+            <input type="text" id="s" name="s" class="nav-search-input" placeholder="<?php _e('输入关键字搜索'); ?>">
+            <button class="nav-search-btn" type="submit">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-sousuo"></use>
+                </svg>
+            </button>
+        </form>
+    </div>
     <div class="card user-container">
         <div class="card-header user-info">
-            <div class="info<?php if ($this->options->couple):echo ' couple'; endif; ?>">
-                <?php if ($this->options->couple): ?>
-                    <div class="row">
-                        <div class="col-5">
-                            <img class="pic" src="<?php $this->options->rightAvatar(); ?>" alt="博主">
-                        </div>
-                        <div class="col-2">
-                            <img class="couple-love" src="<?php utils::indexTheme('assets/img/love.png'); ?>" alt="爱心">
-                        </div>
-                        <div class="col-5">
-                            <img class="pic" src="<?php $this->options->taAvatar(); ?>" alt="另一半">
-                        </div>
-                    </div>
-                <?php else: ?>
-                    <img class="pic" src="<?php $this->options->rightAvatar(); ?>" alt="博主">
-                <?php endif; ?>
+            <div class="info">
+                <img class="pic" src="<?php $this->options->rightAvatar(); ?>" alt="博主">
             </div>
         </div>
         <p>
             <?php $this->options->rightName(); ?>
-            <svg class="icon" aria-hidden="true" style="width: 1em;">
-                <use xlink:href="#icon-renzheng"></use>
-            </svg>
         </p>
         <div class="card-info-description"><?php echo $this->options->rightMotto ? $this->options->rightMotto : '博主很懒，啥都没有'; ?></div>
-        <?php if ($this->options->couple): ?>
-            <div id="our-company" data-start="<?php $this->options->company(); ?>"></div>
-        <?php endif; ?>
-        <div class="card-footer user-detail">
-            <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
-            <ul class="list-group list-group-horizontal">
-                <li>
-                    <div class="detail-title" title="文章">
-                        📝
-                    </div>
-                    <div class="detail-num">
-                        <?php $stat->publishedPostsNum(); ?>
-                    </div>
-                </li>
-                <li>
-                    <div class="detail-title" title="评论">
-                        💬
-                    </div>
-                    <div class="detail-num">
-                        <?php $stat->publishedCommentsNum(); ?>
-                    </div>
-                </li>
-                <li>
-                    <div class="detail-title" title="分类">
-                        💊
-                    </div>
-                    <div class="detail-num">
-                        <?php $stat->categoriesNum(); ?>
-                    </div>
-                </li>
-            </ul>
-        </div>
         <div class="card-icon">
-            <a href="<?php $this->options->siteUrl(); ?>/feed" title="rss"><i class="iconfont icon-rss"></i></a>
+            <a href="<?php $this->options->siteUrl(); ?>/feed" title="rss">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            </a>
             <?php echo utils::handleRightIcon() ?>
         </div>
     </div>
+    <?php if ($this->options->couple): ?>
+        <div class="sidebar-box couple">
+            <img class="pic" src="<?php $this->options->rightAvatar(); ?>" alt="博主">
+            <img class="couple-love" src="<?php utils::indexTheme('assets/img/love.png'); ?>" alt="爱心">
+            <img class="pic" src="<?php $this->options->taAvatar(); ?>" alt="另一半">
+            <div id="our-company" data-start="<?php $this->options->company(); ?>"></div>
+        </div>
+    <?php endif; ?>
     <?php if ($this->is('index')): ?>
         <div class="sidebar-box d-none d-md-block">
             <div class="p-3"><h6>最近消息</h6></div>
