@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <?php $this->need('layout/left.php'); ?>
-        <div class="col-xl-7 col-md-6 col-12" id="pjax-container">
+        <div class="col-xl-6 col-md-6 col-12" id="pjax-container">
             <section class="article-info mb-3">
                 <div class="article-detail">
                     <h1 class="archive-title text-center p-3"><?php $this->archiveTitle(array(

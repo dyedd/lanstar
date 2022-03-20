@@ -778,11 +778,12 @@ fix*/
     background: var(--dark-content);
     backdrop-filter: blur(20px);
 }
-
 .theme-dark {
     background: var(--dark-background);
 }
-
+.theme-dark .toolbar-left{
+    color: var(--dark-text-normal-color);
+}
 .theme-dark .user-info {
     background-color: #0000 !important;
 }
@@ -792,6 +793,9 @@ fix*/
 }
 .theme-dark article {
     background: var(--dark-content);
+}
+.theme-dark .nav-menu {
+    background-color: var(--dark-content);
 }
 .theme-dark .nav-link {
     color: var(--dark-text-normal-color);
