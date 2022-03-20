@@ -1,3 +1,10 @@
+### [3.0.0](https://github.com/dyedd/lanstar/releases/tag/3.0.0)
+
+1. 更新了新的样式
+2. 增加了手机适配
+3. 兼容了php8
+
+
 ### [2.2.5](https://github.com/dyedd/lanstar/releases/tag/2.2.5)
 
 1. 表情包手机版太小
