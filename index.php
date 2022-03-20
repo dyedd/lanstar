@@ -15,26 +15,7 @@ $this->need('layout/header.php');
     <div class="row">
         <?php $this->need('layout/left.php'); ?>
         <div class="col-xl-6 col-md-6 col-12" id="pjax-container">
-            <header class="toolbar">
-                <div class="toolbar-left">主页</div>
-                <div class="toolbar-right">
-                    <button class="float-end d-block d-md-none mobile-nav" type="button">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-daohang1"></use>
-                        </svg>
-                    </button>
-                    <button class="float-end chose-mode-day float-right" id="night-mode" type="button">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-yueliang"></use>
-                        </svg>
-                    </button>
-                    <button class="float-end chose-mode-moon float-right" id="night-mode" type="button">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-taiyang"></use>
-                        </svg>
-                    </button>
-                </div>
-            </header>
+            <?php $this->need('layout/head.php'); ?>
             <?php $this->need('component/index.banner.php') ?>
             <?php $this->need('component/index.article.php'); ?>
             <div class="page-pagination">

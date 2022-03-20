@@ -4,6 +4,7 @@
     <div class="row">
         <?php $this->need('layout/left.php'); ?>
         <div class="col-xl-7 col-md-6 col-12" id="pjax-container">
+            <?php $this->need('layout/head.php'); ?>
             <div class="error-page">
                 <svg class="icon test" aria-hidden="true">
                     <use xlink:href="#icon-icon-test"></use>

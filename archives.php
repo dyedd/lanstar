@@ -11,6 +11,7 @@ $this->need('layout/header.php');
     <div class="row">
         <?php $this->need('layout/left.php'); ?>
         <div class="col-xl-6 col-md-6 col-12" id="pjax-container">
+            <?php $this->need('layout/head.php'); ?>
             <section class="article-info mb-3">
                 <div class="article-detail">
                     <h1 class="article-title p-3"><a href="<?php $this->permalink(); ?>">

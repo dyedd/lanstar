@@ -23,6 +23,7 @@ let lanstar = {
         this.addCommentInit()
         this.addSearchEvent()
         this.addDarkMode()
+        this.addMobileSwitch()
         this.addScroll()
         this.addArticleLike();
         this.addProcess();
@@ -64,6 +65,19 @@ let lanstar = {
             $('.user-container').removeAttr('style')
         })
     },
+    addMobileSwitch: function () {
+        $(".mobile-button").on("click",function () {
+            $(".mobile-nav > .logo-box").addClass("d-none").parent().removeClass("col d-none").show(1000)
+                .addClass("active").find(".nav-menu").css({
+                "margin":'0 0 .5rem 0',
+            })
+            $(".right").children().not("footer").appendTo($(".mobile-nav"))
+        })
+        $(".mobile-close").on("click",function (){
+            console.log(this)
+            $(".mobile-nav").hide(1000)
+        })
+    },
     addDarkMode: function () {
         // 根据时间
         let timeNow = new Date();
@@ -100,6 +114,9 @@ let lanstar = {
                 storage.removeItem('gmtNightMode');
                 document.cookie = "night=0;path=/";
             } else {
+                // 侧边栏按钮变色
+                $(".btn-close").addClass("btn-close-white")
+
                 $('.sun').css('display', 'block');
                 $('.moon').css('display', 'none');
                 storage.setItem('gmtNightMode', true);

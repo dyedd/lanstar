@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
-<div class="col-12 col-md-3 position-relative">
+<div class="col-12 col-md-3 position-relative right d-none d-md-block">
     <div class="search-bar">
         <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
             <input type="text" id="s" name="s" class="nav-search-input" placeholder="<?php _e('输入关键字搜索'); ?>">
@@ -40,7 +40,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
     <?php endif; ?>
     <?php if ($this->is('index')): ?>
-        <div class="sidebar-box d-none d-md-block">
+        <div class="sidebar-box">
             <div class="p-3"><h6>最近消息</h6></div>
             <div class="sidebar-content px-4">
                 <?php $this->widget('Widget_Comments_Recent', 'ignoreAuthor=true&pageSize=5')->to($comments); ?>
@@ -78,5 +78,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
     </div>
     <?php $this->need('layout/footer.php'); ?>
+</div>
+<div class="col-12 d-md-none">
+<?php $this->need('layout/footer.php'); ?>
 </div>
 

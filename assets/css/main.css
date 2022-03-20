@@ -53,6 +53,7 @@ a, a:hover {
  */
 .container {
     margin-top: 1rem;
+    position: relative;
 }
 header {
     display: flex;
@@ -69,12 +70,18 @@ header {
 .toolbar-left {
     font-size: 20px;
 }
-.mobile-nav {
+.mobile-button {
     outline: none !important;
     border: none;
     line-height: 48px;
     color: #000;
     background: none;
+}
+.mobile-nav.active {
+    position: absolute;
+    z-index: 9999;
+    left: 0px;
+    background-color: #fdfbfb;
 }
 /**
 导航
@@ -321,10 +328,8 @@ article .sticky {
 
 .post-cover img {
     object-fit: cover;
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
 }
-
 .post-like {
     cursor: pointer;
 }
@@ -337,15 +342,14 @@ article .sticky {
     position: relative;
 }
 @media screen and (max-width: 576px)  {
-    .nav-search-input {
-        padding: 0 21rem 0 10px!important;
-    }
+
     .nav-search-btn {
         right: 0!important;
     }
 }
 .nav-search-input {
-    padding: 0 114px 0 10px;
+    padding: 0 10px;
+    width: 100%;
     border: 1px solid #e3e5e7;
     height: 40px;
     background-color: var(--light-background);
@@ -625,7 +629,7 @@ fix*/
 /*
 转换按钮
 */
-.chose-mode-day, .chose-mode-moon {
+.chose-mode-day, .chose-mode-moon, .mobile-button {
     outline: none !important;
     border: none;
     line-height: 48px;
@@ -778,6 +782,9 @@ fix*/
     background: var(--dark-content);
     backdrop-filter: blur(20px);
 }
+.theme-dark .mobile-nav.active {
+    background-color: var(--dark-background);
+}
 .theme-dark {
     background: var(--dark-background);
 }
@@ -788,7 +795,7 @@ fix*/
     background-color: #0000 !important;
 }
 
-.theme-dark .mobile-nav {
+.theme-dark .mobile-button {
     color: var(--dark-text-normal-color);
 }
 .theme-dark article {
