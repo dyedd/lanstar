@@ -51,6 +51,9 @@ a, a:hover {
 /**
 头部
  */
+.container {
+    margin-top: 1rem;
+}
 header {
     display: flex;
     padding: 5px 15px;
