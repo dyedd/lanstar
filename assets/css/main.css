@@ -749,58 +749,40 @@ fix*/
 分页
  */
 .page-pagination {
-    margin-top: 10px;
-}
-
-.page-link {
-    border-radius: 50% !important;
-    margin: 5px;
-    height: 36px;
-    width: 36px;
     text-align: center;
-    padding: .5rem;
-    box-shadow: var(--box-shadow);
-    border: none;
-}
-
-.page-link:focus {
-    box-shadow: none;
-}
-
-.next.page-item > .page-link {
-    padding: 5px;
-}
-
-.prev.page-item > .page-link {
-    padding: 5px;
-}
-
-.theme-dark .page-item span {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.page-item span {
-    margin: 5px;
-    height: 50px;
-    width: 40px;
+    padding: 15px 0;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
 }
-
-.page-item {
+.page-pagination a {
+    position: relative;
+    display: inline-block;
+    width: 110px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 40px;
+    border-radius: 100px;
+    transition: 0.3s ease-in-out;
+    color: #f1f4f8;
+    background-color: var(--theme-color);
+    overflow: hidden;
+}
+.page-pagination {
     position: relative;
 }
-.page-item:not(.active):not(:last-child):not(:first-child) a::after {
+.page-pagination .loading::after {
     content: '';
     display: inline-block;
     background-image: url(../img/ico-xiaoji.png);
     width: 13px;
     height: 13px;
-    position: relative;
-    top: -36px;
-    left: 15px;
-    transform: rotate(24deg);
+    position: absolute;
+    top: 4px;
 }
+
 /**
 滚动条
  */
@@ -945,4 +927,7 @@ fix*/
     align-items: center;
     color: var(--dark-routine);
     font-size: .6rem;
+}
+.theme-dark .page-pagination a {
+    background-color: var(--dark-content);
 }

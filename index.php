@@ -17,25 +17,11 @@ $this->need('layout/header.php');
         <div class="col-xl-6 col-md-6 col-12" id="pjax-container">
             <?php $this->need('layout/head.php'); ?>
             <?php $this->need('component/index.banner.php') ?>
-            <?php $this->need('component/index.article.php'); ?>
+            <div class="artices">
+                <?php $this->need('component/index.article.php'); ?>
+            </div>
             <div class="page-pagination">
-                <?php
-                $this->pageNav(
-                    '<svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-zuo"></use>
-                    </svg>',
-                    '<svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-you"></use>
-                    </svg>',
-                    3, '...', array(
-                    'wrapTag' => 'ul',
-                    'wrapClass' => 'pagination justify-content-center',
-                    'itemTag' => 'li',
-                    'itemClass' => 'page-item',
-                    'linkClass' => 'page-link',
-                    'currentClass' => 'active'
-                ));
-                ?>
+                <?php $this->pageLink('加载更多','next'); ?>
             </div>
         </div>
         <?php $this->need('layout/right.php'); ?>

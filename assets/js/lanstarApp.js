@@ -30,6 +30,7 @@ let lanstar = {
         this.addInitTabs();
         this.addInitCollapse();
         this.addCarouselEnter();
+        this.addMorePages();
     },
     addFunc: () => {
         let getCookie = function (cookieName)
@@ -540,7 +541,33 @@ let lanstar = {
            $(this).children('a').css({'display':'flex'})
         })
         $('#carouselCaptions').on('mouseleave',function (){
-            $(this).children('a').hide(1000)
+            $(this).children('a').hide()
         })
+    },
+    addMorePages(){
+        $('.next').click(function() {
+            $this = $(this);
+            $(this).addClass('loading').text('正在努力加载');
+            let href =$(this).attr('href');
+            if (href != undefined) {
+                $.ajax({
+                    url: href,
+                    type: 'get',
+                    success: function(data) { //请求成功
+                        console.log(data)
+                        $this.removeClass('loading').text('查看更多');
+                        var $res = $(data).find('.article-list');
+                        $('.artices').append($res.fadeIn(500));
+                        let newhref = $(data).find('.next').attr('href');
+                        if (newhref != undefined) {
+                            $('.next').attr('href', newhref);
+                        } else {
+                            $('.next').remove(); //如果没有下一页了，隐藏
+                        }
+                    }
+                });
+            }
+            return false;
+        });
     }
 }
