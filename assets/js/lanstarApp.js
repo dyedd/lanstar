@@ -29,6 +29,7 @@ let lanstar = {
         this.addProcess();
         this.addInitTabs();
         this.addInitCollapse();
+        this.addCarouselEnter();
     },
     addFunc: () => {
         let getCookie = function (cookieName)
@@ -86,6 +87,7 @@ let lanstar = {
         let storage = window.localStorage;
         if (storage.getItem('gmtNightMode')) {
             $('body').addClass('theme-dark');
+            $('#carouselCaptions').addClass('carousel-dark')
             $('.chose-mode-day').css('display', 'none');
             $('.chose-mode-moon').css('display', 'inline-block');
             document.cookie = "night=1;path=/";
@@ -94,8 +96,10 @@ let lanstar = {
             if (!this.addFunc().getCookie('night')) {
                 if (hours > 6 && hours < 19) {
                     $('body').removeClass('theme-dark');
+                    $('#carouselCaptions').removeClass('carousel-dark')
                 } else {
                     $('body').addClass('theme-dark');
+                    $('#carouselCaptions').addClass('carousel-dark')
                 }
             }
 
@@ -131,6 +135,7 @@ let lanstar = {
                     $('.moon').css('display', 'none');
                 }
                 $('body')[0].classList.toggle('theme-dark');
+                $('#carouselCaptions')[0].classList.toggle('carousel-dark')
             }, 900)
             setTimeout(function () {
                 $(".ze_DarkSky").fadeOut(1e3, function () {
@@ -529,5 +534,13 @@ let lanstar = {
             next.slideToggle(200);
             $('.article-collapse .collapse-body').not(next).slideUp();
         });
+    },
+    addCarouselEnter(){
+        $('#carouselCaptions').on('mouseenter',function (){
+           $(this).children('a').css({'display':'flex'})
+        })
+        $('#carouselCaptions').on('mouseleave',function (){
+            $(this).children('a').hide(1000)
+        })
     }
 }

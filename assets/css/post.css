@@ -28,7 +28,7 @@
 .article-title {
     font-weight: 700;
     word-break: break-all;
-    text-shadow: var(--text-shadw);
+    text-shadow: var(--text-shadow);
     width: 100%;
     text-align: center;
 }
@@ -55,7 +55,7 @@
     font-weight: 400;
     margin: 0 .5rem;
     display: inline-flex;
-    text-shadow: var(--text-shadw);
+    text-shadow: var(--text-shadow);
     user-select: none;
 }
 

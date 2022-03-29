@@ -12,6 +12,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             </button>
         </form>
     </div>
+    <?php if ($this->options->sidebarBlock && in_array('ShowBlogInfo', $this->options->sidebarBlock)): ?>
     <div class="card user-container">
         <div class="card-header user-info">
             <div class="info">
@@ -22,6 +23,25 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <?php $this->options->rightName(); ?>
         </p>
         <div class="card-info-description"><?php echo $this->options->rightMotto ? $this->options->rightMotto : '博主很懒，啥都没有'; ?></div>
+        <?php Typecho_Widget::widget('Widget_Stat')->to($item); ?>
+        <div class="count">
+            <div class="item" title="累计文章数">
+                <span class="num"><?php echo number_format($item->publishedPostsNum); ?></span>
+                <span>文章数</span>
+            </div>
+            <div class="item" title="累计评论数">
+                <span class="num"><?php echo number_format($item->publishedCommentsNum); ?></span>
+                <span>评论量</span>
+            </div>
+            <div class="item" title="累计分类数">
+                <span class="num"><?php echo number_format($item->categoriesNum); ?></span>
+                <span>分类数</span>
+            </div>
+            <div class="item" title="累计页面数">
+                <span class="num"><?php echo number_format($item->publishedPagesNum + $item->publishedPostsNum); ?></span>
+                <span>页面数</span>
+            </div>
+        </div>
         <div class="card-icon">
             <a href="<?php $this->options->siteUrl(); ?>/feed" title="rss">
                 <svg class="icon" aria-hidden="true">
@@ -30,8 +50,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             </a>
             <?php echo utils::handleRightIcon() ?>
         </div>
+        <div class="time-text">
+            <span>已在风雨中度过 <?php echo utils::getBuildTime($this->options->startTime);?></span>
+        </div>
     </div>
-    <?php if ($this->options->couple): ?>
+    <?php endif; ?>
+    <?php if ($this->options->sidebarBlock && in_array('ShowYourCouple', $this->options->sidebarBlock)): ?>
         <div class="sidebar-box couple">
             <img class="pic" src="<?php $this->options->rightAvatar(); ?>" alt="博主">
             <img class="couple-love" src="<?php utils::indexTheme('assets/img/love.png'); ?>" alt="爱心">
@@ -39,6 +63,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <div id="our-company" data-start="<?php $this->options->company(); ?>"></div>
         </div>
     <?php endif; ?>
+    <?php if ($this->options->sidebarBlock && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
     <?php if ($this->is('index')): ?>
         <div class="sidebar-box">
             <div class="p-3"><h6>最近消息</h6></div>
@@ -71,12 +96,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             </div>
         </div>
     <?php endif; ?>
+    <?php endif; ?>
+    <?php if ($this->options->sidebarBlock && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
     <div class="sidebar-box">
         <div class="p-3"><h6>可能感兴趣</h6></div>
         <div class="sidebar-content px-3 pb-2">
             <?php utils::getRandomPosts(3); ?>
         </div>
     </div>
+    <?php endif; ?>
     <?php $this->need('layout/footer.php'); ?>
 </div>
 <div class="col-12 d-md-none">

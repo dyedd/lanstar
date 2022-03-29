@@ -15,7 +15,7 @@
     <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/page.min.js'; else:utils::indexTheme('assets/js/page.js'); endif ?>"></script>
 <?php endif; ?>
 <script>lanstar.init();</script>
-<?php if ($this->options->couple): ?>
+<?php if ($this->options->sidebarBlock && in_array('ShowYourCouple', $this->options->sidebarBlock)): ?>
     <script>lanstar.addCoupleTime();</script>
 <?php endif; ?>
 <?php if ($this->options->pjax && $this->options->pjax != 0) : ?>

@@ -106,6 +106,14 @@ EOF;
     $recordNo->setAttribute('class', 'theme-setting-content theme-setting-global');
     $form->addInput($recordNo);
 
+    $footerName = new Typecho_Widget_Helper_Form_Element_Text('footerName', NULL, NULL, _t('自定义脚部版权名称'), _t('默认为@ 日期 站点名称'));
+    $footerName->setAttribute('class', 'theme-setting-content theme-setting-global');
+    $form->addInput($footerName);
+
+    $startTime = new Typecho_Widget_Helper_Form_Element_Text('startTime', NULL, NULL, _t('建站时间'), _t('格式为2022-03-28 13:55:00'));
+    $startTime->setAttribute('class', 'theme-setting-content theme-setting-global');
+    $form->addInput($startTime);
+
     $customNavIcon = new Typecho_Widget_Helper_Form_Element_Textarea('customNavIcon', NULL, NULL, _t('自定义导航小图标'), _t('按照格式书写，自定义内导航栏右侧的小图标，留空则展示默认的图标按钮，书写的格式请查看 wiki'));
     $customNavIcon->setAttribute('class', 'theme-setting-content theme-setting-global');
     $form->addInput($customNavIcon);
@@ -136,6 +144,18 @@ EOF;
     $jsPushBaidu->setAttribute('class', 'theme-setting-content theme-setting-post');
     $form->addInput($jsPushBaidu);
 
+    // 侧边栏
+    $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
+        array(
+            'ShowBlogInfo' => _t('显示博主信息'),
+            'ShowYourCouple' => _t('显示情侣功能'),
+            'ShowRecentComments' => _t('显示最近评论'),
+            'ShowInterestPosts' => _t('显示可能感觉兴趣的文章'),
+        ),
+        array('ShowBlogInfo','ShowyourCouple','ShowRecentComments', 'ShowInterestPosts'), _t('<h2>侧边栏功能</h2>'), _t('在这里选择需要展示在侧边栏的内容'));
+    $sidebarBlock->setAttribute('class', 'theme-setting-content theme-setting-aside');
+    $form->addInput($sidebarBlock->multiMode());
+    
     $LicenseInfo = new Typecho_Widget_Helper_Form_Element_Text('LicenseInfo', NULL, NULL, _t('文章许可信息'), _t('填入后将在文章底部显示你填入的许可信息（支持HTML标签），留空则默认为 (CC BY-SA 4.0)国际许可协议。'));
     $LicenseInfo->setAttribute('class', 'theme-setting-content theme-setting-post');
     $form->addInput($LicenseInfo);
@@ -155,6 +175,7 @@ EOF;
     $rightIcon = new Typecho_Widget_Helper_Form_Element_Textarea('rightIcon', NULL, NULL, _t('媒体信息'), _t('名称+图标+地址，一行一个'));
     $rightIcon->setAttribute('class', 'theme-setting-content theme-setting-aside');
     $form->addInput($rightIcon);
+    
 
     $pjax = new Typecho_Widget_Helper_Form_Element_Select('pjax', array(
         '0' => '关闭',
@@ -190,14 +211,7 @@ EOF;
     $music->setAttribute('class', 'theme-setting-content theme-setting-music');
     $form->addInput($music);
 
-    $couple = new Typecho_Widget_Helper_Form_Element_Select('couple', array(
-        '0' => '关闭',
-        '1' => '开启'
-    ), '0', '<h2>情侣功能</h2>是否开启', '侧边栏开启情侣的头像');
-    $couple->setAttribute('class', 'theme-setting-content theme-setting-couple');
-    $form->addInput($couple);
-
-    $taAvatar = new Typecho_Widget_Helper_Form_Element_Text('taAvatar', NULL, NULL, _t('其它头像地址'), _t('你的另一半~'));
+    $taAvatar = new Typecho_Widget_Helper_Form_Element_Text('taAvatar', NULL, NULL, _t('<h2>情侣功能</h2>其它头像地址'), _t('你的另一半~'));
     $taAvatar->setAttribute('class', 'theme-setting-content theme-setting-couple');
     $form->addInput($taAvatar);
 

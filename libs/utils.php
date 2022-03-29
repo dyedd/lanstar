@@ -10,7 +10,7 @@ class utils
     public static function bannerHandle($content)
     {
         if(empty($content)) {
-            $content = Helper::options()->themeUrl("", "lanstar/assets/img").'/bg.jpg|'.'#'.'|标题|简介';
+            $content = Helper::options()->themeUrl("", "lanstar/assets/img").'/bg.jpg|'.'#'.'|标题|简介|||';
         }
         $bannerArr = explode(PHP_EOL, $content);
         $text = '';
@@ -27,16 +27,16 @@ class utils
                     <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
                     <img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <h4>' . $bannerInfo[2] . '</h4>
-                            <p>' . $bannerInfo[3] . '</p>
+                            <h5 style="color: '.$bannerInfo[4].'">' . $bannerInfo[2] . '</h5>
+                            <p style="font-size: '.$bannerInfo[5].'rem">' . $bannerInfo[3] . '</p>
                           </div></a>
                 </div>';
                 } else {
                     $text .= '<div class="carousel-item">
                     <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <h4>' . $bannerInfo[2] . '</h4>
-                            <p>' . $bannerInfo[3] . '</p>
+                            <h5 style="color: '.$bannerInfo[4].'">' . $bannerInfo[2] . '</h5>
+                            <p style="'.$bannerInfo[5].'rem">' . $bannerInfo[3] . '</p>
                           </div>
                 </div>';
                 }
@@ -46,16 +46,16 @@ class utils
                     <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
                     <img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <h4>' . $bannerInfo[2] . '</h4>
-                            <p>' . $bannerInfo[3] . '</p>
+                            <h5 style="color: '.$bannerInfo[4].'">' . $bannerInfo[2] . '</h5>
+                            <p style="'.$bannerInfo[5].'rem">' . $bannerInfo[3] . '</p>
                           </div></a>
                 </div>';
                 } else {
                     $text .= '<div class="carousel-item active">
                     <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <h4>' . $bannerInfo[2] . '</h4>
-                            <p>' . $bannerInfo[3] . '</p>
+                            <h5 style="color: '.$bannerInfo[4].'">' . $bannerInfo[2] . '</h5>
+                            <p style="'.$bannerInfo[5].'rem">' . $bannerInfo[3] . '</p>
                           </div>
                 </div>';
                 }
@@ -408,7 +408,7 @@ class utils
     public static function handleRightIcon()
     {
         $getIconRow = explode(PHP_EOL, Helper::options()->rightIcon);
-        if (!$getIconRow) {
+        if ($getIconRow) {
             $text = '';
             foreach ($getIconRow as $key => $value) {
                 $iconInfo = explode('+', $value);
@@ -495,6 +495,56 @@ EOF;
                 </div>
 EOF;
             }
+        }
+    }
+    /**
+     * 秒转时间，格式 年 月 日 时 分 秒
+     *
+     * @author Roogle
+     * @return html
+     */
+    public static function getBuildTime($time){
+        // 设置时区
+        date_default_timezone_set('Asia/Shanghai');
+        // 在下面按格式输入本站创建的时间
+        $options = Typecho_Widget::widget('Widget_Options');
+        $start_Time = $options->startTime;
+        $site_create_time = strtotime($time);
+        if(!empty($start_Time)){
+            $site_create_time = strtotime($start_Time);
+        }
+        $time = time() - $site_create_time;
+        if(is_numeric($time)){
+            $value = array(
+                "years" => 0, "days" => 0, "hours" => 0,
+                "minutes" => 0, "seconds" => 0,
+            );
+            if($time >= 31556926){
+                $value["years"] = floor($time/31556926);
+                $time = ($time%31556926);
+            }
+            if($time >= 86400){
+                $value["days"] = floor($time/86400);
+                $time = ($time%86400);
+            }
+            if($time >= 3600){
+                $value["hours"] = floor($time/3600);
+                $time = ($time%3600);
+            }
+            if($time >= 60){
+                $value["minutes"] = floor($time/60);
+                $time = ($time%60);
+            }
+            $value["seconds"] = floor($time);
+
+
+            if($value['years']>0){
+                echo ''.$value['years'].'年'.$value['days'].'天'.$value['hours'].'小时'.$value['minutes'].'分';
+            }else{
+                echo ''.$value['days'].'天'.$value['hours'].'小时'.$value['minutes'].'分';
+            }
+        }else{
+            echo '';
         }
     }
 }
