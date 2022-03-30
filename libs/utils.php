@@ -27,16 +27,16 @@ class utils
                     <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
                     <img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <h5 style="color: '.$bannerInfo[4].'">' . $bannerInfo[2] . '</h5>
-                            <p style="font-size: '.$bannerInfo[5].'rem">' . $bannerInfo[3] . '</p>
+                            <h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
+                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>
                           </div></a>
                 </div>';
                 } else {
                     $text .= '<div class="carousel-item">
                     <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <h5 style="color: '.$bannerInfo[4].'">' . $bannerInfo[2] . '</h5>
-                            <p style="'.$bannerInfo[5].'rem">' . $bannerInfo[3] . '</p>
+                            <h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
+                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>
                           </div>
                 </div>';
                 }
@@ -46,16 +46,16 @@ class utils
                     <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
                     <img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <h5 style="color: '.$bannerInfo[4].'">' . $bannerInfo[2] . '</h5>
-                            <p style="'.$bannerInfo[5].'rem">' . $bannerInfo[3] . '</p>
+                            <h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
+                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>
                           </div></a>
                 </div>';
                 } else {
                     $text .= '<div class="carousel-item active">
                     <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
                           <div class="carousel-caption d-none d-md-block">
-                            <h5 style="color: '.$bannerInfo[4].'">' . $bannerInfo[2] . '</h5>
-                            <p style="'.$bannerInfo[5].'rem">' . $bannerInfo[3] . '</p>
+                            <h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
+                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>
                           </div>
                 </div>';
                 }

@@ -1,3 +1,8 @@
+### [3.0.1](https://github.com/dyedd/lanstar/releases/tag/3.0.1)
+
+1. 主要对于 #27 的更新
+2. 增加首页文章加载按钮
+
 ### [3.0.0](https://github.com/dyedd/lanstar/releases/tag/3.0.0)
 
 1. 更新了新的样式
