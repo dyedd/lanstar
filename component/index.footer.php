@@ -1,10 +1,10 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdn.staticfile.org/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.slim.js"></script>
+<script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
+<script src="https://cdn.staticfile.org/toastify-js/1.11.2/toastify.min.js"></script>
 <?php $this->options->jsEcho(); ?>
 <script>let _owo = '<?php utils::indexTheme('assets/owo/OwO.json'); ?>'</script>
 <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/OwO.js'; else:utils::indexTheme('assets/js/OwO.js'); endif ?>"></script>
@@ -19,7 +19,7 @@
     <script>lanstar.addCoupleTime();</script>
 <?php endif; ?>
 <?php if ($this->options->pjax && $this->options->pjax != 0) : ?>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
     <script>
         $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], a[no-pjax])', {
             container: '#pjax-container',
@@ -55,8 +55,8 @@
 <?php endif; ?>
 <?php if ($this->options->music): ?>
     <meting-js fixed="true" lrc-type="1" <?php $this->options->music(); ?>></meting-js>
-    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+    <script src="https://cdn.staticfile.org/aplayer/1.9.1/APlayer.min.js"></script>
+    <script src="<?php utils::indexTheme('assets/js/Meting.min.js')?>"></script>
 <?php endif; ?>
 <?php if ($this->options->compressHtml): $html_source = ob_get_contents();
     ob_clean();
