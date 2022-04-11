@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 class utils
 {
     /**
@@ -10,7 +10,7 @@ class utils
     public static function bannerHandle($content)
     {
         if(empty($content)) {
-            $content = Helper::options()->themeUrl("", "lanstar/assets/img").'/bg.jpg|'.'#'.'|标题|简介|||';
+            $content = Helper::options()->themeUrl("", "lanstar/assets/img").'/bg.jpg|'.'#'.'|标题|简介';
         }
         $bannerArr = explode(PHP_EOL, $content);
         $text = '';
@@ -21,46 +21,24 @@ class utils
         }
         foreach ($bannerArr as $key => $banner) {
             $bannerInfo = explode('|', $banner);
-            if ($key) {
-                if (preg_match('{[a-zA-z]+://[^\s]*}', $bannerInfo[1])) {
-                    $text .= '<div class="carousel-item">
-                    <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
-                    <img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
-                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>
-                          </div></a>
-                </div>';
-                } else {
-                    $text .= '<div class="carousel-item">
-                    <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
-                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>
-                          </div>
-                </div>';
-                }
-            } else {
-                if (preg_match('{[a-zA-z]+://[^\s]*}', $bannerInfo[1])) {
-                    $text .= '<div class="carousel-item active">
-                    <a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">
-                    <img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
-                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>
-                          </div></a>
-                </div>';
-                } else {
-                    $text .= '<div class="carousel-item active">
-                    <img src="' . $bannerInfo[0] . '" class="d-block w-100" alt="banner">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
-                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>
-                          </div>
-                </div>';
-                }
-
+            $active = $a = '';
+            //激活幻灯片
+            if($key == 0){
+                $active = ' active';
             }
+            if (preg_match('{[a-zA-z]+://[^\s]*}', $bannerInfo[1])) {
+                $a = '<a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">';
+            }
+            if(count($bannerInfo) > 4){
+                $style = '<h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
+                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>';
+            }else{
+                $style = '<h5>' . $bannerInfo[2] . '</h5><p>' . $bannerInfo[3] . '</p>';
+            }
+            $text .= '<div class="carousel-item'. $active .'">'. $a .
+                '<img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' .
+                $bannerInfo[0] .
+                '" class="d-block w-100" alt="banner"><div class="carousel-caption d-none d-md-block">'.$style.'</div></a></div>';
         }
         return $text;
     }
