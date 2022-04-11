@@ -931,3 +931,6 @@ fix*/
 .theme-dark .page-pagination a {
     background-color: var(--dark-content);
 }
+.theme-dark .comment-close {
+    color: var(--dark-text-normal-color);
+}
