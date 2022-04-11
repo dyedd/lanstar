@@ -97,7 +97,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
     <?php endif; ?>
     <?php endif; ?>
-    <?php if ($this->options->sidebarBlock && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
+    <?php if ($this->options->sidebarBlock && in_array('ShowInterestPosts', $this->options->sidebarBlock)): ?>
     <div class="sidebar-box">
         <div class="p-3"><h6>可能感兴趣</h6></div>
         <div class="sidebar-content px-3 pb-2">
