@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <script src="https://cdn.staticfile.org/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.slim.js"></script>
+<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
 <script src="https://cdn.staticfile.org/toastify-js/1.11.2/toastify.min.js"></script>
