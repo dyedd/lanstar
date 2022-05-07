@@ -58,6 +58,9 @@
     <script src="https://cdn.staticfile.org/aplayer/1.9.1/APlayer.min.js"></script>
     <script src="<?php utils::indexTheme('assets/js/Meting.min.js')?>"></script>
 <?php endif; ?>
+<?php if ($this->options->extraIcon): ?>
+    <script src="<?php echo $this->options->extraIcon();?>"></script>
+<?php endif; ?>
 <?php if ($this->options->compressHtml): $html_source = ob_get_contents();
     ob_clean();
     print utils::compressHtml($html_source);

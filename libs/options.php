@@ -175,7 +175,10 @@ EOF;
     $rightIcon = new Typecho_Widget_Helper_Form_Element_Textarea('rightIcon', NULL, NULL, _t('媒体信息'), _t('名称+图标+地址，一行一个'));
     $rightIcon->setAttribute('class', 'theme-setting-content theme-setting-aside');
     $form->addInput($rightIcon);
-    
+
+    $extraIcon = new Typecho_Widget_Helper_Form_Element_Text('extraIcon', NULL, NULL, _t('媒体额外引用'), _t('当主题自带的icon不满足你的时候，可以在这里添加iconfont的js链接，增加网站图标'));
+    $extraIcon->setAttribute('class', 'theme-setting-content theme-setting-aside');
+    $form->addInput($extraIcon);
 
     $pjax = new Typecho_Widget_Helper_Form_Element_Select('pjax', array(
         '0' => '关闭',
