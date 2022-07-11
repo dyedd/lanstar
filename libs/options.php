@@ -125,13 +125,6 @@ EOF;
     $compressHtml->setAttribute('class', 'theme-setting-content theme-setting-global');
     $form->addInput($compressHtml);
 
-    $cdn = new Typecho_Widget_Helper_Form_Element_Radio('cdn',
-        array(1 => _t('启用'),
-            0 => _t('关闭')),
-        0, _t('使用jsdelivr加速'), _t('默认关闭，开启后不再调用本地css，js等资源'));
-    $cdn->setAttribute('class', 'theme-setting-content theme-setting-global');
-    $form->addInput($cdn);
-
     $LoadingOptions = [
         'block' => "交错方块",
         'custom' => "自定义"

@@ -8,13 +8,19 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.9.1/APlayer.min.css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
-    <link rel="stylesheet"
-          href="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/css/main.min.css'; else:utils::indexTheme('assets/css/main.css'); endif ?>">
-    <link rel="stylesheet"
-          href="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/css/gazeimg.min.css'; else:utils::indexTheme('assets/css/gazeimg.css'); endif ?>">
     <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/toastify-js/1.11.2/toastify.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.staticfile.org/highlight.js/11.5.1/styles/darcula.min.css">
+    <link rel="stylesheet"
+          href="<?php utils::indexTheme('assets/css/main.css');?>">
+    <link rel="stylesheet"
+          href="<?php utils::indexTheme('assets/css/post.css');?>">
+    <link rel="stylesheet"
+          href="<?php utils::indexTheme('assets/css/comments.css');?>">
+    <link rel="stylesheet"
+          href="<?php utils::indexTheme('assets/css/OwO.min.css');?>">
+    <link rel="stylesheet"
+          href="<?php utils::indexTheme('assets/css/gazeimg.css');?>">
+    <link rel="stylesheet"
+          href="<?php utils::indexTheme('assets/css/prism.css');?>">
     <title><?php $this->archiveTitle(array(
             'category' => _t('分类 %s 下的文章'),
             'search' => _t('包含关键字 %s 的文章'),

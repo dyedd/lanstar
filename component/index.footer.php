@@ -7,12 +7,17 @@
 <script src="https://cdn.staticfile.org/toastify-js/1.11.2/toastify.min.js"></script>
 <?php $this->options->jsEcho(); ?>
 <script>let _owo = '<?php utils::indexTheme('assets/owo/OwO.json'); ?>'</script>
-<script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/OwO.js'; else:utils::indexTheme('assets/js/OwO.js'); endif ?>"></script>
-<script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/lanstarApp.min.js'; else:utils::indexTheme('assets/js/lanstarApp.js'); endif ?>"></script>
-<script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/gazeimg.min.js'; else:utils::indexTheme('assets/js/gazeimg.js'); endif ?>"></script>
-<script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/icon.min.js'; else:utils::indexTheme('assets/js/icon.js'); endif ?>"></script>
+<script
+    src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/OwO.js'; else:utils::indexTheme('assets/js/OwO.js'); endif ?>"></script>
+<script
+    src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/lanstarApp.min.js'; else:utils::indexTheme('assets/js/lanstarApp.js'); endif ?>"></script>
+<script
+    src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/gazeimg.min.js'; else:utils::indexTheme('assets/js/gazeimg.js'); endif ?>"></script>
+<script
+    src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/icon.min.js'; else:utils::indexTheme('assets/js/icon.js'); endif ?>"></script>
 <?php if ($this->is('single')): ?>
-    <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/page.min.js'; else:utils::indexTheme('assets/js/page.js'); endif ?>"></script>
+    <script
+        src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/page.min.js'; else:utils::indexTheme('assets/js/page.js'); endif ?>"></script>
 <?php endif; ?>
 <script>lanstar.init();</script>
 <?php if ($this->options->sidebarBlock && in_array('ShowYourCouple', $this->options->sidebarBlock)): ?>
@@ -24,22 +29,14 @@
         $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], a[no-pjax])', {
             container: '#pjax-container',
             fragment: '#pjax-container',
-            timeout: 8000
-        });
-        $(document).on('pjax:send',
+            timeout: 3000
+        }).on('pjax:send',
             function () {
                 NProgress.start();
-            });
-        $(document).on('pjax:end',
-            function () {
+            }).on('pjax:complete', function () {
+                lanstar.addHighLight();
+                $('img[data-gisrc]:not([data-gi-init])').giLazy();
                 NProgress.done();
-            });
-        $(document).on('pjax:complete', function () {
-            lanstar.addHighLight();
-            $('img[data-gisrc]:not([data-gi-init])').giLazy();
-        });
-        $(document).on('ready pjax:end',
-            function () {
                 lanstar.init();
                 lanstar.addEmoji();
                 lanstar.addCatalog();
@@ -47,19 +44,20 @@
                 lanstar.addPageLike();
                 lanstar.addArchiveToggle();
                 <?php $this->options->pjax_complete(); ?>
-            });
+        });
     </script>
 <?php endif; ?>
 <?php if ($this->options->jsPushBaidu): ?>
-    <script src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/push.min.js'; else:utils::indexTheme('assets/js/push.js'); endif ?>"></script>
+    <script
+        src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/push.min.js'; else:utils::indexTheme('assets/js/push.js'); endif ?>"></script>
 <?php endif; ?>
 <?php if ($this->options->music): ?>
     <meting-js fixed="true" lrc-type="1" <?php $this->options->music(); ?>></meting-js>
     <script src="https://cdn.staticfile.org/aplayer/1.9.1/APlayer.min.js"></script>
-    <script src="<?php utils::indexTheme('assets/js/Meting.min.js')?>"></script>
+    <script src="<?php utils::indexTheme('assets/js/Meting.min.js') ?>"></script>
 <?php endif; ?>
 <?php if ($this->options->extraIcon): ?>
-    <script src="<?php echo $this->options->extraIcon();?>"></script>
+    <script src="<?php echo $this->options->extraIcon(); ?>"></script>
 <?php endif; ?>
 <?php if ($this->options->compressHtml): $html_source = ob_get_contents();
     ob_clean();
