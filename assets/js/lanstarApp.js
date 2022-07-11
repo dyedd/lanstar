@@ -224,44 +224,42 @@ let lanstar = {
     },
     addArticleLike: () => {
         // 首页点赞
-        $('.post-action').each(function (i, n) {
-            $(n).find('.post-like').on('click', function () {
-                if ($(this).get(0).getAttribute('class') === 'post-like active')
-                    return Toastify({
-                        text: '你已经点赞过了，取消不了，啦啦啦',
+        $('.artices').on('click','.post-like', function () {
+            if ($(this).get(0).getAttribute('class') === 'post-like active')
+                return Toastify({
+                    text: '你已经点赞过了，取消不了，啦啦啦',
+                    duration: 3000,
+                    backgroundColor: "linear-gradient(to right, #fa709a 0%, #fee140 100%)"
+                }).showToast();
+            $.ajax({
+                type: 'post',
+                data: 'agree=' + $(this).attr('data-cid'),
+                async: true,
+                timeout: 30000,
+                cache: false,
+                //  请求成功的函数
+                success: (data) => {
+                    let re = /\d/;  //  匹配数字的正则表达式
+                    //  匹配数字
+                    if (re.test(data)) {
+                        //  把点赞按钮中的点赞数量设置为传回的点赞数量
+                        $(this).find('b.agree-num').html(data);
+                        Toastify({
+                            text: "点赞成功！",
+                            duration: 3000
+                        }).showToast();
+                        $(this).get(0).setAttribute('class', 'post-like active')
+                    }
+                },
+                error: (data) => {
+                    $(this).get(0).setAttribute('class', 'post-like')
+                    Toastify({
+                        text: data,
                         duration: 3000,
                         backgroundColor: "linear-gradient(to right, #fa709a 0%, #fee140 100%)"
                     }).showToast();
-                $.ajax({
-                    type: 'post',
-                    data: 'agree=' + $(this).attr('data-cid'),
-                    async: true,
-                    timeout: 30000,
-                    cache: false,
-                    //  请求成功的函数
-                    success: (data) => {
-                        let re = /\d/;  //  匹配数字的正则表达式
-                        //  匹配数字
-                        if (re.test(data)) {
-                            //  把点赞按钮中的点赞数量设置为传回的点赞数量
-                            $($('.post-like').find('b.agree-num')[i]).html(data);
-                            Toastify({
-                                text: "点赞成功！",
-                                duration: 3000
-                            }).showToast();
-                            $(this).get(0).setAttribute('class', 'post-like active')
-                        }
-                    },
-                    error: (data) => {
-                        $(this).get(0).setAttribute('class', 'post-like')
-                        Toastify({
-                            text: data,
-                            duration: 3000,
-                            backgroundColor: "linear-gradient(to right, #fa709a 0%, #fee140 100%)"
-                        }).showToast();
-                    },
-                });
-            })
+                },
+            });
         })
     },
     addEmoji : ()=>{
@@ -282,7 +280,7 @@ let lanstar = {
         }
     },
     addHighLight : function (){
-        hljs.initHighlighting();
+        hljs.highlightAll();
     },
     addCatalog : ()=>{
         let catalog_btn = document.getElementById('article-list-btn');
@@ -554,7 +552,6 @@ let lanstar = {
                     url: href,
                     type: 'get',
                     success: function(data) { //请求成功
-                        console.log(data)
                         $this.removeClass('loading').text('查看更多');
                         var $res = $(data).find('.article-list');
                         $('.artices').append($res.fadeIn(500));
