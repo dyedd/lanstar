@@ -5,7 +5,7 @@
 <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
 <script src="https://cdn.staticfile.org/toastify-js/1.11.2/toastify.min.js"></script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 <?php $this->options->jsEcho(); ?>
 <script>let _owo = '<?php utils::indexTheme('assets/owo/OwO.json'); ?>'</script>
 <script
