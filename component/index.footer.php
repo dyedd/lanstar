@@ -8,16 +8,16 @@
 <?php $this->options->jsEcho(); ?>
 <script>let _owo = '<?php utils::indexTheme('assets/owo/OwO.json'); ?>'</script>
 <script
-    src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/OwO.js'; else:utils::indexTheme('assets/js/OwO.js'); endif ?>"></script>
+    src="<?php utils::indexTheme('assets/js/OwO.js'); ?>"></script>
 <script
-    src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/lanstarApp.min.js'; else:utils::indexTheme('assets/js/lanstarApp.js'); endif ?>"></script>
+    src="<?php utils::indexTheme('assets/js/lanstarApp.js'); ?>"></script>
 <script
-    src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/gazeimg.min.js'; else:utils::indexTheme('assets/js/gazeimg.js'); endif ?>"></script>
+    src="<?php utils::indexTheme('assets/js/gazeimg.js'); ?>"></script>
 <script
-    src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/icon.min.js'; else:utils::indexTheme('assets/js/icon.js'); endif ?>"></script>
+    src="<?php utils::indexTheme('assets/js/icon.js'); ?>"></script>
 <?php if ($this->is('single')): ?>
     <script
-        src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/page.min.js'; else:utils::indexTheme('assets/js/page.js'); endif ?>"></script>
+        src="<?php utils::indexTheme('assets/js/page.js');?>"></script>
 <?php endif; ?>
 <script>lanstar.init();</script>
 <?php if ($this->options->sidebarBlock && in_array('ShowYourCouple', $this->options->sidebarBlock)): ?>
@@ -49,7 +49,7 @@
 <?php endif; ?>
 <?php if ($this->options->jsPushBaidu): ?>
     <script
-        src="<?php if ($this->options->cdn): echo 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/js/push.min.js'; else:utils::indexTheme('assets/js/push.js'); endif ?>"></script>
+        src="<?php utils::indexTheme('assets/js/push.js'); ?>"></script>
 <?php endif; ?>
 <?php if ($this->options->music): ?>
     <meting-js fixed="true" lrc-type="1" <?php $this->options->music(); ?>></meting-js>

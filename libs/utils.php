@@ -357,27 +357,9 @@ class utils
      */
     public static function addLoadingImages($image)
     {
-        // 如果开启了cdn
-        if (Helper::options()->cdn) {
-            return 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/img/loading/' . $image . '.gif';
-        } else {
-            return Helper::options()->themeUrl("", "lanstar/assets/img/loading/") . $image . '.gif';
-        }
+        return Helper::options()->themeUrl("", "lanstar/assets/img/loading/") . $image . '.gif';
     }
 
-    /**
-     * 经过cdn处理的获取资源
-     * @param $path
-     * @return string
-     */
-    public static function getAssets($path)
-    {
-        if (Helper::options()->cdn) {
-            return 'https://cdn.jsdelivr.net/gh/dyedd/lanstar@' . themeVersion() . '/assets/' . $path;
-        } else {
-            return Helper::options()->themeUrl("", "lanstar/assets/") . $path;
-        }
-    }
 
     /**
      * 侧边栏媒体信息
