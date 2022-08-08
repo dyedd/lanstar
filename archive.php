@@ -15,7 +15,7 @@
                         ), '', ''); ?></h1>
                 </div>
                 <div class="article-cover-inner">
-                    <img src="<?php echo $this->fields->banner ?: utils::getAssets('img/default.jpg'); ?>" alt="cover">
+                    <img src="<?php echo $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
                 </div>
             </section>
             <?php if ($this->have()): ?>

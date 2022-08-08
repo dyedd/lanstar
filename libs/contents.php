@@ -42,7 +42,7 @@ class contents{
      */
     public static function parsePaopaoBiaoqingCallback($match)
     {
-        return '<img class="emoji no-fabcybox" src="' . utils::getAssets('owo/biaoqing/paopao/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji no-fabcybox" src="' . utils::indexTheme('assets/owo/biaoqing/paopao/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -52,7 +52,7 @@ class contents{
      */
     public static function parseAruBiaoqingCallback($match)
     {
-        return '<img class="emoji no-fabcybox" src="' . utils::getAssets('owo/biaoqing/aru/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji no-fabcybox" src="' . utils::indexTheme('assets/owo/biaoqing/aru/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -62,7 +62,7 @@ class contents{
      */
     public static function parseQuyinBiaoqingCallback($match)
     {
-        return '<img class="emoji no-fabcybox" src="' . utils::getAssets('owo/biaoqing/quyin/') . str_replace('%', '', urlencode($match[1])) . '.png">';
+        return '<img class="emoji no-fabcybox" src="' . utils::indexTheme('assets/owo/biaoqing/quyin/') . str_replace('%', '', urlencode($match[1])) . '.png">';
     }
     /**
      * 友链解析
