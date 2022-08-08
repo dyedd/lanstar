@@ -7,9 +7,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <li data-bs-target="#carouselCaptions" data-bs-slide-to="1"></li>
         <li data-bs-target="#carouselCaptions" data-bs-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
-        <?php echo utils::bannerHandle($this->options->bannerUrl); ?>
-    </div>
+    <?php if($this->options->bannerBtn):?>
+        <div class="carousel-inner">
+            <?php echo utils::bannerHandle($this->options->bannerUrl); ?>
+        </div>
+    <?php endif;?>
     <a class="carousel-control-prev" href="#carouselCaptions" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
