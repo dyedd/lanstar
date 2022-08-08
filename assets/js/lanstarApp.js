@@ -81,6 +81,7 @@ let lanstar = {
         })
     },
     addDarkMode: function () {
+        if(config['dark'] == '0') return false;
         // 根据时间
         let timeNow = new Date();
         // 获取当前小时
@@ -269,7 +270,7 @@ let lanstar = {
                 logo: 'OωO',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByClassName('owo-textarea')[0],
-                api: _owo,
+                api: config['owo'],
                 position: 'down',
                 width: '100%',
                 maxHeight: '250px'

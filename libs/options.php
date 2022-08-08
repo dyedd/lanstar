@@ -97,6 +97,14 @@ EOF;
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在头部加上一个 LOGO'));
     $logoUrl->setAttribute('class', 'theme-setting-content theme-setting-global');
     $form->addInput($logoUrl);
+
+    $darkBtn = new Typecho_Widget_Helper_Form_Element_Radio('darkBtn',
+        array(1 => _t('启用'),
+            0 => _t('关闭')),
+        1, _t('是否开启暗黑模式'), _t('默认关闭'));
+    $darkBtn->setAttribute('class', 'theme-setting-content theme-setting-global');
+    $form->addInput($darkBtn);
+
     $bannerBtn = new Typecho_Widget_Helper_Form_Element_Radio('bannerBtn',
         array(1 => _t('启用'),
             0 => _t('关闭')),
