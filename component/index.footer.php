@@ -7,10 +7,12 @@
 <script src="https://cdn.staticfile.org/toastify-js/1.11.2/toastify.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 <?php $this->options->jsEcho(); ?>
-<script>let config = {
+<script>
+    const config = {
     'owo':'<?php utils::indexTheme('assets/owo/OwO.json'); ?>',
-        'dark': '<?php echo $this->options->darkBtn;?>''
-    }</script>
+        'dark': '<?php echo $this->options->darkBtn;?>'
+    }
+</script>
 <script
     src="<?php utils::indexTheme('assets/js/OwO.js'); ?>"></script>
 <script
