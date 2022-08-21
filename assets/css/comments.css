@@ -49,25 +49,22 @@ ol.comment-list {
 }
 
 .comment-content {
+    display: flex;
     word-break: break-all;
     font-size: .875em;
-    line-height: 2;
-    margin-bottom: .75em;
-    padding-top: .625em;
+}
+.comment-content code {
+    color: var(--text2);
 }
 
 .comment-parent > .comment-children {
-    padding-left: 3rem;
+    padding-left: 1rem;
 }
 
 .comment-child {
     padding-top: 0;
 }
 
-.comment-children .comment-list > .comment-child .comment-user-avatar {
-    width: 2.225em;
-    height: 2.225em;
-}
 
 .comment-respond {
     border: 1px solid #f0f0f0;
@@ -92,6 +89,10 @@ ol.comment-list {
 .comment-edit {
     position: relative;
     padding-top: 10px;
+}
+.comment-ua {
+    font-size: 10px;
+    color: var(--text2);
 }
 
 .comment-textarea {
@@ -198,4 +199,96 @@ ol.comment-list {
 
 .theme-dark .comment-mail-me {
     color: var(--dark-text-gray-color);
+}
+/*
+ua标识
+ */
+.ua-icon {
+    display: inline-block;
+    width: 1pc;
+    height: 1pc;
+    background-size: cover;
+    background-repeat: no-repeat;
+    vertical-align: text-top
+}
+
+.icon-360 {
+    background-image: url('../img/ua/360.png')
+}
+
+.icon-android {
+    background-image: url('../img/ua/android.png');
+    height: 19px
+}
+
+.icon-apple {
+    background-image: url('../img/ua/apple.png')
+}
+
+.icon-baidu {
+    background-image: url('../img/ua/baidu.png')
+}
+
+.icon-chrome {
+    background-image: url('../img/ua/chrome.png')
+}
+
+.icon-edge {
+    background-image: url('../img/ua/edge.png')
+}
+
+.icon-firefox {
+    background-image: url('../img/ua/firefox.png')
+}
+
+.icon-google {
+    background-image: url('../img/ua/google.png')
+}
+
+.icon-ie {
+    background-image: url('../img/ua/ie.png')
+}
+
+.icon-liebao {
+    background-image: url('../img/ua/liebao.png')
+}
+
+.icon-linux {
+    background-image: url('../img/ua/linux.png')
+}
+
+.icon-mac {
+    background-image: url('../img/ua/mac.png')
+}
+
+.icon-opera {
+    background-image: url('../img/ua/opera.png')
+}
+
+.icon-qq {
+    background-image: url('../img/ua/qq.png')
+}
+
+.icon-quark {
+    background-image: url('../img/ua/quark.png')
+}
+
+.icon-safari {
+    background-image: url('../img/ua/safari.png')
+}
+
+.icon-ubuntu {
+    background-image: url('../img/ua/ubuntu.png')
+}
+
+.icon-uc {
+    background-image: url('../img/ua/uc.png')
+}
+
+.icon-win1 {
+    background-image: url('../img/ua/win1.png')
+}
+
+.icon-win2 {
+    background-image: url('../img/ua/win2.png')
 }
