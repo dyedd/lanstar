@@ -6,7 +6,6 @@ class contents{
     {
         $text = empty($last) ? $data : $last;
         if ($widget instanceof Widget_Archive) {
-            $text = self::parseOwo($text);
             $text = self::parseLink($text);
             $text = self::parseHide($text);
             $text = self::parseTip($text);
@@ -18,6 +17,7 @@ class contents{
             $text = self::video($text);
             $text = !self::$frag ? self::fancybox($text) : $text;
             $text = self::addLazyLoad($text);
+            $text = self::parseOwo($text);
             $text = self::cidToContent($text);
         }
         return $text;
@@ -30,10 +30,8 @@ class contents{
             array('contents', 'parsePaopaoBiaoqingCallback'), $content);
         $content = preg_replace_callback('/\:\@\(\s*(高兴|小怒|脸红|内伤|装大款|赞一个|害羞|汗|吐血倒地|深思|不高兴|无语|亲亲|口水|尴尬|中指|想一想|哭泣|便便|献花|皱眉|傻笑|狂汗|吐|喷水|看不见|鼓掌|阴暗|长草|献黄瓜|邪恶|期待|得意|吐舌|喷血|无所谓|观察|暗地观察|肿包|中枪|大囧|呲牙|抠鼻|不说话|咽气|欢呼|锁眉|蜡烛|坐等|击掌|惊喜|喜极而泣|抽烟|不出所料|愤怒|无奈|黑线|投降|看热闹|扇耳光|小眼睛|中刀)\s*\)/is',
             array('contents', 'parseAruBiaoqingCallback'), $content);
-        $content = preg_replace_callback('/\:\&\(\s*(.*?)\s*\)/is',
+        return preg_replace_callback('/\:\&\(\s*(.*?)\s*\)/is',
             array('contents', 'parseQuyinBiaoqingCallback'), $content);
-
-        return $content;
     }
     /**
      * 泡泡表情回调函数
@@ -42,7 +40,7 @@ class contents{
      */
     public static function parsePaopaoBiaoqingCallback($match)
     {
-        return '<img class="emoji no-fabcybox" src="' . utils::indexTheme('assets/owo/biaoqing/paopao/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji no-fabcybox" src="/usr/themes/lanstar/assets/owo/biaoqing/paopao/' . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -52,7 +50,7 @@ class contents{
      */
     public static function parseAruBiaoqingCallback($match)
     {
-        return '<img class="emoji no-fabcybox" src="' . utils::indexTheme('assets/owo/biaoqing/aru/') . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="emoji no-fabcybox" src="/usr/themes/lanstar/assets/owo/biaoqing/aru/' . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -60,9 +58,9 @@ class contents{
      *
      * @return string
      */
-    public static function parseQuyinBiaoqingCallback($match)
+    public static function parseQuyinBiaoqingCallback($match): string
     {
-        return '<img class="emoji no-fabcybox" src="' . utils::indexTheme('assets/owo/biaoqing/quyin/') . str_replace('%', '', urlencode($match[1])) . '.png">';
+        return '<img class="emoji no-fabcybox" src="/usr/themes/lanstar/assets/owo/biaoqing/quyin/' . str_replace('%', '', urlencode($match[1])) . '.png">';
     }
     /**
      * 友链解析
