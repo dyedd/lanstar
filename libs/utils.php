@@ -603,4 +603,20 @@ EOF;
         echo $os;
     }
 
+    /**
+     * 获取文章的评论
+     * @param $cid
+     * @param $len
+     * @return mixed
+     */
+    public static function get_comment_by_cid($cid, $len = 4)
+    {
+        $db = Typecho_Db::get();
+        $select = $db->select('author,authorId,ownerId,mail,text,created')
+            ->from('table.comments')
+            ->where('cid = ?', $cid)
+            ->order('created', Typecho_Db::SORT_DESC)
+            ->limit($len);
+        return $db->fetchAll($select);
+    }
 }

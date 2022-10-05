@@ -77,5 +77,29 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </div>
             </div>
         </article>
+        <?php $comments = utils::get_comment_by_cid($this->cid) ?>
+        <?php if ($comments): ?>
+            <div class="index-comments">
+                <?php foreach ($comments as $comment): ?>
+                    <div class="index-comments-list">
+                        <div class="comment-avatar">
+                            <img src="<?php utils::emailHandle($comment['mail']) ?>s=100" alt="">
+                        </div>
+                        <div class="comment-body">
+                            <div class="comment-head"><?php echo $comment['author'] ?>
+                                <?php if ($comment['authorId'] == $comment['ownerId']): ?>
+                                    <span class="badge rounded-pill bg-primary comment-author-title">作者</span>
+                                <?php endif; ?>
+                                <span class="time"><?php echo date('Y-m-d H:i:s', $comment['created']) ?></span>
+                            </div>
+                            <div class="comment-content">
+                                <?php echo preg_replace("/<br>|<p>|<\/p>/", ' ',
+                                    comments::parseSecret(contents::parseOwo($comment['text']))) ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 <?php endwhile; ?>

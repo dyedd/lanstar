@@ -6,13 +6,13 @@
     font-family: HarmonyOS_Sans_SC_Medium;
 }
 :root {
-    --box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+    --box-shadow: 0.5rem 0.875rem 2.375rem rgb(39 44 49 / 6%), 0.0625rem 0.1875rem 0.5rem rgb(39 44 49 / 3%);
     --theme-color: rgb(29, 161, 242);
     --theme-choose-color: #1da1f21a;
     --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     --theme-text-color: #4a4a4a;
     --light-background: #fff;
-    --radius: 6px;
+    --radius: 8px;
     --text1:#18191c;
     --text2:#61666D;
     --text3: #dcdfe6;
@@ -32,7 +32,7 @@ a, a:hover {
     text-decoration: none;
 }
 .card {
-    border-radius: 15px;
+    border-radius: var(--radius);
     box-shadow: var(--box-shadow);
     border: none;
 }
@@ -66,6 +66,7 @@ header {
     background: var(--light-background);
     box-shadow: var(--box-shadow);
     height: 2.8rem;
+    border-radius: 8px 8px 0 0;
 }
 .toolbar-left {
     font-size: 20px;
@@ -129,7 +130,7 @@ header {
     cursor: pointer;
 }
 .nav-menu {
-    border-radius: 5px;
+    border-radius: var(--radius);
     background-color: #fff;
     box-shadow: var(--box-shadow);
     margin-left: 3rem;
@@ -219,16 +220,16 @@ ol.carousel-indicators li.active {
  */
 .article-list {
     margin-top: 1.5rem;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--radius);
 }
 
 article, main, .article-comments {
     background-color: #fff;
-    box-shadow: var(--box-shadow);
     max-width: 100%;
     position: relative;
     overflow: hidden;
     padding: 1.2rem;
-    border-radius: 5px 0 5px 5px;
 }
 
 article .sticky {
@@ -341,7 +342,45 @@ article .sticky {
 .post-like {
     cursor: pointer;
 }
-
+.index-comments {
+    padding: 1.2rem;
+    background: #F6F9FC;
+}
+.index-comments-list {
+    display: flex;
+    margin-bottom: .5rem;
+}
+.index-comments .comment-avatar {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+.index-comments .comment-avatar img {
+    width: 100%;
+    border-radius: 50%;
+}
+.index-comments .comment-body {
+    margin-left: 10px;
+}
+.index-comments .comment-body .comment-head {
+    font-weight: 900;
+    font-size: .875em;
+}
+.index-comments .comment-body .comment-head span {
+    font-weight: 100;
+    font-size: .875em;
+    margin-left: .2rem;
+}
+.index-comments .comment-body .comment-head span.time {
+    color: var(--text2);
+}
+.index-comments .comment-body .comment-content {
+    margin-top: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 /**
 侧边栏
  */
