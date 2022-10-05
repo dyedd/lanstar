@@ -31,6 +31,13 @@ let lanstar = {
         this.addInitCollapse();
         this.addCarouselEnter();
         this.addMorePages();
+        this.addEmoji()
+        this.addHighLight();
+        this.addComment();
+        this.addPageLike();
+        this.addArchiveToggle()
+        this.addPostProtect();
+        this.addCommentSecret();
     },
     addFunc: () => {
         let getCookie = function (cookieName)

@@ -5,6 +5,7 @@
 <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
 <script src="https://cdn.staticfile.org/toastify-js/1.11.2/toastify.min.js"></script>
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},svg:{fontCache:"global"}};</script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 <?php $this->options->jsEcho(); ?>
 <script>
@@ -13,18 +14,10 @@
         'dark': '<?php echo $this->options->darkBtn;?>'
     }
 </script>
-<script
-    src="<?php utils::indexTheme('assets/js/OwO.js'); ?>"></script>
-<script
-    src="<?php utils::indexTheme('assets/js/lanstarApp.js'); ?>"></script>
-<script
-    src="<?php utils::indexTheme('assets/js/gazeimg.js'); ?>"></script>
-<script
-    src="<?php utils::indexTheme('assets/js/icon.js'); ?>"></script>
-<?php if ($this->is('single')): ?>
-    <script
-        src="<?php utils::indexTheme('assets/js/page.js');?>"></script>
-<?php endif; ?>
+<script src="<?php utils::indexTheme('assets/js/OwO.js'); ?>"></script>
+<script src="<?php utils::indexTheme('assets/js/lanstarApp.js'); ?>"></script>
+<script src="<?php utils::indexTheme('assets/js/gazeimg.js'); ?>"></script>
+<script src="<?php utils::indexTheme('assets/js/icon.js'); ?>"></script>
 <script>lanstar.init();</script>
 <?php if ($this->options->sidebarBlock && in_array('ShowYourCouple', $this->options->sidebarBlock)): ?>
     <script>lanstar.addCoupleTime();</script>
