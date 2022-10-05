@@ -1,6 +1,5 @@
 lanstar.addEmoji()
 lanstar.addHighLight();
-lanstar.addCatalog()
 lanstar.addComment();
 lanstar.addPageLike();
 lanstar.addArchiveToggle()

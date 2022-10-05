@@ -270,7 +270,7 @@ b站视频
 /*目录*/
 .article-catalog {
     right: 0;
-    top: 15px;
+    top: 0;
     position: fixed;
     height: 100%;
     background-color: #fff;
@@ -280,7 +280,6 @@ b站视频
     box-shadow: -2px 0 8px 0 #e5e9ef;
     padding-top: 12px;
     display: none;
-    margin-top: 42px;
 }
 .article-catalog.on {
     display: block;

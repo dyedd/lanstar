@@ -626,7 +626,7 @@ article .sticky {
 返回顶部
 */
 @media (max-width: 1000px) {
-    .back-to-top {
+    .watch_catalog,.back-to-top {
         display: none !important;
     }
 }
@@ -634,11 +634,28 @@ article .sticky {
 .back-to-top {
     cursor: pointer;
     position: fixed;
-    width: 65px;
-    height: 65px;
-    right: 0;
-    line-height: 65px;
-    bottom: 0;
+    width: 56px;
+    height: 56px;
+    right: 20px;
+    line-height: 56px;
+    bottom: 20px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
+    border-radius: 50%;
+}
+.watch_catalog {
+    cursor: pointer;
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    right: 20px;
+    line-height: 56px;
+    bottom: 90px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
+    border-radius: 50%;
 }
 
 /*

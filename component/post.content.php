@@ -134,11 +134,6 @@
         <div class="article-page-item prev p-2">
             <?php thePrev($this); ?>
         </div>
-        <div class="article-page-item p-2">
-            <div class="button" id="article-list-btn">
-                <div class="label">查看目录</div>
-            </div>
-        </div>
         <div class="article-page-item next p-2">
             <?php theNext($this); ?>
         </div>

@@ -45,7 +45,6 @@
                 NProgress.done();
                 lanstar.init();
                 lanstar.addEmoji();
-                lanstar.addCatalog();
                 lanstar.addComment();
                 lanstar.addPageLike();
                 lanstar.addArchiveToggle();
@@ -69,8 +68,13 @@
     ob_clean();
     print utils::compressHtml($html_source);
     ob_end_flush(); endif; ?>
+<div class="watch_catalog" onclick="lanstar.addCatalog()">
+    <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-mulu"></use>
+    </svg>
+</div>
 <div class="back-to-top" onclick="lanstar.addBackTop()">
     <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-fanhuidingbu"></use>
+        <use xlink:href="#icon-fanhuidingbu-"></use>
     </svg>
 </div>
