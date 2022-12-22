@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <footer class="container footer">
-    &copy; <?php echo date('Y');?>
+    &copy; <?=  date('Y');?>
     <?php if($this->options->footerName):?>
         <?php $this->options->footerName();?>
     <?php else:?>

@@ -619,4 +619,39 @@ EOF;
             ->limit($len);
         return $db->fetchAll($select);
     }
+
+    /**
+     * 摘要内容
+     * @param $html
+     * @param int $limit
+     * @param int $flag
+     * @return string
+     */
+    public static function get_summary($html, int $limit = 3, int $flag = 0)
+    {
+        // 过滤隐藏
+        if (strpos($html, '[hide') !== false) {
+            $html = preg_replace('/(?s)\[hide]([^\]]*?)\[\/hide]/', '', $html);
+        }
+        $content = '';
+        if($flag == 0) {
+            if ($parts = preg_split("/(<\/\s*(?:p|q|h[0-6]|blockquote|ol|ul|pre|')\s*>)/i",
+                $html, $limit, PREG_SPLIT_DELIM_CAPTURE)) {
+                for ($i = 0; $i < $limit; ++$i) {
+                    $content .= $parts[$i];
+                }
+            }
+        }else{
+            //图片模式要过滤br标签才好看
+            $html = preg_replace('/(?s)\<br\>/', '', $html);
+            if ($parts = preg_split("/(<\s*(?:img|')\s*>)/i",
+                $html, $limit, PREG_SPLIT_DELIM_CAPTURE)) {
+                for ($i = 0; $i < $limit; ++$i) {
+                    $content .= $parts[$i];
+                }
+            }
+        }
+
+        return $content;
+    }
 }

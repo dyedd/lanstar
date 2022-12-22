@@ -1,7 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 class contents{
-    public static $frag = false;
     public static function parseContent($data, $widget, $last)
     {
         $text = empty($last) ? $data : $last;
@@ -15,7 +14,6 @@ class contents{
             $text = self::blankReplace($text);
             $text = self::biliVideo($text);
             $text = self::video($text);
-            $text = !self::$frag ? self::fancybox($text) : $text;
             $text = self::addLazyLoad($text);
             $text = self::parseOwo($text);
             $text = self::cidToContent($text);
@@ -68,7 +66,6 @@ class contents{
     public static function parseLink($text) {
         $reg = '/\[links\](.*?)\[\/links\]/s';
         if (preg_match($reg, $text)) {
-            self::$frag = true;
             $rp = '<div class="links-box container-fluid"><div class="row">${1}</div></div>';
             $text = preg_replace($reg, $rp, $text);
             $pattern = '/\[(.*?)\]\[(.*?)\]\((.*?)\)\+\((.*)\)/';
@@ -132,19 +129,6 @@ class contents{
         return $content;
     }
 
-    /**
-     * 灯箱
-     * @param $text
-     * @return string|string[]|null
-     */
-    public static function fancybox($text)
-    {
-        $reg = '#<img(.*?)src="(.*?)"(.*?)>#s';
-        if (preg_match($reg, $text, $matches) && !strpos($matches[0], 'no-fabcybox')) {
-            return preg_replace($reg, '<a data-fancybox="gallery" href="$2"><img$1 src="$2"$3></a>', $text);
-        }
-        return $text;
-    }
 
     /**
      * BILIBILI视频插入
@@ -294,6 +278,6 @@ class contents{
      */
     public static function addLazyLoad($text)
     {
-        return preg_replace('/<img (.*?)src(.*?)(\/)?>/', '<img $1src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc$2 />', $text);
+        return preg_replace('/<img (.*?)src(.*?)(\/)?>/', '<img class="lazy" $1src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-src$2 />', $text);
     }
 }

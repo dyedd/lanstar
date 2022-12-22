@@ -28,8 +28,14 @@ function themeFields(Typecho_Widget_Helper_Layout $layout) {
     if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
         $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', NULL, NULL, _t('文章头图'), _t('输入一个图片 url，作为缩略图显示在文章列表，没有则不显示'));
         $layout->addItem($banner);
-        $excerpt = new Typecho_Widget_Helper_Form_Element_Text('excerpt', NULL, NULL, _t('文章摘要'), _t('输入一段文本来自定义摘要，如果为空则自动提取文章前 70 字。'));
-        $layout->addItem($excerpt);
+        $article_type = new Typecho_Widget_Helper_Form_Element_Radio('article_type',
+            array(0 => _t('默认'),
+                1 => _t('图文格式'),
+                2 => _t('九空格可点击'),
+                3 => _t('日记模式'),
+                4 => _t('九空格不可点击')),
+            0, _t('文章列表模式'), _t('<b>日记模式类似我的动态，不可点击</b>'));
+        $layout->addItem($article_type);
     }
 }
 function themeInit($archive){
@@ -66,61 +72,6 @@ function get_comment($coid){
 }
 
 
-/**
- * 时间友好化
- *
- * @access public
- * @param mixed
- * @return
- */
-function formatTime($time){
-    $text = '';
-    $time = intval($time);
-    $ctime = time();
-    $t = $ctime - $time; //时间差
-    if ($t < 0) {
-        return date('Y-m-d', $time);
-    }
-    $y = date('Y', $ctime) - date('Y', $time);//是否跨年
-    switch ($t) {
-        case $t == 0:
-            $text = '刚刚';
-            break;
-        case $t < 60://一分钟内
-            $text = $t . '秒前';
-            break;
-        case $t < 3600://一小时内
-            $text = floor($t / 60) . '分钟前';
-            break;
-        case $t < 86400://一天内
-            $text = floor($t / 3600) . '小时前'; // 一天内
-            break;
-        case $t < 2592000://30天内
-            if($time > strtotime(date('Ymd',strtotime("-1 day")))) {
-                $text = '昨天';
-            } elseif($time > strtotime(date('Ymd',strtotime("-2 days")))) {
-                $text = '前天';
-            } else {
-                $text = floor($t / 86400) . '天前';
-            }
-            break;
-        case $t < 31536000 && $y == 0://一年内 不跨年
-            $m = date('m', $ctime) - date('m', $time) -1;
-            if($m == 0) {
-                $text = floor($t / 86400) . '天前';
-            } else {
-                $text = $m . '个月前';
-            }
-            break;
-        case $t < 31536000 && $y > 0://一年内 跨年
-            $text = (11 - date('m', $time) + date('m', $ctime)) . '个月前';
-            break;
-        default:
-            $text = (date('Y', $ctime) - date('Y', $time)) . '年前';
-            break;
-    }
-    return $text;
-}
 /**
  * 显示下一篇
  *

@@ -1,17 +1,16 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
+<?php if($this->options->bannerBtn):?>
 <div id="carouselCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <ol class="carousel-indicators">
         <li data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active"></li>
         <li data-bs-target="#carouselCaptions" data-bs-slide-to="1"></li>
         <li data-bs-target="#carouselCaptions" data-bs-slide-to="2"></li>
     </ol>
-    <?php if($this->options->bannerBtn):?>
         <div class="carousel-inner">
-            <?php echo utils::bannerHandle($this->options->bannerUrl); ?>
+            <?=  utils::bannerHandle($this->options->bannerUrl); ?>
         </div>
-    <?php endif;?>
     <a class="carousel-control-prev" href="#carouselCaptions" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -21,3 +20,4 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <span class="visually-hidden">Next</span>
     </a>
 </div>
+<?php endif;?>

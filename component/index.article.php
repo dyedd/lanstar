@@ -3,103 +3,102 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 <?php while ($this->next()): ?>
     <div class="article-list">
-        <?php if ($this->fields->banner && $this->fields->banner != ''): ?>
-            <div class="post-cover">
-                <img src="<?php $this->fields->banner(); ?>" alt="cover">
+        <div class="content">
+            <div class="created">
+                <time datetime="<?php $this->date(); ?>"><?=  date('n月j日，Y', $this->created) ?></time>
             </div>
-        <?php endif; ?>
-        <article>
-            <?php $this->sticky(); ?>
-            <div class="row">
-                <div class="col-2 col-xl-1 post-author">
-                    <a href="<?php $this->author->permalink(); ?>">
-                        <img class="avatar"
-                             src="<?php utils::emailHandle($this->author->mail); ?>s=100"
-                             alt="<?php $this->author(); ?>"/>
-                    </a>
+            <div class="categories-avatar">
+                <?php $categories = $this->categories;?>
+                <img class="avatar"
+                     src="<?=  $categories[0]['description']; ?>"
+                     alt="<?=  $categories[0]['name']; ?>"
+                     data-bs-toggle="tooltip" data-bs-placement="bottom"
+                     data-bs-title="<?=  $categories[0]['name']; ?>"/>
+            </div>
+            <?php if ($this->fields->article_type != 3): ?>
+                <div class="article-name">
+                    <?php $this->title(); ?>
                 </div>
-                <div class="col-10 col-xl-11 post-body">
-                    <div class="post-meta">
-                <span class="item">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-A"></use>
-                    </svg>
-                    <?php echo formatTime($this->created); ?>
-                </span>
-                        <span class="item">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-chakan"></use>
-                    </svg>
-                    <?php utils::getPostView($this); ?>
-                </span>
-                        <span class="item">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-pinglun"></use>
-                    </svg>
-                   <?php $this->commentsNum('0', '1', '%d'); ?>
-                </span>
-                        <span class="item d-none d-md-inline-block">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-A2"></use>
-                    </svg>
-                   <?php utils::artCount($this->cid); ?>
-                </span>
-                    </div>
-                    <a href="<?php $this->permalink(); ?>" class="post-title">
-                        <?php $this->title(); ?>
-                    </a>
-                    <div class="post-excerpt">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-neirong"></use>
-                        </svg>
-                        <?php if ($this->fields->excerpt && $this->fields->excerpt != ''): ?>
-                            <?php $this->fields->excerpt(); ?>
+            <?php endif; ?>
+            <?php if ($this->fields->article_type == 0): ?>
+                <div class="describe">
+                    <?=  utils::get_summary($this->content,2);?>
+                </div>
+            <?php elseif ($this->fields->article_type == 1): ?>
+                <div class="describe pic">
+                    <div class="left">
+                        <?php if ($this->fields->banner && $this->fields->banner != ''): ?>
+                            <img src="<?php $this->fields->banner(); ?>" alt="cover">
                         <?php else: ?>
-                            <?php $this->excerpt(100); ?>
+                            <img src="<?php utils::indexTheme('assets/img/default.jpg')?>" alt="cover">
                         <?php endif; ?>
                     </div>
-                    <div class="post-category">
+                    <div class="right"><?=  utils::get_summary($this->content,2);?></div>
+                </div>
+            <?php elseif ($this->fields->article_type == 2 || $this->fields->article_type == 4): ?>
+                <div class="describe gallery" view-image>
+                    <?=  utils::get_summary($this->content,4,1);?>
+                </div>
+            <?php elseif ($this->fields->article_type == 3): ?>
+                <div class="describe text">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-yinyong"></use>
+                    </svg>
+                    <?=  utils::get_summary($this->content,3);?>
+                </div>
+            <?php endif; ?>
+        </div>
+        <?php if ($this->fields->article_type != 3 && $this->fields->article_type != 4): ?>
+            <div class="related">
+                <a class="more" target="_blank" href="<?php $this->permalink(); ?>">查看更多</a>
+                <div class="extra">
+                    <div class="view">
                         <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-fenlei"></use>
+                            <use xlink:href="#icon-liulan"></use>
                         </svg>
-                        <?php $this->category(','); ?>
+                        <?php utils::getPostView($this); ?>
                     </div>
-                    <div class="post-action">
-                        <a class="post-more" target="_blank" href="<?php $this->permalink(); ?>">查看更多</a>
-                        <a class="post-like" data-cid="<?php $this->cid(); ?>">
-                            <?php $agree = $this->hidden ? array('agree' => 0, 'recording' => true) : utils::agreeNum($this->cid); ?>
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-dianzan"></use>
-                            </svg>
-                            <b class="agree-num"><?php echo $agree['agree']; ?></b>
-                        </a>
+                    <div class="commentNum">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-pinglun"></use>
+                        </svg>
+                        <?php $this->commentsNum('0', '1', '%d'); ?>
+                    </div>
+                    <div class="articleCount">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-tongji"></use>
+                        </svg>
+                        <?php utils::artCount($this->cid); ?>
+                    </div>
+                    <div class="like" data-cid="<?php $this->cid(); ?>"
+                         data-bs-toggle="tooltip" data-bs-placement="right"
+                         data-bs-title="喜欢">
+                        <?php $agree = $this->hidden ? array('agree' => 0, 'recording' => true) : utils::agreeNum($this->cid); ?>
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-dianzan"></use>
+                        </svg>
+                        <b class="agree-num"><?=  $agree['agree']; ?></b>
                     </div>
                 </div>
             </div>
-        </article>
-        <?php $comments = utils::get_comment_by_cid($this->cid) ?>
-        <?php if ($comments): ?>
-            <div class="index-comments">
-                <?php foreach ($comments as $comment): ?>
-                    <div class="index-comments-list">
-                        <div class="comment-avatar">
-                            <img src="<?php utils::emailHandle($comment['mail']) ?>s=100" alt="">
-                        </div>
-                        <div class="comment-body">
-                            <div class="comment-head"><?php echo $comment['author'] ?>
+            <?php $comments = utils::get_comment_by_cid($this->cid) ?>
+            <?php if ($comments): ?>
+                <div class="index-comments">
+                    <?php foreach ($comments as $comment): ?>
+                        <div class="index-comments-list">
+                            <img src="<?php utils::emailHandle($comment['mail']) ?>s=100"
+                                 alt="<?=  $comment['author'] ?>">
+                            <span class="author"><?=  $comment['author'] ?>
                                 <?php if ($comment['authorId'] == $comment['ownerId']): ?>
                                     <span class="badge rounded-pill bg-primary comment-author-title">作者</span>
-                                <?php endif; ?>
-                                <span class="time"><?php echo date('Y-m-d H:i:s', $comment['created']) ?></span>
-                            </div>
-                            <div class="comment-content">
-                                <?php echo preg_replace("/<br>|<p>|<\/p>/", ' ',
-                                    comments::parseSecret(contents::parseOwo($comment['text']))) ?>
-                            </div>
+                                <?php endif; ?></span>
+                            <span class="text"><?=  preg_replace("/<br>|<p>|<\/p>/", ' ',
+                                    comments::parseSecret(contents::parseOwo($comment['text']))) ?></span>
+                            <span class="created"><?=  date('n月j日', $comment['created']) ?></span>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 <?php endwhile; ?>

@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.9.1/APlayer.min.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap/5.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/toastify-js/1.11.2/toastify.min.css">
     <link rel="stylesheet"
           href="<?php utils::indexTheme('assets/css/main.css');?>">
@@ -17,8 +16,6 @@
           href="<?php utils::indexTheme('assets/css/comments.css');?>">
     <link rel="stylesheet"
           href="<?php utils::indexTheme('assets/css/OwO.min.css');?>">
-    <link rel="stylesheet"
-          href="<?php utils::indexTheme('assets/css/gazeimg.css');?>">
     <link rel="stylesheet"
           href="<?php utils::indexTheme('assets/css/prism.css');?>">
     <title><?php $this->archiveTitle(array(
@@ -42,5 +39,5 @@
     <?php $this->options->cssEcho(); ?>
     <?php $this->options->headerEcho(); ?>
 </head>
-<body style="background-image:url('<?php echo utils::indexTheme('assets/img/bg.png'); ?>')">
+<body style="background-image:url('<?=  utils::indexTheme('assets/img/bg.png'); ?>')">
     

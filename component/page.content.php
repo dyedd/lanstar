@@ -26,7 +26,7 @@
         </p>
     </div>
     <div class="article-cover-inner">
-        <img src="<?php echo $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
+        <img src="<?=  $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
     </div>
 </section>
 <main class="article-main">
@@ -61,7 +61,7 @@
     <!--文章内容-->
     <div class="article-content">
         <?php if ($this->hidden || $this->titleshow): ?>
-            <form action="<?php echo Typecho_Widget::widget('Widget_Security')->getTokenUrl($this->permalink); ?>"
+            <form action="<?=  Typecho_Widget::widget('Widget_Security')->getTokenUrl($this->permalink); ?>"
                   class="protected">
                 <div class="form-group mb-3 col-md-6 text-center required-password">
                     <label for="passwd">请输入密码访问</label>

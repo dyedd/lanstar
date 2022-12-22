@@ -15,9 +15,54 @@ eval(function (p, a, c, k, e, r) {
     ;
     while (c--) if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]);
     return p
-}('a.f(\' %c 9 1 %c b://d.e/8/1\',\'2:#3;4:#5;6:7 0\',\'2:#5;4:#3;6:7\');', 16, 16, '|lanstar|color|444|background|eee|padding|5px|dyedd|Theme|console|https||github|com|log'.split('|'), 0, {}));
+}('a.f(\' %c 9 1 %c b://d.e/8/1\',\'2:#3;4:#5;6:7 0\',\'2:#5;4:#3;6:7\');', 16, 16, '|lanstar|color|fadfa3|background|030307|padding|5px|dyedd|Theme|console|https||github|com|log'.split('|'), 0, {}));
 
+;(function(designWidth, maxWidth) {
+    var doc = document,
+        win = window,
+        docEl = doc.documentElement,
+        remStyle = document.createElement("style"),
+        tid;
 
+    function refreshRem() {
+        var width = docEl.getBoundingClientRect().width;
+        maxWidth = maxWidth || 540;
+        width>maxWidth && (width=maxWidth);
+        var rem = width * 10 / designWidth;
+        remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+    }
+
+    if (docEl.firstElementChild) {
+        docEl.firstElementChild.appendChild(remStyle);
+    } else {
+        var wrap = doc.createElement("div");
+        wrap.appendChild(remStyle);
+        doc.write(wrap.innerHTML);
+        wrap = null;
+    }
+    //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+    refreshRem();
+
+    win.addEventListener("resize", function() {
+        clearTimeout(tid); //防止执行两次
+        tid = setTimeout(refreshRem, 300);
+    }, false);
+
+    win.addEventListener("pageshow", function(e) {
+        if (e.persisted) { // 浏览器后退的时候重新计算
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+        }
+    }, false);
+
+    if (doc.readyState === "complete") {
+        doc.body.style.fontSize = "16px";
+    } else {
+        doc.addEventListener("DOMContentLoaded", function(e) {
+            doc.body.style.fontSize = "16px";
+        }, false);
+    }
+})(750, 750);
 let lanstar = {
     init: function () {
         this.addCommentInit()
@@ -31,6 +76,7 @@ let lanstar = {
         this.addInitCollapse();
         this.addCarouselEnter();
         this.addMorePages();
+        this.addCategory();
         this.addEmoji()
         this.addHighLight();
         this.addComment();
@@ -38,6 +84,8 @@ let lanstar = {
         this.addArchiveToggle()
         this.addPostProtect();
         this.addCommentSecret();
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     },
     addFunc: () => {
         let getCookie = function (cookieName)
@@ -228,10 +276,10 @@ let lanstar = {
     },
     addArticleLike: () => {
         // 首页点赞
-        $('.artices').on('click','.post-like', function () {
-            if ($(this).get(0).getAttribute('class') === 'post-like active')
+        $('.articles').on('click','.like', function () {
+            if ($(this).get(0).getAttribute('class') === 'like active')
                 return Toastify({
-                    text: '你已经点赞过了，取消不了，啦啦啦',
+                    text: '本店只收不退！',
                     duration: 3000,
                     backgroundColor: "linear-gradient(to right, #fa709a 0%, #fee140 100%)"
                 }).showToast();
@@ -252,11 +300,11 @@ let lanstar = {
                             text: "点赞成功！",
                             duration: 3000
                         }).showToast();
-                        $(this).get(0).setAttribute('class', 'post-like active')
+                        $(this).get(0).setAttribute('class', 'like active')
                     }
                 },
                 error: (data) => {
-                    $(this).get(0).setAttribute('class', 'post-like')
+                    $(this).get(0).setAttribute('class', 'like')
                     Toastify({
                         text: data,
                         duration: 3000,
@@ -544,7 +592,7 @@ let lanstar = {
     addMorePages(){
         $('.next').click(function() {
             $this = $(this);
-            $(this).addClass('loading').text('正在努力加载');
+            $(this).addClass('loading').text('努力加载');
             let href =$(this).attr('href');
             if (href != undefined) {
                 $.ajax({
@@ -553,7 +601,7 @@ let lanstar = {
                     success: function(data) { //请求成功
                         $this.removeClass('loading').text('查看更多');
                         var $res = $(data).find('.article-list');
-                        $('.artices').append($res.fadeIn(500));
+                        $('.articles').append($res.fadeIn(500));
                         let newhref = $(data).find('.next').attr('href');
                         if (newhref != undefined) {
                             $('.next').attr('href', newhref);
@@ -564,6 +612,26 @@ let lanstar = {
                 });
             }
             return false;
+        });
+    },
+    addCategory(){
+        $('.category div').click(function() {
+            const that = $(this);
+            $('.rainbow-loader').toggle();
+            let href =that.data("href");
+            if (href != '#') {
+                $.ajax({
+                    url: href,
+                    type: 'get',
+                    success: function(data) { //请求成功
+                        $('.rainbow-loader').toggle();
+                        $('.articles').empty()
+                        that.addClass("active").siblings().removeClass("active")
+                        const res = $(data).find('.article-list');
+                        $('.articles').append(res.fadeIn(500));
+                    }
+                });
+            }
         });
     }
 }

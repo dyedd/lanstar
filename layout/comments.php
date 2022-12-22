@@ -24,9 +24,9 @@ function threadedComments($comments, $options)
             <div class="comment-info">
                 <div class="comment-head">
                     <a class="comment-user-name me-1"
-                       href="<?php echo $comments->authorId > 0 ? '/author/' . $comments->authorId : $comments->url; ?>"
+                       href="<?=  $comments->authorId > 0 ? '/author/' . $comments->authorId : $comments->url; ?>"
                        rel="external nofollow">
-                        <?php echo $comments->author; ?>
+                        <?=  $comments->author; ?>
                     </a>
                     <?php if ($comments->authorId === $comments->ownerId): ?>
                         <span class="badge rounded-pill bg-primary comment-author-title">作者</span>
@@ -54,7 +54,7 @@ function threadedComments($comments, $options)
                     <?php $pcomments = get_comment($comments->parent); ?>
                     <?php if ($pcomments): ?>
                         <a style="margin:0 .3em 0 0;padding:0;font-size:.9em;" href="#<?php $comments->theId(); ?>">
-                            @<?php echo $pcomments['author']?>
+                            @<?=  $pcomments['author']?>
                         </a>
                     <?php endif;?>
                     <?php $comments->content(); ?>

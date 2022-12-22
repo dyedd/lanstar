@@ -1,53 +1,43 @@
-/**
- * comments
- */
+/** * comments */
 ol.comment-list {
     padding: 0;
 }
-
 .comment-list-item {
     list-style-type: none;
     margin-top: 1rem;
 }
-
 .comment-user-avatar {
     width: 3.125em;
     height: 3.125em;
     margin-right: .25rem;
-    border: 1px solid #f5f5f5;
+    border: 0.0625rem solid #f5f5f5;
     padding: .125em;
 }
-
 .comment-head {
     line-height: 1.5;
     margin-top: 0;
     display: inline-flex;
     align-items: center;
 }
-
 .comment-user-name {
     color: #000;
     font-size: .875em;
     font-weight: 700;
 }
-
 .comment-info {
     overflow: hidden;
     padding-bottom: .5em;
-    border-bottom: 1px dashed #f5f5f5;
+    border-bottom: 0.0625rem dashed #f5f5f5;
 }
-
 .comment-info .comment-time {
     font-size: .75em;
     color: #b3b3b3;
 }
-
 .comment-reply a, #cancel-comment-reply-link {
     font-size: .85rem;
     color: var(--theme-color);
     display: inline-flex;
 }
-
 .comment-content {
     display: flex;
     word-break: break-all;
@@ -56,25 +46,20 @@ ol.comment-list {
 .comment-content code {
     color: var(--text2);
 }
-
 .comment-parent > .comment-children {
     padding-left: 1rem;
 }
-
 .comment-child {
     padding-top: 0;
 }
-
-
 .comment-respond {
-    border: 1px solid #f0f0f0;
+    border: 0.0625rem solid #f0f0f0;
     border-radius: var(--radius);
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     overflow: hidden;
     position: relative;
-    padding: 0 10px 10px 10px;
+    padding: 0 0.625rem 0.625rem 0.625rem;
 }
-
 .comment-input {
     background: transparent;
     border: none;
@@ -83,18 +68,16 @@ ol.comment-list {
     max-width: 100%;
     font-size: .775em;
     padding: .75rem 1rem;
-    border-bottom: 1px dashed #dedede;
+    border-bottom: 0.0625rem dashed #dedede;
 }
-
 .comment-edit {
     position: relative;
-    padding-top: 10px;
+    padding-top: 0.625rem;
 }
 .comment-ua {
-    font-size: 10px;
+    font-size: 0.625rem;
     color: var(--text2);
 }
-
 .comment-textarea {
     width: 100%;
     min-height: 8.75em;
@@ -105,104 +88,82 @@ ol.comment-list {
     border: none;
     padding: .25rem;
 }
-
 .comment-close {
     text-align: center;
 }
-
 .secret {
-    background: repeating-linear-gradient(145deg, #f2f2f2, #f2f2f2 15px, #fff 0, #fff 30px);
-    padding: 10px 40px 10px 40px;
+    background: repeating-linear-gradient(145deg, #f2f2f2, #f2f2f2 0.9375rem, #fff 0, #fff 1.875rem);
+    padding: 0.625rem 2.5rem 0.625rem 2.5rem;
     position: relative;
 }
-
 #secret-button {
     display: none;
 }
-
 .secret-label {
     position: relative;
     display: inline-block;
-    width: 30px;
-    height: 15px;
+    width: 1.875rem;
+    height: 0.9375rem;
     background-color: #ccc;
-    border: 1px solid #ccc;
-    border-radius: 30px;
+    border: 0.0625rem solid #ccc;
+    border-radius: 1.875rem;
     cursor: pointer;
 }
-
 .secret-label .circle {
     position: absolute;
-    top: -1px;
-    left: -1px;
+    top: -0.0625rem;
+    left: -0.0625rem;
     transition: all 0.3s;
-    width: 15px;
-    height: 15px;
+    width: 0.9375rem;
+    height: 0.9375rem;
     border-radius: 50%;
     background-color: #fff;
 }
-
 .secret-label .on {
     color: #fff;
     display: none;
-    text-indent: 10px;
+    text-indent: 0.625rem;
 }
-
 .secret-label .off {
     color: #fff;
     display: inline-block;
-    text-indent: 53px;
+    text-indent: 3.3125rem;
 }
-
 #secret-button:checked + label.secret-label .circle {
-    left: 19px;
+    left: 1.1875rem;
 }
-
 #secret-button:checked + label.secret-label .on {
     display: inline-block;
 }
-
 #secret-button:checked + label.secret-label .off {
     display: none;
 }
-
 #secret-button:checked + label.secret-label {
     background-color: #3a3f51;
 }
-
 .comment-mail-me {
     margin-right: .5rem;
 }
-/*
-暗黑模式
-*/
-.theme-dark #article-comments-nav, .theme-dark .comment-user-name,
-.theme-dark .comment-content, .theme-dark .comment-input {
+/* 暗黑模式 */
+.theme-dark #article-comments-nav, .theme-dark .comment-user-name, .theme-dark .comment-content, .theme-dark .comment-input {
     color: var(--dark-text-normal-color);
 }
-
 .theme-dark .comment-user-avatar {
     border: none;
 }
-
 .theme-dark .comment-info, .theme-dark .comment-input {
-    border-bottom: 1px solid var(--dark-text-gray-color);
+    border-bottom: 0.0625rem solid var(--dark-text-gray-color);
 }
-
 .theme-dark .comment-respond {
     border: none;
 }
-
 .theme-dark .secret {
     color: var(--theme-text-color);
 }
-
 .theme-dark .comment-mail-me {
     color: var(--dark-text-gray-color);
 }
-/*
-ua标识
- */
+/* ua标识 */
 .ua-icon {
     display: inline-block;
     width: 1pc;
@@ -211,84 +172,64 @@ ua标识
     background-repeat: no-repeat;
     vertical-align: text-top
 }
-
 .icon-360 {
     background-image: url('../img/ua/360.png')
 }
-
 .icon-android {
     background-image: url('../img/ua/android.png');
-    height: 19px
+    height: 1.1875rem
 }
-
 .icon-apple {
     background-image: url('../img/ua/apple.png')
 }
-
 .icon-baidu {
     background-image: url('../img/ua/baidu.png')
 }
-
 .icon-chrome {
     background-image: url('../img/ua/chrome.png')
 }
-
 .icon-edge {
     background-image: url('../img/ua/edge.png')
 }
-
 .icon-firefox {
     background-image: url('../img/ua/firefox.png')
 }
-
 .icon-google {
     background-image: url('../img/ua/google.png')
 }
-
 .icon-ie {
     background-image: url('../img/ua/ie.png')
 }
-
 .icon-liebao {
     background-image: url('../img/ua/liebao.png')
 }
-
 .icon-linux {
     background-image: url('../img/ua/linux.png')
 }
-
 .icon-mac {
     background-image: url('../img/ua/mac.png')
 }
-
 .icon-opera {
     background-image: url('../img/ua/opera.png')
 }
-
 .icon-qq {
     background-image: url('../img/ua/qq.png')
 }
-
 .icon-quark {
     background-image: url('../img/ua/quark.png')
 }
-
 .icon-safari {
     background-image: url('../img/ua/safari.png')
 }
-
 .icon-ubuntu {
     background-image: url('../img/ua/ubuntu.png')
 }
-
 .icon-uc {
     background-image: url('../img/ua/uc.png')
 }
-
 .icon-win1 {
     background-image: url('../img/ua/win1.png')
 }
-
 .icon-win2 {
     background-image: url('../img/ua/win2.png')
 }

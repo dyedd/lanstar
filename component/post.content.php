@@ -5,7 +5,7 @@
                 <?php $this->title(); ?></a>
             <?php if ($this->user->hasLogin()): ?>
                 <a class="ms-1 article-edit" title="编辑"
-                   href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid; ?>">
+                   href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?=  $this->cid; ?>">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-bianji"></use>
                     </svg>
@@ -34,7 +34,7 @@
         </p>
     </div>
     <div class="article-cover-inner">
-        <img src="<?php echo $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
+        <img src="<?=  $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
     </div>
 </section>
 <main class="article-main">
@@ -69,7 +69,7 @@
     <!--文章内容-->
     <div class="article-content">
         <?php if ($this->hidden || $this->titleshow): ?>
-            <form action="<?php echo Typecho_Widget::widget('Widget_Security')->getTokenUrl($this->permalink); ?>"
+            <form action="<?=  Typecho_Widget::widget('Widget_Security')->getTokenUrl($this->permalink); ?>"
                   class="protected">
                 <div class="form-group mb-3 col-md-6 text-center required-password">
                     <label for="passwd">请输入密码访问</label>
@@ -107,7 +107,7 @@
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-A1"></use>
                 </svg>
-                <span>作品采用：<?php echo $this->options->LicenseInfo ? $this->options->LicenseInfo : '本作品采用 <a rel="license nofollow" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可。' ?></span>
+                <span>作品采用：<?=  $this->options->LicenseInfo ? $this->options->LicenseInfo : '本作品采用 <a rel="license nofollow" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可。' ?></span>
             </div>
         </div>
     </div>
@@ -117,7 +117,7 @@
                 <use xlink:href="#icon-ziyuan"></use>
             </svg>
             <?php $agree = $this->hidden ? array('agree' => 0, 'recording' => true) : utils::agreeNum($this->cid); ?>
-            <span class="agree-num"><?php echo $agree['agree']; ?></span>
+            <span class="agree-num"><?=  $agree['agree']; ?></span>
         </div>
         <div class="article-action-item p-3">
             <svg class="icon" aria-hidden="true">
