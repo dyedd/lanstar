@@ -625,10 +625,17 @@ let lanstar = {
                     type: 'get',
                     success: function(data) { //请求成功
                         $('.rainbow-loader').toggle();
-                        $('.articles').empty()
+                        $('.articles').empty();
                         that.addClass("active").siblings().removeClass("active")
                         const res = $(data).find('.article-list');
                         $('.articles').append(res.fadeIn(500));
+                        const more = $(data).find('.page-pagination');
+                        if(more.firstElementChild){
+                            $('.next').attr('href', $(more).find('.next').attr('href'));
+                        }else{
+                            $('.next').remove();
+                        }
+
                     }
                 });
             }
