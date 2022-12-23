@@ -88,6 +88,11 @@
             </div>
         </div>
     </div>
+    <div class="other">
+        <div class="modified">
+            更新于: <?= date('Y年m月d日 H:i', $this->modified) ?>
+        </div>
+    </div>
     <div class="article-action mt-1 d-flex justify-content-around">
         <div class="article-action-item p-3 d-flex align-items-center" id="agree-btn" data-cid="<?php $this->cid(); ?>">
             <svg class="icon" aria-hidden="true">

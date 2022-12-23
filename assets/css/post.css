@@ -741,6 +741,14 @@ pre::after {
     border: none;
     color: #606266;
 }
+.article-main .other .modified {
+    text-align: right;
+}
+.article-main .other {
+    font-size: 0.7rem;
+    padding: 2rem 2rem 0 2rem;
+}
+
 /** 暗黑模式 */
 .theme-dark .article-main {
     background: var(--dark-content);
