@@ -81,7 +81,7 @@ a, a:hover {
 }
 .toolbar {
     display: flex;
-    padding: 1rem 2rem;
+    padding: 1rem;
     justify-content: space-between;
     background: var(--light-background);
     align-items: center;
@@ -1015,9 +1015,6 @@ ol.carousel-indicators li.active {
 }
 .theme-dark .page-pagination a {
     background-color: var(--dark-content);
-}
-.theme-dark .comment-close {
-    color: var(--dark-text-normal-color);
 }
 .theme-dark .index-comments {
     background: var(--dark-content);

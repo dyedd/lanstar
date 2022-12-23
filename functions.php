@@ -94,15 +94,13 @@ function theNext($widget)
         $content = $widget->filter($content);
         $link = '<a href="' . $content['permalink'] . '" target="_self">
                         <div class="button">
-                            <div class="label btn1">下一篇</div>
-                            <div class="title d-none d-md-block" title="' . $content['title'] . '">' . $content['title'] . '</div>
+                            <div class="title" title="' . $content['title'] . '">' . $content['title'] . '> </div>
                         </div>
                     </a>';
         echo $link;
     } else {
         echo '<div class="button btn2 off">
-                  <div class="label">下一篇</div>
-                  <div class="title d-none d-md-block">没有更多了</div>
+                  <div class="title">没有更多了</div>
               </div>';
     }
 }
@@ -128,15 +126,13 @@ function thePrev($widget)
         $content = $widget->filter($content);
         $link = '<a href="' . $content['permalink'] . '" target="_self">
                         <div class="button">
-                            <div class="label btn1">上一篇</div>
-                            <div class="title d-none d-md-block" title="' . $content['title'] . '">' . $content['title'] . '</div>
+                            <div class="title" title="' . $content['title'] . '">< ' . $content['title'] . '</div>
                         </div>
                     </a>';
         echo $link;
     } else {
         echo '<div class="button btn2 off">
-                  <div class="label">上一篇</div>
-                  <div class="title d-none d-md-block">没有更多了</div>
+                  <div class="title">没有更多了</div>
               </div>';
     }
 }

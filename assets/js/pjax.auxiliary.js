@@ -15,7 +15,6 @@ document.addEventListener('pjax:send', function (){
 document.addEventListener('pjax:complete', function (){
     document.querySelector('.loader').classList.add("active")
     lanstar.addHighLight();
-    $('img[data-gisrc]:not([data-gi-init])').giLazy();
     NProgress.done();
     lanstar.init();
     lanstar.addEmoji();

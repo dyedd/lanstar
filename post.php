@@ -11,7 +11,6 @@
                     <div class="col-xl-8 col-md-8 col-12 main">
                         <?php $this->need('component/index.toolbar.php'); ?>
                         <?php $this->need('component/post.content.php'); ?>
-                        <?php $this->need('layout/comments.php'); ?>
                     </div>
                     <div class="col-12 col-md-3 position-relative right d-none d-md-block">
                         <?php $this->need('layout/right.php'); ?>

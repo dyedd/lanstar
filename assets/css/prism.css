@@ -1,9 +1,10 @@
-.hljs {
+pre code.hljs {
     display: block;
     overflow-x: auto;
     padding: .5em;
     background: #2b2b2b;
-    color: #bababa
+    color: #bababa;
+    border-radius: 0;
 }
 .hljs-emphasis, .hljs-strong {
     color: #a8a8a2

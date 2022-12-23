@@ -30,34 +30,6 @@
     </div>
 </section>
 <main class="article-main">
-    <!--面包屑导航-->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb pb-2">
-            <li class="breadcrumb-item">
-                <a href="<?php $this->options->siteUrl(); ?>">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-shouye1"></use>
-                    </svg>
-                    <span>首页</span>
-                </a>
-            </li>
-            <?php if ($this->is('post')): ?>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-fenlei1"></use>
-                    </svg>
-                    <?php $this->category(','); ?>
-                </li>
-            <?php else: ?>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-leimupinleifenleileibie"></use>
-                    </svg>
-                    <?php $this->archiveTitle('&raquo;', '', ''); ?>
-                </li>
-            <?php endif; ?>
-        </ol>
-    </nav>
     <!--文章内容-->
     <div class="article-content">
         <?php if ($this->hidden || $this->titleshow): ?>

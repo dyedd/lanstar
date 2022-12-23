@@ -1,73 +1,50 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<section class="article-info mb-3">
-    <div class="article-detail">
-        <h1 class="article-title p-3"><a href="<?php $this->permalink(); ?>">
-                <?php $this->title(); ?></a>
-            <?php if ($this->user->hasLogin()): ?>
-                <a class="ms-1 article-edit" title="编辑"
-                   href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?=  $this->cid; ?>">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-bianji"></use>
-                    </svg>
-                </a>
-            <?php endif; ?>
-        </h1>
-        <p>
-        <span class="article-detail-item">
-            <svg class="icon me-1" aria-hidden="true">
-                <use xlink:href="#icon-shijian"></use>
-            </svg>
-            <time class="create-time" datetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
-        </span>
-            <span class="article-detail-item">
-            <svg class="icon me-1" aria-hidden="true">
-                <use xlink:href="#icon-redu"></use>
-            </svg>
-            <?php utils::getPostView($this); ?>阅读
-        </span>
-            <span class="article-detail-item">
-            <svg class="icon me-1" aria-hidden="true">
-                <use xlink:href="#icon-pinglun1"></use>
-            </svg>
-            <?php $this->commentsNum(); ?>条评论
-        </span>
-        </p>
-    </div>
+<section class="article-info">
     <div class="article-cover-inner">
         <img src="<?=  $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
     </div>
+    <div class="article-detail">
+        <h1 class="article-title">
+            <?php if ($this->user->hasLogin()): ?>
+                <a class="article-edit" title="编辑"
+                   href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?=  $this->cid; ?>">
+                    <span><?php $this->title(); ?></span>
+                </a>
+            <?php else: ?>
+                <span><?php $this->title(); ?></span>
+            <?php endif; ?>
+        </h1>
+        <div class="post-info">
+            <div class="created">
+                <time datetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
+            </div>
+            <div class="avatar">
+                <img src="<?php utils::emailHandle($this->author->mail) ?>s=100"
+                     alt="<?php  $this->author->screenName() ?>">
+            </div>
+            <div class="display">
+                <div class="name"><?php $this->author->screenName(); ?></div>
+            </div>
+            <div class="extra">
+                <div class="post-info-icon">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-redu"></use>
+                    </svg>
+                    <?php utils::getPostView($this); ?>阅读
+                </div>
+                <div class="post-info-icon">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-pinglun"></use>
+                    </svg>
+                    <?php $this->commentsNum(); ?>条评论
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <main class="article-main">
-    <!--面包屑导航-->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb pb-2">
-            <li class="breadcrumb-item">
-                <a href="<?php $this->options->siteUrl(); ?>">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-shouye1"></use>
-                    </svg>
-                    <span>首页</span>
-                </a>
-            </li>
-            <?php if ($this->is('post')): ?>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-fenlei1"></use>
-                    </svg>
-                    <?php $this->category(','); ?>
-                </li>
-            <?php else: ?>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-leimupinleifenleileibie"></use>
-                    </svg>
-                    <?php $this->archiveTitle('&raquo;', '', ''); ?>
-                </li>
-            <?php endif; ?>
-        </ol>
-    </nav>
     <!--文章内容-->
-    <div class="article-content">
+    <div class="markdown-body article-content">
         <?php if ($this->hidden || $this->titleshow): ?>
             <form action="<?=  Typecho_Widget::widget('Widget_Security')->getTokenUrl($this->permalink); ?>"
                   class="protected">
@@ -121,23 +98,19 @@
         </div>
         <div class="article-action-item p-3">
             <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-fenlei"></use>
-            </svg>
-        </div>
-        <div class="article-action-item p-3">
-            <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-xinbaniconshangchuan-"></use>
             </svg>
         </div>
     </div>
-    <div class="article-page d-flex justify-content-around align-items-center">
-        <div class="article-page-item prev p-2">
+    <div class="article-page">
+        <div class="article-page-item prev">
             <?php thePrev($this); ?>
         </div>
-        <div class="article-page-item next p-2">
+        <div class="article-page-item next">
             <?php theNext($this); ?>
         </div>
     </div>
+    <?php $this->need('layout/comments.php'); ?>
 </main>
 <section class="col-12 col-md-4 col-xl-3 article-catalog" id="tocTree">
     <h3 class="article-catalog-title">
