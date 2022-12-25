@@ -18,6 +18,7 @@
           href="<?php utils::indexTheme('assets/css/OwO.min.css');?>">
     <link rel="stylesheet"
           href="<?php utils::indexTheme('assets/css/prism.css');?>">
+    <script src="<?php utils::indexTheme('assets/js/lanstarApp.js'); ?>"></script>
     <title><?php $this->archiveTitle(array(
             'category' => _t('分类 %s 下的文章'),
             'search' => _t('包含关键字 %s 的文章'),

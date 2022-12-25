@@ -1,96 +1,157 @@
 /** * comments */
-.article-comments {
-    padding: 2rem;
+.respond {
+    padding: 1.5rem;
 }
-ol.comment-list {
-    padding: 0;
+.comments #response {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.6rem;
 }
-.comment-list-item {
-    list-style-type: none;
+.comments form {
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
-.comment-user-avatar {
-    width: 3.125em;
-    height: 3.125em;
-    margin-right: .25rem;
-    border: 1rem solid var(--border);
-    padding: .125em;
-}
-.comment-head {
-    line-height: 1.5;
-    margin-top: 0;
-    display: inline-flex;
-    align-items: center;
-}
-.comment-user-name {
-    color: #000;
-    font-size: .875em;
-    font-weight: 700;
-}
-.comment-info {
-    overflow: hidden;
-    padding-bottom: .5em;
-    border-bottom: 0.0625rem dashed #f5f5f5;
-}
-.comment-info .comment-time {
-    font-size: .75em;
-    color: #b3b3b3;
-}
-.comment-reply a, #cancel-comment-reply-link {
-    font-size: .85rem;
-    color: var(--theme-color);
-    display: inline-flex;
-}
-.comment-content {
-    display: flex;
-    word-break: break-all;
-    font-size: .875em;
-}
-.comment-content code {
-    color: var(--text2);
-}
-.comment-parent > .comment-children {
-    padding-left: 1rem;
-}
-.comment-child {
-    padding-top: 0;
-}
-.comment-respond {
-    border: 0.0625rem solid #f0f0f0;
-    border-radius: var(--radius);
-    margin-bottom: 0.625rem;
-    overflow: hidden;
-    position: relative;
-    padding: 0 0.625rem 0.625rem 0.625rem;
-}
-.comment-input {
-    background: transparent;
-    border: none;
-    resize: none;
+.comments .option input {
+    display: block;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: auto;
+    min-width: 24rem;
     outline: none;
-    max-width: 100%;
-    font-size: .775em;
-    padding: .75rem 1rem;
-    border-bottom: 0.0625rem dashed #dedede;
+    font-size: 0.9rem;
+    letter-spacing: .2rem;
+    transition: all .6s ease-out;
+    border-radius: .5rem;
+    border: solid .1rem var(--border);
 }
-.comment-edit {
-    position: relative;
-    padding-top: 0.625rem;
-}
-.comment-ua {
-    font-size: 0.625rem;
-    color: var(--text2);
-}
-.comment-textarea {
+.comments .textarea {
+    padding: .5rem 1rem;
+    margin: 1.5rem 0;
+    min-width: 24rem;
+    display: block;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: inherit;
+    letter-spacing: .2rem;
+    border-radius: .5rem;
+    border: solid .1rem var(--border);
+    transition: all .6s ease-out;
     width: 100%;
-    min-height: 8.75em;
-    font-size: .875em;
-    background: transparent;
-    resize: vertical;
-    transition: all .25s ease;
-    border: none;
-    padding: .25rem;
 }
+.comments-toolbar {
+    position: relative;
+}
+.comments-toolbar .option {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.comments .option button {
+    padding: .8rem 1.5rem;
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--theme-color);
+    border: none;
+    border-radius: .5rem;
+    transition: all .3s ease-out;
+}
+#comments .comment-list {
+    padding: 0;
+    margin: 0;
+}
+li.comment-by-author > .comment-author span:after {
+    content: '';
+    position: absolute;
+    height: 1.8rem;
+    width: 1.8rem;
+    right: -.5rem;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAmVBMVEVHcEz/////////////////////////////////////////////////////////////////////////////////////uCD/////wTv/0nD//fn/9+b/uyr/8tf/89r/yFP/uiX/wkD/3JP/+u7/2Yj/yVf/14H/9d//vC3/xUn/5rD/1Hf/35r/6r7/zWH/0Gv/4aD/vjP/7cgz761DAAAAFnRSTlMAy2YKAzcb5vZcfPIRYPnsr9u3CU6PxtEgXAAAAg1JREFUSMedltmWqjAQRaOtQjuPtRFNCyJqtz3//8fdB0ErINrc8yQrFdeuStVJjClqNl9MJ6PhcDSZLuYz80D9wdhHyR8P+nfCn7o9Sup1nyrCW00PALtdpvF6HafLrQXAa7ZuxXcaAHYfiFKwtwCNTjm+7QGrpZS0XAFeuxj/7EO4i+SGol0I/nMhHkg2UqFNAjg72j7YQCoVWPAVVccDu5Y7WlvwLpm3GpAEcldBAo28uk0IN/JAmxCa2fl6sJOH2oF3PvMurKLHG6IVdI0xpt+D7LxeADi5KABbEZEl9PrGmAHYbHELwIez4RdIjiIiYmFgjBnDPlt8BSA8qvhPuGS4h7ExMx8uJT0z6YZ64ZphAP7MzK9EN5hOTlIW5maRpaSZ1royHCL1fwszdRAOAHyp2qsvWcLUTCCVAtNb9nVM0MCSwsSMIJYKpneAz+tqDCMzBN2nmikIgV/dszAsbnhXTG8Am+IGFylnivKfzrHHMCokLbIiB/8AeNVrKUwKZVVMqa6XKqtzcHl3kkRigdCdwy0s3NZQTF8A3+5IWJi7zaeYDkD44841+DOnvRUTl7m56tzeeoA003VuNNHAHdGzvvMNBWfIR7RkAjlTwRkuJlC2mYzpVGUzJSM7Mx2iKiMrWeUxjuM4/qm2ytpmXN/u618o9a+s+pdi/Wu3/sVe/+nwH4+Tvzx//gG7W6YbwRbnBgAAAABJRU5ErkJggg==);
+}
+#comments .comment-list li {
+    position: relative;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    list-style-type: none;
+}
+#comments .comment-list li + li {
+    border-top: var(--border) .1rem solid;
+}
+#comments .comment-children {
+    margin-left: 2rem;
+}
+
+#comments .comment-children li {
+    padding: 2rem 0 0 0;
+}
+
+#comments .comment-reply {
+    opacity: 0;
+}
+
+#comments .comment-list > li:hover > .comment-reply {
+    opacity: 1;
+}
+
+#comments .comment-list li:hover {
+    background-color: rgb(245,248,250);
+}
+#comments .comment-list li .comment-author {
+    display: flex;
+}
+#comments .comment-list li .comment-author span {
+    position: relative;
+}
+#comments .comment-list li .comment-author span img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+#comments .comment-list li .comment-author cite {
+    padding-left: 1.5rem;
+    font-weight: bold;
+    font-style: normal;
+}
+#comments .comment-list li .comment-meta {
+    margin-left: 5.5rem;
+    padding-bottom: .5rem;
+    margin-top: -2rem;
+}
+#comments .comment-list li .comment-meta a {
+    font-size: 0.8rem;
+    color: #8f949e;
+}
+#comments .comment-list li .comment-content {
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size: 1.4rem;
+}
+#comments .comment-list li .comment-content p {
+    line-height: 1.8;
+    letter-spacing: .1rem;
+}
+#comments .comment-list li .comment-reply, #comments .comment-list li .cancel-comment-reply {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    padding: .6rem 1rem;
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--theme-color);
+    border: none;
+    border-radius: .8rem;
+    transition: all .3s ease-out;
+}
+.comment-reply a, .cancel-comment-reply a {
+    color: white;
+}
+
 .secret {
     background: repeating-linear-gradient(145deg, #f2f2f2, #f2f2f2 0.9375rem, #fff 0, #fff 1.875rem);
     padding: 0.625rem 2.5rem 0.625rem 2.5rem;

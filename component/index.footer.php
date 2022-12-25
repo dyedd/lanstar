@@ -12,7 +12,6 @@
     }
 </script>
 <script src="<?php utils::indexTheme('assets/js/OwO.js'); ?>"></script>
-<script src="<?php utils::indexTheme('assets/js/lanstarApp.js'); ?>"></script>
 <script src="<?php utils::indexTheme('assets/js/icon.js'); ?>"></script>
 <script src="<?php utils::indexTheme('assets/js/view-image.min.js'); ?>"></script>
 <script src="<?php utils::indexTheme('assets/js/lazyload.js'); ?>"></script>

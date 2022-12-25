@@ -65,7 +65,6 @@ eval(function (p, a, c, k, e, r) {
 })(750, 750);
 let lanstar = {
     init: function () {
-        this.addCommentInit()
         this.addSearchEvent()
         this.addDarkMode()
         this.addMobileSwitch()
@@ -79,7 +78,6 @@ let lanstar = {
         this.addCategory();
         this.addEmoji()
         this.addHighLight();
-        this.addComment();
         this.addPageLike();
         this.addArchiveToggle()
         this.addPostProtect();
@@ -212,60 +210,90 @@ let lanstar = {
             }
         })
     },
-    addCommentInit: () => {
+    addCommentInit: (respondId, token) => {
+        let respond = document.getElementById(
+            respondId
+        );
+
+        if (respond != null) {
+            let forms = respond.getElementsByTagName('form');
+            if (forms.length) {
+                let input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = '_';
+                input.value = token;
+                forms[0].appendChild(input);
+            }
+        }
+
         window.TypechoComment = {
             dom: function (id) {
-                return document.getElementById(id)
+                return document.getElementById(id);
             },
             create: function (tag, attr) {
-                var el = document.createElement(tag);
-                for (var key in attr) {
-                    el.setAttribute(key, attr[key])
+                let el = document.createElement(tag);
+                for (let key in attr) {
+                    el.setAttribute(key, attr[key]);
                 }
-                return el
+                return el;
             },
+
             reply: function (cid, coid) {
-                var comment = this.dom(cid),
-                    parent = comment.parentNode,
-                    response = this.dom($('.article-comments').attr('data-respondid')),
-                    input = this.dom('comment-parent'),
-                    form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
+                let comment = this.dom(cid),
+                    response = this.dom(respondId), input = this.dom('comment-parent'),
+                    form = 'form' === response.tagName ? response : response.getElementsByTagName('form')[0],
                     textarea = response.getElementsByTagName('textarea')[0];
+
                 if (null == input) {
                     input = this.create('input', {
                         'type': 'hidden',
                         'name': 'parent',
                         'id': 'comment-parent'
                     });
-                    form.appendChild(input)
+                    form.appendChild(input);
                 }
+
                 input.setAttribute('value', coid);
+
                 if (null == this.dom('comment-form-place-holder')) {
-                    var holder = this.create('div', {
+                    let holder = this.create('div', {
                         'id': 'comment-form-place-holder'
                     });
-                    response.parentNode.insertBefore(holder, response)
+                    response.parentNode.insertBefore(holder, response);
                 }
-                comment.appendChild(response);
+
+                let children = comment.getElementsByClassName(
+                    'comment-children'
+                );
+
+                if (children.length) {
+                    comment.insertBefore(response, children[0]);
+                } else {
+                    comment.appendChild(response);
+                }
+
                 this.dom('cancel-comment-reply-link').style.display = '';
-                if (null != textarea && 'text' == textarea.name) {
-                    textarea.focus()
+                if (null != textarea && 'text' === textarea.name) {
+                    textarea.focus();
                 }
-                return false
+                return false;
             },
+
             cancelReply: function () {
-                var response = this.dom(this.dom($('.article-comment').attr('data-respondid'))),
+                let response = this.dom(respondId),
                     holder = this.dom('comment-form-place-holder'),
                     input = this.dom('comment-parent');
+
                 if (null != input) {
-                    input.parentNode.removeChild(input)
+                    input.parentNode.removeChild(input);
                 }
                 if (null == holder) {
-                    return true
+                    return true;
                 }
+
                 this.dom('cancel-comment-reply-link').style.display = 'none';
                 holder.parentNode.insertBefore(response, holder);
-                return false
+                return false;
             }
         }
     },
@@ -368,50 +396,6 @@ let lanstar = {
             function() {
                 document.getElementById('tocTree').classList.remove('on');
             });
-    },
-    addComment : ()=> {
-        $('#comment-form').on('submit', function (e) {
-            e.preventDefault();
-            if ($('#comment-respond-author').val().trim() === '') {
-                return Toastify({
-                    text: '请输入您的昵称！',
-                    backgroundColor: "#a7535a",
-                    className: "warning",
-                }).showToast();
-            }
-            if (!/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test($('#comment-respond-mail').val())) {
-                return Toastify({
-                    text: '请输入正确的邮箱！',
-                    backgroundColor: "#c04851",
-                    className: "warning",
-                }).showToast();
-            }
-            if ($('#comment-respond-textarea').val().trim() === '') {
-                return Toastify({
-                    text: '请输入评论内容！',
-                    backgroundColor: "#ed5a65",
-                    className: "warning",
-                }).showToast();
-            }
-            if ($(this).attr('data-disabled')) return;
-            $(this).attr('data-disabled', true);
-            $.ajax({
-                url: $(this).attr('action'),
-                type: 'post',
-                data: $(this).serializeArray(),
-                success: res => {
-                    let url = location.href;
-                    Toastify({
-                        text: '发送成功!',
-                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-                        className: "success",
-                    }).showToast();
-                    setTimeout(function () {
-                        window.location.href = url;
-                    }, 1500);
-                }
-            });
-        });
     },
     addPageLike: ()=>{
         // 文章点赞

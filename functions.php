@@ -144,3 +144,24 @@ function themeVersion() {
     $info = Typecho_Plugin::parseInfo(__DIR__ . '/index.php');
     return $info['version'];
 }
+
+/**
+ * @param $requestUri
+ * @return string
+ */
+function pjax_url_filter($requestUri)
+{
+    $parts = parse_url($requestUri);
+
+    if (isset($parts['query'])) {
+        parse_str($parts['query'], $args);
+
+        if (isset($args['_pjax'])) {
+            unset($args['_pjax']);
+            $parts['query'] = $args ? http_build_query($args) : NULL;
+            return Typecho_Common::buildUrl($parts);
+        }
+    }
+
+    return $requestUri;
+}

@@ -1,136 +1,63 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-function threadedComments($comments, $options)
-{
-    $commentClass = '';
-    if ($comments->authorId) {
-        if ($comments->authorId == $comments->ownerId) {
-            $commentClass .= ' comment-by-author';
-        } else {
-            $commentClass .= ' comment-by-user';
-        }
-    }
-    ?>
-    <li class="comment-list-item<?php
-    if ($comments->levels > 0) {
-        echo ' comment-child';
-    } else {
-        echo ' comment-parent';
-    }
-    echo $commentClass;
-    ?>">
-        <img class="comment-user-avatar rounded-circle float-start"
-             src="<?php utils::emailHandle($comments->mail); ?>s=100" alt="评论头像"/>
-        <div id="<?php $comments->theId(); ?>" class="comment-body">
-            <div class="comment-info">
-                <div class="comment-head">
-                    <a class="comment-user-name me-1"
-                       href="<?= $comments->authorId > 0 ? '/author/' . $comments->authorId : $comments->url; ?>"
-                       rel="external nofollow">
-                        <?= $comments->author; ?>
-                    </a>
-                    <?php if ($comments->authorId === $comments->ownerId): ?>
-                        <span class="badge rounded-pill bg-primary comment-author-title">作者</span>
-                    <?php endif; ?>
-                </div>
-                <div class="comment-meta d-flex justify-content-between">
-                    <span class="comment-time"><?php $comments->date('Y-m-d'); ?></span>
-                    <span class="comment-reply">
-                    <a href="javascript:void(0);"
-                       onclick="return TypechoComment.reply('<?php $comments->theId(); ?>', <?php $comments->coid(); ?>)">
-                        <svg class="icon me-1" aria-hidden="true">
-                            <use xlink:href="#icon-pinglun2"></use>
-                        </svg>
-                        回复
-                        </a>
-                </span>
-                    <span class="comment-reply-cancel" style="display: none">
-                    <?php $comments->cancelReply('<svg class="icon me-1" aria-hidden="true">
-                        <use xlink:href="#icon-quxiao"></use>
-                        </svg>
-                    取消'); ?>
-                </span>
-                </div>
-                <div class="comment-content">
-                    <?php $pcomments = get_comment($comments->parent); ?>
-                    <?php if ($pcomments): ?>
-                        <a style="margin:0 .3em 0 0;padding:0;font-size:.9em;" href="#<?php $comments->theId(); ?>">
-                            @<?= $pcomments['author'] ?>
-                        </a>
-                    <?php endif; ?>
-                    <?php $comments->content(); ?>
-                </div>
-                <div class="comment-ua">
-                    <span class="author-system"><?php utils::getOs($comments->agent); ?></span>
-                    <span class="author-browser"><?php utils::getBrowser($comments->agent); ?></span>
-                </div>
-            </div>
-        </div>
-        <?php if ($comments->children): ?>
-            <div class="comment-children"><?php $comments->threadedComments($options); ?></div>
-        <?php endif; ?>
-    </li>
-<?php } ?>
-
-<?php if ($this->allow('comment')): ?>
-<div class="article-comments" data-respondId="<?php $this->respondId() ?>">
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<div class="comments" id="comments">
     <?php $this->comments()->to($comments); ?>
-    <section id="article-comments-nav">
-        <svg class="icon me-1" aria-hidden="true">
-            <use xlink:href="#icon-talk"></use>
-        </svg>
-        <span>评论</span>
-    </section>
-    <hr>
-    <div id="<?php $this->respondId(); ?>" class="comment-respond">
-        <form method="post" action="<?php $this->commentUrl(); ?>" id="comment-form" role="form">
-            <div class="comment-respond-author">
-                <?php if ($this->user->hasLogin()): ?>
-                    <div class="row">
-                        <input type="text" id="comment-respond-author" name="author" class="comment-input col-sm-4"
-                               placeholder="昵称" required value="<?php $this->user->screenName(); ?>"/>
-                        <input type="text" id="comment-respond-url" name="url" class="comment-input col-sm-4"
-                               placeholder="网站" value="<?php $this->remember('url'); ?>"
-                            <?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
-                        <input type="text" id="comment-respond-mail" name="mail" class="comment-input col-sm-4"
-                               placeholder="邮箱" value="<?php $this->user->mail(); ?>"
-                            <?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
+    <?php if ($this->allow('comment')): ?>
+        <div id="<?php $this->respondId(); ?>" class="respond">
+            <div class="cancel-comment-reply">
+                <?php $comments->cancelReply(); ?>
+            </div>
+            <div id="response"><?php _e('发表评论'); ?></div>
+            <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
+                <?php if (!$this->user->hasLogin()): ?>
+                    <div class="option">
+                        <label for="author" class="required"></label>
+                        <input placeholder="<?php _e('称呼'); ?>" type="text" name="author" id="author" class="text"
+                               value="<?php $this->remember('author'); ?>" required/>
                     </div>
-                <?php else: ?>
-                    <div class="row">
-                        <input type="text" id="comment-respond-author" name="author" class="comment-input col-sm-4"
-                               placeholder="昵称" required value="<?php $this->remember('author'); ?>"/>
-                        <input type="text" id="comment-respond-url" name="url" class="comment-input col-sm-4"
-                               placeholder="网站" value="<?php $this->remember('url'); ?>"
-                            <?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
-                        <input type="text" id="comment-respond-mail" name="mail" class="comment-input col-sm-4"
-                               placeholder="邮箱" value="<?php $this->remember('mail'); ?>"
-                            <?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
+                    <div class="option">
+                        <label for="mail"<?php if ($this->options->commentsRequireMail): ?> class="required"<?php endif; ?>></label>
+                        <input placeholder="<?php _e('邮箱'); ?>" type="email" name="mail" id="mail" class="text"
+                               value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
+                    </div>
+                    <div class="option">
+                        <label for="url"<?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?>></label>
+                        <input placeholder="<?php _e('网站'); ?>" type="url" name="url" id="url" class="text"
+                               placeholder="<?php _e('http://'); ?>"
+                               value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
                     </div>
                 <?php endif; ?>
-                <div class="comment-edit">
-                        <textarea class="comment-textarea comment-input owo-textarea" name="text"
-                                  id="comment-respond-textarea" placeholder="发条友善的评论" required></textarea>
+                <div class="option">
+                    <label for="textarea" class="required"></label>
+                    <textarea placeholder="说点什么吗？" rows="8" cols="50" name="text" id="textarea" class="textarea"
+                              required><?php $this->remember('text'); ?></textarea>
                 </div>
-                <div class="OwO"></div>
-                <div class="d-flex justify-content-end align-items-center">
-                    <?php if (utils::hasPlugin('Comment2Mail')): ?>
-                        <span class="comment-mail-me">
-                        <input name="receiveMail" type="checkbox" value="yes" id="receiveMail" checked/>
-                        <label for="receiveMail"><strong>接收</strong>邮件通知</label>
-                    </span>
-                    <?php endif; ?>
-                    <div class="comment-secret me-1">
-                        <input type="checkbox" id="secret-button" name="secret">
-                        <label for="secret-button" class="secret-label" title="开启该功能，您的评论仅作者和评论双方可见">
-                            <span class="circle"></span>
-                        </label>
+                <div class="comments-toolbar">
+                    <div id="OwO" class="OwO"></div>
+                    <div class="option">
+                        <button type="submit" class="submit"><?php _e('提交评论'); ?></button>
                     </div>
-                    <button type="submit" class="btn btn-sm btn-primary comment-submit">
-                        <span>提交</span>
-                    </button>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
+    <?php endif; ?>
+    <script type="text/javascript">
+        (function () {
+            let token = <?= Typecho_Common::shuffleScriptVar(
+                $this->security->getToken(
+                    pjax_url_filter($this->request->getRequestUrl())
+                )); ?>
+            lanstar.addCommentInit(
+                '<?= $this->respondId; ?>', token
+            );
+        })();
+    </script>
+    <?php if ($comments->have()): ?>
+        <div class="comments-row">
+            <?php $comments->listComments([
+                'avatarSize' => 64
+            ]); ?>
+        </div>
+
+        <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
     <?php endif; ?>
 </div>
