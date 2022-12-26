@@ -202,8 +202,10 @@ li.comment-by-author > .comment-author span:after {
 #secret-button:checked + label.secret-label {
     background-color: #3a3f51;
 }
-.comment-mail-me {
-    margin-right: .5rem;
+.comment-ua {
+    font-size: 1rem;
+    color: var(--text2);
+    margin-left: -1rem;
 }
 /* 暗黑模式 */
 .theme-dark #article-comments-nav, .theme-dark .comment-user-name, .theme-dark .comment-content, .theme-dark .comment-input {

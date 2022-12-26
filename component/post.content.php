@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <section class="article-info">
     <div class="article-cover-inner">
-        <img src="<?=  $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
+        <img src="<?= $this->fields->banner ?$this->fields->banner(): utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
     </div>
     <div class="article-detail">
         <h1 class="article-title">
@@ -93,18 +93,40 @@
             更新于: <?= date('Y年m月d日 H:i', $this->modified) ?>
         </div>
     </div>
-    <div class="article-action mt-1 d-flex justify-content-around">
-        <div class="article-action-item p-3 d-flex align-items-center" id="agree-btn" data-cid="<?php $this->cid(); ?>">
+    <div class="article-action">
+        <div class="article-action-item">
+            <a id="comment" href="#comment" data-bs-toggle="tooltip" data-bs-placement="bottom"
+               data-bs-title="评论">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-liuyanban"></use>
+                </svg>
+            </a>
+        </div>
+        <div class="article-action-item" id="agree-btn" data-cid="<?php $this->cid(); ?>"
+             data-bs-toggle="tooltip" data-bs-placement="bottom"
+             data-bs-title="点赞">
             <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-ziyuan"></use>
+                <use xlink:href="#icon-xihuan"></use>
             </svg>
             <?php $agree = $this->hidden ? array('agree' => 0, 'recording' => true) : utils::agreeNum($this->cid); ?>
             <span class="agree-num"><?=  $agree['agree']; ?></span>
         </div>
-        <div class="article-action-item p-3">
+        <div class="article-action-item"
+             data-bs-toggle="dropdown" aria-expanded="false">
             <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-xinbaniconshangchuan-"></use>
+                <use xlink:href="#icon-fuzhilianjie"></use>
             </svg>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item js-pjax" target="_blank"
+                       href="https://connect.qq.com/widget/shareqq/index.html?url=<?php
+                    $this->permalink?>&sharesource=qzone&title=<?php $this->title?>&pics=<?= $this->fields->banner ?$this->fields->banner(): utils::indexTheme('assets/img/default.jpg')?>&summary=<?php $this->excerpt(100)?>">分享到QQ</a></li>
+<!--                <li><a class="dropdown-item js-pjax" href="https://service.weibo.com/share/share.php?url=--><?php //$this->permalink(); ?><!--&title=--><?php //$this->title(); ?><!--"-->
+<!--                       target="_blank">分享到微博</a></li>-->
+<!--                <li><a class="dropdown-item js-pjax" href="https://twitter.com/intent/tweet?url=--><?php //$this->permalink(); ?><!--&text=--><?php //$this->title(); ?><!--"-->
+<!--                       target="_blank">分享到Twitter</a></li>-->
+<!--                <li><hr class="dropdown-divider"></li>-->
+<!--                <li><a class="dropdown-item js-pjax" href="javaScript:copyToClipboard(window.location.href);">复制链接</a></li>-->
+            </ul>
         </div>
     </div>
     <div class="article-page">

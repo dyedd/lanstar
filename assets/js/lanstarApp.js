@@ -65,6 +65,8 @@ eval(function (p, a, c, k, e, r) {
 })(750, 750);
 let lanstar = {
     init: function () {
+        this.addCommentInit()
+        this.addComment()
         this.addSearchEvent()
         this.addDarkMode()
         this.addMobileSwitch()
@@ -210,22 +212,7 @@ let lanstar = {
             }
         })
     },
-    addCommentInit: (respondId, token) => {
-        let respond = document.getElementById(
-            respondId
-        );
-
-        if (respond != null) {
-            let forms = respond.getElementsByTagName('form');
-            if (forms.length) {
-                let input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = '_';
-                input.value = token;
-                forms[0].appendChild(input);
-            }
-        }
-
+    addCommentInit: () => {
         window.TypechoComment = {
             dom: function (id) {
                 return document.getElementById(id);
@@ -240,7 +227,8 @@ let lanstar = {
 
             reply: function (cid, coid) {
                 let comment = this.dom(cid),
-                    response = this.dom(respondId), input = this.dom('comment-parent'),
+                    response = this.dom($('#comments').attr('data-respondid')),
+                    input = this.dom('comment-parent'),
                     form = 'form' === response.tagName ? response : response.getElementsByTagName('form')[0],
                     textarea = response.getElementsByTagName('textarea')[0];
 
@@ -280,7 +268,7 @@ let lanstar = {
             },
 
             cancelReply: function () {
-                let response = this.dom(respondId),
+                let response = this.dom($('#comments').attr('data-respondid')),
                     holder = this.dom('comment-form-place-holder'),
                     input = this.dom('comment-parent');
 
@@ -296,6 +284,36 @@ let lanstar = {
                 return false;
             }
         }
+    },
+    addComment:function (){
+        $('#comment-form').on('submit', function (e) {
+            e.preventDefault();
+            if ($('#textarea').val().trim() === '') {
+                return Toastify({
+                    text: '请输入评论内容！',
+                    backgroundColor: "#ed5a65",
+                    className: "warning",
+                }).showToast();
+            }
+            if ($(this).attr('data-disabled')) return;
+            $(this).attr('data-disabled', true);
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'post',
+                data: $(this).serializeArray(),
+                success: res => {
+                    let url = location.href;
+                    Toastify({
+                        text: '发送成功!',
+                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                        className: "success",
+                    }).showToast();
+                    setTimeout(function () {
+                        window.location.href = url;
+                    }, 1000);
+                }
+            });
+        });
     },
     addBackTop: function () {
         $('body,html').animate({
@@ -537,9 +555,9 @@ let lanstar = {
         });
     },
     addCommentSecret: () => {
-        let holder = $('.comment-respond textarea').attr('placeholder');
+        let holder = $('#comment-form textarea').attr('placeholder');
         $('#secret-button').click(function () {
-            let textareaDom = $('.comment-respond textarea');
+            let textareaDom = $('#comment-form textarea');
             if ($(this).is(':checked')) {
                 textareaDom.attr('placeholder', '私密回复中')
             } else {
@@ -624,5 +642,5 @@ let lanstar = {
                 });
             }
         });
-    }
+    },
 }

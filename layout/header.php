@@ -18,6 +18,8 @@
           href="<?php utils::indexTheme('assets/css/OwO.min.css');?>">
     <link rel="stylesheet"
           href="<?php utils::indexTheme('assets/css/prism.css');?>">
+    <link rel="stylesheet"
+          href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css">
     <script src="<?php utils::indexTheme('assets/js/lanstarApp.js'); ?>"></script>
     <title><?php $this->archiveTitle(array(
             'category' => _t('分类 %s 下的文章'),

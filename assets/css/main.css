@@ -42,39 +42,10 @@ a, a:hover {
     overflow: hidden;
 }
 .dropdown-menu {
+    box-shadow: var(--box-shadow);
     border: none;
 }
 /** 头部 */
-/*加载动画*/
-.loader{
-    top: 2em;
-    right: 2em;
-    z-index: 3;
-    opacity: 0;
-    position: fixed;
-    pointer-events: none;
-    transition: opacity .3s;
-}
-.loader.active{ opacity: 1 }
-
-.loader .plane{
-    width: 2em;
-    height: 2em;
-    background: #0b63ff;
-    animation: loader 1.2s infinite ease-in-out
-}
-
-@keyframes loader {
-    0% {
-        transform: perspective(120px) rotateX(0deg) rotateY(0deg)
-    }
-    50% {
-        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
-    }
-    100% {
-        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg)
-    }
-}
 .container-fluid {
     position: relative;
     padding: 0 30rem;
@@ -760,10 +731,10 @@ ol.carousel-indicators li.active {
 .watch_catalog {
     cursor: pointer;
     position: fixed;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
     right: 1.25rem;
-    line-height: 3.5rem;
+    line-height: 4.5rem;
     bottom: 5.625rem;
     text-align: center;
     background: #fff;

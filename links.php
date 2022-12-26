@@ -24,7 +24,7 @@ $this->need('layout/header.php');
                                 </h1>
                                 <p>
         <span class="article-detail-item">
-            <svg class="icon me-1" aria-hidden="true">
+            <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-shijian"></use>
             </svg>
             <time class="create-time" datetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
