@@ -592,7 +592,7 @@ let lanstar = {
         })
     },
     addMorePages(){
-        $('.next').click(function() {
+        $('.page-pagination .next').click(function() {
             $this = $(this);
             $(this).addClass('loading').text('努力加载');
             let href =$(this).attr('href');
