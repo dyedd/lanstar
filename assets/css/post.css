@@ -63,6 +63,8 @@
 .post-info {
     position: relative;
     padding: 1.5rem 1.5rem 1.5rem 8rem;
+    text-shadow: var(--text-shadow);
+    font-weight: 800;
 }
 .post-info .created {
     float: right;
@@ -95,6 +97,7 @@
 }
 .article-title {
     padding: 2rem;
+    margin-bottom: -2rem;
 }
 .article-main {
     background: var(--background);
