@@ -17,57 +17,22 @@ eval(function (p, a, c, k, e, r) {
     return p
 }('a.f(\' %c 9 1 %c b://d.e/8/1\',\'2:#3;4:#5;6:7 0\',\'2:#5;4:#3;6:7\');', 16, 16, '|lanstar|color|fadfa3|background|030307|padding|5px|dyedd|Theme|console|https||github|com|log'.split('|'), 0, {}));
 
-;(function(designWidth, maxWidth) {
-    var doc = document,
-        win = window,
-        docEl = doc.documentElement,
-        remStyle = document.createElement("style"),
-        tid;
+//获取屏幕宽度
+let htmlWidth=document.documentElement.clientWidth||document.body.clientWidth;
+//获取dom
+let htmlDom =document.getElementsByTagName('html')[0];
+//设置rem基准值
+htmlDom.style.fontSize=10+'px';
+//监听屏幕变化 从而改变1rem的值
+window.addElementlListener('resize',(e)=>{
+    let htmlWidth =document.documentElement.clientWidth||document.body.clientWidth;
+    htmlDom.style.fontSize=htmlWidth*100/750+'px';
+})
 
-    function refreshRem() {
-        var width = docEl.getBoundingClientRect().width;
-        maxWidth = maxWidth || 540;
-        width>maxWidth && (width=maxWidth);
-        var rem = width * 10 / designWidth;
-        remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
-    }
-
-    if (docEl.firstElementChild) {
-        docEl.firstElementChild.appendChild(remStyle);
-    } else {
-        var wrap = doc.createElement("div");
-        wrap.appendChild(remStyle);
-        doc.write(wrap.innerHTML);
-        wrap = null;
-    }
-    //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
-    refreshRem();
-
-    win.addEventListener("resize", function() {
-        clearTimeout(tid); //防止执行两次
-        tid = setTimeout(refreshRem, 300);
-    }, false);
-
-    win.addEventListener("pageshow", function(e) {
-        if (e.persisted) { // 浏览器后退的时候重新计算
-            clearTimeout(tid);
-            tid = setTimeout(refreshRem, 300);
-        }
-    }, false);
-
-    if (doc.readyState === "complete") {
-        doc.body.style.fontSize = "16px";
-    } else {
-        doc.addEventListener("DOMContentLoaded", function(e) {
-            doc.body.style.fontSize = "16px";
-        }, false);
-    }
-})(750, 750);
 let lanstar = {
     init: function () {
         this.addCommentInit()
         this.addComment()
-        this.addSearchEvent()
         // this.addDarkMode()
         this.addMobileSwitch()
         this.addScroll()
@@ -106,22 +71,6 @@ let lanstar = {
             getCookie,
         }
     },
-    addSearchEvent: function () {
-        $('.close').on('click', function () {
-            $('.search-block').collapse('hide');
-        })
-        let searchBlock = $('#search-block')
-        searchBlock.on('show.bs.collapse', function () {
-            $('.nav-menu').css({'position': 'relative', 'z-index': '-1'})
-            $('#carouselExampleIndicators').css({'position': 'relative', 'z-index': '-1'})
-            $('.user-container').css({'position':'relative','z-index':'-1'})
-        })
-        searchBlock.on('hidden.bs.collapse', function () {
-            $('.nav-menu').removeAttr('style')
-            $('#carouselExampleIndicators').removeAttr('style')
-            $('.user-container').removeAttr('style')
-        })
-    },
     addMobileSwitch: function () {
         $(".mobile-button").on("click",function () {
             $(".mobile-nav > .logo-box").addClass("d-none").parent().removeClass("col d-none").show(1000)
@@ -131,7 +80,6 @@ let lanstar = {
             $(".right").children().not("footer").appendTo($(".mobile-nav"))
         })
         $(".mobile-close").on("click",function (){
-            console.log(this)
             $(".mobile-nav").hide(1000)
         })
     },
