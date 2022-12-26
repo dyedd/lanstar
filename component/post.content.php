@@ -111,21 +111,22 @@
             <?php $agree = $this->hidden ? array('agree' => 0, 'recording' => true) : utils::agreeNum($this->cid); ?>
             <span class="agree-num"><?=  $agree['agree']; ?></span>
         </div>
-        <div class="article-action-item"
-             data-bs-toggle="dropdown" aria-expanded="false">
-            <svg class="icon" aria-hidden="true">
+        <div class="article-action-item">
+            <svg class="icon" aria-hidden="true"
+                 data-bs-toggle="dropdown" aria-expanded="false"
+            >
                 <use xlink:href="#icon-fuzhilianjie"></use>
             </svg>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item js-pjax" target="_blank"
                        href="https://connect.qq.com/widget/shareqq/index.html?url=<?php
                     $this->permalink?>&sharesource=qzone&title=<?php $this->title?>&pics=<?= $this->fields->banner ?$this->fields->banner(): utils::indexTheme('assets/img/default.jpg')?>&summary=<?php $this->excerpt(100)?>">分享到QQ</a></li>
-<!--                <li><a class="dropdown-item js-pjax" href="https://service.weibo.com/share/share.php?url=--><?php //$this->permalink(); ?><!--&title=--><?php //$this->title(); ?><!--"-->
-<!--                       target="_blank">分享到微博</a></li>-->
-<!--                <li><a class="dropdown-item js-pjax" href="https://twitter.com/intent/tweet?url=--><?php //$this->permalink(); ?><!--&text=--><?php //$this->title(); ?><!--"-->
-<!--                       target="_blank">分享到Twitter</a></li>-->
-<!--                <li><hr class="dropdown-divider"></li>-->
-<!--                <li><a class="dropdown-item js-pjax" href="javaScript:copyToClipboard(window.location.href);">复制链接</a></li>-->
+                <li><a class="dropdown-item js-pjax" href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>"
+                       target="_blank">分享到微博</a></li>
+                <li><a class="dropdown-item js-pjax" href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>"
+                       target="_blank">分享到Twitter</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item js-pjax" href="javaScript:copyToClipboard(window.location.href);">复制链接</a></li>
             </ul>
         </div>
     </div>
