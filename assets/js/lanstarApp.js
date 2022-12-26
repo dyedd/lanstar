@@ -297,6 +297,7 @@ let lanstar = {
             }
             if ($(this).attr('data-disabled')) return;
             $(this).attr('data-disabled', true);
+            document.querySelector('.comments-toolbar .submit').textContent = '传输中...'
             $.ajax({
                 url: $(this).attr('action'),
                 type: 'post',
@@ -307,10 +308,11 @@ let lanstar = {
                         text: '发送成功!',
                         backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
                         className: "success",
-                    }).showToast();
-                    setTimeout(function () {
-                        window.location.href = url;
-                    }, 1000);
+                    }).showToast().then(
+                        setTimeout(function () {
+                            window.location.href = url;
+                        }, 100)
+                    );
                 }
             });
         });
