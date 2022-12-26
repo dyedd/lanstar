@@ -94,7 +94,7 @@ function theNext($widget)
         $content = $widget->filter($content);
         $link = '<a href="' . $content['permalink'] . '" target="_self">
                         <div class="button">
-                            <div class="title" title="' . $content['title'] . '">' . $content['title'] . '> </div>
+                            <div class="title" title="' . $content['title'] . '">下一篇 > </div>
                         </div>
                     </a>';
         echo $link;
@@ -126,7 +126,7 @@ function thePrev($widget)
         $content = $widget->filter($content);
         $link = '<a href="' . $content['permalink'] . '" target="_self">
                         <div class="button">
-                            <div class="title" title="' . $content['title'] . '">< ' . $content['title'] . '</div>
+                            <div class="title" title="' . $content['title'] . '">< 上一篇</div>
                         </div>
                     </a>';
         echo $link;
