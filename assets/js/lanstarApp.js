@@ -24,7 +24,7 @@ let htmlDom =document.getElementsByTagName('html')[0];
 //设置rem基准值
 htmlDom.style.fontSize=10+'px';
 //监听屏幕变化 从而改变1rem的值
-window.addElementlListener('resize',(e)=>{
+document.documentElement.addEventListener('resize',(e)=>{
     let htmlWidth =document.documentElement.clientWidth||document.body.clientWidth;
     htmlDom.style.fontSize=htmlWidth*100/750+'px';
 })
