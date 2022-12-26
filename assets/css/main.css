@@ -358,6 +358,7 @@ ol.carousel-indicators li.active {
 .describe.pic img {
     max-width: 100%;
     max-height: 60vh;
+    border-radius: .4rem;
 }
 .index-comments {
     padding: 1.2rem;
