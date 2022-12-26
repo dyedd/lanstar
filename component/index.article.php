@@ -92,7 +92,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 <?php if ($comment['authorId'] == $comment['ownerId']): ?>
                                     <span class="badge rounded-pill bg-primary comment-author-title">作者</span>
                                 <?php endif; ?></span>
-                            <?php $text = preg_replace("/(?s)\[secret\]([^\]]*?)\[\/secret\]/", '此次隐藏',
+                            <?php $text = preg_replace("/(?s)\[secret\]([^\]]*?)\[\/secret\]/", '此处隐藏',
                                 $comment['text']) ?>
                             <span class="text"><?=  preg_replace("/<br>|<p>|<\/p>/", ' ',
                                     $text) ?></span>
