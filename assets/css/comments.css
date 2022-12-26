@@ -207,25 +207,6 @@ li.comment-by-author > .comment-author span:after {
     color: var(--text2);
     margin-left: -1rem;
 }
-/* 暗黑模式 */
-.theme-dark #article-comments-nav, .theme-dark .comment-user-name, .theme-dark .comment-content, .theme-dark .comment-input {
-    color: var(--dark-text-normal-color);
-}
-.theme-dark .comment-user-avatar {
-    border: none;
-}
-.theme-dark .comment-info, .theme-dark .comment-input {
-    border-bottom: 0.0625rem solid var(--dark-text-gray-color);
-}
-.theme-dark .comment-respond {
-    border: none;
-}
-.theme-dark .secret {
-    color: var(--theme-text-color);
-}
-.theme-dark .comment-mail-me {
-    color: var(--dark-text-gray-color);
-}
 /* ua标识 */
 .ua-icon {
     display: inline-block;

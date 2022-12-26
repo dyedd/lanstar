@@ -25,7 +25,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    background: linear-gradient(to top, var(--dark-text-normal-color), transparent);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.87), transparent);
 }
 .article-cover-inner img {
     object-fit: cover;
@@ -97,7 +97,7 @@
     padding: 2rem;
 }
 .article-main {
-    background: var(--light-background);
+    background: var(--background);
     box-shadow: var(--box-shadow);
 }
 
@@ -752,62 +752,4 @@ pre::after {
 .article-main .other {
     font-size: 0.7rem;
     padding: 2rem 2rem 0 2rem;
-}
-
-/** 暗黑模式 */
-.theme-dark .article-main {
-    background: var(--dark-content);
-    border: none;
-}
-.theme-dark .article-page .button .label {
-    color: var(--dark-text-gray-color);
-}
-.theme-dark .markdown-body {
-    color: rgba(255, 255, 255, 0.87);
-}
-.theme-dark .reply2view {
-    background: #292727;
-    color: var(--dark-text-gray-color) !important;
-}
-.theme-dark .article-page {
-    border: 0.0625rem solid var(--dark-text-gray-color);
-}
-.theme-dark .article-comments {
-    background: rgba(52, 50, 50, 0.7);
-    border: none;
-}
-.theme-dark .article-comments h1 {
-    color: rgba(255,255,255,0.87);
-}
-.theme-dark .article-comments h2 {
-    color: rgba(255,255,255,0.87);
-}
-.theme-dark hr {
-    border-top: 0.0625rem solid var(--dark-text-gray-color);
-}
-.theme-dark .markdown-body h4 {
-    border-bottom: 0.0625rem solid var(--dark-text-gray-color);
-}
-.theme-dark .markdown-body blockquote {
-    color: var(--dark-text-gray-color);
-    background: none;
-}
-.theme-dark .links-title h4 {
-    border-bottom: none;
-    color: var(--dark-text-normal-color) !important;
-}
-.theme-dark .links-item {
-    background: var(--dark-content);
-}
-.theme-dark .article-main table td {
-    background: #fff;
-}
-.theme-dark .markdown-body h1, .theme-dark .markdown-body h2, .theme-dark .markdown-body h3, .theme-dark .markdown-body h4, .theme-dark .markdown-body h5, .theme-dark .markdown-body h6 {
-    color: var(--dark-text-normal-color);
-}
-.theme-dark .markdown-body p {
-    color: var(--dark-text-normal-color);
-}
-.theme-dark .article-collapse .collapse-body {
-    color: var(--dark-text-normal-color);
 }
