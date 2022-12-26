@@ -36,7 +36,7 @@ class utils
                 $style = '<h5>' . $bannerInfo[2] . '</h5><p>' . $bannerInfo[3] . '</p>';
             }
             $text .= '<div class="carousel-item'. $active .'">'. $a .
-                '<img src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-gisrc="' .
+                '<img class="lazy" src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-src="' .
                 $bannerInfo[0] .
                 '" class="d-block w-100" alt="banner"><div class="carousel-caption d-none d-md-block">'.$style.'</div></a></div>';
         }
@@ -631,7 +631,7 @@ EOF;
     {
         // 过滤隐藏
         if (strpos($html, '[hide') !== false) {
-            $html = preg_replace('/(?s)\[hide]([^\]]*?)\[\/hide]/', '', $html);
+            $html = preg_replace('/(?s)\[hide\]([^\]]*?)\[\/hide\]/', '', $html);
         }
         $content = '';
         if($flag == 0) {
