@@ -1,8 +1,10 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<section class="article-info">
-    <div class="article-cover-inner">
-        <img src="<?= $this->fields->banner ?$this->fields->banner(): utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
-    </div>
+<section class="article-info <?php if(!$this->fields->banner){echo 'no-cover';}?>"">
+    <?php if($this->fields->banner):?>
+        <div class="article-cover-inner">
+            <img src="<?= $this->fields->banner()?>" alt="cover">
+        </div>
+    <?php endif;?>
     <div class="article-detail">
         <h1 class="article-title">
             <?php if ($this->user->hasLogin()): ?>

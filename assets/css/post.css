@@ -14,6 +14,19 @@
 .article-info {
     position: relative;
 }
+.article-info.no-cover {
+    height: 16rem;
+    background: var(--background);
+}
+.no-cover .article-detail {
+    color: var(--text2);
+}
+.no-cover .article-title a {
+    color: var(--text2);
+}
+.no-cover .article-title span, .no-cover .post-info{
+    text-shadow: none;
+}
 .article-cover-inner {
     height: 25rem;
     overflow: hidden;
