@@ -172,25 +172,19 @@ class contents{
         if (preg_match_all($reg, $text, $matches)) {
             $db = Typecho_Db::get();
             foreach ($matches[1] as $match) {
-                $result = $db->fetchAll($db->select()->from('table.fields')
-                    ->where('cid = ?', $match)
-                );
                 $articleArr = $db->fetchAll($db->select()->from('table.contents')
                     ->where('status = ?','publish')
                     ->where('type = ?', 'post')
                     ->where('cid = ?',$match)
                 );
                 $val = Typecho_Widget::widget('Widget_Abstract_Contents')->push($articleArr[0]);
-                $banner = empty($result[0]['str_value'])?'../usr/themes/lanstar/assets/img/default.png':$result[0]['str_value'];
 
-                $replacement = '<div class="card bg-dark text-white">
-                              <img src="' . $banner . '" class="card-img" alt="文章卡片">
-                              <div class="card-img-overlay">
-                                <span class="card-title"><a href="' . $val['permalink'] . '">' . $val['title'] . '</a></span>
-                                <p class="card-text">' . $result[1]['excerpt'] . '</p>
-                                <p class="card-text">' . date('Y-m-d H:i:s', $val['modified']) . '</p>
-                              </div>
-                            </div>';
+                $replacement = '<div class="card mb-3">
+                                  <div class="card-body">
+                                    <h5 class="card-title">' . $val['title'] . '</h5>
+                                    <p class="card-text">更新时间：'. date('Y-m-d H:i:s', $val['modified']) .'</p>
+                                    <a href="' . $val['permalink'] . '" class="btn btn-primary">跳转</a>
+                                  </div>';
                 $text = preg_replace($reg, $replacement, $text, 1);
             }
         }
