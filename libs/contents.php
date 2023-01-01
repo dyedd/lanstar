@@ -66,11 +66,12 @@ class contents{
     public static function parseLink($text) {
         $reg = '/\[links\](.*?)\[\/links\]/s';
         if (preg_match($reg, $text)) {
-            $rp = '<div class="links-box container-fluid"><div class="row">${1}</div></div>';
+            $rp = '<div class="links-box"><div class="row">${1}</div></div>';
             $text = preg_replace($reg, $rp, $text);
             $pattern = '/\[(.*?)\]\[(.*?)\]\((.*?)\)\+\((.*)\)/';
-            $replacement = '<div class="col-lg-2 col-6 col-md-2 col-sm-3 links-container">
-		    <a href="${3}" title="${2}" target="_blank" class="links-link">
+            $replacement = '<div class="col-lg-2 col-6 col-md-2 col-sm-3 links">
+		    <a href="${3}"title="${2}"
+		     target="_blank" class="links-link">
 			  <div class="links-item">
 			    <div class="links-img"><img src="${4}"></div>
 				<div class="links-title">
