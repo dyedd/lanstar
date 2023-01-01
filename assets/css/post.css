@@ -322,14 +322,12 @@
 }
 /** 标签内容的美化 */
 .markdown-body table {
-    color: #5b6064;
-    border-spacing: 0;
+    color: var(--routine);
     text-align: center;
-    border-collapse: collapse;
     box-shadow: var(--box-shadow);
     max-width: 100%;
     overflow: auto;
-    margin: auto;
+    display: inline-block;
 }
 .markdown-body table thead {
     background-color: #f8f8f8;
