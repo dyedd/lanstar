@@ -7,7 +7,7 @@
 <script>
     const themeUrl = '<?php utils::indexTheme(); ?>';
     const config = {'dark': '<?=  $this->options->darkBtn;?>'}
-    utils.loadjs('toastify.min.js')
+    utils.loadScript('toastify.min.js')
 </script>
 <script src="<?php utils::indexTheme('assets/js/extend/icon.js'); ?>"></script>
 <script src="<?php utils::indexTheme('assets/js/extend/view-image.min.js'); ?>"></script>

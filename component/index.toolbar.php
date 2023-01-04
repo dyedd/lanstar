@@ -39,16 +39,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     </div>
     <div class="toolbar-right">
         <?php if($this->options->darkBtn):?>
-<!--            <button class="float-end chose-mode-day float-right" id="night-mode" type="button">-->
-<!--                <svg class="icon" aria-hidden="true">-->
-<!--                    <use xlink:href="#icon-yueliang"></use>-->
-<!--                </svg>-->
-<!--            </button>-->
-<!--            <button class="float-end chose-mode-moon float-right" id="night-mode" type="button">-->
-<!--                <svg class="icon" aria-hidden="true">-->
-<!--                    <use xlink:href="#icon-taiyang"></use>-->
-<!--                </svg>-->
-<!--            </button>-->
+            <div class="float-end chose-mode-day float-right" id="night-mode" type="button">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-yueliang"></use>
+                </svg>
+            </div>
+            <div class="float-end chose-mode-moon float-right" id="night-mode" type="button">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-taiyang"></use>
+                </svg>
+            </div>
         <?php endif;?>
     </div>
 </div>

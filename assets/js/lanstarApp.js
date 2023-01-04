@@ -13,6 +13,16 @@ const utils = {
         return data
     },
     getCookie: (name) => document.cookie.match(`[;\s+]?${name}=([^;]*)`)?.pop(),
+    setCookie: (name, value, seconds) => {
+        seconds = seconds || 0;
+        let expires = "";
+        if (seconds != 0) { //设置cookie生存时间
+            let date = new Date();
+            date.setTime(date.getTime() + (seconds * 1000));
+            expires = "; expires=" + date.toGMTString();
+        }
+        document.cookie = name + "=" + escape(value) + expires + "; path=/"; //转码并赋值
+    },
     secondToDate: (second) => {
         if (!second) {
             return 0;
@@ -58,11 +68,11 @@ const utils = {
             '<use xlink:href="#icon-miao"></use>' +
             '</svg>';
     },
-    loadjs:(path)=>{
+    loadScript: (path) => {
         const is = document.getElementsByClassName('article-main');
-        if(is.length>0){
+        if (is.length > 0) {
             const js = document.createElement('script');
-            js.setAttribute('src',`${themeUrl}assets/js/extend/${path}`);
+            js.setAttribute('src', `${themeUrl}assets/js/extend/${path}`);
             const first = document.getElementsByTagName('script')[0];
             first.parentNode.insertBefore(js, first);
         }
@@ -87,15 +97,62 @@ const lanstar = {
         this.addPostProtect();
         this.addCommentSecret();
         this.addTa()
+        this.addDarkMode()
     },
-    addTa:()=>{
+    addTa: () => {
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         window.ViewImage && ViewImage.init('.gallery img');
         let images = document.querySelectorAll(".lazy");
         lazyload(images);
     },
-    addCopyright:()=>{
+    addDarkMode: () => {
+        if (config['dark'] == '0') return false;
+        // 根据时间
+        let timeNow = new Date();
+        // 获取当前小时
+        let hours = timeNow.getHours();
+        const method = {
+            add: () => {
+                document.documentElement.classList.add('theme-dark')
+                document.querySelector('#carouselCaptions')?.classList.add('carousel-dark')
+                document.querySelector('.chose-mode-day').style.display = 'none'
+                document.querySelector('.chose-mode-moon').style.display = 'inline-block'
+            },
+            remove: () => {
+                document.documentElement.classList.remove('theme-dark')
+                document.querySelector('#carouselCaptions')?.classList.remove('carousel-dark')
+                document.querySelector('.chose-mode-day').style.display = 'inline-block'
+                document.querySelector('.chose-mode-moon').style.display = 'none'
+            }
+        }
+        // 自动
+        if (hours > 6 && hours < 19) {
+            method.remove()
+        } else {
+            method.add()
+        }
+        document.querySelectorAll('#night-mode').forEach(item => {
+            item.onclick = () => {
+                if (utils.getCookie('night') == '1') {
+                    method.remove()
+                    utils.setCookie("night","0",1800)
+                } else {
+                    method.add()
+                    utils.setCookie("night","1",1800)
+                }
+            }
+        })
+        // 切换标签页时进行判断
+        document.addEventListener('visibilitychange', function () {
+            if (hours > 6 && hours < 19 || utils.getCookie('night') == '1') {
+                method.remove()
+            } else {
+                method.add()
+            }
+        });
+    },
+    addCopyright: () => {
         eval(function (p, a, c, k, e, r) {
             e = function (c) {
                 return c.toString(a)
@@ -286,11 +343,11 @@ const lanstar = {
         let comments = document.getElementsByClassName('OwO')
         if (comments.length > 0) {
             // 说明在文章内容页
-            utils.loadjs('OwO.js')
+            utils.loadScript('OwO.js')
         }
     },
     addHighLight: function () {
-        utils.loadjs('highlight.min.js')
+        utils.loadScript('highlight.min.js')
     },
     addCatalog: () => {
         //生成文章目录
