@@ -165,6 +165,9 @@
 .article-category a:hover {
     color: rgb(29, 161, 242);
 }
+.tags {
+    margin: 2rem;
+}
 .tags a {
     border: 0.0625rem solid #999;
     border-radius: 6.25rem;
