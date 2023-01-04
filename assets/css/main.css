@@ -958,11 +958,13 @@ html.theme-dark, .theme-dark img {
 .theme-dark img, .theme-dark .icon {
     opacity: .8;
 }
-.theme-dark i {
-    /*负负得正*/
-    filter: invert(1) hue-rotate(180deg);
-}
+/*负负得正*/
+.theme-dark i
 .theme-dark li.comment-by-author > .comment-author span:after
+.theme-dark .article-title a,
+.theme-dark .post-info .created,
+.theme-dark .post-info .display
+.theme-dark .post-info .extra
 {
     filter: invert(1) hue-rotate(180deg);
 }

@@ -126,11 +126,19 @@ const lanstar = {
                 document.querySelector('.chose-mode-moon').style.display = 'none'
             }
         }
-        // 自动
-        if (hours > 6 && hours < 19) {
-            method.remove()
-        } else {
+        // 默认
+        if (utils.getCookie('night') == '1') {
             method.add()
+        } else {
+            method.remove()
+        }
+        if (!utils.getCookie('night')) {
+            // 自动
+            if (hours > 6 && hours < 19) {
+                method.remove()
+            } else {
+                method.add()
+            }
         }
         document.querySelectorAll('#night-mode').forEach(item => {
             item.onclick = () => {
