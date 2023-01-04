@@ -19,7 +19,7 @@ $this->need('layout/header.php');
                         <?php $this->need('component/index.toolbar.php'); ?>
                         <main class="article-main" id="post-<?php $this->cid(); ?>">
                             <!--文章内容-->
-                            <div class="article-content">
+                            <div class="markdown-body article-content gallery">
                                 <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true))->to($tags); ?>
                                 <?php if ($tags->have()) : ?>
                                     <div class="article-label">

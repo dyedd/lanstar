@@ -184,7 +184,7 @@ class contents{
                                     <h5 class="card-title">' . $val['title'] . '</h5>
                                     <p class="card-text">更新时间：'. date('Y-m-d H:i:s', $val['modified']) .'</p>
                                     <a href="' . $val['permalink'] . '" class="btn btn-primary">跳转</a>
-                                  </div>';
+                                  </div></div>';
                 $text = preg_replace($reg, $replacement, $text, 1);
             }
         }
