@@ -4,23 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.9.1/APlayer.min.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/toastify-js/1.11.2/toastify.min.css">
-    <link rel="stylesheet"
-          href="<?php utils::indexTheme('assets/css/main.css');?>">
-    <link rel="stylesheet"
-          href="<?php utils::indexTheme('assets/css/post.css');?>">
-    <link rel="stylesheet"
-          href="<?php utils::indexTheme('assets/css/comments.css');?>">
-    <link rel="stylesheet"
-          href="<?php utils::indexTheme('assets/css/OwO.min.css');?>">
-    <link rel="stylesheet"
-          href="<?php utils::indexTheme('assets/css/prism.css');?>">
-    <link rel="stylesheet"
-          href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css">
-    <script src="<?php utils::indexTheme('assets/js/lanstarApp.js'); ?>"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/APlayer.min.css');?>">
+    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/bootstrap.min.css');?>">
+    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/toastify.min.css');?>">
+    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/OwO.min.css');?>">
+    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/nprogress.min.css');?>">
+    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/main.css');?>">
+    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/post.css');?>">
+    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/comments.css');?>">
+    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/prism.css');?>">
     <title><?php $this->archiveTitle(array(
             'category' => _t('分类 %s 下的文章'),
             'search' => _t('包含关键字 %s 的文章'),
@@ -43,4 +36,38 @@
     <?php $this->options->headerEcho(); ?>
 </head>
 <body style="background-image:url('<?=  utils::indexTheme('assets/img/bg.png'); ?>')">
+<div class="container mobile-nav d-md-none">
+    <header class="d-flex flex-wrap justify-content-center mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <?php if ($this->options->logoUrl): ?>
+                <img class="site-logo" title="<?php $this->options->description(); ?>"
+                     src="<?php $this->options->logoUrl(); ?>" alt="logo">
+            <?php else: ?>
+                <img class="site-logo" title="<?php $this->options->description(); ?>"
+                     src="<?php utils::indexTheme('assets/img/logo.png'); ?>" alt="logo">
+            <?php endif; ?>
+            <span class="fs-4 ms-3 text"><?php $this->options->title(); ?></span>
+        </a>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a href="<?php $this->options->siteUrl(); ?>" <?php if ($this->is('index')): ?> class="nav-link active"<?php else: ?> class="nav-link"<?php endif; ?> aria-current="page">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouye"></use>
+                    </svg>
+                    <span class="nav-item-text">首页</span>
+                </a>
+            </li>
+            <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+            <?php utils::customNavHandle($this->options->customNavIcon, $pages, $this,1); ?>
+            <?php if ($this->user->hasLogin()): ?>
+                <li class="nav-item"><a href="<?php $this->options->adminUrl(); ?>" class="nav-link">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-shezhi"></use>
+                        </svg>
+                        <span class="nav-item-text">后台</span>
+                    </a></li>
+            <?php endif; ?>
+        </ul>
+    </header>
+</div>
     

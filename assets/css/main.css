@@ -52,6 +52,15 @@ a, a:hover {
     position: relative;
     padding: 0 30rem;
 }
+.mobile-nav {
+    background: var(--background);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+}
+.mobile-nav .text {
+    font-size: 2rem;
+    font-weight: 700;
+}
 .toolbar {
     display: flex;
     padding: 1rem;
@@ -88,12 +97,6 @@ a, a:hover {
     line-height: 3rem;
     color: #000;
     background: none;
-}
-.mobile-nav.active {
-    position: absolute;
-    z-index: 9999;
-    left: 0rem;
-    background-color: #fdfbfb;
 }
 /*logo*/
 .logo-box {
@@ -447,7 +450,9 @@ ol.carousel-indicators li.active {
     cursor: pointer;
     display: inline-flex;
 }
-
+.related .extra .like svg:hover {
+    transform: scale(1.2);
+}
 /** 侧边栏 */
 .search-bar {
     margin-top: 1rem;

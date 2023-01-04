@@ -16,10 +16,10 @@ $this->need('layout/header.php');
         <div class="plane"></div>
     </div>
     <div class="row">
-        <div class="col col-md-2 d-none d-md-block mobile-nav">
+        <div class="col col-md-2 d-none d-md-block">
             <?php $this->need('layout/left.php'); ?>
         </div>
-        <div class="col-xl-10 col-md-10">
+        <div class="col col-md-10">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-md-8 col-12 main">
@@ -44,7 +44,7 @@ $this->need('layout/header.php');
         </div>
     </div>
 </div>
-<?php $this->need('component/index.footer.php'); ?>
+<?php $this->need('component/js.php'); ?>
 <div class="rainbow-loader" style="display: none;">
     <div class="loader-inner">
         <div class="loader-line-wrap">

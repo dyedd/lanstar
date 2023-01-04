@@ -5,9 +5,6 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
-<div class="d-md-none mobile-close">
-    <button type="button" class="btn-close" aria-label="Close"></button>
-</div>
 <div class="logo-box">
     <?php if ($this->options->logoUrl): ?>
         <img class="site-logo" title="<?php $this->options->description(); ?>"

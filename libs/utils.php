@@ -60,8 +60,9 @@ class utils
      * @param $nav
      * @param $pages
      * @param $that
+     * @param int $mode
      */
-    public static function customNavHandle($nav, $pages, $that)
+    public static function customNavHandle($nav, $pages, $that, $mode=0)
     {
         $navArr = explode(PHP_EOL, $nav);
         $content = '';
@@ -77,8 +78,10 @@ class utils
             else:
                 $class = "nav-link";
             endif;
-            if ($count) {
-                $content .= '
+            if($mode == 0){
+
+                if ($count) {
+                    $content .= '
                 <div class="nav-item">
                     <a class="' . $class . '" href="' . $pages->permalink . '" title="' . $pages->title . '">
                             <svg class="icon" aria-hidden="true">
@@ -87,15 +90,37 @@ class utils
                             <span class="nav-item-text">' . $pages->title . '</span>
                     </a>
                 </div>';
-                $count--;
-            } else {
-                $content .= '<div class="nav-item">
+                    $count--;
+                } else {
+                    $content .= '<div class="nav-item">
                     <a class="' . $class . '" href="' . $pages->permalink . '" title="' . $pages->title . '">
                             <svg class="icon" aria-hidden="true">
                                 <use xlink:href="#icon-daohang"></use>
                             </svg>
                             <span class="nav-item-text">' . $pages->title . '</span>
                     </a></div>';
+                }
+            }else{
+                if ($count) {
+                    $content .= '
+                <li class="nav-item">
+                    <a class="' . $class . '" href="' . $pages->permalink . '" title="' . $pages->title . '">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#' . $navArr[$start - $count] . '"></use>
+                            </svg>
+                            <span class="nav-item-text">' . $pages->title . '</span>
+                    </a>
+                </li>';
+                    $count--;
+                } else {
+                    $content .= '<li class="nav-item">
+                    <a class="' . $class . '" href="' . $pages->permalink . '" title="' . $pages->title . '">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-daohang"></use>
+                            </svg>
+                            <span class="nav-item-text">' . $pages->title . '</span>
+                    </a></li>';
+                }
             }
         }
         echo $content;

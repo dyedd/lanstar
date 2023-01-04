@@ -146,3 +146,13 @@
         window.OwO = OwO
     }
 })()
+let apiUrl = `${themeUrl}assets/owo/OwO.json`
+new OwO({
+    logo: 'OωO',
+    container: document.getElementsByClassName('OwO')[0],
+    target: document.getElementsByClassName('textarea')[0],
+    api: apiUrl,
+    position: 'down',
+    width: '100%',
+    maxHeight: '250px'
+});

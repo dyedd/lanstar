@@ -330,9 +330,6 @@
 .article-catalog-list li .article-catalog-list {
     padding: 0 0.3125rem 0 0.3125rem;
 }
-.required-password {
-    margin-left: 9.125rem;
-}
 /** 标签内容的美化 */
 .markdown-body table {
     color: var(--routine);

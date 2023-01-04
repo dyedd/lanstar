@@ -21,11 +21,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </div>
             <?php endif; ?>
             <?php if ($this->fields->article_type == 0): ?>
-                <div class="describe">
+                <div class="markdown-body describe">
                     <?=  utils::get_summary($this->content,2);?>
                 </div>
             <?php elseif ($this->fields->article_type == 1): ?>
-                <div class="describe pic">
+                <div class="markdown-body describe pic">
                     <?=  utils::get_summary($this->content,2);?>
                     <div class="img">
                         <?php if ($this->fields->banner && $this->fields->banner != ''): ?>
@@ -40,7 +40,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?=  utils::get_summary($this->content,4,1);?>
                 </div>
             <?php elseif ($this->fields->article_type == 3): ?>
-                <div class="describe text">
+                <div class="markdown-body describe text">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-yinyong"></use>
                     </svg>
@@ -50,7 +50,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
         <?php if ($this->fields->article_type != 3 && $this->fields->article_type != 4): ?>
             <div class="related">
-                <a class="more" target="_blank" href="<?php $this->permalink(); ?>">查看更多</a>
+                <?php if ($this->hidden):?>
+                    <a class="more" target="_blank" href="<?php $this->permalink(); ?>">查看更多</a>
+                <?php else:?>
+                    <a class="more" href="<?php $this->permalink(); ?>">查看更多</a>
+                <?php endif;?>
                 <div class="extra">
                     <div class="view">
                         <svg class="icon" aria-hidden="true">

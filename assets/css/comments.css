@@ -38,6 +38,9 @@
     transition: all .6s ease-out;
     width: 100%;
 }
+.comments-row {
+    margin-top: 3rem;
+}
 .comments-toolbar {
     position: relative;
 }
@@ -73,12 +76,12 @@ li.comment-by-author > .comment-author span:after {
     background-size: cover;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAmVBMVEVHcEz/////////////////////////////////////////////////////////////////////////////////////uCD/////wTv/0nD//fn/9+b/uyr/8tf/89r/yFP/uiX/wkD/3JP/+u7/2Yj/yVf/14H/9d//vC3/xUn/5rD/1Hf/35r/6r7/zWH/0Gv/4aD/vjP/7cgz761DAAAAFnRSTlMAy2YKAzcb5vZcfPIRYPnsr9u3CU6PxtEgXAAAAg1JREFUSMedltmWqjAQRaOtQjuPtRFNCyJqtz3//8fdB0ErINrc8yQrFdeuStVJjClqNl9MJ6PhcDSZLuYz80D9wdhHyR8P+nfCn7o9Sup1nyrCW00PALtdpvF6HafLrQXAa7ZuxXcaAHYfiFKwtwCNTjm+7QGrpZS0XAFeuxj/7EO4i+SGol0I/nMhHkg2UqFNAjg72j7YQCoVWPAVVccDu5Y7WlvwLpm3GpAEcldBAo28uk0IN/JAmxCa2fl6sJOH2oF3PvMurKLHG6IVdI0xpt+D7LxeADi5KABbEZEl9PrGmAHYbHELwIez4RdIjiIiYmFgjBnDPlt8BSA8qvhPuGS4h7ExMx8uJT0z6YZ64ZphAP7MzK9EN5hOTlIW5maRpaSZ1royHCL1fwszdRAOAHyp2qsvWcLUTCCVAtNb9nVM0MCSwsSMIJYKpneAz+tqDCMzBN2nmikIgV/dszAsbnhXTG8Am+IGFylnivKfzrHHMCokLbIiB/8AeNVrKUwKZVVMqa6XKqtzcHl3kkRigdCdwy0s3NZQTF8A3+5IWJi7zaeYDkD44841+DOnvRUTl7m56tzeeoA003VuNNHAHdGzvvMNBWfIR7RkAjlTwRkuJlC2mYzpVGUzJSM7Mx2iKiMrWeUxjuM4/qm2ytpmXN/u618o9a+s+pdi/Wu3/sVe/+nwH4+Tvzx//gG7W6YbwRbnBgAAAABJRU5ErkJggg==);
 }
-#comments .comment-list li {
+#comments .comment-list > li {
     position: relative;
     padding: 2rem 1.5rem 1.5rem 1.5rem;
     list-style-type: none;
 }
-#comments .comment-list li + li {
+#comments .comment-list > li + li {
     border-top: var(--border) .1rem solid;
 }
 #comments .comment-children {
@@ -97,44 +100,44 @@ li.comment-by-author > .comment-author span:after {
     opacity: 1;
 }
 
-#comments .comment-list li:hover {
+#comments .comment-list > li:hover {
     background-color: rgb(245,248,250);
 }
-#comments .comment-list li .comment-author {
+#comments .comment-list > li .comment-author {
     display: flex;
 }
-#comments .comment-list li .comment-author span {
+#comments .comment-list > li .comment-author span {
     position: relative;
 }
-#comments .comment-list li .comment-author span img {
+#comments .comment-list > li .comment-author span img {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
 }
-#comments .comment-list li .comment-author cite {
+#comments .comment-list > li .comment-author cite {
     padding-left: 1.5rem;
     font-weight: bold;
     font-style: normal;
 }
-#comments .comment-list li .comment-meta {
+#comments .comment-list > li .comment-meta {
     margin-left: 5.5rem;
     padding-bottom: .5rem;
     margin-top: -2rem;
 }
-#comments .comment-list li .comment-meta a {
+#comments .comment-list > li .comment-meta a {
     font-size: 0.8rem;
     color: #8f949e;
 }
-#comments .comment-list li .comment-content {
+#comments .comment-list > li .comment-content {
     word-wrap: break-word;
     word-break: break-all;
     font-size: 1.4rem;
 }
-#comments .comment-list li .comment-content p {
+#comments .comment-list > li .comment-content p {
     line-height: 1.8;
     letter-spacing: .1rem;
 }
-#comments .comment-list li .comment-reply, #comments .comment-list li .cancel-comment-reply {
+#comments .comment-list > li .comment-reply, #comments .comment-list > li .cancel-comment-reply {
     position: absolute;
     right: 1.5rem;
     top: 1.5rem;
@@ -169,6 +172,7 @@ li.comment-by-author > .comment-author span:after {
     border: 1rem solid #ccc;
     border-radius: 1.8rem;
     cursor: pointer;
+    margin-right: .5rem;
 }
 .secret-label .circle {
     position: absolute;
@@ -198,9 +202,6 @@ li.comment-by-author > .comment-author span:after {
 }
 #secret-button:checked + label.secret-label .off {
     display: none;
-}
-#secret-button:checked + label.secret-label {
-    background-color: #3a3f51;
 }
 .comment-ua {
     font-size: 1rem;

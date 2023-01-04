@@ -18,3 +18,13 @@
     <p class="footer-item">Theme By <a href="https://dyedd.cn" title="禁止仿制" class="footer-item">Lanstar</a></p>
 </footer>
 <?php $this->footer(); ?>
+<div class="watch_catalog" onclick="lanstar.addCatalog()">
+    <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-mulu"></use>
+    </svg>
+</div>
+<div class="back-to-top" onclick="lanstar.addBackTop()">
+    <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-fanhuidingbu-"></use>
+    </svg>
+</div>
