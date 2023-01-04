@@ -15,4 +15,5 @@ document.addEventListener('pjax:send', function (){
 document.addEventListener('pjax:complete', function (){
     NProgress.done();
     lanstar.addEmoji();
+    lanstar.addDarkMode();
 });
