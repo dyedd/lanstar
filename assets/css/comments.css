@@ -1,4 +1,8 @@
 /** * comments */
+#comments {
+    padding-bottom: 5rem;
+    margin-bottom: 5rem;
+}
 .respond {
     padding: 1.5rem;
 }
