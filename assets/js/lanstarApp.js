@@ -153,7 +153,7 @@ const lanstar = {
         })
         // 切换标签页时进行判断
         document.addEventListener('visibilitychange', function () {
-            if (hours > 6 && hours < 19 || utils.getCookie('night') == '1') {
+            if (hours > 6 && hours < 19 || utils.getCookie('night') == '0') {
                 method.remove()
             } else {
                 method.add()
