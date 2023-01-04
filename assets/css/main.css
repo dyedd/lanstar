@@ -718,35 +718,29 @@ ol.carousel-indicators li.active {
 }
 /* 返回顶部 */
 @media (max-width: 62.5rem) {
-    .watch_catalog,.back-to-top {
-        display: none !important;
+    .tools {
+        display: none;
     }
 }
-.back-to-top {
-    cursor: pointer;
+.tools {
     position: fixed;
-    width: 4.5rem;
-    height: 4.5rem;
-    right: 1.25rem;
-    line-height: 4.5rem;
+    right: 12rem;
     bottom: 2rem;
+    cursor: pointer;
+}
+.tools  div {
+    margin-top: 1rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
     text-align: center;
     background: #fff;
-    box-shadow: 0 0.1875rem 0.3125rem -0.0625rem rgb(0 0 0 / 20%), 0 0.375rem 0.625rem 0 rgb(0 0 0 / 14%), 0 0.0625rem 1.125rem 0 rgb(0 0 0 / 12%);
+    box-shadow:  0 0.1875rem 0.3125rem -0.0625rem rgb(0 0 0 / 20%), 0 0.375rem 0.625rem 0 rgb(0 0 0 / 14%), 0 0.0625rem 1.125rem 0 rgb(0 0 0 / 12%);
     border-radius: 50%;
 }
-.watch_catalog {
-    cursor: pointer;
-    position: fixed;
-    width: 4.5rem;
-    height: 4.5rem;
-    right: 1.25rem;
-    line-height: 4.5rem;
-    bottom: 7rem;
-    text-align: center;
-    background: #fff;
-    box-shadow: 0 0.1875rem 0.3125rem -0.0625rem rgb(0 0 0 / 20%), 0 0.375rem 0.625rem 0 rgb(0 0 0 / 14%), 0 0.0625rem 1.125rem 0 rgb(0 0 0 / 12%);
-    border-radius: 50%;
+.tools .icon {
+    width: 1.6rem;
+    height: 1.6rem;
 }
 /* fix*/
 .is-fixed {
@@ -766,73 +760,6 @@ ol.carousel-indicators li.active {
 }
 .error-page .icon.test {
     font-size: 15.625rem;
-}
-/* 转换按钮 */
-.chose-mode-day, .chose-mode-moon, .mobile-button {
-    outline: none !important;
-    border: none;
-    line-height: 3rem;
-    color: #000;
-    background: none;
-}
-.chose-mode-moon {
-    display: none;
-}
-.ze_DarkSky, .ze_DarkSky:before {
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 88888888
-}
-.ze_DarkSky {
-    background: linear-gradient(#feb8b0, #fef9db)
-}
-.ze_DarkSky:before {
-    transition: 2s ease all;
-    opacity: 0;
-    background: linear-gradient(#4c3f6d, #6c62bb, #93b1ed)
-}
-.ze_DarkPlanet {
-    z-index: 99999999;
-    position: fixed;
-    left: -50%;
-    top: -50%;
-    width: 200%;
-    height: 200%;
-    -webkit-animation: zePlanetMove 2s cubic-bezier(.7, 0, 0, 1);
-    animation: zePlanetMove 2s cubic-bezier(.7, 0, 0, 1);
-    transform-origin: center bottom
-}
-@-webkit-keyframes zePlanetMove {
-    0% {
-        transform: rotate(0)
-    }
-    to {
-        transform: rotate(360deg)
-    }
-}
-@keyframes zePlanetMove {
-    0% {
-        transform: rotate(0)
-    }
-    to {
-        transform: rotate(360deg)
-    }
-}
-.ze_DarkPlanet svg {
-    position: absolute;
-    left: 35%;
-    top: 40%;
-    width: 9.375rem;
-    height: 9.375rem;
-    border-radius: 50%;
-    content: "";
-}
-.theme-dark .ze_DarkSky:before {
-    opacity: 1
 }
 /** 分页 */
 .page-pagination {
