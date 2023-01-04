@@ -6,7 +6,7 @@
 <script defer src="<?php utils::indexTheme('assets/js/extend/tex-svg.js'); ?>"></script>
 <script>
     const themeUrl = '<?php utils::indexTheme(); ?>';
-    const config = {'dark': '<?=  $this->options->darkBtn;?>'}
+    const config = {'dark': '<?=  $this->options->darkBtn;?>'};
     utils.loadScript('toastify.min.js')
 </script>
 <script src="<?php utils::indexTheme('assets/js/extend/icon.js'); ?>"></script>
