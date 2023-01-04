@@ -28,7 +28,7 @@
 <?php if ($this->options->music): ?>
     <meting-js fixed="true" lrc-type="1" <?php $this->options->music(); ?>></meting-js>
     <script src="<?php utils::indexTheme('assets/js/extend/APlayer.min.js') ?>"></script>
-    <script src="<?php utils::indexTheme('assets/js/Meting.min.js') ?>"></script>
+    <script src="<?php utils::indexTheme('assets/js/extend/Meting.min.js') ?>"></script>
 <?php endif; ?>
 <?php if ($this->options->extraIcon): ?>
     <script src="<?=  $this->options->extraIcon(); ?>"></script>

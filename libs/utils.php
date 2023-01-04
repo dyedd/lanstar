@@ -178,10 +178,10 @@ class utils
     public static function addButton()
     {
         echo '<script src="';
-        self::indexTheme('/assets/js/icon.js');
+        self::indexTheme('/assets/js/extend/icon.js');
         echo '"></script>';
         echo '<script src="';
-        self::indexTheme('/assets/js/OwO.js');
+        self::indexTheme('/assets/js/extend/OwO.js');
         echo '"></script>';
         echo '<script>let owoPath ="';
         self::indexTheme('assets/owo/OwO.json');
@@ -192,7 +192,7 @@ class utils
         echo '"></script>';
 
         echo '<link rel="stylesheet" href="';
-        self::indexTheme('/assets/css/OwO.min.css');
+        self::indexTheme('/assets/css//extend/OwO.min.css');
         echo '" />';
 
         echo '<style>#custom-field textarea,#custom-field input{width:100%}
