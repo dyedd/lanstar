@@ -23,11 +23,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     </li>
                     <?php if ($this->is('post')): ?>
                         <li class="breadcrumb-item">
-                            <?php $this->category(','); ?>
+                            <span><?php $this->category(','); ?></span>
                         </li>
                     <?php else: ?>
                         <li class="breadcrumb-item">
-                            <?php $this->archiveTitle('&raquo;', '', ''); ?>
+                            <span><?php $this->archiveTitle('&raquo;', '', ''); ?></span>
                         </li>
                     <?php endif; ?>
                     <li class="breadcrumb-item active" aria-current="page">
