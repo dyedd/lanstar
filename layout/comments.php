@@ -55,7 +55,7 @@ function threadedComments($comments, $options)
                 <?php $comments->cancelReply(); ?>
             </div>
             <div id="response"><?php _e('发表评论'); ?></div>
-            <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
+            <form method="post" action="<?php $this->commentUrl() ?>" data-login="<?= $this->user->hasLogin()?>" id="comment-form" role="form" >
                 <?php if (!$this->user->hasLogin()): ?>
                     <div class="option">
                         <label for="author" class="required"></label>

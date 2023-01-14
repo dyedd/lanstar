@@ -2,13 +2,23 @@ const utils = {
     getFormData: function () {
         let text = document.querySelector('#textarea').value;
         let reply = document.querySelector('#comment-parent') ? document.querySelector('#comment-parent').value : false
-        let data = ''
+        let author = document.querySelector('#author') ? document.querySelector('#author').value : false;
+        let mail = document.querySelector('#mail')?.value;
+        let url = document.querySelector('#url') ? document.querySelector('#url').value : false;
+        let data = '';
+        text = text.replace("&", "%26");
+        // 判断是否登录,23.1.14
+        if(!document.querySelector("#comment-form").dataset.login){
+            data = `author=${author}&mail=${mail}&`
+        }
+        if(url){
+            data += `url=${url}&`
+        }
         // 防止参数带&截断，2023.1.2
-        text = text.replace("&", "%26")
         if (reply) {
-            data = `text=${text}&parent=${reply}`
+            data += `text=${text}&parent=${reply}`
         } else {
-            data = `text=${text}`
+            data += `text=${text}`
         }
         return data
     },
@@ -283,6 +293,7 @@ const lanstar = {
                 if (this.dataset.disabled == 'disabled') return;
                 this.dataset.disabled = 'disabled';
                 document.querySelector('.comments-toolbar .submit').textContent = '传输中...';
+                console.log(this.getAttribute('action'))
                 fetch(this.getAttribute('action'), {
                     method: 'post',
                     body: utils.getFormData(),
