@@ -20,6 +20,7 @@
 }
 .no-cover .article-detail {
     color: var(--text2);
+    bottom: 0;
 }
 .no-cover .article-title a {
     color: var(--text2);
