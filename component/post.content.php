@@ -128,7 +128,7 @@
                 <li><a class="dropdown-item js-pjax" href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>"
                        target="_blank">分享到Twitter</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item js-pjax" href="javaScript:copyToClipboard(window.location.href);">复制链接</a></li>
+                <li><a class="dropdown-item js-pjax url-copy" href="javaScript:void(0)">复制链接</a></li>
             </ul>
         </div>
     </div>

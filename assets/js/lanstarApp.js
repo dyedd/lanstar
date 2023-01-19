@@ -107,7 +107,8 @@ const lanstar = {
         this.addPostProtect();
         this.addCommentSecret();
         this.addTa()
-        this.addDarkMode()
+        this.addDarkMode();
+        this.copyToClipBoard();
     },
     addTa: () => {
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -597,6 +598,39 @@ const lanstar = {
                     })
                 }
             }
+        })
+    },
+    copyToClipBoard(){
+        document.querySelector(".url-copy").addEventListener("click",function(e){
+            // 申请使用剪切板读取权限
+            navigator.permissions.query({ name: 'clipboard-read' }).then(function(result) {
+                // 可能是 'granted', 'denied' or 'prompt':
+                if (result.state === 'granted') {
+                    // 可以使用权限
+                    // 进行clipboard的操作
+                    let clipBoardContent="";
+                    clipBoardContent+=document.title;
+                    clipBoardContent+="\r\n";
+                    clipBoardContent+=window.location.href;
+                    navigator.clipboard
+                        .writeText(clipBoardContent)
+                        .then(
+                            (clipText) => (Toastify({
+                                text: "复制成功！快去分享哦~",
+                                duration: 3000
+                            }).showToast())
+                        );
+                } else{
+                    // 弹窗弹框申请使用权限
+                    Toastify({
+                        text: "请先开通复制到剪贴板权限！",
+                        duration: 3000,
+                        backgroundColor: "#c02c38"
+                    }).showToast()
+                }
+            });
+
+
         })
     },
 }
