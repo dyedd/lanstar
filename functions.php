@@ -24,17 +24,17 @@ Typecho_Plugin::factory('Widget_Feedback')->comment = array('comments','insertSe
 /**
  * 文章与独立页自定义字段
  */
-function themeFields(Typecho_Widget_Helper_Layout $layout) {
+function themeFields($layout) {
     if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
-        $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', NULL, NULL, _t('文章头图'), _t('输入一个图片 url，作为缩略图显示在文章列表，没有则不显示'));
+        $banner = new \Typecho\Widget\Helper\Form\Element\Text('banner', NULL, NULL, '文章头图', '输入一个图片 url，作为缩略图显示在文章列表，没有则不显示');
         $layout->addItem($banner);
-        $article_type = new Typecho_Widget_Helper_Form_Element_Radio('article_type',
-            array(0 => _t('默认'),
-                1 => _t('图文格式'),
-                2 => _t('九空格可点击'),
-                3 => _t('日记模式'),
-                4 => _t('九空格不可点击')),
-            0, _t('文章列表模式'), _t('<b>日记模式类似我的动态，不可点击</b>'));
+        $article_type = new \Typecho\Widget\Helper\Form\Element\Radio('article_type',
+            array(0 => '默认',
+                1 => '图文格式',
+                2 => '九空格可点击',
+                3 => '日记模式',
+                4 => '九空格不可点击'),
+            0, '文章列表模式', '<b>日记模式类似我的动态，不可点击</b>');
         $layout->addItem($article_type);
     }
 }
