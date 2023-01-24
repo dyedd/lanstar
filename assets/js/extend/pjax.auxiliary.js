@@ -17,4 +17,9 @@ document.addEventListener('pjax:complete', function (){
     lanstar.addEmoji();
     lanstar.addDarkMode();
     lanstar.addTa();
+    lanstar.copyToClipBoard()
+    lanstar.addHighLight()
+    lanstar.addAsyncComment()
+    lanstar.addArchiveToggle()
+    utils.loadScript('toastify.min.js')
 });

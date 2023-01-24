@@ -601,7 +601,7 @@ const lanstar = {
         })
     },
     copyToClipBoard(){
-        document.querySelector(".url-copy").addEventListener("click",function(e){
+        document.querySelector(".url-copy")?.addEventListener("click",function(e){
             // 申请使用剪切板读取权限
             navigator.permissions.query({ name: 'clipboard-read' }).then(function(result) {
                 // 可能是 'granted', 'denied' or 'prompt':
