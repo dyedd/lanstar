@@ -297,6 +297,7 @@
     padding: 0 1.5625rem 0 0.9375rem;
     height: 100%;
     box-sizing: border-box;
+    overflow-y: scroll;
 }
 .article-catalog-list li{
     display: block;
