@@ -375,6 +375,9 @@
     padding: 0 0.3125rem 0 0.3125rem;
 }
 /** 标签内容的美化 */
+.article-content {
+    padding: 1rem;
+}
 .markdown-body table {
     color: var(--routine);
     text-align: center;
