@@ -535,7 +535,8 @@ const lanstar = {
     addMorePages() {
         document.querySelector('.page-pagination .next')?.addEventListener(
             'click',
-            function () {
+            function (e) {
+                e.preventDefault()
                 this.classList.add('loading');
                 this.textContent = '努力加载'
                 let href = this.getAttribute("href")
