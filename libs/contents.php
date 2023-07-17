@@ -69,15 +69,12 @@ class contents{
             $rp = '<div class="links-box"><div class="row">${1}</div></div>';
             $text = preg_replace($reg, $rp, $text);
             $pattern = '/\[(.*?)\]\[(.*?)\]\((.*?)\)\+\((.*)\)/';
-            $replacement = '<div class="col-lg-2 col-6 col-md-2 col-sm-3 links">
-		    <a href="${3}"title="${2}"
+            $replacement = '<div class="links-item">
+		    <a href="${3}"title="${1}"
 		     target="_blank" class="links-link">
-			  <div class="links-item">
-			    <div class="links-img"><img src="${4}"></div>
-				<div class="links-title">
-				  <h4>${1}</h4>
-				</div>
-		      </div>
+		      <div class="links-img"><img src="${4}"></div>
+		      <div class="links-title">${1}</div>
+			  <div class="links-desc">${2}</div>
 			  </a>
 			</div>';
             return preg_replace($pattern, $replacement, $text);

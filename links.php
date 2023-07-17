@@ -17,13 +17,7 @@ $this->need('layout/header.php');
                 <div class="row">
                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 main">
                         <?php $this->need('component/index.toolbar.php'); ?>
-                        <main class="article-main" id="post-<?php $this->cid(); ?>">
-                            <!--文章内容-->
-                            <div class="markdown-body article-content gallery">
-                                <?php $this->content(); ?>
-                            </div>
-                            <?php $this->need('layout/comments.php'); ?>
-                        </main>
+                        <?php $this->need('component/page.content.php') ?>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 position-relative right d-none d-md-block">
                         <?php $this->need('layout/right.php'); ?>

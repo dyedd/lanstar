@@ -919,7 +919,6 @@ ol.carousel-indicators li.active {
     background: linear-gradient(to right, #0acffe 0%, #495aff 100%);
     -webkit-box-shadow: inset 0 0 0.625rem rgba(0, 0, 0, 0.2);
 }
-
 /**Dark**/
 html.theme-dark, .theme-dark img {
     filter: invert(1) hue-rotate(180deg);

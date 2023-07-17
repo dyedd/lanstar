@@ -239,29 +239,69 @@
     }
 }
 /** 友链样式 */
-.links {
-    margin-bottom: .5rem;
+.links-box {
+    overflow: auto;
+    padding: 1rem 1rem 0;
+    text-align: center;
+    position: relative;
+}
+.links-item {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 1.5rem .7rem;
+    width: calc(100% / 3 - 1.5rem);
+    height: 9rem;
+    line-height: 1.7rem;
+    transform: translateZ(0);
+}
+.links-item::before{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: rgba(73,177,245,0.7);
+    content: '';
+    transition: transform 0.3s ease-out;
+    transform: scale(0);
+    border-radius: 1.5rem;
+}
+.links-link {
+    color: var(--text1)!important;
+}
+.links-item:hover::before{
+    transform: scale(1);
+}
+.links-img {
+    float: left;
+    overflow: hidden;
+    margin: 1.5rem 1rem;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    transition: width 0.3s ease-out;
 }
 .links-img img {
-    border-radius: .8rem;
     width: 100%;
-}
-.links-img img:hover {
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    height: 100%;
+    transition: filter 375ms ease-in 0.2s, transform 0.3s;
+    object-fit: cover;
 }
 .links-title {
-    text-align: center;
-    margin: 1rem 0;
-}
-.links-title h4 {
-    white-space: nowrap;
-    font-size: 1rem;
+    padding: 1.6rem 1rem 0 0;
+    height: 4rem;
+    font-weight: bold;
+    font-size: 1.43em;
     overflow: hidden;
-    color: var(--text2);
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
-.links-title h4:hover {
-    color: var(--theme-color);
+.links-desc {
+    padding: 1.6rem 1rem 1.6rem 0;
+    height: 5rem;
+    font-size: 0.93em;
 }
 /*目录*/
 .article-catalog {
