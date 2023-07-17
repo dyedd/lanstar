@@ -366,7 +366,6 @@
     font-size: 1.5rem;
     line-height: 1.5;
     word-wrap: break-word;
-    padding: 2rem;
 }
 .markdown-body blockquote, .markdown-body dl, .markdown-body ol, .markdown-body p, .markdown-body pre, .markdown-body table, .markdown-body ul {
     margin-bottom: 1.6rem;
