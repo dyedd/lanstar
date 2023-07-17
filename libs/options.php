@@ -95,6 +95,10 @@ function themeConfig($form)
 EOF;
     echo '<script src="' . Helper::options()->themeUrl . '/assets/js/setting.js"></script>';
 
+    $notice = new \Typecho\Widget\Helper\Form\Element\Text('notice', NULL, NULL, '公告', '只会在首页显示');
+    $notice->setAttribute('class', 'theme-setting-content theme-setting-global');
+    $form->addInput($notice);
+
     $darkBtn = new \Typecho\Widget\Helper\Form\Element\Radio('darkBtn',
         array(1 => '启用',
             0 => '关闭'),

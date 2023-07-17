@@ -25,6 +25,11 @@ $this->need('layout/header.php');
                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 main">
                         <?php $this->need('component/index.toolbar.php'); ?>
                         <?php $this->need('component/index.category.php'); ?>
+                        <?php if ($this->options->notice): ?>
+                            <div class="alert alert-primary" role="alert">
+                                <?php $this->options->notice(); ?>
+                            </div>
+                        <?php endif; ?>
                         <?php $this->need('component/index.banner.php') ?>
                         <div class="articles">
                             <?php $this->need('component/index.article.php'); ?>
