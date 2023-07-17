@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<section class="article-info <?php if(!$this->fields->banner){echo 'no-cover';}?>"">
+<section class="article-info <?php if(!$this->fields->banner){echo 'no-cover';}?>">
     <?php if($this->fields->banner):?>
         <div class="article-cover-inner">
             <img src="<?= $this->fields->banner()?>" alt="cover">

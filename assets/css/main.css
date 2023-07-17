@@ -201,18 +201,22 @@ a, a:hover {
 
 /* 幻灯片 */
 .carousel-item {
-    max-height: 17.5rem;
+    max-height: 25rem;
 }
 
 .carousel_link {
     color: #fff;
     text-decoration: none;
     display: inline-block;
+    width: 100%;
+    height: 25rem;
+    overflow: hidden;
 }
 
 .carousel_link img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .carousel-inner {
