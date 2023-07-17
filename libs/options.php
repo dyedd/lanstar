@@ -94,9 +94,6 @@ function themeConfig($form)
     <div class="theme-setting-notice">请求数据中...</div>
 EOF;
     echo '<script src="' . Helper::options()->themeUrl . '/assets/js/setting.js"></script>';
-    $logoUrl = new \Typecho\Widget\Helper\Form\Element\Text('logoUrl', NULL, NULL, '站点 LOGO 地址', '在这里填入一个图片 URL 地址, 以在头部加上一个 LOGO');
-    $logoUrl->setAttribute('class', 'theme-setting-content theme-setting-global');
-    $form->addInput($logoUrl);
 
     $darkBtn = new \Typecho\Widget\Helper\Form\Element\Radio('darkBtn',
         array(1 => '启用',
@@ -159,7 +156,7 @@ EOF;
             'ShowRecentComments' => '显示最近评论',
             'ShowInterestPosts' => '显示可能感觉兴趣的文章',
         ),
-        array('ShowBlogInfo','ShowyourCouple','ShowRecentComments', 'ShowInterestPosts'), '<h2>侧边栏功能</h2>', '在这里选择需要展示在侧边栏的内容');
+        array('ShowBlogInfo','ShowyourCouple','ShowRecentComments', 'ShowInterestPosts'), '<h2>侧边栏功能</h2>', '在这里选择需要展示在右侧侧边栏的内容');
     $sidebarBlock->setAttribute('class', 'theme-setting-content theme-setting-aside');
     $form->addInput($sidebarBlock->multiMode());
     
@@ -167,17 +164,21 @@ EOF;
     $LicenseInfo->setAttribute('class', 'theme-setting-content theme-setting-post');
     $form->addInput($LicenseInfo);
 
-    $rightMotto = new \Typecho\Widget\Helper\Form\Element\Text('rightMotto', NULL, NULL, '侧边栏格言', '');
-    $rightMotto->setAttribute('class', 'theme-setting-content theme-setting-aside');
-    $form->addInput($rightMotto);
+    $asideMotto = new \Typecho\Widget\Helper\Form\Element\Text('asideMotto', NULL, NULL, '格言', '如果未填显示网站介绍');
+    $asideMotto->setAttribute('class', 'theme-setting-content theme-setting-aside');
+    $form->addInput($asideMotto);
 
-    $rightAvatar = new \Typecho\Widget\Helper\Form\Element\Text('rightAvatar', NULL, NULL, '侧边栏头像', '填写图片链接');
-    $rightAvatar->setAttribute('class', 'theme-setting-content theme-setting-aside');
-    $form->addInput($rightAvatar);
+    $asideAvatar = new \Typecho\Widget\Helper\Form\Element\Text('asideAvatar', NULL, NULL, '头像', '填写图片链接');
+    $asideAvatar->setAttribute('class', 'theme-setting-content theme-setting-aside');
+    $form->addInput($asideAvatar);
 
-    $rightName = new \Typecho\Widget\Helper\Form\Element\Text('rightName', NULL, NULL, '侧边栏名称', '填写你自己的昵称');
-    $rightName->setAttribute('class', 'theme-setting-content theme-setting-aside');
-    $form->addInput($rightName);
+    $asideName = new \Typecho\Widget\Helper\Form\Element\Text('asideName', NULL, NULL, '名称', '如果未填显示网站标题');
+    $asideName->setAttribute('class', 'theme-setting-content theme-setting-aside');
+    $form->addInput($asideName);
+
+    $asideStatus = new \Typecho\Widget\Helper\Form\Element\Text('asideStatus', NULL, NULL, '个人状态', '在这里填入一个Emoji, 仿造GITHUB');
+    $asideStatus->setAttribute('class', 'theme-setting-content theme-setting-aside');
+    $form->addInput($asideStatus);
 
     $rightIcon = new \Typecho\Widget\Helper\Form\Element\Textarea('rightIcon', NULL, NULL, '媒体信息', '名称+图标+地址，一行一个');
     $rightIcon->setAttribute('class', 'theme-setting-content theme-setting-aside');

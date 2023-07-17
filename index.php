@@ -4,7 +4,7 @@
  *
  * @package Lanstar
  * @author 染念
- * @version 4.0.1
+ * @version 4.0.2
  * @link https://dyedd.cn
  */
 
@@ -16,13 +16,13 @@ $this->need('layout/header.php');
         <div class="plane"></div>
     </div>
     <div class="row">
-        <div class="col col-md-2 d-none d-md-block">
+        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2 d-none d-md-block">
             <?php $this->need('layout/left.php'); ?>
         </div>
-        <div class="col col-md-10">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-8 col-md-8 col-12 main">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 main">
                         <?php $this->need('component/index.toolbar.php'); ?>
                         <?php $this->need('component/index.category.php'); ?>
                         <?php $this->need('component/index.banner.php') ?>
@@ -33,7 +33,7 @@ $this->need('layout/header.php');
                             <?php $this->pageLink('加载更多','next'); ?>
                         </div>
                     </div>
-                    <div class="col-12 col-md-3 position-relative right d-none d-md-block">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 position-relative right d-none d-md-block">
                         <?php $this->need('layout/right.php'); ?>
                     </div>
                 </div>

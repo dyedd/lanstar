@@ -109,6 +109,7 @@ const lanstar = {
         this.addTa()
         this.addDarkMode();
         this.copyToClipBoard();
+        this.navTextHighLight();
     },
     addTa: () => {
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -633,4 +634,21 @@ const lanstar = {
 
         })
     },
+    navTextHighLight(){
+        // 获取所有的 nav-link 元素
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // 为每个 nav-item 添加点击事件处理程序
+        navLinks.forEach(item => {
+            item.addEventListener('click', () => {
+                // 移除其他 nav-item 的 active 类
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+
+                // 给当前点击的 nav-item 添加 active 类
+                item.classList.add('active');
+            });
+        });
+    }
 }

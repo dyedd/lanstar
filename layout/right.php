@@ -11,17 +11,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </button>
     </form>
 </div>
+<?php if ($this->options->sidebarBlock && in_array('ShowYourCouple', $this->options->sidebarBlock)): ?>
+    <div class="sidebar-box couple">
+        <img class="pic" src="<?php $this->options->asideAvatar(); ?>" alt="博主">
+        <img class="couple-love" src="<?php utils::indexTheme('assets/img/love.png'); ?>" alt="爱心">
+        <img class="pic" src="<?php $this->options->taAvatar(); ?>" alt="另一半">
+        <div id="our-company" data-start="<?php $this->options->company(); ?>"></div>
+    </div>
+<?php endif; ?>
 <?php if ($this->options->sidebarBlock && in_array('ShowBlogInfo', $this->options->sidebarBlock)): ?>
     <div class="card user-container">
-        <div class="card-header user-info">
-            <div class="info">
-                <img class="pic" src="<?php $this->options->rightAvatar(); ?>" alt="博主">
-            </div>
-        </div>
-        <p>
-            <?php $this->options->rightName(); ?>
-        </p>
-        <div class="card-info-description"><?=  $this->options->rightMotto ? $this->options->rightMotto : '博主很懒，啥都没有'; ?></div>
         <?php Typecho_Widget::widget('Widget_Stat')->to($item); ?>
         <div class="count">
             <div class="item" title="累计文章数">
@@ -52,14 +51,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <div class="time-text">
             <span>已在风雨中度过 <?=  utils::getBuildTime($this->options->startTime);?></span>
         </div>
-    </div>
-<?php endif; ?>
-<?php if ($this->options->sidebarBlock && in_array('ShowYourCouple', $this->options->sidebarBlock)): ?>
-    <div class="sidebar-box couple">
-        <img class="pic" src="<?php $this->options->rightAvatar(); ?>" alt="博主">
-        <img class="couple-love" src="<?php utils::indexTheme('assets/img/love.png'); ?>" alt="爱心">
-        <img class="pic" src="<?php $this->options->taAvatar(); ?>" alt="另一半">
-        <div id="our-company" data-start="<?php $this->options->company(); ?>"></div>
     </div>
 <?php endif; ?>
 <?php if ($this->options->sidebarBlock && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>

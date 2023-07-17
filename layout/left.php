@@ -5,20 +5,26 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
-<div class="logo-box">
-    <?php if ($this->options->logoUrl): ?>
-        <img class="site-logo" title="<?php $this->options->description(); ?>"
-             src="<?php $this->options->logoUrl(); ?>" alt="logo">
-    <?php else: ?>
-        <img class="site-logo" title="<?php $this->options->description(); ?>"
-             src="<?php utils::indexTheme('assets/img/logo.png'); ?>" alt="logo">
-    <?php endif; ?>
-    <b class="logo-shine"></b>
-</div>
+<header class="site-info">
+    <figure class="site-avatar">
+        <?php if ($this->options->asideAvatar): ?>
+            <img class="site-logo" title="<?php $this->options->title(); ?>"
+                 src="<?php $this->options->asideAvatar(); ?>" alt="logo">
+        <?php else: ?>
+            <img class="site-logo" title="<?php $this->options->title(); ?>"
+                 src="<?php utils::indexTheme('assets/img/logo.png'); ?>" alt="logo">
+        <?php endif; ?>
+        <?php if ($this->options->asideStatus): ?>
+            <span class="emoji"><?php $this->options->asideStatus(); ?></span>
+        <?php endif; ?>
+    </figure>
+    <h1 class="site-name"><a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->asideName?$this->options->asideName():$this->options->title(); ?></a></h1>
+    <h2 class="site-description"><?php $this->options->asideMotto?$this->options->asideMotto():$this->options->description(); ?></h2>
+</header>
 <div class="nav-menu">
     <nav class="nav flex-column">
         <div class="nav-item">
-            <a<?php if ($this->is('index')): ?> class="nav-link"<?php else: ?> class="nav-link"<?php endif; ?>
+            <a<?php if ($this->is('index')): ?> class="nav-link active"<?php else: ?> class="nav-link"<?php endif; ?>
                 href="<?php $this->options->siteUrl(); ?>">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-shouye"></use>
