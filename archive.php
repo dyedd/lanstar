@@ -32,23 +32,7 @@
                         <?php endif; ?>
 
                         <div class="page-pagination">
-                            <?php
-                            $this->pageNav(
-                                '<svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-zuo"></use>
-                    </svg>',
-                                '<svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-you"></use>
-                    </svg>',
-                                3, '...', array(
-                                'wrapTag' => 'ul',
-                                'wrapClass' => 'pagination justify-content-center',
-                                'itemTag' => 'li',
-                                'itemClass' => 'page-item',
-                                'linkClass' => 'page-link',
-                                'currentClass' => 'active'
-                            ));
-                            ?>
+                            <?php $this->pageLink('加载更多','next'); ?>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 position-relative right d-none d-md-block">
