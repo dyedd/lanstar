@@ -30,8 +30,8 @@ class utils
                 $a = '<a href="' . $bannerInfo[1] . '" target="_blank" class="carousel_link">';
             }
             if(count($bannerInfo) > 4){
-                $style = '<h5 style="color: '.$bannerInfo[4].';font-size: '.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
-                            <p style="color: '.$bannerInfo[5].';font-size: '.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>';
+                $style = '<h5 style="color: '.$bannerInfo[4].';font-size:'.$bannerInfo[6].'rem">' . $bannerInfo[2] . '</h5>
+                            <p style="color: '.$bannerInfo[5].';font-size:'.$bannerInfo[7].'rem">' . $bannerInfo[3] . '</p>';
             }else{
                 $style = '<h5>' . $bannerInfo[2] . '</h5><p>' . $bannerInfo[3] . '</p>';
             }

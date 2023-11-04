@@ -17,7 +17,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             </div>
             <?php if ($this->fields->article_type != 3): ?>
                 <div class="article-name">
-                    <?php $this->title(); ?>
+                    <a title="<?php $this->title(); ?>" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a>
                 </div>
             <?php endif; ?>
             <?php if ($this->fields->article_type == 0): ?>
@@ -51,9 +51,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php if ($this->fields->article_type != 3 && $this->fields->article_type != 4): ?>
             <div class="related">
                 <?php if ($this->hidden):?>
-                    <a class="more" target="_blank" href="<?php $this->permalink(); ?>">查看更多</a>
+                    <a class="more" target="_blank" title="新窗口查看" href="<?php $this->permalink(); ?>">查看更多</a>
                 <?php else:?>
-                    <a class="more" href="<?php $this->permalink(); ?>">查看更多</a>
+                    <a class="more" title="查看更多" href="<?php $this->permalink(); ?>">查看更多</a>
                 <?php endif;?>
                 <div class="extra">
                     <div class="view">

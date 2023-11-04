@@ -113,7 +113,7 @@ EOF;
     $bannerBtn->setAttribute('class', 'theme-setting-content theme-setting-global');
     $form->addInput($bannerBtn);
 
-    $bannerUrl = new \Typecho\Widget\Helper\Form\Element\Textarea('bannerUrl', NULL, NULL, '首页幻灯片', '一行一个链接,大于3行将随机<br>注意最后一行不能为空');
+    $bannerUrl = new \Typecho\Widget\Helper\Form\Element\Textarea('bannerUrl', NULL, NULL, '首页幻灯片', '一行一个链接,大于3行将随机<br>例如：<br>https://dyedd.cn/usr/uploads/2020/08/4115250106.png|https://dyedd.cn/806.html|lanstar主题下载|你的下一代主题|#000|#fff|3|1.5|');
     $bannerUrl->setAttribute('class', 'theme-setting-content theme-setting-global');
     $form->addInput($bannerUrl);
 

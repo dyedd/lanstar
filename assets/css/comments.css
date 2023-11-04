@@ -30,8 +30,7 @@
     min-width: 24rem;
     display: block;
     outline: none;
-    font-size: 0.9rem;
-    font-family: inherit;
+    font-size: 1.4rem;
     letter-spacing: .2rem;
     border-radius: .5rem;
     border: solid .1rem var(--border);
@@ -39,7 +38,7 @@
     width: 100%;
 }
 .comments-row {
-    margin-top: 3rem;
+    font-size: 1.5rem;
 }
 .comments-toolbar {
     position: relative;
@@ -125,7 +124,7 @@ li.comment-by-author > .comment-author span:after {
     margin-top: -2rem;
 }
 #comments .comment-list > li .comment-meta a {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     color: #8f949e;
 }
 #comments .comment-list > li .comment-content {
@@ -204,7 +203,7 @@ li.comment-by-author > .comment-author span:after {
     display: none;
 }
 .comment-ua {
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: var(--text2);
     margin-left: -1rem;
 }

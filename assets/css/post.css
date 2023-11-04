@@ -1,16 +1,15 @@
 /*写着写着就想你了*/
 .breadcrumb {
     margin-bottom: -1rem;
-    font-size: .9rem;
+    font-size: 1.25rem;
 }
 .breadcrumb svg.icon {
     width: 2rem;
     height: 2rem;
 }
-.breadcrumb-item span,.breadcrumb-item a {
-    vertical-align: middle;
+.breadcrumb-item {
+    margin: 0 .2rem;
 }
-
 .article-info {
     position: relative;
 }
@@ -82,7 +81,7 @@
 }
 .post-info .created {
     float: right;
-    font-size: 0.8rem;
+    font-size: 1.25rem;
     color: var(--text2);
 }
 .post-info .avatar {
@@ -98,15 +97,15 @@
     border-radius: .8rem;
 }
 .post-info .display .name {
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 .post-info .extra {
     display: flex;
     align-items: center;
-    font-size: 0.95rem;
+    font-size: 1.3rem;
 }
 .post-info-icon {
-    margin-top: 1rem;
+    margin-top: .5rem;
     margin-right: 1rem;
 }
 .article-title {
@@ -129,7 +128,7 @@
     border-radius: var(--radius);
 }
 .license .content .item {
-    font-size: 0.875rem;
+    font-size: 1.25rem;
     color: #909399;
     line-height: 1.625rem;
     white-space: nowrap;
@@ -158,9 +157,15 @@
 }
 .article-action-item .icon {
     transition: .3s ease-out;
+    width: 3.5rem;
+    height: 3.5rem;
 }
 .article-action-item .icon:hover {
     transform: scale(1.05) rotate(1deg);
+}
+span.agree-num {
+    font-size: 2rem;
+    margin-left: .5rem;
 }
 .article-category a {
     color: #9b9b9b;
@@ -172,17 +177,17 @@
     margin: 2rem;
 }
 .tags a {
-    border: 0.0625rem solid #999;
+    border: 0.1rem solid #999;
     border-radius: 6.25rem;
     box-sizing: border-box;
     transition: .5s;
     color: #999;
-    font-size: .55rem;
-    padding: 0.2rem .3rem;
+    font-size: 1.2rem;
+    padding: .3rem .4rem;
     margin-right: .5rem;
 }
 .tags a:hover {
-    border: 0.0625rem solid #00a1d6;
+    border: 0.1rem solid #00a1d6;
     color: #00a1d6;
 }
 .article-page {
@@ -376,7 +381,7 @@
 }
 /** 标签内容的美化 */
 .article-content {
-    padding: 1rem;
+    padding: 2rem;
 }
 .markdown-body table {
     color: var(--routine);
@@ -406,7 +411,7 @@
     padding: 0.8125rem 1.625rem;
 }
 .markdown-body {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     line-height: 1.5;
     word-wrap: break-word;
 }
@@ -807,6 +812,6 @@ pre::after {
     text-align: right;
 }
 .article-main .other {
-    font-size: 0.7rem;
+    font-size: 1.5rem;
     padding: 2rem 2rem 0 2rem;
 }
