@@ -19,11 +19,13 @@
 </footer>
 <?php $this->footer(); ?>
 <div class="tools">
-    <div class="watch_catalog" onclick="lanstar.addCatalog()">
-        <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-mulu"></use>
-        </svg>
-    </div>
+    <?php if($this->is('post') && !$this->is('archive')): ?>
+        <div class="watch_catalog" onclick="lanstar.addCatalog()">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-mulu"></use>
+            </svg>
+        </div>
+    <?php endif; ?>
     <div class="back-to-top" onclick="lanstar.addBackTop()">
         <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-fanhuidingbu-"></use>
