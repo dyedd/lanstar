@@ -417,11 +417,14 @@ ol.carousel-indicators li.active {
 }
 
 .describe {
-    font-size: 1.25rem!important;
+    font-size: 1.3rem!important;
     margin-top: 1rem;
     color: var(--theme-text-color);
     line-height: 1.5;
     word-wrap: break-word;
+}
+.describe h1,.describe h2,.describe h3,.describe h4,.describe h5,.describe h6 {
+    font-size: 1.3rem!important;
 }
 
 .describe.gallery p {
@@ -498,7 +501,7 @@ ol.carousel-indicators li.active {
 }
 
 .index-comments-list .text {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: var(--text2);
     overflow: hidden;
     flex: 1;
@@ -844,9 +847,9 @@ footer.container.footer {
 
 .tools div {
     margin-top: 1rem;
-    width: 5.5rem;
-    height: 5.5rem;
-    line-height: 5.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
     text-align: center;
     background: #fff;
     box-shadow: 0 0.1875rem 0.3125rem -0.0625rem rgb(0 0 0 / 20%), 0 0.375rem 0.625rem 0 rgb(0 0 0 / 14%), 0 0.0625rem 1.125rem 0 rgb(0 0 0 / 12%);
