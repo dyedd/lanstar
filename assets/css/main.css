@@ -418,6 +418,13 @@ ol.carousel-indicators li.active {
 .describe h1,.describe h2,.describe h3,.describe h4,.describe h5,.describe h6 {
     font-size: 1.5rem!important;
 }
+.describe img {
+    width: 100%;
+}
+.describe .emoji {
+    width: 4.8rem;
+    height: 4.8rem;
+}
 
 .describe.gallery p {
     display: grid;

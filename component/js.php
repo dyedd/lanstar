@@ -1,8 +1,10 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <script src="<?php utils::indexTheme('assets/js/lanstarApp.js'); ?>"></script>
 <script src="<?php utils::indexTheme('assets/js/extend/bootstrap.bundle.min.js'); ?>"></script>
-<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},svg:{fontCache:"global"}};</script>
-<script defer src="<?php utils::indexTheme('assets/js/extend/tex-svg.js'); ?>"></script>
+<?php if(!$this->is('index')): ?>
+    <script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},svg:{fontCache:"global"}};</script>
+    <script defer src="<?php utils::indexTheme('assets/js/extend/tex-svg.js'); ?>"></script>
+<?php endif; ?>
 <script>
     const themeUrl = '<?php utils::indexTheme(); ?>';
     const config = {'dark': '<?=  $this->options->darkBtn;?>'};

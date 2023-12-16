@@ -106,17 +106,16 @@ const lanstar = {
         this.addArchiveToggle()
         this.addPostProtect();
         this.addCommentSecret();
-        this.addTa()
+        this.addExtend();
         this.addDarkMode();
         this.copyToClipBoard();
         this.navTextHighLight();
     },
-    addTa: () => {
+    addExtend: () => {
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         window.ViewImage && ViewImage.init('.gallery img');
-        let images = document.querySelectorAll(".lazy");
-        lazyload(images);
+        lazyload(document.querySelectorAll(".lazy"));
     },
     addDarkMode: () => {
         if (config['dark'] == '0') return false;
@@ -552,6 +551,7 @@ const lanstar = {
                         el.innerHTML = data
                         const res = el.querySelectorAll('.article-list')
                         res.forEach(v => document.querySelector(".articles").append(v))
+                        lazyload(document.querySelectorAll(".lazy"));
                         let next_href = el.querySelector('.next')?.getAttribute('href')
                         if (next_href != null) {
                             this.setAttribute('href', next_href);
