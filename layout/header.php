@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/APlayer.min.css');?>">
     <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/bootstrap.min.css');?>">
     <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/toastify.min.css');?>">
-    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/OwO.min.css');?>">
-    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/nprogress.min.css');?>">
     <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/main.css');?>">
-    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/post.css');?>">
-    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/comments.css');?>">
-    <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/prism.css');?>">
+    <?php if(!$this->is('index')): ?>
+        <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/extend/OwO.min.css');?>">
+        <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/post.css');?>">
+        <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/comments.css');?>">
+        <link rel="stylesheet" href="<?php utils::indexTheme('assets/css/prism.css');?>">
+    <?php endif; ?>
+
     <title><?php $this->archiveTitle(array(
             'category' => _t('分类 %s 下的文章'),
             'search' => _t('包含关键字 %s 的文章'),

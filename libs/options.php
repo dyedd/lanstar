@@ -85,8 +85,6 @@ function themeConfig($form)
             <li data-current="theme-setting-post">文章设置</li>
             <li data-current="theme-setting-aside">侧边栏设置</li>
             <li data-current="theme-setting-development">开发者设置</li>
-            <li data-current="theme-setting-pjax">PJAX设置</li>
-            <li data-current="theme-setting-music">音乐功能</li>
             <li data-current="theme-setting-couple">情侣功能</li>
         </ul>
     </div>
@@ -192,17 +190,6 @@ EOF;
     $extraIcon->setAttribute('class', 'theme-setting-content theme-setting-aside');
     $form->addInput($extraIcon);
 
-    $pjax = new \Typecho\Widget\Helper\Form\Element\Select('pjax', array(
-        '0' => '关闭',
-        '1' => '开启'
-    ), '0', '是否开启', 'Pjax 预加载功能的开关');
-    $pjax->setAttribute('class', 'theme-setting-content theme-setting-pjax');
-    $form->addInput($pjax);
-
-    $pjax_complete = new \Typecho\Widget\Helper\Form\Element\Textarea('pjax_complete', NULL, NULL, 'Pjax 回调函数', 'Pjax 跳转页面后执行的事件，写入 js 代码(不带script)，一般将 Pjax 重载(回调)函数写在这里。');
-    $pjax_complete->setAttribute('class', 'theme-setting-content theme-setting-pjax');
-    $form->addInput($pjax_complete);
-
     $headerEcho = new \Typecho\Widget\Helper\Form\Element\Textarea('headerEcho', NULL, NULL, '自定义头部信息', '填写 html 代码，将输出在 &lt;head&gt; 标签中，可以在这里写上统计代码');
     $headerEcho->setAttribute('class', 'theme-setting-content theme-setting-development');
     $form->addInput($headerEcho);
@@ -218,13 +205,6 @@ EOF;
     $jsEcho = new \Typecho\Widget\Helper\Form\Element\Textarea('jsEcho', NULL, NULL, '自定义 JavaScript', '填写 JavaScript代码，输出在 body 标签结束之前');
     $jsEcho->setAttribute('class', 'theme-setting-content theme-setting-development');
     $form->addInput($jsEcho);
-
-
-    $music = new \Typecho\Widget\Helper\Form\Element\Text('music', NULL, NULL, '歌单地址', '填写格式，	server="netease"
-	type="playlist"
-	id="60198"');
-    $music->setAttribute('class', 'theme-setting-content theme-setting-music');
-    $form->addInput($music);
 
     $taAvatar = new \Typecho\Widget\Helper\Form\Element\Text('taAvatar', NULL, NULL, '<h2>情侣功能</h2>其它头像地址', '你的另一半~');
     $taAvatar->setAttribute('class', 'theme-setting-content theme-setting-couple');
