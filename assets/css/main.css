@@ -55,6 +55,7 @@ a, a:hover {
 .dropdown-menu {
     box-shadow: var(--box-shadow);
     border: none;
+    font-size: 1.25rem;
 }
 
 /** 头部 */
