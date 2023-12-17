@@ -14,7 +14,7 @@
 
 2020-8-20-[最初的介绍](https://dyedd.cn/806.html)
 
-2021-1-04-[Lanstar4：锐意新生 自砍三刀](https://dyedd.cn/935.html)
+2023-1-04-[Lanstar4：锐意新生 自砍三刀](https://dyedd.cn/935.html)
 
 [演示地址](https://dyedd.cn)
 
