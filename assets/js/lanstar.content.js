@@ -1,16 +1,17 @@
 const content = {
     init: function () {
-        this.addProcessComment()
-        this.addAsyncComment()
+        // 因为会改变dom，目录加载先
+        this.addCatalog();
         this.addInitTabs();
         this.addInitCollapse();
-        this.addEmoji()
+        this.addProcessComment();
+        this.addAsyncComment();
+        this.addEmoji();
         this.addHighLight();
         this.addPageLike();
         this.addPostProtect();
         this.addCommentSecret();
         this.copyToClipBoard();
-        this.addCatalog();
     },
     getFormData: function () {
         let text = document.querySelector('#textarea').value;
@@ -274,7 +275,7 @@ const content = {
         })
     },
     addInitTabs: () => {
-        let tabs = document.querySelectorAll('.article-tabs .nav');
+        let tabs = document.querySelectorAll('.article-content .article-tabs .nav');
         if (tabs.length > 0) {
             for (let item in tabs) {
                 tabs[item].onclick = function (e) {

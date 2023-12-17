@@ -1,4 +1,3 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <script src="<?php utils::indexTheme('assets/js/extend/bootstrap.bundle.min.js'); ?>"></script>
 <script src="<?php utils::indexTheme('assets/js/extend/icon.js'); ?>"></script>
 <script src="<?php utils::indexTheme('assets/js/extend/view-image.min.js'); ?>"></script>
@@ -12,7 +11,7 @@
     const getCookie=(name) => document.cookie.match(`[;\s+]?${name}=([^;]*)`)?.pop();
 </script>
 <script src="<?php utils::indexTheme('assets/js/lanstar.app.js'); ?>"></script>
-<?php if($this->is('page') || $this->is('post')): ?>
+<?php if(!$this->is('index')): ?>
     <script src="<?php utils::indexTheme('assets/js/lanstar.content.js'); ?>"></script>
     <script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},svg:{fontCache:"global"}};</script>
     <script defer src="<?php utils::indexTheme('assets/js/extend/tex-svg.js'); ?>"></script>
