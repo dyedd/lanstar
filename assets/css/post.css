@@ -12,6 +12,7 @@
 .article-info {
     position: relative;
     margin-top: -1rem;
+    background-color: var(--background);
 }
 .no-cover .article-detail {
     color: var(--text2);
