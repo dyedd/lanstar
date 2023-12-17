@@ -15,3 +15,9 @@
 当然如果不想实现这样的功能 每行一个图片链接即可！
 
 如果不想填链接，请写# 字体颜色可以英文缩写or十六进制 字体大小以rem为单位，1rem = 16px，所以你不用带单位
+
+例子：
+```
+https://dyedd.cn/usr/uploads/2020/08/4115250106.png|https://dyedd.cn/806.html|lanstar主题下载|你的下一代主题|#000|#fff|3|1.5|
+https://dyedd.cn/usr/uploads/2020/08/4115250106.png|https://dyedd.cn/806.html|lanstar主题下载|你的下一代主题|#000|#fff|3|1.5|
+```

@@ -37,4 +37,10 @@ syntax error, unexpected 'endwhile' (T_ENDWHILE), expecting elseif (T_ELSEIF) or
 1. 如果不知道安装在什么目录，那么建议通过和本文档达成战略协议的百度Or谷歌搜索~
 2. 上传解压到文件夹，重命名为`lanstar`
    1. <u>注意此文件夹下即可访问`index.php`等资源文件，而非`lanstar/lanstar`形式</u>
+   2. 不正常图片显示不正常
 
+### 分类图标
+![1.png](https://s2.loli.net/2023/12/17/EPh3bQS1txjaulv.jpg)
+新版的文章列表支持分类图标，但这里的设置其实就在
+
+**在后台管理-分类-分类描述里添加图片链接**

@@ -1,3 +1,4 @@
+> 懒得写了，大家看看 https://github.com/dyedd/lanstar/releases
 ### [3.0.1](https://github.com/dyedd/lanstar/releases/tag/3.0.1)
 
 1. 主要对于 #27 的更新

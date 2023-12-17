@@ -15,6 +15,14 @@
 
 ?> 然后可以复制名称icon-xxx，到后台，一个按顺序对应一行
 
+例子：
+```
+icon-guanyu
+icon-pengyouquan
+icon-guidang
+icon-liuyan
+```
+
 ### 那么我可以添加自己的图标吗？
 
 当然可以，你只需要在iconfont创建项目，注意：
