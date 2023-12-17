@@ -111,6 +111,7 @@ const lanstar = {
         this.copyToClipBoard();
         this.navTextHighLight();
         this.addMobile();
+        this.addCatalog();
     },
     addExtend: () => {
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -119,26 +120,26 @@ const lanstar = {
         lazyload(document.querySelectorAll(".lazy"));
     },
     addMobile: ()=>{
-        document.querySelector(".mobile-left").addEventListener('click',
+        document.querySelector(".mobile-left")?.addEventListener('click',
             function () {
                 document.querySelector(".left").classList.add("mobile-nav");
                 document.querySelector(".fixed-body").style.display='block';
             }
         )
-        document.querySelector(".mobile-right").addEventListener('click',
+        document.querySelector(".mobile-right")?.addEventListener('click',
             function () {
                 document.querySelector(".right").classList.add("mobile-nav");
             }
         )
         // 手机导航隐藏
-        document.querySelector("#mobile-nav").addEventListener('click',
+        document.querySelector("#mobile-nav")?.addEventListener('click',
             function () {
                 document.querySelector(".left").classList.remove("mobile-nav");
                 document.querySelector(".right").classList.remove("mobile-nav");
                 document.querySelector(".fixed-body").style.display='none';
             }
         )
-        document.querySelector("#mobile-tool").addEventListener('click',
+        document.querySelector("#mobile-tool")?.addEventListener('click',
             function () {
                 document.querySelector(".right").classList.remove("mobile-nav");
             }
@@ -428,14 +429,8 @@ const lanstar = {
         })
 
         if (tocTreeHtml) {
-            tocTreeObj.classList.add('on');
             tocTreeObj.querySelector('.article-catalog-list').innerHTML = tocTreeHtml;
         }
-        // 关闭
-        document.getElementById('catalog-close').addEventListener('click',
-            function () {
-                document.getElementById('tocTree').classList.remove('on');
-            });
     },
     addPageLike: () => {
         // 文章点赞

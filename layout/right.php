@@ -56,6 +56,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
     </div>
 <?php endif; ?>
+<?php if ($this->is('post')): ?>
+<?php $this->need('component/post.catalog.php'); ?>
+<?php endif; ?>
 <?php if ($this->options->sidebarBlock && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
     <?php if ($this->is('index')): ?>
         <div class="sidebar-box">

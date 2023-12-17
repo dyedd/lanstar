@@ -142,12 +142,3 @@
     </div>
     <?php $this->need('layout/comments.php'); ?>
 </main>
-<section class="col-12 col-md-4 col-xl-3 article-catalog" id="tocTree">
-    <h3 class="article-catalog-title">
-        <?php _e('目录'); ?>
-        <button type="button" class="btn-close float-end" aria-label="Close" id="catalog-close"></button>
-    </h3>
-    <div class="article-list-title">来自 《<?php $this->title(); ?>》</div>
-    <ul class="article-catalog-list">
-    </ul>
-</section>
