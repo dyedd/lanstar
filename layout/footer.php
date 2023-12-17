@@ -19,6 +19,18 @@
 </footer>
 <?php $this->footer(); ?>
 <div class="tools">
+    <?php if ($this->options->darkBtn): ?>
+        <div class="chose-mode-day" id="night-mode" type="button">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-yueliang"></use>
+            </svg>
+        </div>
+        <div class="chose-mode-moon" id="night-mode" type="button">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-taiyang"></use>
+            </svg>
+        </div>
+    <?php endif; ?>
     <?php if($this->is('post') && !$this->is('archive')): ?>
         <div class="watch_catalog" onclick="lanstar.addCatalog()">
             <svg class="icon" aria-hidden="true">

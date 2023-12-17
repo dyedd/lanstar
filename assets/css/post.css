@@ -3,12 +3,9 @@
     margin-bottom: -1rem;
     font-size: 1.25rem;
 }
-.breadcrumb svg.icon {
-    width: 2rem;
-    height: 2rem;
-}
 .breadcrumb-item {
-    margin: 0 .2rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
 }
 .article-info {
     position: relative;
@@ -111,6 +108,11 @@
 .article-title {
     padding: 2rem;
     margin-bottom: -2rem;
+}
+@media (max-width: 500px){
+    .article-title {
+        margin-bottom: -3.5rem!important;
+    }
 }
 .article-main {
     background: var(--background);
@@ -249,6 +251,11 @@ span.agree-num {
     padding: 1rem 1rem 0;
     text-align: center;
     position: relative;
+}
+@media (max-width: 800px){
+    .links-item {
+        width: 100%!important;
+    }
 }
 .links-item {
     position: relative;

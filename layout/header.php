@@ -37,38 +37,4 @@
     <?php $this->options->headerEcho(); ?>
 </head>
 <body style="background-image:url('<?=  utils::indexTheme('assets/img/bg.png'); ?>')">
-<div class="container mobile-nav d-md-none">
-    <header class="d-flex flex-wrap justify-content-center mb-4">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <?php if ($this->options->logoUrl): ?>
-                <img class="site-logo" title="<?php $this->options->description(); ?>"
-                     src="<?php $this->options->logoUrl(); ?>" alt="logo">
-            <?php else: ?>
-                <img class="site-logo" title="<?php $this->options->description(); ?>"
-                     src="<?php utils::indexTheme('assets/img/logo.png'); ?>" alt="logo">
-            <?php endif; ?>
-            <span class="fs-4 ms-3 text"><?php $this->options->title(); ?></span>
-        </a>
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a href="<?php $this->options->siteUrl(); ?>" <?php if ($this->is('index')): ?> class="nav-link active"<?php else: ?> class="nav-link"<?php endif; ?> aria-current="page">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-shouye"></use>
-                    </svg>
-                    <span class="nav-item-text">首页</span>
-                </a>
-            </li>
-            <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
-            <?php utils::customNavHandle($this->options->customNavIcon, $pages, $this,1); ?>
-            <?php if ($this->user->hasLogin()): ?>
-                <li class="nav-item"><a href="<?php $this->options->adminUrl(); ?>" class="nav-link">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-shezhi"></use>
-                        </svg>
-                        <span class="nav-item-text">后台</span>
-                    </a></li>
-            <?php endif; ?>
-        </ul>
-    </header>
-</div>
     

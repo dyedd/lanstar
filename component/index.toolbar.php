@@ -5,10 +5,21 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
+<div class="fixed-body"></div>
 <div class="toolbar">
     <div class="toolbar-left">
-        <?php if($this->is('index')): ?>
-            主页
+        <?php if (!$this->is('post')): ?>
+            <span class="header">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-shouye1"></use>
+                </svg>首页
+            </span>
+            <div class="mobile-left">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-daohang1"></use>
+                    </svg>
+            </div>
+
         <?php else: ?>
             <!--面包屑导航-->
             <nav aria-label="breadcrumb">
@@ -38,18 +49,17 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php endif; ?>
     </div>
     <div class="toolbar-right">
-        <?php if($this->options->darkBtn):?>
-            <div class="float-end chose-mode-day float-right" id="night-mode" type="button">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-yueliang"></use>
-                </svg>
-            </div>
-            <div class="float-end chose-mode-moon float-right" id="night-mode" type="button">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-taiyang"></use>
-                </svg>
-            </div>
-        <?php endif;?>
+        <?php if (!$this->is('post')): ?>
+        <div class="mobile-right">
+            <?php if ($this->options->asideAvatar): ?>
+                <img title="<?php $this->options->title(); ?>"
+                     src="<?php $this->options->asideAvatar(); ?>" alt="logo">
+            <?php else: ?>
+                <img title="<?php $this->options->title(); ?>"
+                     src="<?php utils::indexTheme('assets/img/logo.png'); ?>" alt="logo">
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
     </div>
 </div>
 

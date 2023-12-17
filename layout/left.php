@@ -6,12 +6,13 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 <header class="site-info">
+    <button type="button" class="btn-close float-end d-md-none" id="mobile-nav" aria-label="Close"></button>
     <figure class="site-avatar">
         <?php if ($this->options->asideAvatar): ?>
-            <img class="site-logo" title="<?php $this->options->title(); ?>"
+            <img title="<?php $this->options->title(); ?>"
                  src="<?php $this->options->asideAvatar(); ?>" alt="logo">
         <?php else: ?>
-            <img class="site-logo" title="<?php $this->options->title(); ?>"
+            <img title="<?php $this->options->title(); ?>"
                  src="<?php utils::indexTheme('assets/img/logo.png'); ?>" alt="logo">
         <?php endif; ?>
         <?php if ($this->options->asideStatus): ?>

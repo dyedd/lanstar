@@ -2,23 +2,23 @@
 <?php $this->need('layout/header.php'); ?>
 <div class="container">
     <div class="row">
-        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2 d-none d-md-block">
+        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2 d-none d-lg-block left">
             <?php $this->need('layout/left.php'); ?>
         </div>
-        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+        <div class="col-lg-10 col-md-12 col-xs-10">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 main">
+                    <div class="main">
                         <?php $this->need('component/index.toolbar.php'); ?>
                         <?php $this->need('component/page.content.php') ?>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 position-relative right d-none d-md-block">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 right d-none d-lg-block">
                         <?php $this->need('layout/right.php'); ?>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 d-md-none">
+        <div class="col-12 d-lg-none" style="text-align:center">
             <?php $this->need('layout/footer.php'); ?>
         </div>
     </div>

@@ -1,6 +1,9 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
+<br class="d-md-none">
+<button type="button" class="btn-close float-end d-md-none" id="mobile-tool" aria-label="Close"></button>
+<br class="d-md-none">
 <div class="search-bar">
     <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
         <input type="text" id="s" name="s" class="nav-search-input" placeholder="<?php _e('输入关键字搜索'); ?>">

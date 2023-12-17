@@ -8,10 +8,10 @@ const utils = {
         let data = '';
         text = text.replace("&", "%26");
         // 判断是否登录,23.1.14
-        if(!document.querySelector("#comment-form").dataset.login){
+        if (!document.querySelector("#comment-form").dataset.login) {
             data = `author=${author}&mail=${mail}&`
         }
-        if(url){
+        if (url) {
             data += `url=${url}&`
         }
         // 防止参数带&截断，2023.1.2
@@ -110,12 +110,39 @@ const lanstar = {
         this.addDarkMode();
         this.copyToClipBoard();
         this.navTextHighLight();
+        this.addMobile();
     },
     addExtend: () => {
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         window.ViewImage && ViewImage.init('.gallery img');
         lazyload(document.querySelectorAll(".lazy"));
+    },
+    addMobile: ()=>{
+        document.querySelector(".mobile-left").addEventListener('click',
+            function () {
+                document.querySelector(".left").classList.add("mobile-nav");
+                document.querySelector(".fixed-body").style.display='block';
+            }
+        )
+        document.querySelector(".mobile-right").addEventListener('click',
+            function () {
+                document.querySelector(".right").classList.add("mobile-nav");
+            }
+        )
+        // 手机导航隐藏
+        document.querySelector("#mobile-nav").addEventListener('click',
+            function () {
+                document.querySelector(".left").classList.remove("mobile-nav");
+                document.querySelector(".right").classList.remove("mobile-nav");
+                document.querySelector(".fixed-body").style.display='none';
+            }
+        )
+        document.querySelector("#mobile-tool").addEventListener('click',
+            function () {
+                document.querySelector(".right").classList.remove("mobile-nav");
+            }
+        )
     },
     addDarkMode: () => {
         if (config['dark'] == '0') return false;
@@ -155,10 +182,10 @@ const lanstar = {
             item.onclick = () => {
                 if (utils.getCookie('night') == '1') {
                     method.remove()
-                    utils.setCookie("night","0",1800)
+                    utils.setCookie("night", "0", 1800)
                 } else {
                     method.add()
-                    utils.setCookie("night","1",1800)
+                    utils.setCookie("night", "1", 1800)
                 }
             }
         })
@@ -192,17 +219,24 @@ const lanstar = {
         }('a.f(\' %c 9 1 %c b://d.e/8/1\',\'2:#3;4:#5;6:7 0\',\'2:#5;4:#3;6:7\');', 16, 16, '|lanstar|color|fadfa3|background|030307|padding|5px|dyedd|Theme|console|https||github|com|log'.split('|'), 0, {}));
     },
     addSelfAdaption: () => {
-        //获取屏幕宽度
-        let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
-        //获取dom
+        // 获取dom
         let htmlDom = document.getElementsByTagName('html')[0];
-        //设置rem基准值
-        htmlDom.style.fontSize = 10 + 'px';
-        //监听屏幕变化 从而改变1rem的值
-        document.documentElement.addEventListener('resize', (e) => {
+        // 设置rem基准值的函数
+        const setRem = () => {
+            // 获取屏幕宽度
             let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
-            htmlDom.style.fontSize = htmlWidth * 100 / 750 + 'px';
-        })
+
+            // 根据屏幕宽度设置rem基准值
+            if (htmlWidth >= 800) {
+                htmlDom.style.fontSize = '10px';
+            } else if(htmlWidth < 800) {
+                htmlDom.style.fontSize = '12px';
+            }
+        };
+        // 初始化时设置rem基准值
+        setRem();
+        // 监听屏幕变化，从而改变1rem的值
+        window.addEventListener('resize', setRem);
     },
     addScroll: function () {
         window.addEventListener('scroll', function () {
@@ -602,18 +636,18 @@ const lanstar = {
             }
         })
     },
-    copyToClipBoard(){
-        document.querySelector(".url-copy")?.addEventListener("click",function(e){
+    copyToClipBoard() {
+        document.querySelector(".url-copy")?.addEventListener("click", function (e) {
             // 申请使用剪切板读取权限
-            navigator.permissions.query({ name: 'clipboard-read' }).then(function(result) {
+            navigator.permissions.query({name: 'clipboard-read'}).then(function (result) {
                 // 可能是 'granted', 'denied' or 'prompt':
                 if (result.state === 'granted') {
                     // 可以使用权限
                     // 进行clipboard的操作
-                    let clipBoardContent="";
-                    clipBoardContent+=document.title;
-                    clipBoardContent+="\r\n";
-                    clipBoardContent+=window.location.href;
+                    let clipBoardContent = "";
+                    clipBoardContent += document.title;
+                    clipBoardContent += "\r\n";
+                    clipBoardContent += window.location.href;
                     navigator.clipboard
                         .writeText(clipBoardContent)
                         .then(
@@ -622,7 +656,7 @@ const lanstar = {
                                 duration: 3000
                             }).showToast())
                         );
-                } else{
+                } else {
                     // 弹窗弹框申请使用权限
                     Toastify({
                         text: "请先开通复制到剪贴板权限！",
@@ -635,7 +669,7 @@ const lanstar = {
 
         })
     },
-    navTextHighLight(){
+    navTextHighLight() {
         // 获取所有的 nav-link 元素
         const navLinks = document.querySelectorAll('.nav-link');
 
