@@ -424,7 +424,6 @@ span.agree-num {
     max-width: 100%;
     overflow: auto;
     display: inline-block;
-    font-size: .8rem;
 }
 .markdown-body table thead {
     background-color: #f8f8f8;

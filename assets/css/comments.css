@@ -60,7 +60,7 @@
     transition: all .3s ease-out;
 }
 #comments .comment-list {
-    padding: 0;
+    padding: 3rem 0 0;
     margin: 0;
 }
 li.comment-by-author > .comment-author span:after {
