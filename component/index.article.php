@@ -89,6 +89,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <?php if ($comments): ?>
                 <div class="index-comments">
                     <?php foreach ($comments as $comment): ?>
+                        <?php if ($comment['status'] =='approved'): ?>
                         <div class="index-comments-list">
                             <img src="<?php utils::emailHandle($comment['mail']) ?>s=100"
                                  alt="<?=  $comment['author'] ?>">
@@ -102,6 +103,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                     $text) ?></span>
                             <span class="created"><?=  date('n月j日', $comment['created']) ?></span>
                         </div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>

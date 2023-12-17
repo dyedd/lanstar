@@ -3,9 +3,46 @@
     <?php if($this->fields->banner):?>
         <div class="article-cover-inner">
             <img src="<?= $this->fields->banner()?>" alt="cover">
+            <div class="article-detail">
+                <h1 class="article-title">
+                    <?php if ($this->user->hasLogin()): ?>
+                        <a class="article-edit" title="编辑"
+                           href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?=  $this->cid; ?>">
+                            <span><?php $this->title(); ?></span>
+                        </a>
+                    <?php else: ?>
+                        <span><?php $this->title(); ?></span>
+                    <?php endif; ?>
+                </h1>
+                <div class="post-info">
+                    <div class="created">
+                        <time datetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
+                    </div>
+                    <div class="avatar">
+                        <img src="<?php utils::emailHandle($this->author->mail) ?>s=100"
+                             alt="<?php  $this->author->screenName() ?>">
+                    </div>
+                    <div class="display">
+                        <div class="name"><?php $this->author->screenName(); ?></div>
+                    </div>
+                    <div class="extra">
+                        <div class="post-info-icon">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-redu"></use>
+                            </svg>
+                            <?php utils::getPostView($this); ?>阅读
+                        </div>
+                        <div class="post-info-icon">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-pinglun"></use>
+                            </svg>
+                            <?php $this->commentsNum(); ?>条评论
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    <?php endif;?>
-    <div class="article-detail">
+    <?php else:?>
         <h1 class="article-title">
             <?php if ($this->user->hasLogin()): ?>
                 <a class="article-edit" title="编辑"
@@ -16,33 +53,35 @@
                 <span><?php $this->title(); ?></span>
             <?php endif; ?>
         </h1>
-        <div class="post-info">
-            <div class="created">
-                <time datetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
-            </div>
-            <div class="avatar">
-                <img src="<?php utils::emailHandle($this->author->mail) ?>s=100"
-                     alt="<?php  $this->author->screenName() ?>">
-            </div>
-            <div class="display">
-                <div class="name"><?php $this->author->screenName(); ?></div>
-            </div>
-            <div class="extra">
-                <div class="post-info-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-redu"></use>
-                    </svg>
-                    <?php utils::getPostView($this); ?>阅读
+        <div class="article-detail">
+            <div class="post-info">
+                <div class="created">
+                    <time datetime="<?php $this->date('c'); ?>"><?php $this->date(); ?></time>
                 </div>
-                <div class="post-info-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-pinglun"></use>
-                    </svg>
-                    <?php $this->commentsNum(); ?>条评论
+                <div class="avatar">
+                    <img src="<?php utils::emailHandle($this->author->mail) ?>s=100"
+                         alt="<?php  $this->author->screenName() ?>">
+                </div>
+                <div class="display">
+                    <div class="name"><?php $this->author->screenName(); ?></div>
+                </div>
+                <div class="extra">
+                    <div class="post-info-icon">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-redu"></use>
+                        </svg>
+                        <?php utils::getPostView($this); ?>阅读
+                    </div>
+                    <div class="post-info-icon">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-pinglun"></use>
+                        </svg>
+                        <?php $this->commentsNum(); ?>条评论
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php endif;?>
 </section>
 <main class="article-main">
     <!--文章内容-->

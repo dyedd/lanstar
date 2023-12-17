@@ -20,7 +20,8 @@
                                     ), '', ''); ?></h1>
                             </div>
                             <div class="article-cover-inner">
-                                <img src="<?=  $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">
+                                <img src="<?= $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>"
+                                     alt="cover">
                             </div>
                         </section>
                         <?php if ($this->have()): ?>
@@ -31,9 +32,23 @@
                             </article>
                         <?php endif; ?>
 
-                        <div class="page-pagination">
-                            <?php $this->pageLink('加载更多','next'); ?>
-                        </div>
+                        <?php
+                            $this->pageNav(
+                                '<svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-zuo"></use>
+                    </svg>',
+                                '<svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-you"></use>
+                    </svg>',
+                                3, '...', array(
+                                'wrapTag' => 'ul',
+                                'wrapClass' => 'pagination justify-content-center',
+                                'itemTag' => 'li',
+                                'itemClass' => 'page-item',
+                                'linkClass' => 'page-link',
+                                'currentClass' => 'active'
+                            ));
+                            ?>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 right d-none d-lg-block">
                         <?php $this->need('layout/right.php'); ?>

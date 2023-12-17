@@ -23,17 +23,24 @@
         <div class="chose-mode-day" id="night-mode" type="button">
             <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-yueliang"></use>
-            </svg>
+            </svg><span>暗黑模式</span>
         </div>
         <div class="chose-mode-moon" id="night-mode" type="button">
             <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-taiyang"></use>
-            </svg>
+            </svg><span>暗黑模式</span>
         </div>
     <?php endif; ?>
-    <div class="back-to-top" onclick="lanstar.addBackTop()">
+    <?php if($this->is('post')): ?>
+        <div onclick="location.href='#comment'">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-pinglun2"></use>
+            </svg><span>评论</span>
+        </div>
+    <?php endif; ?>
+    <div class="back-to-top" onclick="app.addBackTop()">
         <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-fanhuidingbu-"></use>
-        </svg>
+        </svg><span>返回顶部</span>
     </div>
 </div>

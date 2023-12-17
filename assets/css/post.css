@@ -1,7 +1,9 @@
 /*写着写着就想你了*/
 .breadcrumb {
-    margin-bottom: -1rem;
     font-size: 1.25rem;
+    background-color: var(--background);
+    border-top: .1rem solid #eee;
+    padding-top: 1rem;
 }
 .breadcrumb-item {
     height: 2.5rem;
@@ -9,14 +11,13 @@
 }
 .article-info {
     position: relative;
-}
-.article-info.no-cover {
-    height: 16rem;
-    background: var(--background);
+    margin-top: -1rem;
 }
 .no-cover .article-detail {
     color: var(--text2);
     bottom: 0;
+    position: relative!important;
+    margin-top: 2rem;
 }
 .no-cover .article-title a {
     color: var(--text2);
@@ -72,7 +73,7 @@
 }
 .post-info {
     position: relative;
-    padding: 1.5rem 1.5rem 1.5rem 8rem;
+    padding: 1.5rem 1.5rem 0.5rem 8rem;
     text-shadow: var(--text-shadow);
     font-weight: 800;
 }
@@ -105,9 +106,13 @@
     margin-top: .5rem;
     margin-right: 1rem;
 }
+.article-info.no-cover .article-title {
+    position: relative;
+    text-align: left;
+}
 .article-title {
-    padding: 2rem;
-    margin-bottom: -2rem;
+    padding: 0 0 0 1.5rem;
+    text-align: center;
 }
 @media (max-width: 500px){
     .article-title {
@@ -363,6 +368,49 @@ span.agree-num {
 }
 .article-catalog-list li .article-catalog-list {
     padding: 0 0.3125rem 0 0.3125rem;
+}
+/** 分页**/
+.joe_comment .joe_pagination {
+    padding-top: 0;
+}
+
+.joe_pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 15px;
+}
+.joe_comment .joe_pagination {
+    padding-top: 0;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 1.5rem;
+}
+.pagination li {
+    margin-left: .5rem;
+}
+.pagination li.active a {
+    background: var(--theme-color);
+    color: #fff;
+    font-weight: 500;
+}
+.pagination li a {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    color: var(--theme-text-color);
+    padding: 0 1rem;
+    background: var(--background);
+    border-radius: .5rem;
+    transition: background 0.35s, color 0.35s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 /** 标签内容的美化 */
 .article-content {

@@ -1,5 +1,4 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <section class="article-info">
     <div class="article-cover-inner">
         <img src="<?=  $this->fields->banner ?: utils::indexTheme('assets/img/default.jpg'); ?>" alt="cover">

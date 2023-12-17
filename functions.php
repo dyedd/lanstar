@@ -4,7 +4,6 @@ require_once 'libs/contents.php';
 require_once 'libs/options.php';
 require_once 'libs/comments.php';
 require_once 'libs/utils.php';
-require_once 'libs/pageNav.php';
 /**
  * 注册文章解析 hook
  * From AlanDecode(https://imalan.cn)
@@ -62,15 +61,6 @@ function themeInit($archive){
         exit('error');
     }
 }
-
-function get_comment($coid){
-    $db = Typecho_Db::get();
-    return $db->fetchRow($db->select()
-            ->from('table.comments')
-            ->where('coid = ?', $coid)
-            ->limit(1));
-}
-
 
 /**
  * 显示下一篇

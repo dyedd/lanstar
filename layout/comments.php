@@ -97,25 +97,23 @@ function threadedComments($comments, $options)
     <?php if ($comments->have()): ?>
         <div class="comments-row">
             <?php $comments->listComments(); ?>
-            <div class="page-pagination">
-                <?php
-                $comments->pageNav(
-                    '<svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-zuo"></use>
-                    </svg>',
-                    '<svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-you"></use>
-                    </svg>',
-                    3, '...', array(
-                    'wrapTag' => 'ul',
-                    'wrapClass' => 'pagination justify-content-center',
-                    'itemTag' => 'li',
-                    'itemClass' => 'page-item',
-                    'linkClass' => 'page-link',
-                    'currentClass' => 'active'
-                ));
-                ?>
-            </div>
+            <?php
+            $comments->pageNav(
+                '<svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-zuo"></use>
+                </svg>',
+                '<svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-you"></use>
+                </svg>',
+                1, '...', array(
+                'wrapTag' => 'ul',
+                'wrapClass' => 'pagination justify-content-center',
+                'itemTag' => 'li',
+                'itemClass' => 'page-item',
+                'linkClass' => 'page-link',
+                'currentClass' => 'active'
+            ));
+            ?>
         </div>
 
     <?php endif; ?>

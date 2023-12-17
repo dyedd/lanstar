@@ -386,7 +386,7 @@ ol.carousel-indicators li.active {
 }
 
 .article-list {
-    padding: 1rem 2rem;
+    padding: 1rem;
     background: var(--background);
 }
 
@@ -901,10 +901,22 @@ footer.container.footer {
     right: 12rem;
     bottom: 2rem;
     cursor: pointer;
+    z-index: 999;
 }
 
 .tools div {
+    border-radius: .5rem;
     margin-top: 1rem;
+    text-align: center;
+    width: 5rem;
+    height: 5rem;
+    background: var(--background);
+    line-height: 2rem;
+    box-shadow: 0.5rem 1.875rem 2.375rem rgb(39 44 49 / 6%), 0.0625rem 0.1875rem 0.5rem rgb(39 44 49 / 3%);
+}
+.tools svg.icon {
+    display: block;
+    margin: 0 auto;
 }
 /*移动端可能不兼容*/
 .chose-mode-moon {
@@ -927,12 +939,13 @@ footer.container.footer {
 
 /** 404 */
 .error-page {
-    text-align: center;
-    font-size: 1rem;
+    height: 60rem;
+    background-color: var(--background);
 }
 
 .error-page .icon.test {
-    font-size: 15.625rem;
+    width: 100%;
+    height: 100%;
 }
 
 /** 分页 */

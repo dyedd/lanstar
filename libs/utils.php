@@ -637,7 +637,7 @@ EOF;
     public static function get_comment_by_cid($cid, $len = 4)
     {
         $db = Typecho_Db::get();
-        $select = $db->select('author,authorId,ownerId,mail,text,created')
+        $select = $db->select('author,authorId,ownerId,mail,text,created,status')
             ->from('table.comments')
             ->where('cid = ?', $cid)
             ->order('created', Typecho_Db::SORT_DESC)
