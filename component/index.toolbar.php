@@ -14,9 +14,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <use xlink:href="#icon-shouye1"></use>
                 </svg>首页
             <?php else: ?>
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-biaoti-"></use>
-                </svg> 博客内容
+                <?php $this->need('component/breadcrumb.content.php'); ?>
             <?php endif; ?>
         </span>
         <div class="mobile-left">

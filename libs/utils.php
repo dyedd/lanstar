@@ -658,6 +658,8 @@ EOF;
         if (strpos($html, '[hide') !== false) {
             $html = preg_replace('/(?s)\[hide\]([^\]]*?)\[\/hide\]/', '', $html);
         }
+        // 过滤跳转
+        $html = preg_replace('/<div.*?>|<\/div>/', '', $html);
         $content = '';
         if($flag == 0) {
             if ($parts = preg_split("/(<\/\s*(?:p|q|h[0-6]|blockquote|ol|ul|pre|')\s*>)/i",

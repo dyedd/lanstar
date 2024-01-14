@@ -10,7 +10,6 @@
                 <div class="row">
                     <div class="main">
                         <?php $this->need('component/index.toolbar.php'); ?>
-                        <?php $this->need('component/breadcrumb.content.php'); ?>
                         <?php $this->need('component/post.content.php'); ?>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 right d-none d-lg-block">

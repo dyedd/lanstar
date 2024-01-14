@@ -26,11 +26,11 @@ function threadedComments($comments, $options)
                 <img class="avatar" src="<?php utils::emailHandle($comments->mail); ?>s=100" width="64" height="64">
             </span>
             <cite class="fn" itemprop="name"><a href="<?= $comments->authorId > 0 ? '/author/' . $comments->authorId : $comments->url; ?>" rel="external nofollow"><?= $comments->author; ?></a></cite>
+            <a class="time" href="<?php $comments->permalink(); ?>">
+                <time datetime="<?php $comments->date(); ?>"><?php $comments->date('Y-m-d H:i:s'); ?></time>
+            </a>
         </div>
         <div class="comment-meta">
-            <a href="<?php $comments->permalink(); ?>">
-                <time datetime="<?php $comments->date(); ?>"><?php $comments->date('F-jS,Y,g:i:sA'); ?></time>
-            </a>
             <div class="comment-ua">
                 <span class="author-system"><?php utils::getOs($comments->agent); ?></span>
                 <span class="author-browser"><?php utils::getBrowser($comments->agent); ?></span>

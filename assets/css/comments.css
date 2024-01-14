@@ -60,8 +60,17 @@
     transition: all .3s ease-out;
 }
 #comments .comment-list {
-    padding: 3rem 0 0;
+    padding: 0 1rem;
     margin: 0;
+}
+.comment-content .emoji {
+    width: 4.8rem;
+    height: 4.8rem;
+}
+.comment-author .time {
+    margin-left: .5rem;
+    font-size: 1.2rem;
+    color: var(--text2);
 }
 li.comment-by-author > .comment-author span:after {
     content: '';
@@ -80,15 +89,12 @@ li.comment-by-author > .comment-author span:after {
     padding: 2rem 1.5rem 1.5rem 1.5rem;
     list-style-type: none;
 }
-#comments .comment-list > li + li {
-    border-top: var(--border) .1rem solid;
-}
 #comments .comment-children {
     margin-left: 2rem;
 }
 
 #comments .comment-children li {
-    padding: 2rem 0 0 0;
+    padding: 0;
 }
 
 #comments .comment-reply {
@@ -115,17 +121,12 @@ li.comment-by-author > .comment-author span:after {
 }
 #comments .comment-list > li .comment-author cite {
     padding-left: 1.5rem;
-    font-weight: bold;
     font-style: normal;
 }
 #comments .comment-list > li .comment-meta {
     margin-left: 5.5rem;
     padding-bottom: .5rem;
     margin-top: -2rem;
-}
-#comments .comment-list > li .comment-meta a {
-    font-size: 1.2rem;
-    color: #8f949e;
 }
 #comments .comment-list > li .comment-content {
     word-wrap: break-word;
@@ -140,14 +141,14 @@ li.comment-by-author > .comment-author span:after {
     position: absolute;
     right: 1.5rem;
     top: 1.5rem;
-    padding: .6rem 1rem;
+    padding: .1rem .5rem;
     color: white;
     font-size: 1.3rem;
     text-align: center;
     cursor: pointer;
     background-color: var(--theme-color);
     border: none;
-    border-radius: .8rem;
+    border-radius: 10%;
     transition: all .3s ease-out;
 }
 .comment-reply a, .cancel-comment-reply a {

@@ -26,7 +26,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </div>
             <?php elseif ($this->fields->article_type == 1): ?>
                 <div class="markdown-body describe pic">
-                    <?=  utils::get_summary($this->content,2);?>
                     <div class="img">
                         <?php if ($this->fields->banner && $this->fields->banner != ''): ?>
                             <img src="<?php $this->fields->banner(); ?>" alt="cover">
