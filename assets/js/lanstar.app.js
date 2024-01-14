@@ -260,13 +260,24 @@ const app = {
                         el.innerHTML = data
                         const res = el.querySelectorAll('.article-list')
                         res.forEach(v => document.querySelector(".articles").append(v))
+                        window.ViewImage && ViewImage.init('.gallery img');
                         lazyload(document.querySelectorAll(".lazy"));
-                        let next_href = el.querySelector('.next')?.getAttribute('href')
-                        if (next_href != null) {
-                            this.setAttribute('href', next_href);
-                        } else {
-                            //如果没有下一页了，隐藏
-                            this.style.display = 'none'
+                        if(href.includes("category")) {
+                            const activeLi = el.querySelector('li.active');
+                            const nextSibling = activeLi.nextElementSibling;
+                            if(!nextSibling){
+                                document.querySelector('.page-pagination').style.display = 'none'
+                            }else{
+                                document.querySelector('.next').setAttribute('href', nextSibling.querySelector('a').getAttribute('href'));
+                            }
+                        }else{
+                            let next_href = el.querySelector('.next')?.getAttribute('href')
+                            if (next_href != null) {
+                                this.setAttribute('href', next_href);
+                            } else {
+                                //如果没有下一页了，隐藏
+                                this.style.display = 'none'
+                            }
                         }
                     })
                 }
@@ -300,12 +311,17 @@ const app = {
                         el.innerHTML = data
                         const res = el.querySelectorAll('.article-list')
                         res.forEach(v => document.querySelector(".articles").append(v))
-                        let more = el.querySelector('.next')?.getAttribute('href')
-                        if (more != null) {
-                            document.querySelector('.next').setAttribute('href', more);
-                        } else {
-                            document.querySelector('.next').style.display = 'none'
+                        const activeLi = el.querySelector('li.active');
+                        const nextSibling = activeLi?.nextElementSibling;
+                        const isLastChild = activeLi?.matches(':last-child');
+                        console.log(activeLi, nextSibling, isLastChild)
+                        if(activeLi==null || isLastChild){
+                            document.querySelector('.page-pagination').style.display = 'none'
+                        }else{
+                            document.querySelector('.next').setAttribute('href', nextSibling?.querySelector('a').getAttribute('href'));
                         }
+                        window.ViewImage && ViewImage.init('.gallery img');
+                        lazyload(document.querySelectorAll(".lazy"));
                     })
                 }
             }
