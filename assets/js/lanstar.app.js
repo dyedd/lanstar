@@ -263,17 +263,19 @@ const app = {
                         window.ViewImage && ViewImage.init('.gallery img');
                         lazyload(document.querySelectorAll(".lazy"));
                         if(href.includes("category")) {
-                            const activeLi = el.querySelector('li.active');
+                            const activeLi = el.querySelector('.pagination li.active');
                             const nextSibling = activeLi.nextElementSibling;
                             if(!nextSibling){
                                 document.querySelector('.page-pagination').style.display = 'none'
                             }else{
+                                document.querySelector('.page-pagination').style.display = 'flex'
                                 document.querySelector('.next').setAttribute('href', nextSibling.querySelector('a').getAttribute('href'));
                             }
                         }else{
                             let next_href = el.querySelector('.next')?.getAttribute('href')
                             if (next_href != null) {
                                 this.setAttribute('href', next_href);
+                                this.style.display = 'flex'
                             } else {
                                 //如果没有下一页了，隐藏
                                 this.style.display = 'none'
@@ -311,13 +313,13 @@ const app = {
                         el.innerHTML = data
                         const res = el.querySelectorAll('.article-list')
                         res.forEach(v => document.querySelector(".articles").append(v))
-                        const activeLi = el.querySelector('li.active');
+                        const activeLi = el.querySelector('.pagination li.active');
                         const nextSibling = activeLi?.nextElementSibling;
                         const isLastChild = activeLi?.matches(':last-child');
-                        console.log(activeLi, nextSibling, isLastChild)
                         if(activeLi==null || isLastChild){
                             document.querySelector('.page-pagination').style.display = 'none'
                         }else{
+                            document.querySelector('.page-pagination').style.display = 'flex'
                             document.querySelector('.next').setAttribute('href', nextSibling?.querySelector('a').getAttribute('href'));
                         }
                         window.ViewImage && ViewImage.init('.gallery img');
