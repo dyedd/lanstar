@@ -38,7 +38,7 @@ class utils
             $text .= '<div class="carousel-item'. $active .'">'. $a .
                 '<img class="lazy" src="' . utils::addLoadingImages(Helper::options()->loading_image) . '" data-src="' .
                 $bannerInfo[0] .
-                '" class="d-block w-100" alt="banner"><div class="carousel-caption d-none d-md-block">'.$style.'</div></a></div>';
+                '" class="d-block w-100" alt="banner"><div class="carousel-caption">'.$style.'</div></a></div>';
         }
         return $text;
     }

@@ -23,6 +23,13 @@
     --text4: #e4e7ed;
     --routine: #606266;
     --border: #dee2e6;
+    --color1:#ff4e6a;
+    --color1-bg: rgba(255,78,106,0.15);
+    --color2: #ffb900;
+    --color2-bg: rgba(255,118,30,0.15);
+    --color3-bg: #0083ee;
+    --color4: #33d57a;;
+    --color4-bg: rgba(51,213,122,0.15);
 }
 a, a:hover {
     text-decoration: none;
@@ -232,6 +239,24 @@ a, a:hover {
 /* 幻灯片 */
 .carousel-item {
     max-height: 25rem;
+}
+.carousel-caption {
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+}
+.carousel-caption h5::after {
+    content: '';
+    background-image: linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
+    pointer-events: none;
+    background-size: cover;
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
 }
 
 .carousel_link {
@@ -468,6 +493,13 @@ ol.carousel-indicators li.active {
     color: var(--theme-text-color);
     line-height: 1.5;
     word-wrap: break-word;
+    background: #f0f8ff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+.describe.gallery,.describe.pic,.describe.text {
+    background: none;
+    padding: 0;
 }
 .describe h1,.describe h2,.describe h3,.describe h4,.describe h5,.describe h6 {
     font-size: 1.5rem!important;
