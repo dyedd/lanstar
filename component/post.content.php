@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <section class="article-info">
         <div class="article-cover-inner">
-            <img src="<?= $this->fields->banner()?: utils::indexTheme('assets/img/default.jpg') ?>" alt="cover">
+            <img src="<?= $this->fields->banner?: utils::indexTheme('assets/img/default.jpg') ?>" alt="cover">
             <h1 class="article-title">
                 <?php if ($this->user->hasLogin()): ?>
                     <a class="article-edit" title="编辑"
