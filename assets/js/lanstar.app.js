@@ -272,13 +272,14 @@ const app = {
                                 document.querySelector('.next').setAttribute('href', nextSibling.querySelector('a').getAttribute('href'));
                             }
                         }else{
+                            // 首页
                             let next_href = el.querySelector('.next')?.getAttribute('href')
                             if (next_href != null) {
+                                document.querySelector('.page-pagination').style.display = 'flex'
                                 this.setAttribute('href', next_href);
-                                this.style.display = 'flex'
                             } else {
                                 //如果没有下一页了，隐藏
-                                this.style.display = 'none'
+                                document.querySelector('.page-pagination').style.display = 'none'
                             }
                         }
                     })
@@ -313,6 +314,14 @@ const app = {
                         el.innerHTML = data
                         const res = el.querySelectorAll('.article-list')
                         res.forEach(v => document.querySelector(".articles").append(v))
+                        if(href == location.href) {
+                            console.log(111)
+                            // 从分类点过来的要恢复。
+                            document.querySelector('.page-pagination').style.display = 'flex';
+                            const next_href = document.querySelector('.page-pagination .next')?.getAttribute('href').replace(/category\/life\/\d+\//, "page/2/");
+                            document.querySelector('.page-pagination .next').setAttribute('href', next_href);
+                            return;
+                        }
                         const activeLi = el.querySelector('.pagination li.active');
                         const nextSibling = activeLi?.nextElementSibling;
                         const isLastChild = activeLi?.matches(':last-child');
